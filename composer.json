@@ -19,7 +19,7 @@
         "firebase/php-jwt": "^6.3",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
         "jsonapiphp/jsonapi": "^1.1",
-        "league/tactician-bundle": "*",
+        "league/tactician-bundle": "^1.4",
         "league/tactician-doctrine": "^1.2",
         "nelmio/api-doc-bundle": "^4.12",
         "phpdocumentor/reflection-docblock": "^5.3",
