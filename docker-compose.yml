@@ -94,7 +94,7 @@ services:
         working_dir: /app
         user: node
         command: sh -c "
-            if [ ! -f '/app/public/build-olympiad/manifest.json' ]; then cd /app/assets/olympiad && yarn install && yarn build; fi
+            cd /app/landings/frontend && npm install && npm run watch
             "
         volumes:
             - .:/app
