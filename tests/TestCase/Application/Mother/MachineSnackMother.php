@@ -21,14 +21,16 @@ final class MachineSnackMother
         return self::create($position);
     }
 
-    public static function withZeroQuantity(string $position): MachineSnack
-    {
+    public static function withQuantity(
+        int $quantity,
+        ?string $position = null,
+    ): MachineSnack {
         $propertyManipulator = PropertyManipulator::getInstance();
         $snackMachine = self::create($position);
         $propertyManipulator->propertySet(
             $snackMachine,
             'quantity',
-            0,
+            $quantity,
         );
 
         return $snackMachine;

@@ -74,7 +74,7 @@ final class MachineTest extends UnitTestCase
     public function test_machine_snack_can_be_added_on_empty_position(): void
     {
         $position = Faker::hexBytes(3);
-        $emptyMachineSnack = MachineSnackMother::withZeroQuantity($position);
+        $emptyMachineSnack = MachineSnackMother::withQuantity(0, $position);
         $machineSnack = MachineSnackMother::withPosition($position);
         $machine = MachineMother::random();
         $machine->addSnack($emptyMachineSnack);
