@@ -20,7 +20,8 @@ export class MachinesMapperService {
     snack: SnackInMachine
   ): SnackInMachineDisplayed {
     const { id, name } = snack;
-    return { id, name };
+    const price = snack.price.toString()
+    return { id, name, price };
   }
 
   mapMachineFromApiToMachine(machineFromApi: MachineFromApi): Machine {

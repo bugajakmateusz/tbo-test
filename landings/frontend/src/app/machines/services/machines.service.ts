@@ -28,6 +28,8 @@ export class MachinesService {
   action = '';
   id = '';
 
+  snackInMachineId = '';
+
   constructor(private http: HttpClient, private machinesMapperService: MachinesMapperService) {
     this.login();
     this.updateServiceData()

@@ -28,9 +28,8 @@ export class SnacksService {
     console.log(`delete snack with ID: ${this.id}`);
   }
 
-  addSnack(name: string, prices: any) {
-    console.log(`add snack. Name: ${name}. Prices:`);
-    console.log(prices);
+  addSnack(name: string) {
+    console.log(`add snack. Name: ${name}.`)
   }
 
   getSnacks() {
