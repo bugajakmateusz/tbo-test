@@ -51,14 +51,12 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
         );
         $position = Faker::hexBytes(3);
         $quantity = Faker::intId();
-        $price = Faker::float(min: 1.0);
 
         // Act
         $response = $machineSnackClient->createResource(
             [
                 MachineSnackSchema::ATTRIBUTE_POSITION => $position,
                 MachineSnackSchema::ATTRIBUTE_QUANTITY => $quantity,
-                MachineSnackSchema::ATTRIBUTE_PRICE => $price,
             ],
             $relationships,
         );

@@ -60,7 +60,6 @@ final readonly class CreateNewMachineSnackAction
          * @var array{
          *     position?: string,
          *     quantity?: int|string,
-         *     price?: int|float|string,
          * } $attributes
          */
         $attributes = $resource->attributes();
@@ -73,7 +72,6 @@ final readonly class CreateNewMachineSnackAction
             (int) $snackId,
             (int) ($attributes[MachineSnackSchema::ATTRIBUTE_QUANTITY] ?? 0),
             $attributes[MachineSnackSchema::ATTRIBUTE_POSITION] ?? '',
-            (float) ($attributes[MachineSnackSchema::ATTRIBUTE_PRICE] ?? 0.0),
         );
     }
 
