@@ -48,6 +48,7 @@ security:
         - { path: ^/api/json-api/snacks, methods: [POST, PATCH], role: ROLE_OFFICE_MANAGER }
         - { path: ^/api/json-api/machines, methods: [GET], role: [ROLE_OFFICE_MANAGER, ROLE_LOGISTIC_MANAGER, ROLE_COURIER] }
         - { path: ^/api/json-api/machines, methods: [POST, PATCH], role: [ROLE_OFFICE_MANAGER] }
+        - { path: ^/api/json-api/machine-snacks, methods: [POST, PATCH], role: [ROLE_COURIER] }
         - { path: ^/api/json-api/buys, methods: [POST], role: ROLE_LOGISTIC_MANAGER }
         - { path: ^/api/doc, role: PUBLIC_ACCESS }
         - { path: ^/api/, role: ROLE_USER }
