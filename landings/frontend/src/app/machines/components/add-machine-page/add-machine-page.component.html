@@ -1,12 +1,20 @@
 <app-form title="Dodaj maszynę">
   <app-form-input
-    name="Nazwa maszyny"
-    [control]="form.controls.name"
+    name="Lokalizacja maszyny"
+    [control]="form.controls.location"
   ></app-form-input>
-  <app-form-textarea
-    name="Notatka"
-    [control]="form.controls.note"
-  ></app-form-textarea>
+  <app-form-input
+          name="Liczba pozycji"
+          type="number"
+          [min]="1"
+          [control]="form.controls.positionsNumber"
+  ></app-form-input>
+  <app-form-input
+          name="Pojemność"
+          type="number"
+          [min]="1"
+          [control]="form.controls.positionsCapacity"
+  ></app-form-input>
   <app-form-button
     text="Dodaj"
     (click)="onSubmit()"
