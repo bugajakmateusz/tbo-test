@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 namespace Tab\Application\View;
 
+/**
+ * @phpstan-type SnackData array{
+ *      id?: int,
+ *      name?: string,
+ *  }
+ */
 final readonly class SnackView
 {
     public const FIELD_RAW_ID = 'id';
@@ -15,12 +21,7 @@ final readonly class SnackView
     ) {
     }
 
-    /**
-     * @param array{
-     *     id?: int,
-     *     name?: string,
-     * } $data
-     */
+    /** @param SnackData $data */
     public static function fromArray(
         array $data,
     ): self {
