@@ -17,6 +17,8 @@ services:
             - '../packages/src/TestCase/Client/SymfonyCrawler.php'
             - '../packages/src/TestCase/Fixtures/Entity/*'
             - '../packages/src/TestCase/Mother/Entity/*'
+            - '../packages/src/TestCase/Validator/SymfonyViolationTest.php'
+            - '../packages/src/TestCase/Validator/ViolationsTest.php'
         bind:
             $kernelBrowser: '@test.client'
 
