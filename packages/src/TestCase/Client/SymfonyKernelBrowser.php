@@ -6,6 +6,7 @@ namespace Tab\Packages\TestCase\Client;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\BrowserKit\Cookie;
+use Tab\Infrastructure\Symfony\Security\SymfonyUser;
 use Tab\Packages\Constants\Server;
 use Tab\Packages\HttpResponse\CookieInterface;
 use Tab\Packages\HttpResponse\ResponseInterface;
@@ -79,6 +80,13 @@ final readonly class SymfonyKernelBrowser implements KernelBrowserInterface
     {
         $this->kernelBrowser
             ->disableReboot()
+        ;
+    }
+
+    public function loginUser(SymfonyUser $user): void
+    {
+        $this->kernelBrowser
+            ->loginUser($user)
         ;
     }
 
