@@ -1,1 +1,29 @@
-<p>add-snack-page works!</p>
+<app-form
+  title="Dodaj przekąskę"
+  *ngIf="currentFormIndex === 0; else secondForm"
+>
+  <app-form-text-input name="Nazwa przekąski"></app-form-text-input>
+  <app-form-button text="Dalej" (click)="setFormIndex(1)"></app-form-button>
+</app-form>
+<ng-template #secondForm>
+  <app-form title="Dodaj przekąskę">
+    <app-form-text-input
+      name="Ustaw cenę we wszystkich maszynach"
+    ></app-form-text-input>
+    <app-form-button text="Ustaw"></app-form-button>
+    <div class="mt-4">
+      <app-form-text-input
+        *ngFor="let machine of machines"
+        name="Ustaw cenę w: {{ machine }}"
+      ></app-form-text-input>
+      <div class="d-flex gap-3">
+        <app-form-button
+          text="Wróć"
+          btn-style="outline"
+          (click)="setFormIndex(0)"
+        ></app-form-button>
+        <app-form-button text="Dodaj"></app-form-button>
+      </div>
+    </div>
+  </app-form>
+</ng-template>

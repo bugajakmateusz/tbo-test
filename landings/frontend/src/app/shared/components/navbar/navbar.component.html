@@ -1,1 +1,51 @@
-<p>navbar works!</p>
+<div
+  class="navbar navbar-expand-lg bg-dark text-light navbar-dark p-4 d-lg-block"
+>
+  <a class="navbar-brand pt-3 pb-2" href="#"
+    ><i class="bi bi-database me-2"></i>Snackbase App</a
+  >
+
+  <hr class="d-none d-lg-block" />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navmenu"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navmenu">
+    <ul class="navbar-nav flex-lg-column gap-lg-3 gap-1">
+      <li class="nav-item">
+        <a class="nav-link" href="/"
+          ><i class="bi bi-house-door-fill me-2"></i>Strona Główna</a
+        >
+      </li>
+
+      <li class="nav-item dropdown" *ngFor="let link of complexLinks">
+        <a
+          class="nav-link dropdown-toggle"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-{{ link.icon }} me-2"></i>
+          {{ link.name }}
+        </a>
+        <ul class="dropdown-menu">
+          <li *ngFor="let option of link.options">
+            <a class="dropdown-item" href="{{ option.path }}">{{
+              option.name
+            }}</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="logout"
+          ><i class="bi bi-box-arrow-left me-2"></i>Wyloguj</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
