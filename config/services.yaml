@@ -41,6 +41,32 @@ services:
         exclude:
             - '../packages/src/TestCase'
             - '../packages/src/Constants'
+            - '../packages/src/JsonApi/{Application,Contracts,Infrastructure,QueryTemplate}'
+            - '../packages/src/SqlExpressions'
+            - '../packages/src/Faker'
+            - '../packages/src/HttpClient'
+            - '../packages/src/HttpResponse'
+
+    tab.json_api.schemas_locator:
+        class: Symfony\Component\DependencyInjection\ServiceLocator
+        tags: ['container.service_locator']
+        arguments:
+            -
+                - '@Tab\Application\Schema\MachineSchema'
+
+    Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer:
+        arguments:
+            $schemaLocator: '@tab.json_api.schemas_locator'
+    Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface:
+        alias: 'Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer'
+    Tab\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer: ~
+    Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface:
+        alias: 'Tab\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer'
+    Neomerx\JsonApi\Factories\Factory: ~
+    Neomerx\JsonApi\Contracts\Factories\FactoryInterface:
+        alias: 'Neomerx\JsonApi\Factories\Factory'
+    Neomerx\JsonApi\Encoder\Encoder: ~
+    Neomerx\JsonApi\Contracts\Encoder\EncoderInterface: '@Neomerx\JsonApi\Encoder\Encoder'
 
     Tab\UserInterface\Http\:
         resource: '../src/UserInterface/Http/**/*.php'
@@ -61,3 +87,9 @@ services:
             $userProvider: '@Tab\Infrastructure\Symfony\SymfonyUserProvider'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    Symfony\Component\PasswordHasher\Hasher\SodiumPasswordHasher:
+        arguments:
+            $opsLimit: '%sodium_time_cost%'
+            $memLimit: '%sodium_memory_cost_bytes%'
+
