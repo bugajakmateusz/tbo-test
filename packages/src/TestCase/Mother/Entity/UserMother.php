@@ -30,7 +30,7 @@ final class UserMother
         );
     }
 
-    public static function hashUserPassword(string $plainPassword): string
+    private static function hashUserPassword(string $plainPassword): string
     {
         $passwordHasher = self::$passwordHasher ??= new SymfonySodiumPasswordHasher(
             new SodiumPasswordHasher(
