@@ -51,6 +51,13 @@ json-api.machine_snacks.create:
   controller: 'Tab\UserInterface\Http\JsonApi\MachineSnacks\CreateNewMachineSnackAction'
   methods: POST
 
+json-api.machine_snacks.update:
+  path: 'machine-snacks/{machineSnackId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\MachineSnacks\UpdateMachineSnackAction'
+  methods: PATCH
+  requirements:
+    machineSnackId: \d+
+
 json-api.users.list:
   path: 'users'
   controller: 'Tab\UserInterface\Http\JsonApi\Users\UsersListAction'
