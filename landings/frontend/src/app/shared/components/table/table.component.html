@@ -7,11 +7,27 @@
         <th scope="col" [ngStyle]="{ width: 0 }" *ngIf="buttons.length > 0">
           Akcje
         </th>
+        <th
+          scope="col"
+          [ngStyle]="{ width: 200 + 'px' }"
+          *ngFor="let input of inputs"
+        >
+          {{ input.title }}
+        </th>
+        <th
+          scope="col"
+          [ngStyle]="{ width: 0 }"
+          *ngFor="let checkbox of checkboxes"
+        >
+          {{ checkbox.title }}
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows">
-        <td *ngFor="let cell of row | objectToArray">{{ cell }}</td>
+      <tr *ngFor="let row of rows; let i = index">
+        <td *ngFor="let cell of row | objectToArray">
+          {{ cell }}
+        </td>
         <td *ngIf="buttons.length > 0">
           <div class="d-flex gap-2">
             <div *ngFor="let button of buttons; let i = index">
@@ -35,8 +51,38 @@
               >
                 {{ button.text }}
               </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="chooseAction(button.action, row.id)"
+                *ngIf="i === 2"
+              >
+                {{ button.text }}
+              </button>
             </div>
           </div>
+        </td>
+        <td *ngIf="inputs.length > 0">
+          <form [formGroup]="formGroup">
+            <div *ngFor="let input of inputs">
+              <input
+                class="form-control"
+                type="{{ input.type }}"
+                [formControlName]="input.name + '_' + i"
+              />
+            </div>
+          </form>
+        </td>
+        <td *ngIf="checkboxes.length > 0">
+          <form [formGroup]="formGroup">
+            <div *ngFor="let checkbox of checkboxes">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [formControlName]="checkbox.name + '_' + i"
+              />
+            </div>
+          </form>
         </td>
       </tr>
     </tbody>

@@ -20,7 +20,7 @@ export class NavbarComponent {
           path: 'warehouse/delivery',
         },
         {
-          name: 'Przekaz towar kurierowi',
+          name: 'Wydaj towar kurierowi',
           path: 'warehouse/hand-to-courier',
         },
       ],
@@ -50,10 +50,6 @@ export class NavbarComponent {
         {
           name: 'Dodaj maszynę',
           path: 'machines/add',
-        },
-        {
-          name: 'Zmień ceny w maszynie',
-          path: 'machines/change-prices',
         },
       ],
     },

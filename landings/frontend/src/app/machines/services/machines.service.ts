@@ -48,6 +48,13 @@ export class MachinesService {
     console.log(`activate/deactivate machine with ID: ${this.id}`);
   }
 
+  changePricesInMachine(updatedPrices: any) {
+    console.log(`change prices in machine with ID: ${this.id}. New prices:`);
+    console.log(updatedPrices);
+    // Send updatedPrices to the backend via an HTTP request
+    // Example: this.snackService.updatePrices(updatedPrices).subscribe(...)
+  }
+
   addMachine(name: string, note: string) {
     console.log(`add machine. Name: ${name}. Note: ${note}`);
   }

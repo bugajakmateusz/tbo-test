@@ -1,9 +1,10 @@
 <app-table
   title="Lista maszyn"
-  [columns]="columns"
+  [columns]="machinesListcolumns"
   [rows]="displayedMachines"
-  [buttons]="buttons"
+  [buttons]="machinesListButtons"
   (actionChosen)="onActionChosen($event)"
+  *ngIf="showMachines; else snacks"
 >
   <app-modal
     modalId="modal1"
@@ -32,3 +33,37 @@
     <p>Czy na pewno chcesz zmienić status tej maszyny?</p>
   </app-modal>
 </app-table>
+
+<ng-template #snacks>
+  <app-table
+    title="Lista przekąsek w {{ chosenMachineName }}"
+    [columns]="snacksListcolumns"
+    [rows]="snacksInMachineDisplayed"
+    [formGroup]="snacksForm"
+    [inputs]="snacksListInputs"
+  >
+  </app-table>
+
+  <div class="d-flex gap-3 w-75 justify-content-between">
+    <app-form-button
+      text="Wróć"
+      btn-style="outline"
+      (click)="goBack()"
+    ></app-form-button>
+    <app-form-button
+      text="Zapisz"
+      data-bs-target="#changePricesModal"
+      data-bs-toggle="modal"
+    ></app-form-button>
+  </div>
+</ng-template>
+
+<app-modal
+  modalId="changePricesModal"
+  title="Zmień ceny w maszynie"
+  noButtonText="Zamknij"
+  yesButtonText="Zapisz"
+  (callbackCalled)="onCallbackCalled()"
+>
+  <p>Czy na pewno chcesz zmienić ceny w tej maszynie?</p>
+</app-modal>

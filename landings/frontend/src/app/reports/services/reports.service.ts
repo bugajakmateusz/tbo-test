@@ -15,4 +15,10 @@ export class ReportsService {
       `create warehouse report. Date from: ${dateFrom}. Date to: ${dateTo}`
     );
   }
+
+  createMachinesReport(dateFrom: string, dateTo: string) {
+    console.log(
+      `create machines report. Date from: ${dateFrom}. Date to: ${dateTo}`
+    );
+  }
 }

@@ -1,1 +1,25 @@
-<p>hand-to-courier-page works!</p>
+<app-table
+  title="Wydaj towar kurierowi"
+  [columns]="columns"
+  [rows]="snacks"
+  [formGroup]="form"
+  [inputs]="inputs"
+></app-table>
+
+<div class="d-flex gap-3 w-75 justify-content-end">
+  <app-form-button
+    text="Wydaj"
+    data-bs-target="#handSnacksModal"
+    data-bs-toggle="modal"
+  ></app-form-button>
+</div>
+
+<app-modal
+  modalId="handSnacksModal"
+  title="Wydaj towar kurierowi"
+  noButtonText="Zamknij"
+  yesButtonText="Wydaj"
+  (callbackCalled)="onSubmit()"
+>
+  <p>Czy na pewno chcesz wydać towar kurierowi?</p>
+</app-modal>

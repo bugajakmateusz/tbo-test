@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
@@ -12,6 +13,16 @@ export class TableComponent implements OnInit {
   @Input() buttons: {
     text: string;
     action: string;
+  }[] = [];
+  @Input() formGroup: FormGroup = new FormGroup({});
+  @Input() inputs: {
+    type: string;
+    name: string;
+    title: string;
+  }[] = [];
+  @Input() checkboxes: {
+    name: string;
+    title: string;
   }[] = [];
 
   @Output() actionChosen = new EventEmitter<{

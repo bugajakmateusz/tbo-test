@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MachineDisplayed } from '../models/machine-displayed.model';
 import { Machine } from '../models/machine.model';
-import { MachineChangePriceDisplayed } from '../models/machine-change-price-displayed.model';
+import { SnackInMachine } from '../models/snack-in-machine.model';
+import { Snack } from 'src/app/snacks/models/snack/snack.model';
+import { SnackInMachineDisplayed } from '../models/snack-in-machine-displayed.model';
+import { MachineSimpleDisplayed } from '../models/machine-simple-displayed.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +16,15 @@ export class MachinesMapperService {
     return { id, name, active };
   }
 
-  mapMachineToMachineChangePriceDisplayed(
-    machine: Machine
-  ): MachineChangePriceDisplayed {
+  mapMachineToMachineSimpleDisplayed(machine: Machine): MachineSimpleDisplayed {
     const { id, name } = machine;
+    return { id, name };
+  }
+
+  mapSnackInMachineToSnackInMachineDisplayed(
+    snack: SnackInMachine
+  ): SnackInMachineDisplayed {
+    const { id, name } = snack;
     return { id, name };
   }
 }

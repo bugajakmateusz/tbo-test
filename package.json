@@ -16,5 +16,10 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.1",
+        "bootstrap-icons": "^1.10.5",
+        "ngx-bootstrap": "^11.0.2"
     }
 }
