@@ -52,7 +52,6 @@ RUN yarn install --cwd="./assets" && mkdir ./public
 COPY ./assets/js ./assets/js
 COPY ./assets/scss ./assets/scss
 COPY ./assets/styles ./assets/styles
-COPY ./assets/images ./assets/images
 COPY ./assets/webpack.config.js ./assets/webpack.config.js
 
 RUN yarn run --cwd="./assets" encore production
@@ -61,7 +60,7 @@ FROM scratch AS backend_files
 
 WORKDIR /app
 
-COPY ./phinx.php ./.env ./docker/fpm/.env.local ./
+COPY ./phinx.php ./.env ./
 #COPY ./tasks ./tasks
 COPY ./bin ./bin
 COPY ./db ./db
