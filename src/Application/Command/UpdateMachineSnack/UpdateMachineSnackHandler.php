@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Tab\Application\Command\UpdateMachineSnack;
 
 use Tab\Domain\Model\Machine\MachineSnackRepositoryInterface;
+use Tab\Domain\Service\ClockInterface;
 
 final readonly class UpdateMachineSnackHandler
 {
     public function __construct(
         private MachineSnackRepositoryInterface $machineSnackRepository,
+        private ClockInterface $clock,
     ) {}
 
     public function __invoke(UpdateMachineSnack $command): void
@@ -20,6 +22,7 @@ final readonly class UpdateMachineSnackHandler
 
         $machineSnack->updateQuantity(
             $command->quantity,
+            $this->clock,
         );
     }
 }
