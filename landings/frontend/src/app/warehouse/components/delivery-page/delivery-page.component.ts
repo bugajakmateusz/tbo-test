@@ -4,6 +4,7 @@ import { Snack } from '../../../snacks/models/snack/snack.model';
 import { SnacksService } from '../../../snacks/services/snacks.service';
 import { WarehouseService } from '../../services/warehouse.service';
 import { AlertService } from '../../../shared/services/alert.service';
+import {WarehouseMapperService} from "../../services/warehouse-mapper.service";
 
 @Component({
   selector: 'app-delivery-page',
@@ -13,59 +14,44 @@ import { AlertService } from '../../../shared/services/alert.service';
 export class DeliveryPageComponent implements OnInit {
   columns = ['ID', 'Nazwa'];
 
-  inputs = [
-    {
-      title: 'Ilość do przyjęcia',
-      name: 'snack',
-      type: 'number',
-    },
+  buttons = [
+    { text: 'Wybierz', action: 'acceptSnack' },
   ];
 
   snacks: Snack[] = [];
 
-  form = this.fb.group({});
+  displayedSnacks: {id: string, name: string}[] = []
+
+  form = this.fb.group({
+    amount: ['', [Validators.required, Validators.min(1)]],
+  });
 
   constructor(
     private fb: FormBuilder,
-    private snacksService: SnacksService,
-    private warehouseService: WarehouseService
+    private warehouseService: WarehouseService,
+    private warehouseMapperService: WarehouseMapperService
   ) {}
 
   ngOnInit(): void {
-    // this.snacks = this.snacksService.getSnacks();
-    this.snacks.forEach((snack, index) => {
-      const controlName = `snack_${index}`;
-      this.form.addControl(
-        controlName,
-        this.fb.control('0', [Validators.min(0), Validators.required])
-      );
-    });
+    this.getSnacks()
   }
 
-  onSubmit() {
-    const delivery = [];
-    for (const controlName in this.form.controls) {
-      delivery.push({
-        snackName: controlName,
-        amount: this.form.get(controlName)!.value,
-      });
-    }
-    this.warehouseService.acceptDelivery(delivery);
-
-    this.form = new FormGroup({});
-    this.snacks.forEach((snack, index) => {
-      const controlName = `snack_${index}`;
-      this.form.addControl(
-        controlName,
-        this.fb.control('0', [Validators.min(0), Validators.required])
-      );
-    });
+  getSnacks() {
+    this.warehouseService.getSnacks().subscribe(snacksFromApi => {
+      this.snacks = snacksFromApi.map(snackFromApi => this.warehouseMapperService.mapWarehouseSnackFromApiToWarehouseSnack(snackFromApi))
+      this.displayedSnacks = this.snacks.map(snack => {return {id: snack.id, name: snack.name}})
+    })
   }
 
-  buttonDisabled(): boolean {
-    return (
-      Object.values(this.form.value).every((el) => el === '0') ||
-      !this.form.valid
-    );
+  onActionChosen(event: { id: string; action: string }) {
+    this.warehouseService.action = event.action;
+    this.warehouseService.snackId = event.id;
+    this.form.setValue({
+      amount: ''
+    })
+  }
+
+  acceptSnack() {
+    this.warehouseService.acceptDelivery(Number(this.form.value.amount))
   }
 }
