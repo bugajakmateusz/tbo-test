@@ -26,6 +26,11 @@ class Snack
         );
     }
 
+    public function toString(): string
+    {
+        return $this->name;
+    }
+
     public function changeName(
         Name $newName,
     ): void {
