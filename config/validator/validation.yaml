@@ -44,3 +44,36 @@ Tab\Application\Command\UpdateMachine\UpdateMachine:
       - GreaterThanOrEqual: 0
     positionsCapacity:
       - GreaterThanOrEqual: 0
+
+Tab\Application\Command\AddNewUser\AddNewUser:
+  properties:
+    email:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: !php/const Tab\Domain\Email::MAX_LENGTH
+      - Email:
+          mode: html5
+      - Tab\Infrastructure\Symfony\Validator\Constraints\EmailExists: ~
+    password:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          min: !php/const Tab\Domain\Model\User\Password::MIN_LENGTH
+          max: !php/const Tab\Domain\Model\User\Password::MAX_LENGTH
+    name:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+    surname:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+    roles:
+      - NotBlank:
+          normalizer: trim
+      - All:
+        - Choice:
+            callback: [Tab\Domain\Model\User\Role, list]
