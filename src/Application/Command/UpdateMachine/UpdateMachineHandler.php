@@ -16,8 +16,7 @@ final readonly class UpdateMachineHandler
 
     public function __construct(
         private MachineRepositoryInterface $machineRepository,
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdateMachine $command): void
     {

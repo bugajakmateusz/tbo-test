@@ -8,8 +8,7 @@ final readonly class ChainEntitiesLoader implements EntitiesLoaderInterface
 {
     public function __construct(
         private CustomEntitiesLoader $customEntitiesLoader,
-    ) {
-    }
+    ) {}
 
     public function load(object ...$entities): void
     {

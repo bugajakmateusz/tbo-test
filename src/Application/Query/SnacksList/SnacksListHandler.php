@@ -17,8 +17,7 @@ final readonly class SnacksListHandler
 
     public function __construct(
         private SnacksListQueryInterface $snacksListQuery,
-    ) {
-    }
+    ) {}
 
     public function __invoke(
         SnacksList $snacksList,

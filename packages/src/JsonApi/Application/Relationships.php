@@ -9,9 +9,7 @@ use Tab\Packages\JsonApi\Application\Exception\ResourceException;
 final readonly class Relationships
 {
     /** @param array<string, null|ResourceIdentifier> $relationships */
-    private function __construct(private array $relationships)
-    {
-    }
+    private function __construct(private array $relationships) {}
 
     /**
      * @param array<

@@ -8,6 +8,5 @@ final readonly class RemoveMachine
 {
     public function __construct(
         public int $id,
-    ) {
-    }
+    ) {}
 }

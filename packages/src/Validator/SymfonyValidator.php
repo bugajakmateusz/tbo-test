@@ -9,9 +9,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidator
 
 final readonly class SymfonyValidator implements ValidatorInterface
 {
-    public function __construct(private SymfonyValidatorInterface $validator)
-    {
-    }
+    public function __construct(private SymfonyValidatorInterface $validator) {}
 
     public function validate(object $object, ?array $validationGroups = null): Violations
     {

@@ -25,8 +25,7 @@ final readonly class UpdateMachineAction
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private ValidatorInterface $validator,
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * Update machine.

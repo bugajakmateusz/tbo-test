@@ -12,8 +12,7 @@ final readonly class TestLoginAction
 {
     public function __construct(
         private ResponseFactoryInterface $responseFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request): ResponseInterface
     {

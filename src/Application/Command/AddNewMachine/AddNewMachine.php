@@ -10,6 +10,5 @@ final readonly class AddNewMachine
         public string $location,
         public int $positionsNumber,
         public int $positionsCapacity,
-    ) {
-    }
+    ) {}
 }

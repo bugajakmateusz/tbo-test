@@ -15,8 +15,7 @@ final readonly class MatchAgainst
     private function __construct(
         private array $fields,
         private array $words,
-    ) {
-    }
+    ) {}
 
     /** @param string[] $fields */
     public static function createFromString(array $fields, string $searchTerm): self

@@ -9,9 +9,7 @@ use Tab\Packages\MessageBus\Contracts\CommandBusInterface;
 
 final readonly class TacticianCommandBus implements CommandBusInterface
 {
-    public function __construct(private CommandBus $commandBus)
-    {
-    }
+    public function __construct(private CommandBus $commandBus) {}
 
     public function handle(object $command): void
     {

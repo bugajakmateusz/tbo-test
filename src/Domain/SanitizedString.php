@@ -6,9 +6,7 @@ namespace Tab\Domain;
 
 final readonly class SanitizedString
 {
-    private function __construct(private string $characters)
-    {
-    }
+    private function __construct(private string $characters) {}
 
     public static function create(string $string, bool $encodeQuotes = true): self
     {

@@ -14,9 +14,7 @@ use Tab\Packages\Validator\Violations;
 
 final readonly class TestValidator
 {
-    public function __construct(private SymfonyValidatorInterface $validator)
-    {
-    }
+    public function __construct(private SymfonyValidatorInterface $validator) {}
 
     /**
      * @param null|Constraint|Constraint[]     $constraints

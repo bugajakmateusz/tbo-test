@@ -20,8 +20,7 @@ final readonly class UsersListHandler
     public function __construct(
         private UsersListQueryInterface $usersListQuery,
         private LoggedUserServiceInterface $loggedUser,
-    ) {
-    }
+    ) {}
 
     public function __invoke(UsersList $usersList): UsersListView
     {

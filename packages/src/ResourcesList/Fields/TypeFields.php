@@ -11,8 +11,7 @@ final class TypeFields
         private readonly string $type,
         private readonly array $fields,
         private readonly bool $allFields = false,
-    ) {
-    }
+    ) {}
 
     /** @param string[] $fields */
     public static function create(string $type, array $fields): self

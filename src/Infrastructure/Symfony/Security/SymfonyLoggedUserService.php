@@ -11,9 +11,7 @@ use Tab\Application\Service\LoggedUserServiceInterface;
 
 final class SymfonyLoggedUserService implements LoggedUserServiceInterface
 {
-    public function __construct(private readonly TokenStorageInterface $tokenStorage)
-    {
-    }
+    public function __construct(private readonly TokenStorageInterface $tokenStorage) {}
 
     public function loggedUser(): \Tab\Domain\Model\Login\LoggedUser
     {

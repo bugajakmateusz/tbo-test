@@ -18,8 +18,7 @@ final readonly class NeomerxJsonApiSerializer implements JsonApiSerializerInterf
     public function __construct(
         private EncoderInterface $encoder,
         private JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     public function encodeData(
         object|array $data,

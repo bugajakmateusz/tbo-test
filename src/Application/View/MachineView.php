@@ -22,8 +22,7 @@ final readonly class MachineView
         public int $positionsNo,
         public int $positionsCapacity,
         public array $machineSnacks,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array{

@@ -21,8 +21,7 @@ final class Page
     private function __construct(
         private readonly int $pageNumber,
         private readonly int $pageSize,
-    ) {
-    }
+    ) {}
 
     /** @param array<string,int|string> $data */
     public static function fromArray(

@@ -10,9 +10,7 @@ use Tab\Domain\Model\User\UserRepositoryInterface;
 
 final class OrmUserRepository implements UserRepositoryInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
-    }
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     public function add(User $user): void
     {

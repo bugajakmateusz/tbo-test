@@ -23,8 +23,7 @@ abstract class DbalListQueryTemplate
     public function __construct(
         private readonly DbConnectionInterface $connection,
         private readonly JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     abstract protected function resourceName(): string;
 
@@ -150,12 +149,9 @@ abstract class DbalListQueryTemplate
         QueryBuilder $queryBuilder,
         string $tableAlias,
         ?Filters $filters = null,
-    ): void {
-    }
+    ): void {}
 
-    protected function applyOrdering(QueryBuilder $queryBuilder, string $tableAlias): void
-    {
-    }
+    protected function applyOrdering(QueryBuilder $queryBuilder, string $tableAlias): void {}
 
     protected function generateFieldValue(string $tableAlias, string $value): string
     {

@@ -16,8 +16,7 @@ class MachineSnack
         private int $snackId,
         private int $quantity,
         private string $position,
-    ) {
-    }
+    ) {}
 
     public static function create(
         Machine $machine,

@@ -10,8 +10,7 @@ final readonly class IfExpression
         private string $condition,
         private string $then,
         private string $else,
-    ) {
-    }
+    ) {}
 
     public function toString(): string
     {

@@ -15,8 +15,7 @@ final class LoginClient implements ClientInterface
     public function __construct(
         private readonly KernelBrowserInterface $httpClient,
         private readonly JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     public function login(string $userName, string $password): ResponseInterface
     {

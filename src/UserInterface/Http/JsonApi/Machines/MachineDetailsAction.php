@@ -26,8 +26,7 @@ final readonly class MachineDetailsAction
         private QueryBusInterface $queryBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request, int $machineId): ResponseInterface
     {

@@ -27,8 +27,7 @@ final class SymfonyJsonAuthenticator extends AbstractAuthenticator implements Au
     public function __construct(
         private readonly JsonSerializerInterface $jsonSerializer,
         private readonly TranslatorInterface $translator,
-    ) {
-    }
+    ) {}
 
     public function authenticate(Request $request): Passport
     {

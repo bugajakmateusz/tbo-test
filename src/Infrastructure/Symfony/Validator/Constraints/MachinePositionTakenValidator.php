@@ -13,9 +13,7 @@ use Tab\Application\ValidatorQuery\MachinePositionTakenQueryInterface;
 
 final class MachinePositionTakenValidator extends ConstraintValidator
 {
-    public function __construct(private readonly MachinePositionTakenQueryInterface $machinePositionTakenQuery)
-    {
-    }
+    public function __construct(private readonly MachinePositionTakenQueryInterface $machinePositionTakenQuery) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {

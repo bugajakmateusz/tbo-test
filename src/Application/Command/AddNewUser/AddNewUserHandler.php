@@ -17,8 +17,7 @@ final readonly class AddNewUserHandler
     public function __construct(
         private UserRepositoryInterface $userRepository,
         private PasswordHasherInterface $passwordHasher,
-    ) {
-    }
+    ) {}
 
     public function __invoke(AddNewUser $command): void
     {

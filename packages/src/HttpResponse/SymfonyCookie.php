@@ -8,9 +8,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 
 final readonly class SymfonyCookie implements CookieInterface
 {
-    public function __construct(private Cookie $cookie)
-    {
-    }
+    public function __construct(private Cookie $cookie) {}
 
     public static function fromString(string $cookie): CookieInterface
     {

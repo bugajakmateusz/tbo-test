@@ -12,6 +12,5 @@ final class SnackPrice
         public Snack $snack,
         public float $price,
         public \DateTimeImmutable $priceCreatedAt,
-    ) {
-    }
+    ) {}
 }

@@ -10,9 +10,7 @@ final class SnackPosition
 {
     public const MAX_LENGTH = 3;
 
-    private function __construct(private readonly string $text)
-    {
-    }
+    private function __construct(private readonly string $text) {}
 
     public static function fromString(string $text): self
     {

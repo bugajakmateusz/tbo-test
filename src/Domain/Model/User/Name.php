@@ -10,9 +10,7 @@ class Name
 {
     public const MAX_LENGTH = 20;
 
-    private function __construct(private readonly string $name)
-    {
-    }
+    private function __construct(private readonly string $name) {}
 
     public static function fromString(string $name): self
     {

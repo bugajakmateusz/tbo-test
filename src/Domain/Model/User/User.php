@@ -18,8 +18,7 @@ class User
         public string $name,
         public string $surname,
         public array $roles,
-    ) {
-    }
+    ) {}
 
     public static function register(
         Email $email,

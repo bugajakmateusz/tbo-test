@@ -11,6 +11,5 @@ final readonly class Machine
         public string $location,
         public int $positionNo,
         public int $positionCapacity,
-    ) {
-    }
+    ) {}
 }

@@ -25,8 +25,7 @@ final readonly class CreateNewUserAction
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private ValidatorInterface $validator,
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * Register a user.

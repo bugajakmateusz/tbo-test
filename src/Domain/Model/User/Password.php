@@ -12,9 +12,7 @@ final class Password
     public const MIN_LENGTH = 8;
     public const MAX_LENGTH = 64;
 
-    private function __construct(private readonly string $password)
-    {
-    }
+    private function __construct(private readonly string $password) {}
 
     public static function hash(string $password, PasswordHasherInterface $passwordHasher): self
     {

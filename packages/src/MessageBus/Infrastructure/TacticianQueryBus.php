@@ -9,9 +9,7 @@ use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
 
 final readonly class TacticianQueryBus implements QueryBusInterface
 {
-    public function __construct(private CommandBus $queryBus)
-    {
-    }
+    public function __construct(private CommandBus $queryBus) {}
 
     public function handle(object $query)
     {

@@ -21,8 +21,7 @@ final readonly class UsersListAction
         private QueryBusInterface $queryBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * Get information about users.

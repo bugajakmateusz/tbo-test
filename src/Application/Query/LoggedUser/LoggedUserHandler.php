@@ -9,9 +9,7 @@ use Tab\Domain\Model\Login\LoggedUser as DomainLoggedUser;
 
 final readonly class LoggedUserHandler
 {
-    public function __construct(private LoggedUserServiceInterface $loggedUser)
-    {
-    }
+    public function __construct(private LoggedUserServiceInterface $loggedUser) {}
 
     public function __invoke(LoggedUser $loggedUser): DomainLoggedUser
     {

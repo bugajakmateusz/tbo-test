@@ -14,6 +14,5 @@ final readonly class UsersList
         public Filters $filters,
         public Page $page,
         public ?Fields $fields = null,
-    ) {
-    }
+    ) {}
 }

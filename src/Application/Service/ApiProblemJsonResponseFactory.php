@@ -13,9 +13,7 @@ use Tab\Packages\Validator\Violations;
 
 final readonly class ApiProblemJsonResponseFactory
 {
-    public function __construct(private ResponseFactoryInterface $responseFactory)
-    {
-    }
+    public function __construct(private ResponseFactoryInterface $responseFactory) {}
 
     /** @param array<string,string> $pathMappings */
     public function unprocessableEntity(

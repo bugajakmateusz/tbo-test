@@ -12,8 +12,7 @@ final class Name
 
     private function __construct(
         private readonly string $text,
-    ) {
-    }
+    ) {}
 
     public static function fromString(
         string $text,

@@ -11,6 +11,5 @@ final readonly class UpdateMachine
         public ?string $location,
         public ?int $positionsNumber,
         public ?int $positionsCapacity,
-    ) {
-    }
+    ) {}
 }

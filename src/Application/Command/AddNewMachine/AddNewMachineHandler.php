@@ -12,8 +12,7 @@ final readonly class AddNewMachineHandler
 {
     public function __construct(
         private MachineRepositoryInterface $machineRepository,
-    ) {
-    }
+    ) {}
 
     public function __invoke(AddNewMachine $command): void
     {

@@ -8,9 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final readonly class DoctrineOrmEntityManager implements OrmEntityManagerInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
-    }
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     public function flush(): void
     {

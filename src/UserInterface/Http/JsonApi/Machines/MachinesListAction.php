@@ -23,8 +23,7 @@ final readonly class MachinesListAction
         private QueryBusInterface $queryBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * List of all machines.

@@ -14,8 +14,7 @@ final class AddNewMachineSnackHandler
     public function __construct(
         private MachineRepositoryInterface $machineRepository,
         private SnackRepositoryInterface $snackRepository,
-    ) {
-    }
+    ) {}
 
     public function __invoke(AddNewMachineSnack $command): void
     {

@@ -9,13 +9,9 @@ use Tab\Domain\Model\User\UserRepositoryInterface;
 
 final readonly class FakeUserRepository implements UserRepositoryInterface
 {
-    public function __construct(private ?User $user = null)
-    {
-    }
+    public function __construct(private ?User $user = null) {}
 
-    public function add(User $user): void
-    {
-    }
+    public function add(User $user): void {}
 
     public function findByEmail(string $email): ?User
     {

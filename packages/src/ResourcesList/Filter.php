@@ -16,8 +16,7 @@ final class Filter
     public function __construct(
         private readonly string $name,
         private readonly bool|array|int|string|null $value,
-    ) {
-    }
+    ) {}
 
     public function name(): string
     {

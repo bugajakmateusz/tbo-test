@@ -13,8 +13,7 @@ final readonly class SymfonyResponse implements ResponseInterface
     public function __construct(
         private Response $response,
         private string $uri,
-    ) {
-    }
+    ) {}
 
     public function statusCode(): int
     {

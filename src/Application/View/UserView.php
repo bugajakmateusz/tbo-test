@@ -19,8 +19,7 @@ final readonly class UserView
         public string $name,
         public string $surname,
         public array $roles,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array{

@@ -9,9 +9,7 @@ use Tab\Packages\DbConnection\DbConnectionInterface;
 
 final readonly class DbalEmailExistsQuery implements EmailExistsQueryInterface
 {
-    public function __construct(private DbConnectionInterface $connection)
-    {
-    }
+    public function __construct(private DbConnectionInterface $connection) {}
 
     public function query(string $email): bool
     {

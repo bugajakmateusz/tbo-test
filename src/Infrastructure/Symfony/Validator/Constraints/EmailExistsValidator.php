@@ -13,9 +13,7 @@ use Tab\Domain\Email;
 
 final class EmailExistsValidator extends ConstraintValidator
 {
-    public function __construct(private readonly EmailExistsQueryInterface $emailExistsQuery)
-    {
-    }
+    public function __construct(private readonly EmailExistsQueryInterface $emailExistsQuery) {}
 
     public function validate(mixed $value, Constraint $constraint): void
     {
