@@ -28,7 +28,7 @@ final class NeomerxSchemaAdapter extends BaseSchema
     /**
      * @param object $resource
      *
-     * @return iterable<string, null|bool|int|mixed[]|string>
+     * @return iterable<string, null|bool|float|int|mixed[]|string>
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
