@@ -14,7 +14,7 @@ final class WarehouseSnackMother
     {
         return new WarehouseSnacks(
             $snack->id,
-            Faker::intId(),
+            Faker::int(min: 100, max: 10000),
         );
     }
 }

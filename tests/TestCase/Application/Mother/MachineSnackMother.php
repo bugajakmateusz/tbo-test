@@ -43,7 +43,6 @@ final class MachineSnackMother
             $position ?? Faker::hexBytes(3),
         );
 
-        // Act
         return MachineSnack::create(
             $machine,
             $snack,

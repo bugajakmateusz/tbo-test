@@ -12,6 +12,7 @@ use Tab\Packages\JsonApi\Application\JsonApiKeywords;
 use Tab\Packages\JsonApi\Application\Relationships;
 use Tab\Packages\TestCase\Mother\Entity\SnackMother;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
+use Tab\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
@@ -22,9 +23,11 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
         // Arrange
         $loggedUser = UserMother::warehouseOperator();
         $snack = SnackMother::random();
+        $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
         $this->loadEntities(
             $loggedUser,
             $snack,
+            $warehouseSnack,
         );
         $buySnackClient = $this->loggedJsonApiClient(
             SnackBuySchema::class,
@@ -40,11 +43,13 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
             ),
         );
         $price = Faker::float(min: 1.0);
+        $quantity = Faker::int(1, 1000);
 
         // Act
         $response = $buySnackClient->createResource(
             [
                 SnackBuySchema::ATTRIBUTE_PRICE => $price,
+                SnackBuySchema::ATTRIBUTE_QUANTITY => $quantity,
             ],
             $relationships,
         );
@@ -75,12 +80,14 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
                 ),
             ),
         );
-        $price = Faker::float(min: -100.0, max: 0.0);
+        $price = Faker::float(max: 0.0);
+        $quantity = Faker::int(max: 0);
 
         // Act
         $response = $machineSnackClient->createResource(
             [
                 SnackBuySchema::ATTRIBUTE_PRICE => $price,
+                SnackBuySchema::ATTRIBUTE_QUANTITY => $quantity,
             ],
             $relationships,
         );
@@ -106,6 +113,9 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
         self::assertEquals(
             [
                 'price' => [
+                    'Ta wartość powinna być większa niż 0.',
+                ],
+                'quantity' => [
                     'Ta wartość powinna być większa niż 0.',
                 ],
             ],
