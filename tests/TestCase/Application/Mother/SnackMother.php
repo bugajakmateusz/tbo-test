@@ -7,6 +7,7 @@ namespace Tab\Tests\TestCase\Application\Mother;
 use Tab\Domain\Model\Snack\Name;
 use Tab\Domain\Model\Snack\Snack;
 use Tab\Packages\Faker\Faker;
+use Tab\Tests\TestCase\Application\Mock\FakeSnackRepository;
 use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class SnackMother
@@ -41,12 +42,13 @@ final class SnackMother
     private static function create(
         ?string $name = null,
     ): Snack {
+        $snackRepository = new FakeSnackRepository();
         $propertyManipulator = PropertyManipulator::getInstance();
         $nameVO = Name::fromString(
             $name ?? Faker::text(),
         );
 
-        $snack = Snack::create($nameVO);
+        $snack = Snack::create($nameVO, $snackRepository);
         $propertyManipulator->propertySet(
             $snack,
             'id',
