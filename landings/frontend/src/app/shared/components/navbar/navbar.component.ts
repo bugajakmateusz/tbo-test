@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {AuthService} from "../../../auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -93,7 +94,7 @@ export class NavbarComponent implements OnInit{
     },
   ];
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
   ngOnInit() {
     this.userSub = this.authService.user.subscribe(userData => {
@@ -103,5 +104,9 @@ export class NavbarComponent implements OnInit{
         this.isLoggedIn = false
       }
     })
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }

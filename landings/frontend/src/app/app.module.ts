@@ -32,49 +32,50 @@ import { ObjectToArrayPipe } from './shared/pipes/object-to-array.pipe';
 import { AbstractControlToFormControlPipe } from './shared/pipes/abstract-control-to-form-control.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AuthPageComponent } from './auth/components/auth-page/auth-page.component';
+import {authGuard} from "./auth/auth.guard";
 
 const appRoutes: Routes = [
-  { path: '', component: MainPageComponent },
+  { path: '', component: MainPageComponent, canActivate: [authGuard] },
   {
     path: 'warehouse',
     children: [
-      { path: 'view', component: ViewWarehousePageComponent },
-      { path: 'delivery', component: DeliveryPageComponent },
-      { path: 'hand-to-courier', component: HandToCourierPageComponent },
+      { path: 'view', component: ViewWarehousePageComponent, canActivate: [authGuard] },
+      { path: 'delivery', component: DeliveryPageComponent, canActivate: [authGuard] },
+      { path: 'hand-to-courier', component: HandToCourierPageComponent, canActivate: [authGuard] },
     ],
   },
   {
     path: 'snacks',
     children: [
-      { path: 'view', component: ViewSnacksPageComponent },
-      { path: 'add', component: AddSnackPageComponent },
+      { path: 'view', component: ViewSnacksPageComponent, canActivate: [authGuard] },
+      { path: 'add', component: AddSnackPageComponent, canActivate: [authGuard] },
     ],
   },
   {
     path: 'machines',
     children: [
-      { path: 'view', component: ViewMachinesPageComponent },
-      { path: 'add', component: AddMachinePageComponent },
+      { path: 'view', component: ViewMachinesPageComponent, canActivate: [authGuard] },
+      { path: 'add', component: AddMachinePageComponent, canActivate: [authGuard] },
     ],
   },
   {
     path: 'reports',
     children: [
-      { path: 'machines', component: MachineReportPageComponent },
-      { path: 'warehouse', component: WarehouseReportPageComponent },
-      { path: 'buy-sell', component: BuySellReportPageComponent },
+      { path: 'machines', component: MachineReportPageComponent, canActivate: [authGuard] },
+      { path: 'warehouse', component: WarehouseReportPageComponent, canActivate: [authGuard] },
+      { path: 'buy-sell', component: BuySellReportPageComponent, canActivate: [authGuard] },
     ],
   },
   {
     path: 'users',
     children: [
-      { path: 'view', component: ViewUsersPageComponent },
-      { path: 'add', component: AddUserPageComponent },
+      { path: 'view', component: ViewUsersPageComponent, canActivate: [authGuard] },
+      { path: 'add', component: AddUserPageComponent, canActivate: [authGuard] },
     ],
   },
   {
     path: 'auth',
-    component: AuthPageComponent
+    component: AuthPageComponent, canActivate: [authGuard]
   }
 ];
 
