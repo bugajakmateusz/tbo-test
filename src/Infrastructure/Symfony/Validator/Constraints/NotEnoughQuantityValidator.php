@@ -9,6 +9,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 use Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack;
+use Tab\Application\Command\UpdateMachineSnack\UpdateMachineSnack;
 use Tab\Application\ValidatorQuery\NotEnoughQuantityQueryInterface;
 
 final class NotEnoughQuantityValidator extends ConstraintValidator
@@ -25,13 +26,23 @@ final class NotEnoughQuantityValidator extends ConstraintValidator
             return;
         }
 
-        if (!$value instanceof AddNewMachineSnack) {
-            throw new UnexpectedValueException($value, 'AddNewMachineSnack');
+        $isTooLowProduct = true;
+
+        if ($value instanceof AddNewMachineSnack) {
+            $isTooLowProduct = $this->notEnoughQuantityQuery
+                ->queryToAdd($value->quantity, $value->snackId)
+            ;
         }
 
-        $isTooLowProduct = $this->notEnoughQuantityQuery
-            ->query($value->quantity, $value->snackId)
-        ;
+        if ($value instanceof UpdateMachineSnack) {
+            $isTooLowProduct = $this->notEnoughQuantityQuery
+                ->queryToUpdate($value->quantity, $value->id)
+            ;
+        }
+
+        if (!$value instanceof AddNewMachineSnack && !$value instanceof UpdateMachineSnack) {
+            throw new UnexpectedValueException($value, 'AddNewMachineSnack or UpdateMachineSnack');
+        }
 
         if ($isTooLowProduct) {
             $violationBuilder = $this->context

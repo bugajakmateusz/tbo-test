@@ -11,7 +11,7 @@ final readonly class DbalNotNotEnoughQuantityQuery implements NotEnoughQuantityQ
 {
     public function __construct(private DbConnectionInterface $connection) {}
 
-    public function query(int $quantity, int $snackId): bool
+    public function queryToAdd(int $quantity, int $snackId): bool
     {
         $statement = $this->connection
             ->fetchOne(
@@ -26,6 +26,29 @@ final readonly class DbalNotNotEnoughQuantityQuery implements NotEnoughQuantityQ
                 ],
                 [
                     'snack_id' => \PDO::PARAM_INT,
+                ],
+            )
+        ;
+
+        return $quantity > $statement;
+    }
+
+    public function queryToUpdate(int $quantity, int $machineSnackId): bool
+    {
+        $statement = $this->connection
+            ->fetchOne(
+                <<<'SQL'
+                    SELECT ws.quantity
+                    FROM machine_snacks ms
+                    INNER JOIN warehouse_snacks ws ON ws.snack_id = ms.snack_id
+                    WHERE ms.id = :machine_snack_id
+
+                    SQL,
+                [
+                    'machine_snack_id' => $machineSnackId,
+                ],
+                [
+                    'machine_snack_id' => \PDO::PARAM_INT,
                 ],
             )
         ;
