@@ -7,7 +7,8 @@ import { User } from '../models/user.model';
 })
 export class UsersMapperService {
   mapUserToUserDisplayed(user: User): UserDisplayed {
-    const { id, username, firstName, lastName } = user;
+    const { id, username } = user;
+    const fullName = `${user.firstName} ${user.lastName}`;
     let role = '';
     switch (user.role) {
       case 'admin': {
@@ -27,6 +28,6 @@ export class UsersMapperService {
         break;
       }
     }
-    return { id, username, firstName, lastName, role };
+    return { id, username, fullName, role };
   }
 }
