@@ -6,9 +6,9 @@ namespace Tab\Packages\PasswordHasher;
 
 use Symfony\Component\PasswordHasher\Hasher\SodiumPasswordHasher;
 
-final class SymfonySodiumPasswordHasher implements PasswordHasherInterface
+final readonly class SymfonySodiumPasswordHasher implements PasswordHasherInterface
 {
-    public function __construct(private readonly SodiumPasswordHasher $sodiumPasswordHasher)
+    public function __construct(private SodiumPasswordHasher $sodiumPasswordHasher)
     {
     }
 
