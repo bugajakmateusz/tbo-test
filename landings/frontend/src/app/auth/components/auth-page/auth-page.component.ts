@@ -41,7 +41,6 @@ export class AuthPageComponent implements OnInit{
         }
       })
       }
-      this.form.reset()
     }
 
   showFailureAlert() {
