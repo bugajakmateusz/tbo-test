@@ -11,35 +11,19 @@ final class PricesHistory extends AbstractSeed
 {
     public function run(): void
     {
-        $machines = $this->fetchAll(
+        $machineSnacksData = $this->fetchAll(
             <<<'SQL'
-                SELECT machine_id
-                FROM machines
+                SELECT DISTINCT machine_id, snack_id
+                FROM machine_snacks
                 SQL
-        );
-        $machinesIds = \array_column(
-            $machines,
-            'machine_id',
-        );
-
-        $snacks = $this->fetchAll(
-            <<<'SQL'
-                SELECT snack_id
-                FROM snacks
-                SQL
-        );
-        $snacksIds = \array_column(
-            $snacks,
-            'snack_id',
         );
         $pricesHistory = [];
 
-        foreach ($machinesIds as $machineId) {
-            for ($i = 0; $i < Faker::int(0, 5); ++$i) {
-                $snackId = Faker::randomElement($snacksIds);
-                for ($i = 0; $i < Faker::int(1, 3); ++$i) {
-                    $pricesHistory[] = $this->createData($machineId, $snackId);
-                }
+        foreach ($machineSnacksData as $machineSnackData) {
+            $machineId = $machineSnackData['machine_id'];
+            $snackId = $machineSnackData['snack_id'];
+            for ($i = 0; $i < Faker::int(1, 5); ++$i) {
+                $pricesHistory[] = $this->createData($machineId, $snackId);
             }
         }
         \usort(
