@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\Users;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Command\UpdateUser\UpdateUser;
 use Tab\Application\Schema\UserSchema;
@@ -26,6 +27,66 @@ final readonly class UpdateUserAction
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
     ) {}
 
+    /**
+     *  Patch a user.
+     *  This call will patch a user with the provided details.
+     *
+     * @OA\RequestBody(
+     *       required=true,
+     *       description="Attributes needed for user registration.",
+     *
+     *  @OA\MediaType(
+     *       mediaType="application/json",
+     *
+     *       @OA\Schema(
+     *
+     *               @OA\Property(
+     *                   property="data",
+     *                   type="object",
+     *                   @OA\Property(
+     *                       property="type",
+     *                       type="string",
+     *                       example="users",
+     *                   ),
+     *                   @OA\Property(
+     *                       property="attributes",
+     *                       type="object",
+     *                       @OA\Property(
+     *                           property="email",
+     *                           type="string",
+     *                           example="test@test.pl",
+     *                       ),
+     *                       @OA\Property(
+     *                           property="password",
+     *                           type="string",
+     *                           example="password123",
+     *                       ),
+     *                       @OA\Property(
+     *                           property="name",
+     *                           type="string",
+     *                           example="John",
+     *                       ),
+     *                       @OA\Property(
+     *                           property="surname",
+     *                           type="string",
+     *                           example="Doe",
+     *                       ),
+     *                       @OA\Property(
+     *                           property="roles",
+     *                           type="array",
+     *
+     *                       @OA\Items(type="string"),
+     *                           description="An array of roles.",
+     *                           example={"ROLE_USER", "ROLE_ADMIN"},
+     *                       ),
+     *                   ),
+     *               ),
+     *           ),
+     *       )
+     *   )
+     *
+     * @OA\Tag(name="users")
+     */
     public function __invoke(Request $request, int $userId): ResponseInterface
     {
         $resource = $this->jsonApiSerializer

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\Snacks;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Query\SnacksList\SnacksList;
 use Tab\Application\Query\SnacksList\SnacksListView;
@@ -22,6 +23,11 @@ final readonly class SnacksListAction
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
     ) {}
 
+    /**
+     * List all snacks.
+     *
+     * @OA\Tag(name="snacks")
+     */
     public function __invoke(Request $request): ResponseInterface
     {
         $queryParamsExtractor = $this->queryParamsExtractorFactory
