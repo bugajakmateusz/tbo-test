@@ -8,7 +8,7 @@ use Tab\Packages\ResourcesList\Fields;
 use Tab\Packages\ResourcesList\Filters;
 use Tab\Packages\ResourcesList\Page;
 
-final class MachinesList
+final readonly class MachinesList
 {
     public function __construct(
         public Filters $filters,
