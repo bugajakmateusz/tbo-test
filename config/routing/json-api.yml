@@ -72,3 +72,8 @@ json-api.prices.create:
   path: 'snacks-prices'
   controller: 'Tab\UserInterface\Http\JsonApi\Prices\SetSnackPriceAction'
   methods: POST
+
+json-api.buys.create:
+  path: 'buys'
+  controller: 'Tab\UserInterface\Http\JsonApi\Buys\BuySnackAction'
+  methods: POST
