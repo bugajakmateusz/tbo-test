@@ -45,6 +45,13 @@ final class CreateMachineSnackTable extends AbstractMigration
                     'limit' => 3,
                 ],
             )
+            ->addColumn(
+                Tables\MachineSnack::FIELD_LAST_UPDATED_AT,
+                'datetime',
+                [
+                    'null' => false,
+                ],
+            )
             ->addForeignKey(
                 Tables\MachineSnack::FIELD_MACHINE_ID,
                 Tables::MACHINES,
