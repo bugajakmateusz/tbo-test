@@ -33,11 +33,7 @@ services:
         bind:
             League\Tactician\CommandBus $queryBus: '@tactician.commandbus.query_bus'
             League\Tactician\CommandBus $commandBus: '@tactician.commandbus.command_bus'
-        #            Random\Randomizer $secureRandomizer: !service
-#                class: 'Random\Randomizer'
-#                arguments:
-#                    $engine: !service
-#                        class: 'Random\Engine\Secure'
+
         exclude:
             - '../packages/src/TestCase'
             - '../packages/src/Constants'
@@ -77,10 +73,10 @@ services:
         tags:
             - { name: tactician.handler, typehints: true, bus: query_bus }
 
-#    Tab\Application\Command\:
-#        resource: '../src/Application/Command/**/*Handler.php'
-#        tags:
-#            - { name: tactician.handler, typehints: true, bus: command_bus }
+    Tab\Application\Command\:
+        resource: '../src/Application/Command/**/*Handler.php'
+        tags:
+            - { name: tactician.handler, typehints: true, bus: command_bus }
 
     Tab\Infrastructure\Symfony\Security\SymfonyAuthService:
         arguments:
