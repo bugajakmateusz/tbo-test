@@ -21,6 +21,7 @@ use Tab\Packages\ResourcesList\Filters;
 use Tab\Packages\ResourcesList\Page;
 use Tab\Packages\ResourcesList\TotalItems;
 use Tab\Packages\SqlExpressions\JsonObject;
+use Tab\Packages\SqlExpressions\OrderBy;
 
 final class DbalUsersListQuery extends DbalListQueryTemplate implements UsersListQueryInterface
 {
@@ -114,6 +115,14 @@ final class DbalUsersListQuery extends DbalListQueryTemplate implements UsersLis
                 default => throw new \RuntimeException("Filter '{$filter->name()}' is not implemented."),
             };
         }
+    }
+
+    protected function applyOrdering(QueryBuilder $queryBuilder, string $tableAlias): void
+    {
+        $queryBuilder->orderBy(
+            "{$tableAlias}.user_id",
+            OrderBy::DIRECTION_ASC,
+        );
     }
 
     private function applyFilterId(
