@@ -108,7 +108,10 @@ final class Faker
 
     public static function password(): string
     {
-        return self::faker()->password();
+        $minLength = 8;
+        $maxLength = 20;
+
+        return self::faker()->password($minLength, $maxLength);
     }
 
     public static function hexBytes(int $length = 16): string
