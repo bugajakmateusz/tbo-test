@@ -36,14 +36,14 @@ final readonly class MachinesListAction
         $providedFields = $queryParamsExtractor->fields();
         $this->checkFields($providedFields);
 
-        $projectsListQuery = new MachinesList(
+        $machinesListQuery = new MachinesList(
             $filters,
             $queryParamsExtractor->page(),
             $providedFields,
         );
         /** @var MachinesListView $machinesListView */
         $machinesListView = $this->queryBus
-            ->handle($projectsListQuery)
+            ->handle($machinesListQuery)
         ;
 
         $totalItems = $machinesListView->totalItems;

@@ -27,13 +27,13 @@ final class ResourceTest extends UnitTestCase
         $this->expectException(ResourceException::class);
         $this->expectExceptionMessage("Non-empty 'id' is required.");
 
-        $resource = $this->createResource('projects');
+        $resource = $this->createResource('tests');
         $resource->id();
     }
 
     public function test_resource_id_can_be_empty(): void
     {
-        $resource = $this->createResource('projects');
+        $resource = $this->createResource('tests');
 
         self::assertNotNull($resource);
     }

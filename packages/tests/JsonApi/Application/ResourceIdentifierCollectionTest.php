@@ -27,7 +27,7 @@ final class ResourceIdentifierCollectionTest extends UnitTestCase
 
     public function test_check_type_will_throw_exception_on_invalid_type(): void
     {
-        $type = 'teachers';
+        $type = 'tests';
         $wrongId = Faker::stringNumberId();
         $wrongType = 'users';
         $resourceIdsData = [
