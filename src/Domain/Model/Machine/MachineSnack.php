@@ -47,4 +47,16 @@ class MachineSnack
     {
         return $this->quantity;
     }
+
+    public function updateQuantity(int $newQuantity): void
+    {
+        if ($this->quantity >= $newQuantity) {
+            throw new DomainException('Quantity must be higher than current one.');
+        }
+
+        $quantityDiff = $newQuantity - $this->quantity;
+        $this->snack->decreaseWarehouseQuantity($quantityDiff);
+
+        $this->quantity = $newQuantity;
+    }
 }
