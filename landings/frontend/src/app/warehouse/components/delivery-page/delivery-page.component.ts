@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Snack } from 'src/app/snacks/models/snack/snack.model';
 import { SnacksService } from 'src/app/snacks/services/snacks.service';
 import { WarehouseService } from '../../services/warehouse.service';
@@ -34,7 +34,10 @@ export class DeliveryPageComponent implements OnInit {
     this.snacks = this.snacksService.getSnacks();
     this.snacks.forEach((snack, index) => {
       const controlName = `snack_${index}`;
-      this.form.addControl(controlName, this.fb.control(''));
+      this.form.addControl(
+        controlName,
+        this.fb.control('0', [Validators.min(0), Validators.required])
+      );
     });
   }
 
@@ -47,5 +50,12 @@ export class DeliveryPageComponent implements OnInit {
       });
     }
     this.warehouseService.acceptDelivery(delivery);
+  }
+
+  buttonDisabled(): boolean {
+    return (
+      Object.values(this.form.value).every((el) => el === '0') ||
+      !this.form.valid
+    );
   }
 }

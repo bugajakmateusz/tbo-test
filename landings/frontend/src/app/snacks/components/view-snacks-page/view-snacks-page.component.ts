@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { TableComponent } from 'src/app/shared/components/table/table.component';
 import { SnacksService } from '../../services/snacks.service';
 import { Snack } from '../../models/snack/snack.model';
@@ -20,7 +20,7 @@ export class ViewSnacksPageComponent implements OnInit {
   ];
 
   form = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
   });
 
   constructor(private fb: FormBuilder, private snacksService: SnacksService) {}

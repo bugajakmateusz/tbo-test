@@ -4,6 +4,7 @@
   [rows]="snacks"
   [formGroup]="form"
   [inputs]="inputs"
+  [min]="0"
 ></app-table>
 
 <div class="d-flex gap-3 w-75 justify-content-end">
@@ -11,6 +12,7 @@
     text="Wydaj"
     data-bs-target="#handSnacksModal"
     data-bs-toggle="modal"
+    [disabled]="buttonDisabled()"
   ></app-form-button>
 </div>
 

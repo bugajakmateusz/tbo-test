@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserDisplayed } from '../../models/user-displayed.model';
 import { User } from '../../models/user.model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { UsersMapperService } from 'src/app/users/services/users-mapper.service';
 import { userRoleOptions } from '../../userRoleOptions';
@@ -25,11 +25,11 @@ export class ViewUsersPageComponent {
   ];
 
   form = this.fb.group({
-    username: [''],
-    password: [''],
-    firstName: [''],
-    lastName: [''],
-    role: [''],
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    role: ['', Validators.required],
   });
 
   constructor(

@@ -24,6 +24,8 @@ export class TableComponent implements OnInit {
     name: string;
     title: string;
   }[] = [];
+  @Input() min: number = -1000000;
+  @Input() max: number = 1000000;
 
   @Output() actionChosen = new EventEmitter<{
     action: string;

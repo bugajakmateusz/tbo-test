@@ -9,5 +9,9 @@
     type="date"
     [control]="form.controls.dateTo"
   ></app-form-input>
-  <app-form-button text="Utwórz" (click)="onSubmit()"></app-form-button>
+  <app-form-button
+    text="Utwórz"
+    (click)="onSubmit()"
+    [disabled]="submitButtonDisabled()"
+  ></app-form-button>
 </app-form>

@@ -3,6 +3,7 @@
   [columns]="columns"
   [rows]="displayedMachines"
   [checkboxes]="checkboxes"
+  [formGroup]="machinesSelectedForm"
   *ngIf="showMachines; else showDatesForm"
 >
 </app-table>
@@ -26,7 +27,11 @@
   class="d-flex gap-3 w-75 justify-content-end"
   *ngIf="showMachines; else backButton"
 >
-  <app-form-button text="Dalej" (click)="goNext()"></app-form-button>
+  <app-form-button
+    text="Dalej"
+    (click)="goNext()"
+    [disabled]="goNextButtonDisabled()"
+  ></app-form-button>
 </div>
 
 <ng-template #backButton>
@@ -36,6 +41,10 @@
       btn-style="outline"
       (click)="goBack()"
     ></app-form-button>
-    <app-form-button text="Utwórz" (click)="onSubmit()"></app-form-button>
+    <app-form-button
+      text="Utwórz"
+      (click)="onSubmit()"
+      [disabled]="submitButtonDisabled()"
+    ></app-form-button>
   </div>
 </ng-template>

@@ -24,6 +24,7 @@
           class="btn btn-primary"
           data-bs-dismiss="modal"
           (click)="callCallback()"
+          [disabled]="disabled"
         >
           {{ yesButtonText }}
         </button>

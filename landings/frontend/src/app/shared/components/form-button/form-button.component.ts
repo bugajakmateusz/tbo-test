@@ -9,6 +9,7 @@ export class FormButtonComponent {
   @Input({ required: true }) text!: string;
   @Input('btn-style') btnStyle = '';
   @Input() color = 'primary';
+  @Input() disabled: boolean = false;
 
   buttonStyling(): string {
     return this.btnStyle === 'outline'

@@ -11,6 +11,7 @@
     noButtonText="Zamknij"
     yesButtonText="Zapisz"
     (callbackCalled)="onCallbackCalled()"
+    [disabled]="!form.valid"
   >
     <app-form-input
       name="Nowa nazwa uzytkownika"
@@ -26,6 +27,7 @@
     ></app-form-input>
     <app-form-input
       name="Nowe hasło"
+      type="password"
       [control]="form.controls.password"
     ></app-form-input>
     <app-form-select

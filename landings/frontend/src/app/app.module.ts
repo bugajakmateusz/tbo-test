@@ -29,6 +29,7 @@ import { FormSelectComponent } from './shared/components/form-select/form-select
 import { TableComponent } from './shared/components/table/table.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { ObjectToArrayPipe } from './shared/pipes/object-to-array.pipe';
+import { AbstractControlToFormControlPipe } from './shared/pipes/abstract-control-to-form-control.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
@@ -99,6 +100,7 @@ const appRoutes: Routes = [
     TableComponent,
     ModalComponent,
     ObjectToArrayPipe,
+    AbstractControlToFormControlPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MachinesService } from '../../services/machines.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MachinesService } from '../../services/machines.service';
 })
 export class AddMachinePageComponent {
   form = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
     note: [''],
   });
   constructor(

@@ -52,7 +52,7 @@ export class ViewMachinesPageComponent implements OnInit {
   ];
 
   form = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
     note: [''],
   });
 
@@ -96,7 +96,7 @@ export class ViewMachinesPageComponent implements OnInit {
         const controlName = `snack_${index}`;
         this.snacksForm.addControl(
           controlName,
-          this.fb.control(snack.price, Validators.required)
+          this.fb.control(snack.price, [Validators.required, Validators.min(1)])
         );
       });
       this.showMachines = false;

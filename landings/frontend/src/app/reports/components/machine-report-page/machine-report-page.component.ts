@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MachineDisplayed } from 'src/app/machines/models/machine-displayed.model';
 import { MachineSimpleDisplayed } from 'src/app/machines/models/machine-simple-displayed.model';
 import { Machine } from 'src/app/machines/models/machine.model';
@@ -30,8 +30,8 @@ export class MachineReportPageComponent implements OnInit {
   machinesSelectedForm = this.fb.group({});
 
   datesForm = this.fb.group({
-    dateFrom: [''],
-    dateTo: [''],
+    dateFrom: ['', Validators.required],
+    dateTo: ['', Validators.required],
   });
 
   constructor(
@@ -64,6 +64,19 @@ export class MachineReportPageComponent implements OnInit {
     this.reportsService.createMachinesReport(
       this.datesForm.value.dateFrom!,
       this.datesForm.value.dateTo!
+    );
+  }
+
+  goNextButtonDisabled(): boolean {
+    return Object.values(this.machinesSelectedForm.value).every(
+      (el) => el === false
+    );
+  }
+
+  submitButtonDisabled(): boolean {
+    return (
+      !this.datesForm.valid ||
+      this.datesForm.value.dateFrom! > this.datesForm.value.dateTo!
     );
   }
 }

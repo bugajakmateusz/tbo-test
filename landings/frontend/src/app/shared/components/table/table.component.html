@@ -69,6 +69,8 @@
                 class="form-control"
                 type="{{ input.type }}"
                 [formControlName]="input.name + '_' + i"
+                min="{{ min }}"
+                max="{{ max }}"
               />
             </div>
           </form>
