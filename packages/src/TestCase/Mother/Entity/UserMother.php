@@ -38,6 +38,16 @@ final class UserMother
         );
     }
 
+    public static function warehouseOperator(): User
+    {
+        return self::create(
+            [
+                'ROLE_USER',
+                'ROLE_WAREHOUSE_OPERATOR',
+            ],
+        );
+    }
+
     /** @param string[] $roles */
     public static function create(
         array $roles,
