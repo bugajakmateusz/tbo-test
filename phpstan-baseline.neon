@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method object\\:\\:withHttpClient\\(\\)\\.$#"
+			count: 1
+			path: packages/src/TestCase/IntegrationTestCase.php
