@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Machine } from '../models/machine.model';
-import { Snack } from 'src/app/snacks/models/snack/snack.model';
+import { Snack } from '../../snacks/models/snack/snack.model';
 import { SnackInMachine } from '../models/snack-in-machine.model';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {MachinesMapperService} from "./machines-mapper.service";
 import {MachineFromApi} from "../models/machine-from-api.model";
+import {ConfigService} from "../../config.service";
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,7 @@ export class MachinesService {
 
   snackInMachineId = '';
 
-  constructor(private http: HttpClient, private machinesMapperService: MachinesMapperService) {
+  constructor(private http: HttpClient, private machinesMapperService: MachinesMapperService, private configService: ConfigService) {
     this.login();
     this.updateServiceData()
   }
@@ -63,6 +64,23 @@ export class MachinesService {
     })
         .subscribe(data => console.log(data))
     this.updateServiceData()
+  }
+
+  changePrice(price: string) {
+
+  }
+
+  addSnackToMachine(snackId: string, price: string) {
+      this.http.post(`${this.configService.apiUrl}json-api/snacks-prices`, {
+    data: {
+      type: "snacks-prices",
+      attributes: {
+        machineId: Number(this.id),
+        snackId: this.snackInMachineId,
+          price: price
+      }
+      }})
+          .subscribe(data => console.log(data))
   }
 
   activateDeactivateMachine() {

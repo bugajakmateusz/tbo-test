@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TableComponent } from 'src/app/shared/components/table/table.component';
+import { TableComponent } from '../../../shared/components/table/table.component';
 import { SnacksService } from '../../services/snacks.service';
 import { Snack } from '../../models/snack/snack.model';
+import {SnacksMapperService} from "../../services/snacks-mapper.service";
 
 @Component({
   selector: 'app-view-snacks-page',
@@ -23,10 +24,10 @@ export class ViewSnacksPageComponent implements OnInit {
     name: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private snacksService: SnacksService) {}
+  constructor(private fb: FormBuilder, private snacksService: SnacksService, private snacksMapperService: SnacksMapperService) {}
 
   ngOnInit() {
-    this.snacks = this.snacksService.getSnacks();
+    this.snacksService.getSnacks().subscribe(snacksFromApi => this.snacks = snacksFromApi.map(snackFromApi => this.snacksMapperService.mapSnackFromApiToSnack(snackFromApi)))
   }
 
   editSnack() {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Snack } from 'src/app/snacks/models/snack/snack.model';
-import { SnacksService } from 'src/app/snacks/services/snacks.service';
+import { Snack } from '../../../snacks/models/snack/snack.model';
+import { SnacksService } from '../../../snacks/services/snacks.service';
 import { WarehouseService } from '../../services/warehouse.service';
-import { AlertService } from 'src/app/shared/services/alert.service';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-delivery-page',
@@ -32,7 +32,7 @@ export class DeliveryPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.snacks = this.snacksService.getSnacks();
+    // this.snacks = this.snacksService.getSnacks();
     this.snacks.forEach((snack, index) => {
       const controlName = `snack_${index}`;
       this.form.addControl(
