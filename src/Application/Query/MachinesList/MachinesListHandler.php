@@ -10,7 +10,10 @@ use Tab\Packages\ResourcesList\Filters;
 
 final readonly class MachinesListHandler
 {
-    private const SUPPORTED_FILTERS = [];
+    public const FILTER_ID = 'id';
+    private const SUPPORTED_FILTERS = [
+        self::FILTER_ID,
+    ];
 
     public function __construct(
         private MachinesListQueryInterface $machinesListQuery,

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tab\Infrastructure\Doctrine;
 
+use Doctrine\DBAL\Query\QueryBuilder;
+use Tab\Application\Query\MachinesList\MachinesListHandler;
 use Tab\Application\Query\MachinesList\MachinesListQueryInterface;
 use Tab\Application\Query\MachinesList\MachinesListView;
 use Tab\Application\Schema\MachineSchema;
@@ -14,6 +16,7 @@ use Tab\Packages\DbConnection\DbConnectionInterface;
 use Tab\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
 use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 use Tab\Packages\ResourcesList\Fields;
+use Tab\Packages\ResourcesList\Filter;
 use Tab\Packages\ResourcesList\Filters;
 use Tab\Packages\ResourcesList\Page;
 use Tab\Packages\ResourcesList\TotalItems;
@@ -90,6 +93,39 @@ final class DbalMachinesListQuery extends DbalListQueryTemplate implements Machi
             ->create(
                 $tableAlias,
                 $fields ?? Fields::createFieldsForType(MachineSchema::TYPE),
+            )
+        ;
+    }
+
+    protected function applyFilters(
+        QueryBuilder $queryBuilder,
+        string $tableAlias,
+        ?Filters $filters = null,
+    ): void {
+        if (null === $filters) {
+            return;
+        }
+
+        foreach ($filters->nonEmptyFilters() as $filter) {
+            match ($filter->name()) {
+                MachinesListHandler::FILTER_ID => $this->applyIdFilter(
+                    $queryBuilder,
+                    $tableAlias,
+                    $filter,
+                ),
+                default => throw new \RuntimeException("Filter '{$filter->name()}' is not supported."),
+            };
+        }
+    }
+
+    private function applyIdFilter(QueryBuilder $queryBuilder, string $tableAlias, Filter $filter): void
+    {
+        $queryBuilder
+            ->andWhere("{$tableAlias}.machine_id = :id")
+            ->setParameter(
+                'id',
+                $filter->intValue(),
+                \PDO::PARAM_INT,
             )
         ;
     }
