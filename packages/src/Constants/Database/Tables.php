@@ -9,4 +9,5 @@ use Tab\Packages\Constants\Constants;
 final class Tables extends Constants
 {
     public const USERS = 'users';
+    public const MACHINES = 'machines';
 }
