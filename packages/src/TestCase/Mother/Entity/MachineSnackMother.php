@@ -14,13 +14,15 @@ final class MachineSnackMother
     public static function fromEntities(
         Machine $machine,
         Snack $snack,
+        ?string $position = null,
+        ?int $quantity = null,
     ): MachineSnack {
         return new MachineSnack(
             Faker::intId(),
             $machine,
             $snack,
-            Faker::hexBytes(3),
-            Faker::intId(),
+            $position ?? Faker::hexBytes(3),
+            $quantity ?? Faker::intId(),
         );
     }
 }
