@@ -31,6 +31,7 @@ export class WarehouseReportPageComponent {
     return (
       !this.form.valid || this.form.value.dateFrom! > this.form.value.dateTo!
     );
+    this.form.reset();
   }
 
   submitButtonDisabled(): boolean {
