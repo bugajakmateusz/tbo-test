@@ -41,8 +41,7 @@ export class ReportsService {
       machineIds: machines
     })
       .subscribe((data: any) => {
-        console.log(data.error)
-        return data.stringify()
+        console.log(data)
         })
 
   }
