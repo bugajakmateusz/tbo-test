@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          ../../vendor/doctrine/orm/doctrine-mapping.xsd"
+>
+    <entity name="Tab\Domain\Model\Snack\Buy" table="warehouse_prices_history">
+        <id name="id" type="integer" column="buy_id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="snackId" type="integer" />
+        <field name="date" column="buy_date" type="datetime_immutable" />
+        <field name="price" type="float" />
+    </entity>
+</doctrine-mapping>
