@@ -55,11 +55,6 @@ final readonly class BuySnackAction
      *                      property="attributes",
      *                      type="object",
      *                      @OA\Property(
-     *                          property="snackId",
-     *                          type="integer",
-     *                          example=1,
-     *                      ),
-     *                      @OA\Property(
      *                          property="price",
      *                          type="float",
      *                          example=12.22,
