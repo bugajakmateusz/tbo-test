@@ -136,3 +136,9 @@ Tab\Application\Command\UpdateUser\UpdateUser:
       - All:
           - Choice:
               callback: [ Tab\Domain\Model\User\Role, list ]
+
+Tab\Application\Command\BuySnack\BuySnack:
+  properties:
+    price:
+      - NotBlank: ~
+      - GreaterThan: 0.0
