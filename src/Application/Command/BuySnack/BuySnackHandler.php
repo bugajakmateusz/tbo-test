@@ -33,5 +33,7 @@ final class BuySnackHandler
         $this->buyRepository
             ->add($buy)
         ;
+
+        $snack->addWarehouseQuantity($command->quantity);
     }
 }
