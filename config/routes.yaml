@@ -15,3 +15,9 @@ api.test.login:
     controller: 'Tab\UserInterface\Http\Json\TestLoginAction'
     format: 'html'
     methods: GET
+
+html.homepage.redirect:
+    path: '/'
+    controller: 'Tab\UserInterface\Http\Redirect\HomepageRedirectAction'
+    format: 'html'
+    methods: GET
