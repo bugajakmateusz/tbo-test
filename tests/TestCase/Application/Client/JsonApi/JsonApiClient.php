@@ -172,6 +172,19 @@ final readonly class JsonApiClient
         return new JsonApiResponse($response, $this->jsonSerializer);
     }
 
+    public function deleteResource(
+        string $id,
+    ): JsonApiResponse {
+        $response = $this->httpClient
+            ->request(
+                RequestInterface::METHOD_DELETE,
+                $this->generateUrl($id),
+            )
+        ;
+
+        return new JsonApiResponse($response, $this->jsonSerializer);
+    }
+
     private function generateUrl(
         string $id = '',
         ?string $relationship = null,

@@ -14,3 +14,10 @@ json-api.machines.update:
   methods: PATCH
   requirements:
     machineId: \d+
+
+json-api.machines.remove:
+  path: 'machines/{machineId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\Machines\RemoveMachineAction'
+  methods: DELETE
+  requirements:
+    machineId: \d+
