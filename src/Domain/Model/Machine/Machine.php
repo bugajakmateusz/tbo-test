@@ -67,4 +67,9 @@ class Machine
 
         $this->snacks = $snacks;
     }
+
+    public function id(): int
+    {
+        return $this->id;
+    }
 }
