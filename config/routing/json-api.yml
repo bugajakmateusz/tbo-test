@@ -1,3 +1,8 @@
+json-api.snacks.list:
+  path: 'snacks'
+  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\SnacksListAction'
+  methods: GET
+
 json-api.machines.list:
   path: 'machines'
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachinesListAction'
