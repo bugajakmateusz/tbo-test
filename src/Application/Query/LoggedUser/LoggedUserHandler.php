@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tab\Application\Query\LoggedUser;
 
 use Tab\Application\Service\LoggedUserServiceInterface;
-use Tab\Domain\Login\LoggedUser as DomainLoggedUser;
+use Tab\Domain\Model\Login\LoggedUser as DomainLoggedUser;
 
 final readonly class LoggedUserHandler
 {

@@ -7,7 +7,7 @@ namespace Tab\Infrastructure\Symfony\Security;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Tab\Domain\Login\LoggedUser;
+use Tab\Domain\Model\Login\LoggedUser;
 use Tab\Infrastructure\Symfony\Security\UserInterface as AppUserInterface;
 
 final class SymfonyUser implements AppUserInterface, EquatableInterface, PasswordAuthenticatedUserInterface
