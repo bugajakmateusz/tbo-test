@@ -17,7 +17,7 @@ final class RemoveMachineTest extends JsonApiIntegrationTestCase
     public function test_logged_user_can_remove_machine(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $this->loadEntities(
             $loggedUser,

@@ -22,7 +22,7 @@ final class SetSnackPriceTest extends JsonApiIntegrationTestCase
     public function test_logged_user_can_set_snack_price(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $this->loadEntities(
@@ -65,7 +65,7 @@ final class SetSnackPriceTest extends JsonApiIntegrationTestCase
     public function test_set_snack_price_validation(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $this->loadEntities(

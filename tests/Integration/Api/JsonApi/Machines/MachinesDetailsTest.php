@@ -45,7 +45,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
     {
         // Arrange
         $machine = MachineMother::random();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $this->loadEntities(
             $loggedUser,
             $machine,
@@ -85,7 +85,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             ->modify('+1 second')
         ;
         $newSnackPrice = SnackPriceMother::fromEntities($machine, $snack, createdAt: $newSnackPriceDate);
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $this->loadEntities(
             $loggedUser,
             $machine,
@@ -188,7 +188,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
     public function test_user_provided_fields_require_machines_type(): void
     {
         // Arrange
-        $user = UserMother::random();
+        $user = UserMother::officeManager();
         $machine = MachineMother::random();
         $this->loadEntities($user, $machine);
         $jsonApiClient = $this->loggedJsonApiClient(
@@ -234,7 +234,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             'fields' => $fields,
             'expectedAttributes' => $expectedAttributes,
         ] = $paramsGenerator();
-        $user = UserMother::random();
+        $user = UserMother::officeManager();
         $this->loadEntities($user, $machine);
         $jsonApiClient = $this->loggedJsonApiClient(
             MachineSchema::class,

@@ -15,10 +15,10 @@ use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 /** @internal */
 final class UpdateMachineTest extends JsonApiIntegrationTestCase
 {
-    public function test_logged_user_can_update_machine(): void
+    public function test_office_manager_can_update_machine(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $this->loadEntities(
             $loggedUser,
@@ -70,7 +70,7 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
     public function test_some_machines_fields_can_be_updated(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $this->loadEntities(
             $loggedUser,
@@ -130,7 +130,7 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
             'attributes' => $attributes,
             'errors' => $expectedErrors,
         ] = $createParams();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $machine = MachineMother::random();
         $this->loadEntities(
             $loggedUser,

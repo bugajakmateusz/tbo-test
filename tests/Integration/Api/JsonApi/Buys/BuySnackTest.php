@@ -21,7 +21,7 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
     public function test_warehouse_operator_can_buy_snack(): void
     {
         // Arrange
-        $loggedUser = UserMother::warehouseOperator();
+        $loggedUser = UserMother::logisticManager();
         $snack = SnackMother::random();
         $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
         $this->loadEntities(
@@ -61,7 +61,7 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
     public function test_buy_price_validation(): void
     {
         // Arrange
-        $loggedUser = UserMother::warehouseOperator();
+        $loggedUser = UserMother::logisticManager();
         $snack = SnackMother::random();
         $this->loadEntities(
             $loggedUser,

@@ -38,7 +38,7 @@ final class SnacksListTest extends JsonApiIntegrationTestCase
     {
         // Arrange
         $snack = SnackMother::random();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $warehouseData = WarehouseSnackMother::fromSnack($snack);
         $this->loadEntities(
             $loggedUser,
@@ -80,7 +80,7 @@ final class SnacksListTest extends JsonApiIntegrationTestCase
         // Arrange
         $snack1 = SnackMother::random();
         $snack2 = SnackMother::random();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $this->loadEntities(
             $loggedUser,
             $snack1,
