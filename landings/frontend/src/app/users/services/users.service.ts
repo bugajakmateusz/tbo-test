@@ -53,15 +53,26 @@ export class UsersService {
   }
 
   addUser(
-    username: string,
+    email: string,
     password: string,
     firstName: string,
     lastName: string,
-    role: string
+    roles: string[]
   ) {
-    console.log(
-      `add user. New username: ${username}. New password: ${password}. New first name: ${firstName}. New last name: ${lastName}. New role: ${role}`
-    );
+    roles.push("ROLE_USER")
+  this.http.post(`${this.configService.apiUrl}json-api/users`,{
+    data: {
+      type: "users",
+      attributes: {
+        email: email,
+        password: password,
+        name: firstName,
+        surname: lastName,
+        roles: roles
+      }
+    }
+  })
+      .subscribe(data => console.log(data))
   }
 
   getUsers(): Observable<UserFromApi[]> {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WarehouseService } from '../../services/warehouse.service';
 import { WarehouseSnack } from '../../models/warehouseSnack.model';
+import {WarehouseMapperService} from "../../services/warehouse-mapper.service";
 
 @Component({
   selector: 'app-view-warehouse-page',
@@ -12,9 +13,12 @@ export class ViewWarehousePageComponent implements OnInit {
 
   snacks: WarehouseSnack[] = [];
 
-  constructor(private warehouseService: WarehouseService) {}
+  constructor(private warehouseService: WarehouseService, private warehouseMapperService: WarehouseMapperService) {}
 
   ngOnInit() {
-    this.snacks = this.warehouseService.getSnacks();
+  }
+
+  getSnacks() {
+    this.warehouseService.getSnacks().subscribe(snacksFromApi => this.snacks = snacksFromApi.map(snackFromApi => this.warehouseMapperService.mapWarehouseSnackFromApiToWarehouseSnack(snackFromApi)))
   }
 }

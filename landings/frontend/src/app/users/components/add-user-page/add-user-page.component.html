@@ -1,7 +1,8 @@
 <app-form title="Dodaj uzytkownika">
   <app-form-input
-    name="Nazwa uzytkownika"
-    [control]="form.controls.username"
+    name="Email"
+    type="email"
+    [control]="form.controls.email"
   ></app-form-input>
   <app-form-input
     name="Imię"
@@ -17,11 +18,11 @@
     [control]="form.controls.password"
   ></app-form-input>
 
-  <app-form-select
-    name="Rola"
+  <app-form-multiselect
+    name="Role"
     [options]="roles"
     [control]="form.controls.role"
-  ></app-form-select>
+  ></app-form-multiselect>
   <app-form-button
     text="Dodaj"
     (click)="onSubmit()"

@@ -19,19 +19,9 @@ export const authGuard: CanActivateFn = (route, state) => {
     return true // main page available for everyone
   }
 
-  if(isLoggedIn === false) {
-    if(state.url.includes("auth")) {
-      return true // auth page available for not logged user
-    }
-  }
-
   if(state.url.includes("auth")) {
-    return false // auth page unavailable for logged user
+    return !isLoggedIn // auth page available for not logged user
   }
 
-  if(roles.find(role => role === adminRole)) {
-    return true // // all pages available for admin
-  }
-
-  return false;
+  return isLoggedIn
 };

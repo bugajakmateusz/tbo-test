@@ -10,6 +10,4 @@ export class FormSelectComponent {
   @Input({ required: true }) name!: string;
   @Input({ required: true }) options!: { name: string; value: any }[];
   @Input() control!: FormControl<string | null>;
-  @Input() multiselect: boolean = false;
-  @Input() multiselectControl: FormControl<string[] | null> = new FormControl()
 }

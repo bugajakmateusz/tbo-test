@@ -29,7 +29,7 @@ export class HandToCourierPageComponent {
   ) {}
 
   ngOnInit() {
-    this.snacks = this.warehouseService.getSnacks();
+    // this.snacks = this.warehouseService.getSnacks();
     this.snacks.forEach((snack, index) => {
       const controlName = `snack_${index}`;
       this.form.addControl(

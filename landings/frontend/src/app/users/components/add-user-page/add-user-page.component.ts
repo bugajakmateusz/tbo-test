@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { userRoleOptions } from '../../userRoleOptions';
 import { UsersService } from '../../services/users.service';
-import { AlertService } from 'src/app/shared/services/alert.service';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-add-user-page',
@@ -12,12 +12,14 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 export class AddUserPageComponent implements OnInit {
   roles = userRoleOptions;
 
+  emptyArray: string[] = []
+
   form = this.fb.group({
-    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    role: ['', Validators.required],
+    role: [this.emptyArray, [Validators.required, Validators.minLength(1)]],
   });
 
   constructor(
@@ -31,7 +33,7 @@ export class AddUserPageComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.usersService.addUser(
-        this.form.value.username!,
+        this.form.value.email!,
         this.form.value.password!,
         this.form.value.firstName!,
         this.form.value.lastName!,
@@ -44,7 +46,7 @@ export class AddUserPageComponent implements OnInit {
 
   resetForm() {
     this.form.reset();
-    this.form.patchValue({ role: '' });
+    this.form.patchValue({ role: this.emptyArray });
   }
 
   showAlert() {
