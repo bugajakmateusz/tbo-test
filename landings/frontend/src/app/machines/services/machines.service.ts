@@ -83,7 +83,7 @@ export class MachinesService {
         }
       }
       }})
-          .subscribe(data => console.log(data))
+          .subscribe(data => this.getMachineFromApi())
   }
 
   activateDeactivateMachine() {
