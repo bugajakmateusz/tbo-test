@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tab\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Tab\Domain\EntityNotFoundException;
 use Tab\Domain\Model\User\User;
 use Tab\Domain\Model\User\UserRepositoryInterface;
 
@@ -17,6 +18,25 @@ final class OrmUserRepository implements UserRepositoryInterface
         $this->entityManager
             ->persist($user)
         ;
+    }
+
+    public function get(int $userId): User
+    {
+        $user = $this->entityManager
+            ->find(
+                User::class,
+                $userId,
+            )
+        ;
+
+        if (null === $user) {
+            throw EntityNotFoundException::create(
+                $userId,
+                User::class,
+            );
+        }
+
+        return $user;
     }
 
     public function findByEmail(string $email): ?User
