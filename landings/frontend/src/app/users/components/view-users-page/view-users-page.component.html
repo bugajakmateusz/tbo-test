@@ -1,5 +1,5 @@
 <app-table
-  title="Lista uzytkowników"
+  title="Lista użytkowników"
   [columns]="columns"
   [rows]="displayedUsers"
   [buttons]="buttons"
@@ -7,35 +7,47 @@
 >
   <app-modal
     modalId="modal1"
-    title="Edytuj uzytkownika"
     noButtonText="Zamknij"
     yesButtonText="Zapisz"
     (callbackCalled)="onCallbackCalled()"
     [disabled]="!form.valid"
+    [noButtons]="true"
   >
-    <app-form-input
-      name="Nowy email"
-      type="email"
-      [control]="form.controls.email"
-    ></app-form-input>
-    <app-form-input
-      name="Nowe imię"
-      [control]="form.controls.firstName"
-    ></app-form-input>
-    <app-form-input
-      name="Nowe nazwisko"
-      [control]="form.controls.lastName"
-    ></app-form-input>
-    <app-form-input
-      name="Nowe hasło"
-      type="password"
-      [control]="form.controls.password"
-    ></app-form-input>
-    <app-form-multiselect
-      name="Nowe role"
-      [control]="form.controls.roles"
-      [options]="roles"
-    ></app-form-multiselect>
+    <div class="d-flex justify-content-between gap-3">
+      <app-form title="Edytuj" titleSize="small"
+      >
+        <app-form-input
+                name="Nowy email"
+                type="email"
+                [control]="form.controls.email"
+        ></app-form-input>
+        <app-form-input
+                name="Nowe imię"
+                [control]="form.controls.firstName"
+        ></app-form-input>
+        <app-form-input
+                name="Nowe nazwisko"
+                [control]="form.controls.lastName"
+        ></app-form-input>
+        <app-form-multiselect
+                name="Nowe role"
+                [control]="form.controls.roles"
+                [options]="roles"
+        ></app-form-multiselect>
+        <app-form-button text="Zapisz" [disabled]="!form.valid" (click)="editUser()"></app-form-button>
+      </app-form>
+      <app-form title="Zmień hasło" titleSize="small"
+      >
+        <app-form-input
+                name="Nowe hasło"
+                type="password"
+                [control]="passwordFrom.controls.password"
+        ></app-form-input>
+        <app-form-button text="Zapisz" [disabled]="!passwordFrom.valid" (click)="changePassword()"></app-form-button>
+      </app-form>
+    </div>
+
+
   </app-modal>
 
   <app-modal

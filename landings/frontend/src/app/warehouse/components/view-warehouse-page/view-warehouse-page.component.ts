@@ -16,6 +16,7 @@ export class ViewWarehousePageComponent implements OnInit {
   constructor(private warehouseService: WarehouseService, private warehouseMapperService: WarehouseMapperService) {}
 
   ngOnInit() {
+    this.getSnacks()
   }
 
   getSnacks() {
