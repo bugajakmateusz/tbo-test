@@ -13,7 +13,7 @@ class MachineSnack
 
     private function __construct(
         private Machine $machine,
-        private int $snackId,
+        private Snack $snack,
         private int $quantity,
         private string $position,
     ) {}
@@ -32,7 +32,7 @@ class MachineSnack
 
         return new self(
             $machine,
-            $snack->id(),
+            $snack,
             $quantity,
             $position->toString(),
         );

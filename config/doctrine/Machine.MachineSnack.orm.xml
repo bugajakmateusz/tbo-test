@@ -20,8 +20,18 @@
             />
         </many-to-one>
 
+        <many-to-one
+                field="snack"
+                target-entity="Tab\Domain\Model\Snack\Snack"
+        >
+            <join-column
+                    name="snack_id"
+                    referenced-column-name="snack_id"
+                    nullable="false"
+            />
+        </many-to-one>
+
         <field name="position" type="string" />
-        <field name="snackId" type="integer" />
         <field name="quantity" type="integer" />
     </entity>
 </doctrine-mapping>
