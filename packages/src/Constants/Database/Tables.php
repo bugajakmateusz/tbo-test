@@ -15,4 +15,5 @@ final class Tables extends Constants
     public const PRICES_HISTORY = 'prices_history';
     public const WAREHOUSE_PRICES_HISTORY = 'warehouse_prices_history';
     public const WAREHOUSE_SNACKS = 'warehouse_snacks';
+    public const SNACK_SELLS = 'snack_sells';
 }

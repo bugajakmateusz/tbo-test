@@ -26,4 +26,36 @@ final readonly class OrmMachineSnackRepository implements MachineSnackRepository
 
         return $machineSnack;
     }
+
+    public function getByPosition(int $machineId, int $snackId, string $snackPosition): MachineSnack
+    {
+        $machineClass = MachineSnack::class;
+        $query = $this->entityManager
+            ->createQuery(
+                <<<DQL
+                    SELECT ms
+                    FROM {$machineClass} AS ms
+                    WHERE ms.machine = :machine
+                        AND ms.snack = :snack
+                        AND ms.position = :position
+                        AND ms.quantity > 0
+                    ORDER BY ms.id DESC
+
+                    DQL
+            )
+        ;
+        $query->setParameters(
+            [
+                'machine' => $machineId,
+                'snack' => $snackId,
+                'position' => $snackPosition,
+            ],
+        );
+        $query->setMaxResults(1);
+
+        /** @var MachineSnack $machineSnack */
+        $machineSnack = $query->getSingleResult();
+
+        return $machineSnack;
+    }
 }

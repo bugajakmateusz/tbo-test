@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Tab\Domain\Model\Machine;
 
 use Tab\Domain\DomainException;
+use Tab\Domain\Model\Snack\PriceRepositoryInterface;
 use Tab\Domain\Model\Snack\Snack;
+use Tab\Domain\Model\Snack\SnackSell;
+use Tab\Domain\Model\Snack\SnackSellRepositoryInterface;
+use Tab\Domain\Service\ClockInterface;
 
 class MachineSnack
 {
@@ -57,6 +61,26 @@ class MachineSnack
         $quantityDiff = $newQuantity - $this->quantity;
         $this->snack->decreaseWarehouseQuantity($quantityDiff);
 
+        $this->quantity = $newQuantity;
+    }
+
+    public function sellSnack(
+        PriceRepositoryInterface $priceRepository,
+        ClockInterface $clock,
+        SnackSellRepositoryInterface $snackSellRepository,
+    ): void {
+        $newQuantity = $this->quantity - 1;
+        if ($newQuantity < 0) {
+            throw new DomainException('New quantity cannot be negative');
+        }
+        $price = $priceRepository
+            ->getActualPrice($this->machine, $this->snack)
+        ;
+        $sell = SnackSell::create(
+            $price,
+            $clock,
+        );
+        $snackSellRepository->add($sell);
         $this->quantity = $newQuantity;
     }
 }

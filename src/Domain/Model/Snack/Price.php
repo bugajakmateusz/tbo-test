@@ -36,4 +36,9 @@ class Price
             $clock->now(),
         );
     }
+
+    public function id(): int
+    {
+        return $this->id;
+    }
 }
