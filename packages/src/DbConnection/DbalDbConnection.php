@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tab\Packages\DbConnection;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 final readonly class DbalDbConnection implements DbConnectionInterface
 {
@@ -123,6 +124,13 @@ final readonly class DbalDbConnection implements DbConnectionInterface
                 $params,
                 $types,
             )
+        ;
+    }
+
+    public function createQueryBuilder(): QueryBuilder
+    {
+        return $this->connection
+            ->createQueryBuilder()
         ;
     }
 }
