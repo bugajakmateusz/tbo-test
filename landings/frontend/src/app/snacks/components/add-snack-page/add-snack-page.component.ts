@@ -63,6 +63,8 @@ export class AddSnackPageComponent implements OnInit {
       });
     }
     this.snacksService.addSnack(this.form.value.name!, prices);
+
+    this.goBack();
   }
 
   setPriceInAllMachines() {

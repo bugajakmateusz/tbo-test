@@ -22,5 +22,6 @@ export class AddMachinePageComponent {
       this.form.value.name!,
       this.form.value.note!
     );
+    this.form.reset();
   }
 }
