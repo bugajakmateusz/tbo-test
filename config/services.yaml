@@ -49,6 +49,7 @@ services:
         arguments:
             -
                 - '@Tab\Application\Schema\MachineSchema'
+                - '@Tab\Application\Schema\UserSchema'
 
     Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer:
         arguments:

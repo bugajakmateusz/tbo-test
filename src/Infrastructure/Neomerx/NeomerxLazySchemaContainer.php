@@ -9,7 +9,9 @@ use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Factories\Factory;
 use Psr\Container\ContainerInterface;
 use Tab\Application\Schema\MachineSchema;
+use Tab\Application\Schema\UserSchema;
 use Tab\Application\View\MachineView;
+use Tab\Application\View\UserView;
 use Tab\Packages\JsonApi\Infrastructure\NeomerxSchemaAdapter;
 
 final class NeomerxLazySchemaContainer implements SchemaContainerInterface
@@ -17,6 +19,7 @@ final class NeomerxLazySchemaContainer implements SchemaContainerInterface
     /** @var array<class-string,class-string> */
     public const TYPE_SCHEMAS_MAP = [
         MachineView::class => MachineSchema::class,
+        UserView::class => UserSchema::class,
     ];
 
     /** @var array<class-string,SchemaInterface> */
