@@ -28,6 +28,8 @@ class MachineSnack
             throw new DomainException('Quantity cannot be lower than or equal 0.');
         }
 
+        $snack->decreaseWarehouseQuantity($quantity);
+
         return new self(
             $machine,
             $snack->id(),
