@@ -40,6 +40,11 @@ final class SnackFieldsFactory
             $snackTypeFields,
             $snacksTableAlias,
         );
+        $this->addQuantity(
+            $snackFields,
+            $snackTypeFields,
+            $snacksTableAlias,
+        );
 
         return $snackFields;
     }
@@ -64,5 +69,26 @@ final class SnackFieldsFactory
                 "{$tableAlias}.{$databaseColumn}",
             );
         }
+    }
+
+    private function addQuantity(
+        JsonObject $snackFields,
+        Fields\TypeFields $snackTypeFields,
+        string $tableAlias,
+    ): void {
+        if (false === $snackTypeFields->hasField(SnackSchema::ATTRIBUTE_QUANTITY)) {
+            return;
+        }
+
+        $quantitySql = <<<SQL
+            (
+                SELECT w.quantity
+                FROM warehouse_snacks w
+                WHERE w.snack_id = {$tableAlias}.snack_id
+                LIMIT 1
+            )
+            SQL
+        ;
+        $snackFields->addField(SnackView::FIELD_RAW_QUANTITY, $quantitySql);
     }
 }
