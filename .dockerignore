@@ -17,3 +17,4 @@
 !/composer.lock
 !/phinx.php
 !/symfony.lock
+!/resources/scripts/phpstan-doctrine-object-manager.php
