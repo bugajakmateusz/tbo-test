@@ -1,4 +1,4 @@
-ARG node_20_version=20.6.0-alpine
+ARG node_20_version=20.5-alpine3.17
 
 FROM scratch AS config_files
 
