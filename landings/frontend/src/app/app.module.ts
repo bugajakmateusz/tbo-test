@@ -22,9 +22,10 @@ import { AddUserPageComponent } from './users/components/add-user-page/add-user-
 import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { FormComponent } from './shared/form/form.component';
-import { FormTextInputComponent } from './shared/components/form-text-input/form-text-input.component';
+import { FormInputComponent } from './shared/components/form-input/form-input.component';
 import { FormButtonComponent } from './shared/components/form-button/form-button.component';
 import { FormTextareaComponent } from './shared/components/form-textarea/form-textarea.component';
+import { FormSelectComponent } from './shared/components/form-select/form-select.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
@@ -90,9 +91,10 @@ const appRoutes: Routes = [
     PageLayoutComponent,
     LoginPageComponent,
     FormComponent,
-    FormTextInputComponent,
+    FormInputComponent,
     FormButtonComponent,
     FormTextareaComponent,
+    FormSelectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
   providers: [],
