@@ -7,7 +7,7 @@ COPY ./docker/fpm/prod_php.ini /config/php/conf.d/z-99-prod-php.ini
 COPY ./docker/fpm/www-pool-default.conf /config/php-fpm.d/zz-www-01.conf
 COPY ./docker/fpm/www-pool-prod.conf /config/php-fpm.d/zz-www-02.conf
 
-FROM php:8.2.8-fpm-alpine AS prod_base
+FROM php:8.2.9-fpm-alpine AS prod_base
 
 RUN apk update && \
     apk add --upgrade --no-cache \
