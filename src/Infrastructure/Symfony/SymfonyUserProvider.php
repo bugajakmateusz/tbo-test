@@ -24,7 +24,6 @@ final readonly class SymfonyUserProvider implements UserProviderInterface
 
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        \dump('test');
         if (empty($identifier)) {
             throw new UserNotFoundException('Empty username provided.');
         }

@@ -38,7 +38,6 @@ final class SymfonyJsonAuthenticator extends AbstractAuthenticator implements Au
         ] = $this->getCredentials($request);
 
         $userBadge = new UserBadge($identity);
-        \dump('passport');
 
         return new Passport(
             $userBadge,
@@ -48,10 +47,6 @@ final class SymfonyJsonAuthenticator extends AbstractAuthenticator implements Au
 
     public function supports(Request $request): bool
     {
-        \dump($request->get('_route'));
-        \dump($request->getMethod());
-        \dump($request->getRequestFormat());
-        \dump($request->getContentTypeFormat());
         return self::LOGIN_ROUTE === $request->get('_route')
             && Request::METHOD_POST === $request->getMethod()
             && (
