@@ -13,10 +13,6 @@ final readonly class DbalSnackExistsQuery implements SnackExistsQueryInterface
 
     public function query(string $snack): bool
     {
-        if ('' === $snack) {
-            return false;
-        }
-
         $statement = $this->connection
             ->fetchAssociative(
                 <<<'SQL'
