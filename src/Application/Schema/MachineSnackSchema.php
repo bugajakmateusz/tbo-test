@@ -12,6 +12,7 @@ final class MachineSnackSchema extends AbstractSchema
     public const ATTRIBUTE_QUANTITY = 'quantity';
     public const ATTRIBUTE_POSITION = 'position';
     public const ATTRIBUTE_PRICE = 'price';
+    public const ATTRIBUTE_LAST_UPDATED_AT = 'last_updated_at';
     public const RELATIONSHIP_SNACK = 'snack';
     public const RELATIONSHIP_MACHINE = 'machine';
 
@@ -27,6 +28,7 @@ final class MachineSnackSchema extends AbstractSchema
             self::ATTRIBUTE_QUANTITY => $resource->quantity,
             self::ATTRIBUTE_POSITION => $resource->position,
             self::ATTRIBUTE_PRICE => $resource->price,
+            self::ATTRIBUTE_LAST_UPDATED_AT => $resource->last_updated_at,
         ];
     }
 
