@@ -67,6 +67,54 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
         );
     }
 
+    public function test_some_machines_fields_can_be_updated(): void
+    {
+        // Arrange
+        $loggedUser = UserMother::random();
+        $machine = MachineMother::random();
+        $this->loadEntities(
+            $loggedUser,
+            $machine,
+        );
+        $client = $this->loggedJsonApiClient(
+            MachineSchema::class,
+            $loggedUser,
+        );
+        $location = Faker::word();
+
+        // Act
+        $response = $client->updateResource(
+            (string) $machine->id,
+            [
+                MachineSchema::ATTRIBUTE_LOCATION => $location,
+            ],
+        );
+
+        // Assert
+        self::assertSame(HttpStatusCodes::HTTP_NO_CONTENT, $response->statusCode());
+
+        // Act
+        $jsonApiResponse = $client->requestList(
+            additionalQueryParams: [
+                JsonApiKeywords::FIELDS => [
+                    'machines' => 'positionsNumber, positionsCapacity, location',
+                ],
+            ],
+        );
+
+        // Assert
+        $document = $jsonApiResponse->document();
+        $resource = $document->resourceAt(0);
+        $this->assertJsonApiAttributes(
+            $resource,
+            [
+                'location' => $location,
+                'positionsNumber' => $machine->positionNo,
+                'positionsCapacity' => $machine->positionCapacity,
+            ],
+        );
+    }
+
     /**
      * @param \Closure(): array{
      *     attributes: array<string, string>,
