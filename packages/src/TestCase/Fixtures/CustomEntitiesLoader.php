@@ -168,6 +168,7 @@ final class CustomEntitiesLoader
                         Tables\MachineSnack::FIELD_SNACK_ID => $snack->id,
                         Tables\MachineSnack::FIELD_QUANTITY => $machineSnack->quantity,
                         Tables\MachineSnack::FIELD_POSITION => $machineSnack->position,
+                        Tables\MachineSnack::FIELD_LAST_UPDATED_AT => $machineSnack->last_updated_at,
                     ],
                 )
             ;
