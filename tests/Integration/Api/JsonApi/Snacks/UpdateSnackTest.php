@@ -53,6 +53,7 @@ final class UpdateSnackTest extends JsonApiIntegrationTestCase
             $resource,
             [
                 'name' => $name,
+                'quantity' => 0,
             ],
         );
     }

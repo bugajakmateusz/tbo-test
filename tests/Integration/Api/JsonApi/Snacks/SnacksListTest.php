@@ -8,6 +8,7 @@ use Tab\Application\Schema\SnackSchema;
 use Tab\Packages\Constants\HttpStatusCodes;
 use Tab\Packages\TestCase\Mother\Entity\SnackMother;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
+use Tab\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
@@ -38,9 +39,11 @@ final class SnacksListTest extends JsonApiIntegrationTestCase
         // Arrange
         $snack = SnackMother::random();
         $loggedUser = UserMother::random();
+        $warehouseData = WarehouseSnackMother::fromSnack($snack);
         $this->loadEntities(
             $loggedUser,
             $snack,
+            $warehouseData,
         );
         $jsonApiClient = $this->loggedJsonApiClient(
             SnackSchema::class,
@@ -67,6 +70,7 @@ final class SnacksListTest extends JsonApiIntegrationTestCase
             $resource,
             [
                 'name' => $snack->name,
+                'quantity' => $warehouseData->quantity,
             ],
         );
     }
@@ -113,6 +117,7 @@ final class SnacksListTest extends JsonApiIntegrationTestCase
             $resource,
             [
                 'name' => $snack2->name,
+                'quantity' => 0,
             ],
         );
     }

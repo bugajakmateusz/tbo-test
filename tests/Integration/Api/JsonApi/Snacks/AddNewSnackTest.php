@@ -49,6 +49,7 @@ final class AddNewSnackTest extends JsonApiIntegrationTestCase
             $resource,
             [
                 'name' => $name,
+                'quantity' => 0,
             ],
         )
         ;
