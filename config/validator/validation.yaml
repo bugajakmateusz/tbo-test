@@ -12,3 +12,17 @@ Tab\Application\Command\AddNewMachine\AddNewMachine:
     positionsCapacity:
       - NotBlank: ~
       - GreaterThanOrEqual: 0
+
+Tab\Application\Command\UpdateMachine\UpdateMachine:
+  properties:
+    location:
+      - NotBlank:
+          normalizer: trim
+          groups: ['changedLocation']
+      - Length:
+          max: !php/const Tab\Domain\Model\Machine\Location::MAX_LENGTH
+          normalizer: trim
+    positionsNumber:
+      - GreaterThanOrEqual: 0
+    positionsCapacity:
+      - GreaterThanOrEqual: 0
