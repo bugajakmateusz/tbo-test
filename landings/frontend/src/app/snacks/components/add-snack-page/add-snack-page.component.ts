@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnacksService } from '../../services/snacks.service';
 import { MachinesService } from 'src/app/machines/services/machines.service';
 import { Machine } from 'src/app/machines/models/machine.model';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-add-snack-page',
@@ -27,7 +28,8 @@ export class AddSnackPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snacksService: SnacksService,
-    private machinesService: MachinesService
+    private machinesService: MachinesService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -55,16 +57,18 @@ export class AddSnackPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const prices = [];
-    for (const controlName in this.pricesForm.controls) {
-      prices.push({
-        machineName: controlName,
-        priceInMachine: this.pricesForm.get(controlName)!.value,
-      });
+    if (!this.submitButtonDisabled()) {
+      const prices = [];
+      for (const controlName in this.pricesForm.controls) {
+        prices.push({
+          machineName: controlName,
+          priceInMachine: this.pricesForm.get(controlName)!.value,
+        });
+      }
+      this.snacksService.addSnack(this.form.value.name!, prices);
+      this.goBack();
+      this.showAlert();
     }
-    this.snacksService.addSnack(this.form.value.name!, prices);
-
-    this.goBack();
   }
 
   setPriceInAllMachines() {
@@ -77,5 +81,16 @@ export class AddSnackPageComponent implements OnInit {
         this.fb.control(price, Validators.required)
       );
     });
+  }
+
+  showAlert() {
+    this.alertService.showAlertForTime('successAlert', 2000);
+  }
+
+  submitButtonDisabled() {
+    return (
+      !Object.values(this.pricesForm.value).every((el) => Number(el) > 0) ||
+      !this.pricesForm.valid
+    );
   }
 }

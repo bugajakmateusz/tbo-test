@@ -67,6 +67,7 @@
   noButtonText="Zamknij"
   yesButtonText="Zapisz"
   (callbackCalled)="onCallbackCalled()"
+  *ngIf="snacksForm.valid"
 >
   <p>Czy na pewno chcesz zmienić ceny w tej maszynie?</p>
 </app-modal>

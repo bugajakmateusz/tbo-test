@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MachinesService } from '../../services/machines.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-add-machine-page',
@@ -14,14 +15,22 @@ export class AddMachinePageComponent {
   });
   constructor(
     private fb: FormBuilder,
-    private machinesService: MachinesService
+    private machinesService: MachinesService,
+    private alertService: AlertService
   ) {}
 
   onSubmit() {
-    this.machinesService.addMachine(
-      this.form.value.name!,
-      this.form.value.note!
-    );
-    this.form.reset();
+    if (this.form.valid) {
+      this.machinesService.addMachine(
+        this.form.value.name!,
+        this.form.value.note!
+      );
+      this.form.reset();
+      this.showAlert();
+    }
+  }
+
+  showAlert() {
+    this.alertService.showAlertForTime('successAlert', 2000);
   }
 }

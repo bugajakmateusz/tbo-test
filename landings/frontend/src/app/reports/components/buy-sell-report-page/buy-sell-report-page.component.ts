@@ -18,12 +18,13 @@ export class BuySellReportPageComponent {
   ) {}
 
   onSubmit() {
-    this.reportsService.createBuySellReport(
-      this.form.value.dateFrom!,
-      this.form.value.dateTo!
-    );
-
-    this.form.reset();
+    if (!this.submitButtonDisabled()) {
+      this.reportsService.createBuySellReport(
+        this.form.value.dateFrom!,
+        this.form.value.dateTo!
+      );
+      this.form.reset();
+    }
   }
 
   submitButtonDisabled(): boolean {

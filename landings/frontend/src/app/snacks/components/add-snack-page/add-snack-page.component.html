@@ -28,6 +28,7 @@
         [control]="
           pricesForm.get('machine_' + i) | abstractControlToFormControl
         "
+        [min]="0"
       ></app-form-input>
       <div class="d-flex gap-3">
         <app-form-button
@@ -38,9 +39,14 @@
         <app-form-button
           text="Dodaj"
           (click)="onSubmit()"
-          [disabled]="!pricesForm.valid"
+          [disabled]="submitButtonDisabled()"
         ></app-form-button>
       </div>
     </div>
   </app-form>
 </ng-template>
+
+<app-alert
+  alertId="successAlert"
+  message="Przekąska dodana pomyślnie."
+></app-alert>

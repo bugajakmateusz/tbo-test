@@ -53,29 +53,40 @@ export class MachineReportPageComponent implements OnInit {
   }
 
   goNext() {
-    this.datesForm.setValue({
-      dateFrom: '',
-      dateTo: '',
-    });
-    this.showMachines = false;
+    if (!this.goNextButtonDisabled()) {
+      this.resetDatesForm();
+      this.showMachines = false;
+    }
   }
 
   goBack() {
+    this.resetMachinesForm();
+    this.showMachines = true;
+  }
+
+  resetMachinesForm() {
     this.machinesSelectedForm = new FormGroup({});
     this.machines.forEach((machine, index) => {
       const controlName = `machine_${index}`;
       this.machinesSelectedForm.addControl(controlName, this.fb.control(false));
     });
-    this.showMachines = true;
+  }
+
+  resetDatesForm() {
+    this.datesForm.setValue({
+      dateFrom: '',
+      dateTo: '',
+    });
   }
 
   onSubmit() {
-    this.reportsService.createMachinesReport(
-      this.datesForm.value.dateFrom!,
-      this.datesForm.value.dateTo!
-    );
-
-    this.goBack();
+    if (!this.submitButtonDisabled()) {
+      this.reportsService.createMachinesReport(
+        this.datesForm.value.dateFrom!,
+        this.datesForm.value.dateTo!
+      );
+      this.goBack();
+    }
   }
 
   goNextButtonDisabled(): boolean {

@@ -23,6 +23,7 @@
   noButtonText="Zamknij"
   yesButtonText="Przyjmij"
   (callbackCalled)="onSubmit()"
+  *ngIf="!buttonDisabled()"
 >
   <p>Czy na pewno chcesz przyjąć dostawę?</p>
 </app-modal>
