@@ -17,7 +17,7 @@
   <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navmenu">
     <ul class="navbar-nav flex-lg-column gap-lg-3 gap-1">
       <li class="nav-item">
-        <a class="nav-link" href="/"
+        <a class="nav-link" routerLink="/"
           ><i class="bi bi-house-door-fill me-2"></i>Strona Główna</a
         >
       </li>
@@ -34,7 +34,7 @@
         </a>
         <ul class="dropdown-menu">
           <li *ngFor="let option of link.options">
-            <a class="dropdown-item" href="{{ option.path }}">{{
+            <a class="dropdown-item" routerLink="{{ option.path }}">{{
               option.name
             }}</a>
           </li>
@@ -47,8 +47,8 @@
         >
       </li>
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a class="nav-link" href="auth"
-        ><i class="bi bi-house-door-fill me-2"></i>Zaloguj</a
+        <a class="nav-link" routerLink="auth"
+        ><i class="bi bi-box-arrow-right me-2"></i>Zaloguj</a
         >
       </li>
     </ul>
