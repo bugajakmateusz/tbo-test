@@ -1,0 +1,14 @@
+api.json.login:
+  path: 'login'
+  controller: 'Tab\UserInterface\Http\Json\LoginAction'
+  methods: POST
+
+api.json.test.login:
+  path: 'test-login'
+  controller: 'Tab\UserInterface\Http\Json\TestLoginAction'
+  format: html
+  methods: GET
+
+api.logout:
+  path: 'logout'
+  methods: GET

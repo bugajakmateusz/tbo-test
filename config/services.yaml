@@ -1,0 +1,61 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+    sodium_time_cost: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_TIME_COST'
+    sodium_memory_cost_kilobytes: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_KB'
+    sodium_memory_cost_bytes: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_BYTES'
+    default_timezone: 'Europe/Warsaw'
+    jwt_key: '%env(JWT_KEY)%'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    Tab\:
+        bind:
+            string $timezone: '%default_timezone%'
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    Tab\Packages\:
+        resource: '../packages/src'
+        bind:
+            League\Tactician\CommandBus $queryBus: '@tactician.commandbus.query_bus'
+            League\Tactician\CommandBus $commandBus: '@tactician.commandbus.command_bus'
+        #            Random\Randomizer $secureRandomizer: !service
+#                class: 'Random\Randomizer'
+#                arguments:
+#                    $engine: !service
+#                        class: 'Random\Engine\Secure'
+        exclude:
+            - '../packages/src/Constants'
+
+    Tab\UserInterface\Http\:
+        resource: '../src/UserInterface/Http/**/*.php'
+        public: true
+
+    Tab\Application\Query\:
+        resource: '../src/Application/Query/**/*Handler.php'
+        tags:
+            - { name: tactician.handler, typehints: true, bus: query_bus }
+
+#    Tab\Application\Command\:
+#        resource: '../src/Application/Command/**/*Handler.php'
+#        tags:
+#            - { name: tactician.handler, typehints: true, bus: command_bus }
+
+    Tab\Infrastructure\Symfony\Security\SymfonyAuthService:
+        arguments:
+            $userProvider: '@Tab\Infrastructure\Symfony\SymfonyUserProvider'
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones

@@ -1,0 +1,56 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-md-center">
+        <div class="col-lg-5 col-md-10">
+{#            {{ file_source(public_path ~ asset('build-bo/images/zwzt-logo.svg', 'back-office'))|raw }}#}
+            <hžž2>
+                Back Office
+            </hžž2>
+
+            {% if error %}
+                <div class="alert alert-danger mt-4" role="alert">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            <form id="login_form" class="mt-4">
+                <div class="form-group mt-2">
+                    <label for="username" class="mb-1">E-mail:</label>
+                    <input
+                        type="email"
+                        id="username"
+                        name="_username"
+                        value="{{ last_username }}"
+                        class="form-control"
+                        placeholder="Adres e-mail"
+                        required
+                    />
+                </div>
+                <div class="form-group mt-2">
+                    <label for="password" class="mb-1">Hasło:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="_password"
+                        class="form-control"
+                        placeholder="Hasło"
+                        required
+                    />
+                </div>
+
+                <p class="text-right mt-4">
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        id="submit"
+                    >
+                        Zaloguj się
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
