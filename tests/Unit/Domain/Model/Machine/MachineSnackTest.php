@@ -9,6 +9,7 @@ use Tab\Domain\Model\Machine\MachineSnack;
 use Tab\Domain\Model\Machine\SnackPosition;
 use Tab\Packages\Faker\Faker;
 use Tab\Packages\TestCase\UnitTestCase;
+use Tab\Tests\TestCase\Application\Mock\FakeClock;
 use Tab\Tests\TestCase\Application\Mother\MachineMother;
 use Tab\Tests\TestCase\Application\Mother\MachineSnackMother;
 use Tab\Tests\TestCase\Application\Mother\SnackMother;
@@ -36,6 +37,7 @@ final class MachineSnackTest extends UnitTestCase
             $snack,
             Faker::int(1, 10),
             $position,
+            new FakeClock(),
         );
     }
 
@@ -58,6 +60,7 @@ final class MachineSnackTest extends UnitTestCase
             $snack,
             Faker::int(max: 0),
             $position,
+            new FakeClock(),
         );
     }
 
@@ -71,7 +74,10 @@ final class MachineSnackTest extends UnitTestCase
         self::expectNotToPerformAssertions();
 
         // Act
-        $machineSnack->updateQuantity($quantity + 1);
+        $machineSnack->updateQuantity(
+            $quantity + 1,
+            new FakeClock(),
+        );
     }
 
     /**
@@ -96,7 +102,10 @@ final class MachineSnackTest extends UnitTestCase
         self::expectExceptionMessage('Quantity must be higher than current one.');
 
         // Act
-        $machineSnack->updateQuantity($quantity);
+        $machineSnack->updateQuantity(
+            $quantity,
+            new FakeClock(),
+        );
     }
 
     /** @return iterable<string, array{\Closure}> */

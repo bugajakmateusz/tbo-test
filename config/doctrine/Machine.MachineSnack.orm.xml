@@ -33,5 +33,6 @@
 
         <field name="position" type="string" />
         <field name="quantity" type="integer" />
+        <field name="updatedAt" column="last_updated_at" type="datetime_immutable" />
     </entity>
 </doctrine-mapping>
