@@ -11,6 +11,7 @@ use Tab\Application\Query\MachinesList\MachinesListView;
 use Tab\Application\Schema\MachineSchema;
 use Tab\Application\View\MachineView;
 use Tab\Packages\Collection\ObjectCollection;
+use Tab\Packages\Constants\HttpStatusCodes;
 use Tab\Packages\JsonApi\Application\Includes;
 use Tab\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
 use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
@@ -18,6 +19,7 @@ use Tab\Packages\ResourcesList\Fields;
 use Tab\Packages\ResourcesList\Filter;
 use Tab\Packages\ResourcesList\Filters;
 use Tab\Packages\ResourcesList\QueryParamsExtractorFactory;
+use Tab\Packages\Responder\Response\ResponseFactoryInterface;
 use Tab\Packages\Responder\Response\ResponseInterface;
 
 final readonly class MachineDetailsAction
@@ -26,6 +28,7 @@ final readonly class MachineDetailsAction
         private QueryBusInterface $queryBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
+        private ResponseFactoryInterface $responseFactory,
     ) {}
 
     public function __invoke(Request $request, int $machineId): ResponseInterface
@@ -57,6 +60,15 @@ final readonly class MachineDetailsAction
         /** @var ObjectCollection<MachineView> $machines */
         $machines = ObjectCollection::fromObjects(...$machinesListView->machines);
         $fields = $machinesListView->fields;
+
+        if (0 === $machines->count()) {
+            return $this->responseFactory
+                ->jsonResponse(
+                    [],
+                    HttpStatusCodes::HTTP_NOT_FOUND,
+                )
+            ;
+        }
 
         return $this->jsonApiResponseFactory
             ->resourceResponse(
