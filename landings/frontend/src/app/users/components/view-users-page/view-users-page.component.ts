@@ -3,7 +3,7 @@ import { UserDisplayed } from '../../models/user-displayed.model';
 import { User } from '../../models/user.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
-import { UsersMapperService } from 'src/app/users/services/users-mapper.service';
+import { UsersMapperService } from '../../../users/services/users-mapper.service';
 import { userRoleOptions } from '../../userRoleOptions';
 
 @Component({
@@ -12,7 +12,7 @@ import { userRoleOptions } from '../../userRoleOptions';
   styleUrls: ['./view-users-page.component.scss'],
 })
 export class ViewUsersPageComponent {
-  columns = ['ID', 'Nazwa', 'Nazwisko', 'Rola'];
+  columns = ['ID', 'Email', 'Nazwisko', 'Rola'];
 
   users: User[] = [];
   roles = userRoleOptions;
@@ -25,7 +25,7 @@ export class ViewUsersPageComponent {
   ];
 
   form = this.fb.group({
-    username: ['', Validators.required],
+    email: ['', Validators.required],
     password: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -39,15 +39,20 @@ export class ViewUsersPageComponent {
   ) {}
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();
-    this.displayedUsers = this.users.map((el) =>
-      this.usersMapperService.mapUserToUserDisplayed(el)
-    );
+    this.usersService.getUsers().subscribe(usersFromApi => {
+      this.users = usersFromApi.map(userFromApi => this.usersMapperService.mapUserFromApiToUser(userFromApi))
+      console.log("users", this.users)
+      this.displayedUsers = this.users.map((el) =>
+          this.usersMapperService.mapUserToUserDisplayed(el)
+      );    });
+    console.log("displayedUsers", this.displayedUsers)
+
+
   }
 
   editMachine() {
     this.usersService.editUser(
-      this.form.value.username!,
+      this.form.value.email!,
       this.form.value.password!,
       this.form.value.firstName!,
       this.form.value.lastName!,
@@ -67,7 +72,7 @@ export class ViewUsersPageComponent {
   setFormValuesToSelectedItem() {
     const user = this.usersService.getCurrentUser();
     this.form.setValue({
-      username: user.username,
+      email: user.email,
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,

@@ -14,8 +14,9 @@
     [disabled]="!form.valid"
   >
     <app-form-input
-      name="Nowa nazwa uzytkownika"
-      [control]="form.controls.username"
+      name="Nowy email"
+      type="email"
+      [control]="form.controls.email"
     ></app-form-input>
     <app-form-input
       name="Nowe imię"

@@ -1,0 +1,10 @@
+export interface UserFromApi {
+    type: string
+    id: string
+        attributes: {
+        email: string,
+        name: string,
+        surname: string,
+        roles: string[]
+    }
+}
