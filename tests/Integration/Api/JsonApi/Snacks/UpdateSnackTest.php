@@ -123,7 +123,7 @@ final class UpdateSnackTest extends JsonApiIntegrationTestCase
                     SnackSchema::ATTRIBUTE_NAME => '',
                 ],
                 'errors' => [
-                    'name' => ['This value should not be blank.'],
+                    'name' => ['Ta wartość nie powinna być pusta.'],
                 ],
             ],
         ];
@@ -134,7 +134,7 @@ final class UpdateSnackTest extends JsonApiIntegrationTestCase
                     SnackSchema::ATTRIBUTE_NAME => Faker::hexBytes(256),
                 ],
                 'errors' => [
-                    'name' => ['This value is too long. It should have 255 characters or less.'],
+                    'name' => ['Ta wartość jest zbyt długa. Powinna mieć 255 lub mniej znaków.'],
                 ],
             ],
         ];

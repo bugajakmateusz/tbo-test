@@ -127,7 +127,7 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
                     MachineSchema::ATTRIBUTE_LOCATION => '',
                 ],
                 'errors' => [
-                    'location' => ['This value should not be blank.'],
+                    'location' => ['Ta wartość nie powinna być pusta.'],
                 ],
             ],
         ];
@@ -139,8 +139,8 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
                     MachineSchema::ATTRIBUTE_POSITIONS_CAPACITY => Faker::int(-100, -1),
                 ],
                 'errors' => [
-                    'positionsNumber' => ['This value should be greater than or equal to 0.'],
-                    'positionsCapacity' => ['This value should be greater than or equal to 0.'],
+                    'positionsNumber' => ['Ta wartość powinna być większa bądź równa 0.'],
+                    'positionsCapacity' => ['Ta wartość powinna być większa bądź równa 0.'],
                 ],
             ],
         ];
