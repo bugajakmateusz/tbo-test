@@ -60,3 +60,8 @@ api.json.users.create:
   path: 'users'
   controller: 'Tab\UserInterface\Http\JsonApi\Users\CreateNewUserAction'
   methods: POST
+
+json-api.prices.create:
+  path: 'snacks-prices'
+  controller: 'Tab\UserInterface\Http\JsonApi\Prices\SetSnackPriceAction'
+  methods: POST
