@@ -30,6 +30,7 @@ final readonly class MachineFieldsFactory
 
     public function __construct(
         private MachineSnackFieldsFactory $machineSnackFieldsFactory,
+        private SnackPriceFieldsFactory $priceFieldsFactory,
     ) {}
 
     public function create(string $machinesTableAlias, Fields $typeFields): JsonObject
@@ -47,6 +48,12 @@ final readonly class MachineFieldsFactory
             $machinesTableAlias,
         );
         $this->addMachineSnack(
+            $machineFields,
+            $machineTypeFields,
+            $typeFields,
+            $machinesTableAlias,
+        );
+        $this->addSnackPrices(
             $machineFields,
             $machineTypeFields,
             $typeFields,
@@ -99,5 +106,38 @@ final readonly class MachineFieldsFactory
             SQL;
 
         $dataFields->addField(MachineView::FIELD_RAW_MACHINE_SNACKS, "({$machineSnacksSql})");
+    }
+
+    private function addSnackPrices(
+        JsonObject $dataFields,
+        Fields\TypeFields $typeFields,
+        Fields $fields,
+        string $tableAlias,
+    ): void {
+        if (false === $typeFields->hasField(MachineSchema::RELATIONSHIP_SNACK_PRICES)) {
+            return;
+        }
+
+        $pricesTableAlias = 'snack_prices';
+
+        $baseMachineSnacksFields = $this->priceFieldsFactory
+            ->create($pricesTableAlias, $fields)
+        ;
+
+        $jsonAggregate = new JsonArrayAggregate($baseMachineSnacksFields->toString());
+
+        $newestPriceSql = <<<"SQL"
+            SELECT {$jsonAggregate->toString()}
+            FROM prices_history {$pricesTableAlias}
+            WHERE {$pricesTableAlias}.machine_id = {$tableAlias}.machine_id
+            AND {$pricesTableAlias}.price_created_at = (
+                SELECT MAX(ph1.price_created_at)
+                FROM prices_history ph1
+                WHERE ph1.machine_id = {$tableAlias}.machine_id
+                    AND ph1.snack_id = {$pricesTableAlias}.snack_id
+            )
+            SQL;
+
+        $dataFields->addField(MachineView::FIELD_RAW_SNACKS_PRICES, "({$newestPriceSql})");
     }
 }
