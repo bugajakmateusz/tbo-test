@@ -54,6 +54,7 @@ services:
                 - '@Tab\Application\Schema\MachineSchema'
                 - '@Tab\Application\Schema\UserSchema'
                 - '@Tab\Application\Schema\MachineSnackSchema'
+                - '@Tab\Application\Schema\SnackPriceSchema'
 
     Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer:
         arguments:
