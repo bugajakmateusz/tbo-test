@@ -91,3 +91,9 @@ Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack:
     quantity:
       - NotBlank: ~
       - GreaterThan: 0
+
+Tab\Application\Command\UpdateSnackPrice\UpdateSnackPrice:
+  properties:
+    price:
+      - NotBlank: ~
+      - GreaterThan: 0.0
