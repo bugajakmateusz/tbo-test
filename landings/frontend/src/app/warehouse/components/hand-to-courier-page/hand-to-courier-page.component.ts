@@ -9,6 +9,7 @@ import {MachinesService} from "../../../machines/services/machines.service";
 import {SnacksService} from "../../../snacks/services/snacks.service";
 import {MachinesMapperService} from "../../../machines/services/machines-mapper.service";
 import {SnacksMapperService} from "../../../snacks/services/snacks-mapper.service";
+import {SnackInMachine2} from "../../../snacks/models/snack-in-machine-2.model";
 
 @Component({
   selector: 'app-hand-to-courier-page',
@@ -20,12 +21,14 @@ export class HandToCourierPageComponent {
   displayedMachines: {id: string, location: string}[] = []
   snacks: Snack[] = []
   snacksOptions: {name: string, value: string}[] = []
-  snacksInMachineDisplayed: SnackInMachineDisplayed[] = [];
+  snacksInMachineDisplayed: any[] = [];
   showMachines: boolean = true;
   chosenMachineLocation = '';
 
+  chosenSnackToPutMoreAmountNow = 0
+
   machinesListcolumns = ['ID', 'Lokalizacja'];
-  snacksListcolumns = ['ID', 'Nazwa', 'Pozycja', 'Ilość'];
+  snacksListcolumns = ['ID', 'Nazwa', 'Ilość', 'Pozycja'];
   machinesListButtons = [
     {
       text: 'Wybierz',
@@ -33,7 +36,7 @@ export class HandToCourierPageComponent {
     },
   ];
   snacksListButtons = [
-    { text: 'Zmień', action: 'changePrice' }
+    { text: 'Dodaj', action: 'changePrice' }
   ];
 
   form = this.fb.group({
@@ -44,11 +47,12 @@ export class HandToCourierPageComponent {
 
   addSnackForm = this.fb.group({
     snackId: ['', Validators.required],
-    price: ['', [Validators.required, Validators.min(1)]],
+    amount: ['', [Validators.required, Validators.min(1)]],
+    position: ['', [Validators.required, Validators.max(3)]]
   });
 
-  changePriceForm = this.fb.group({
-    price: ['', [Validators.required, Validators.min(1)]],
+  putSnackForm = this.fb.group({
+    amount: ['', [Validators.required, Validators.min(1)]],
   });
 
   constructor(
@@ -97,6 +101,7 @@ export class HandToCourierPageComponent {
     this.machinesService.id = event.id;
 
     if (event.action == 'changePrices') {
+      this.machinesService.machineSnackId = event.id
       this.getCurrentMachineData()
       this.showMachines = false;
     } else {
@@ -105,16 +110,19 @@ export class HandToCourierPageComponent {
   }
 
   getCurrentMachineData() {
-    this.machinesService.getMachineFromApi().subscribe(data => {
-      this.chosenMachineLocation = data.data.attributes.location
-      this.snacksInMachineDisplayed = []
+
+    this.machinesService.getMachineWithSnacksFromApi().subscribe(data => {
+        this.chosenMachineLocation = data.data.attributes.location
+      console.log(data)
+        this.snacksInMachineDisplayed = []
       data.included.filter((el:any) => el.type === "snacks").forEach((snack:any) => {
-        let newSnack: SnackInMachineDisplayed = {id: snack.id, name: snack.attributes.name, price: "1"}
+        let newSnack: SnackInMachine2 = {id: snack.id, name: snack.attributes.name, amount: "1", position: "pos"}
         this.snacksInMachineDisplayed.push(newSnack)
       })
-      data.included.filter((el:any) => el.type === "snacks-prices").forEach((snackPrice:any) => {
-        this.snacksInMachineDisplayed.find(snack => snack.id === snackPrice.relationships.snack.data.id)!.price = snackPrice.attributes.price
-      })
+      data.included.filter((el:any) => el.type === "machine-snacks").forEach((machineSnack:any) => {
+        this.snacksInMachineDisplayed.find(snack => snack.id === machineSnack.relationships.snack.data.id)!.position = machineSnack.attributes.position
+        this.snacksInMachineDisplayed.find(snack => snack.id === machineSnack.relationships.snack.data.id)!.amount = machineSnack.attributes.quantity
+        })
       this.getSnacksOptions()
     })
   }
@@ -123,8 +131,8 @@ export class HandToCourierPageComponent {
     this.machinesService.action = event.action;
     this.machinesService.snackInMachineId = event.id;
     this.snacksService.id = event.id
-    this.changePriceForm.setValue({
-      price: this.machinesService.getCurrentSnackPrice().price
+    this.putSnackForm.setValue({
+      amount: ""
     })
   }
 
@@ -152,17 +160,17 @@ export class HandToCourierPageComponent {
 
   addSnack() {
     if(this.addSnackForm.valid) {
-      this.machinesService.addSnackToMachine(this.addSnackForm.value.snackId!, this.addSnackForm.value.price!)
+      this.machinesService.putNewSnackToMachine(this.addSnackForm.value.snackId!, this.addSnackForm.value.amount!, this.addSnackForm.value.position!)
       this.addSnackForm.reset()
       this.getCurrentMachineData()
     }
   }
 
-  changePrice() {
-    if(this.changePriceForm.valid) {
-      this.machinesService.changePrice(this.changePriceForm.value.price!)
+  putMoreSnack() {
+    if(this.putSnackForm.valid) {
+      this.machinesService.putMoreSnacksToMachine(Number(this.putSnackForm.value.amount!), this.chosenSnackToPutMoreAmountNow)
       this.getCurrentMachineData()
-      this.changePriceForm.reset()
+      this.putSnackForm.reset()
     }
   }
 

@@ -33,7 +33,25 @@ export class WarehouseService {
             })
         );
   }
-  acceptDelivery(amount: number) {
+  acceptDelivery(amount: number, price: number) {
+    this.httpClient.post(`${this.configService.apiUrl}json-api/buys`, {
+      data: {
+        type: "buys",
+        attributes: {
+          price: price,
+          quantity: amount
+        },
+        relationships: {
+          snack: {
+            data: {
+              type: "snacks",
+              id: this.snackId
+            }
+          }
+        }
+      }
+    })
+      .subscribe(data => {this.updateServiceData()})
   }
 
   handToCourier(snacks: any) {

@@ -39,7 +39,7 @@ export class TableComponent implements OnInit {
   }
 
   paintRed(row: any) {
-    if(Object.keys(row).includes("amount") || row.amount === "0") {
+    if(Object.keys(row).includes("amount") && (row.amount === "0" || row.amount === 0)) {
       return "table-danger"
     }
     return ""

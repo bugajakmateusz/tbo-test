@@ -8,6 +8,7 @@ import {MachinesMapperService} from "./machines-mapper.service";
 import {MachineFromApi} from "../models/machine-from-api.model";
 import {ConfigService} from "../../config.service";
 import {SnackInMachineDisplayed} from "../models/snack-in-machine-displayed.model";
+import {SnackInMachine2} from "../../snacks/models/snack-in-machine-2.model";
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,13 @@ export class MachinesService {
   action = '';
   id = '';
 
+  snacksInMachine: SnackInMachine2[] = []
+
   snackInMachineId = '';
+
+  machineSnackId = ''
+
+  machineSnacksData: any
 
   constructor(private http: HttpClient, private machinesMapperService: MachinesMapperService, private configService: ConfigService) {
     this.login();
@@ -86,6 +93,33 @@ export class MachinesService {
           .subscribe(data => this.getMachineFromApi())
   }
 
+  putNewSnackToMachine(snackId: string, amount: string, position: string) {
+    this.http.post(`${this.configService.apiUrl}json-api/machine-snacks`, {
+      data: {
+        type: "machine-snacks",
+        attributes: {
+          quantity: amount,
+          position: position,
+        },
+        relationships: {
+          snack: {
+            data: {
+              type: "snacks",
+              id: snackId
+            }
+          },
+          machine: {
+            data: {
+              type: "machines",
+              id: this.id
+            }
+          }
+        }
+      }
+    })
+      .subscribe(data => this.getMachineFromApi())
+  }
+
   activateDeactivateMachine() {
     console.log(`activate/deactivate machine with ID: ${this.id}`);
   }
@@ -125,6 +159,49 @@ export class MachinesService {
 
   getMachine(id: string) {
     return this.machines.filter((el: Machine) => el.id === id)[0];
+  }
+
+  getMachineWithSnacksFromApi(): Observable<any> {
+    return this.http
+      .get<any>(`http://localhost:3100/api/json-api/machines/${this.id}?fields[machines]=location,machineSnacks&include=machineSnacks,machineSnacks.snack&fields[machine-snacks]=quantity,position,snack&fields[snacks]=name`)
+      .pipe(
+        map((response) => {
+          this.machineSnacksData = response
+
+          if (response) {
+            // console.log(response)
+            this.snacksInMachine = []
+            response.included.filter((el:any) => el.type === "snacks").forEach((snack:any) => {
+              let newSnack: SnackInMachine2 = {id: snack.id, name: snack.attributes.name, amount: "1", position: "pos"}
+              this.snacksInMachine.push(newSnack)
+            })
+            response.included.filter((el:any) => el.type === "machine-snacks").forEach((machineSnack:any) => {
+              this.snacksInMachine.find(snack => snack.id === machineSnack.relationships.snack.data.id)!.position = machineSnack.attributes.position
+              this.snacksInMachine.find(snack => snack.id === machineSnack.relationships.snack.data.id)!.amount = machineSnack.attributes.quantity
+
+            })
+            return response
+          }
+          return []; // If response is null return empty array for safety.
+        })
+      );
+  }
+
+  putMoreSnacksToMachine(amount: number, amountNow: number) {
+
+    let machineSnackIdToAdd = this.machineSnacksData.included.filter((el: any) => (el.type === 'machine-snacks' && el.relationships.snack.data.id === this.snackInMachineId))[0].id
+
+    console.log("putting more snack to machine")
+    this.http.patch(`${this.configService.apiUrl}json-api/machine-snacks/${machineSnackIdToAdd}`, {
+      data: {
+        id: machineSnackIdToAdd,
+        type: "machine-snacks",
+        attributes: {
+          quantity: amount + amountNow
+        }
+      }
+    })
+      .subscribe(data => console.log(data))
   }
 
   getMachineFromApi(): Observable<any> {
