@@ -365,28 +365,9 @@ final class Faker
         return self::faker()->mimeType();
     }
 
-    public static function nonDaylightTimeSavingDate(string $endDateModify): \DateTimeImmutable
+    public static function address(): string
     {
-        $maxRetries = 100;
-        $iterations = 0;
-        do {
-            $date = self::dateTimeBetween();
-            $beginDate = $date->setTime(0, 0);
-            $endDate = $date->modify($endDateModify);
-            $timezone = $date->getTimezone();
-            $transitions = $timezone->getTransitions(
-                $beginDate->getTimestamp(),
-                $endDate->getTimestamp(),
-            );
-            $hasTransition = \count($transitions) > 1;
-            ++$iterations;
-        } while ($hasTransition && $iterations < $maxRetries);
-
-        if ($iterations > $maxRetries) {
-            throw new \RuntimeException("Unable to generate satisfying date in {$iterations} iterations.");
-        }
-
-        return $date;
+        return self::faker()->address();
     }
 
     private static function faker(): Generator

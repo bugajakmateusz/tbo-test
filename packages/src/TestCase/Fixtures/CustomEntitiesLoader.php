@@ -7,12 +7,14 @@ namespace Tab\Packages\TestCase\Fixtures;
 use Doctrine\DBAL\Connection;
 use Tab\Packages\Constants\Database\Tables;
 use Tab\Packages\JsonSerializer\JsonSerializerInterface;
+use Tab\Packages\TestCase\Fixtures\Entity\Machine;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 final class CustomEntitiesLoader
 {
     private const PURGE_TABLES = [
         Tables::USERS,
+        Tables::MACHINES,
     ];
 
     public function __construct(
@@ -33,6 +35,9 @@ final class CustomEntitiesLoader
 
         $users = $this->filterObjects(User::class, ...$entities);
         $this->addUsers(...$users);
+
+        $machines = $this->filterObjects(Machine::class, ...$entities);
+        $this->addMachines(...$machines);
     }
 
     public function purgeTables(): void
@@ -70,7 +75,7 @@ final class CustomEntitiesLoader
 
             $addedUsers = $this->connection
                 ->insert(
-                    'users',
+                    Tables::USERS,
                     [
                         Tables\Users::FIELD_USER_ID => $user->id,
                         Tables\Users::FIELD_NAME => $user->name,
@@ -84,6 +89,27 @@ final class CustomEntitiesLoader
 
             if (1 !== $addedUsers) {
                 throw new \RuntimeException('Unable to add new user.');
+            }
+        }
+    }
+
+    private function addMachines(Machine ...$machines): void
+    {
+        foreach ($machines as $machine) {
+            $addedMachines = $this->connection
+                ->insert(
+                    Tables::MACHINES,
+                    [
+                        Tables\Machines::FIELD_MACHINE_ID => $machine->id,
+                        Tables\Machines::FIELD_LOCATION => $machine->location,
+                        Tables\Machines::FIELD_POSITIONS_NUMBER => $machine->positionNo,
+                        Tables\Machines::FIELD_POSITIONS_CAPACITY => $machine->positionCapacity,
+                    ],
+                )
+            ;
+
+            if (1 !== $addedMachines) {
+                throw new \RuntimeException('Unable to add new machine.');
             }
         }
     }
