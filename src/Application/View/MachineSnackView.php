@@ -11,6 +11,7 @@ namespace Tab\Application\View;
  *      id?: int,
  *      position?: string,
  *      quantity?: int,
+ *      price?: float,
  *      snack?: SnackData,
  *  }
  */
@@ -19,12 +20,14 @@ final readonly class MachineSnackView
     public const FIELD_RAW_ID = 'id';
     public const FIELD_RAW_QUANTITY = 'quantity';
     public const FIELD_RAW_POSITION = 'position';
+    public const FIELD_RAW_PRICE = 'price';
     public const FIELD_RAW_SNACK = 'snack';
 
     private function __construct(
         public int $id,
         public int $quantity,
         public string $position,
+        public float $price,
         public SnackView $snack,
     ) {
     }
@@ -36,6 +39,7 @@ final readonly class MachineSnackView
             $data[self::FIELD_RAW_ID] ?? 0,
             $data[self::FIELD_RAW_QUANTITY] ?? 0,
             $data[self::FIELD_RAW_POSITION] ?? '',
+            $data[self::FIELD_RAW_PRICE] ?? 0.0,
             SnackView::fromArray($data[self::FIELD_RAW_SNACK] ?? []),
         );
     }
