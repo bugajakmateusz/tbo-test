@@ -4,3 +4,13 @@ parameters:
 			message: "#^Call to an undefined method object\\:\\:withHttpClient\\(\\)\\.$#"
 			count: 1
 			path: packages/src/TestCase/IntegrationTestCase.php
+
+		-
+			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable\\<Tab\\\\Domain\\\\Model\\\\Machine\\\\MachineSnack\\> given\\.$#"
+			count: 1
+			path: src/Domain/Model/Machine/Machine.php
+
+		-
+			message: "#^Property Tab\\\\Domain\\\\Model\\\\Machine\\\\Machine\\:\\:\\$snacks type mapping mismatch\\: property can contain iterable\\<Tab\\\\Domain\\\\Model\\\\Machine\\\\MachineSnack\\> but database expects Doctrine\\\\Common\\\\Collections\\\\Collection&iterable\\<Tab\\\\Domain\\\\Model\\\\Machine\\\\MachineSnack\\>\\.$#"
+			count: 1
+			path: src/Domain/Model/Machine/Machine.php
