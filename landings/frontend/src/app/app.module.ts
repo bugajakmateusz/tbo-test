@@ -21,7 +21,6 @@ import { BuySellReportPageComponent } from './reports/components/buy-sell-report
 import { ViewUsersPageComponent } from './users/components/view-users-page/view-users-page.component';
 import { AddUserPageComponent } from './users/components/add-user-page/add-user-page.component';
 import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
-import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { FormComponent } from './shared/form/form.component';
 import { FormInputComponent } from './shared/components/form-text-input/form-input.component';
 import { FormButtonComponent } from './shared/components/form-button/form-button.component';
@@ -32,10 +31,10 @@ import { ModalComponent } from './shared/components/modal/modal.component';
 import { ObjectToArrayPipe } from './shared/pipes/object-to-array.pipe';
 import { AbstractControlToFormControlPipe } from './shared/pipes/abstract-control-to-form-control.pipe';
 import { AlertComponent } from './shared/components/alert/alert.component';
+import { AuthPageComponent } from './auth/components/auth-page/auth-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'login', component: LoginPageComponent },
   {
     path: 'warehouse',
     children: [
@@ -73,6 +72,10 @@ const appRoutes: Routes = [
       { path: 'add', component: AddUserPageComponent },
     ],
   },
+  {
+    path: 'auth',
+    component: AuthPageComponent
+  }
 ];
 
 @NgModule({
@@ -93,7 +96,6 @@ const appRoutes: Routes = [
     ViewUsersPageComponent,
     AddUserPageComponent,
     PageLayoutComponent,
-    LoginPageComponent,
     FormComponent,
     FormInputComponent,
     FormButtonComponent,
@@ -104,6 +106,7 @@ const appRoutes: Routes = [
     ObjectToArrayPipe,
     AbstractControlToFormControlPipe,
     AlertComponent,
+    AuthPageComponent,
   ],
   imports: [
     BrowserModule,

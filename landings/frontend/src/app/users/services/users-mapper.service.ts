@@ -10,25 +10,26 @@ export class UsersMapperService {
   mapUserToUserDisplayed(user: User): UserDisplayed {
     const { id, email } = user;
     const fullName = `${user.firstName} ${user.lastName}`;
-    let roles =  user.roles.join(', ')
-    // switch (user.roles[0]) {
-    //   case 'admin': {
-    //     roles = 'Admin';
-    //     break;
-    //   }
-    //   case 'office': {
-    //     roles = 'Pracownik biurowy';
-    //     break;
-    //   }
-    //   case 'warehouse': {
-    //     roles = 'Pracownik magazynu';
-    //     break;
-    //   }
-    //   case 'courier': {
-    //     roles = 'Kurier';
-    //     break;
-    //   }
-    // }
+    let roles =  user.roles.filter((role: string) => role !== "ROLE_USER").map((role: string) => {
+      switch (role) {
+        case 'ROLE_ADMIN': {
+          return 'Admin';
+        }
+        case 'ROLE_OFFICE_MANAGER': {
+          return 'Pracownik biurowy';
+        }
+        case 'ROLE_LOGISTIC_MANAGER': {
+          return 'Pracownik magazynu';
+        }
+        case 'ROLE_COURIER': {
+          return 'Kurier';
+        }
+        default: {
+          return role
+        }
+      }
+    }).join(', ')
+
     return { id, email, fullName, roles };
   }
 
