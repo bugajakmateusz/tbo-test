@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Integration\Api\JsonApi\Machines;
+namespace Tab\Tests\Integration\Api\JsonApi\Machines;
 
 use Tab\Application\Schema\MachineSchema;
 use Tab\Packages\Constants\HttpStatusCodes;
