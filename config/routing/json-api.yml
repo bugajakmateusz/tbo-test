@@ -21,3 +21,8 @@ json-api.machines.remove:
   methods: DELETE
   requirements:
     machineId: \d+
+
+json-api.users.list:
+  path: 'users'
+  controller: 'Tab\UserInterface\Http\JsonApi\Users\UsersListAction'
+  methods: GET
