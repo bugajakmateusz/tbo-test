@@ -75,8 +75,8 @@ final class AddNewMachineTest extends JsonApiIntegrationTestCase
             $loggedUser,
         );
         $location = '';
-        $positionNo = Faker::int(-100, 0);
-        $positionCapacity = Faker::int(-100, 0);
+        $positionNo = Faker::int(-100, -1);
+        $positionCapacity = Faker::int(-100, -1);
 
         // Act
         $response = $client->createResource(
