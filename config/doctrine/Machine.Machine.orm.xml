@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          ../../vendor/doctrine/orm/doctrine-mapping.xsd"
+>
+    <entity name="Tab\Domain\Model\Machine\Machine" table="machines">
+        <id name="id" type="integer" column="machine_id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="location" type="string" />
+        <field name="positionNumber" type="integer" column="positions_no" />
+        <field name="positionCapacity" type="integer" column="positions_capacity" />
+    </entity>
+</doctrine-mapping>
