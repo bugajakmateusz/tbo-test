@@ -32,4 +32,10 @@ export class BuySellReportPageComponent {
       !this.form.valid || this.form.value.dateFrom! > this.form.value.dateTo!
     );
   }
+
+  submitButtonDisabled(): boolean {
+    return (
+      !this.form.valid || this.form.value.dateFrom! > this.form.value.dateTo!
+    );
+  }
 }
