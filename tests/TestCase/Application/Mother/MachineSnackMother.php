@@ -46,7 +46,7 @@ final class MachineSnackMother
         return MachineSnack::create(
             $machine,
             $snack,
-            Faker::intId(),
+            Faker::int(1, 10),
             $positionVO,
         );
     }

@@ -81,6 +81,7 @@ Tab\Application\Command\AddNewUser\AddNewUser:
 Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack:
   constraints:
     - Tab\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken: ~
+    - Tab\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
   properties:
     position:
       - NotBlank:

@@ -1,2 +1,4 @@
 email.already_exist: 'E-mail już istnieje.'
-machine.position_taken: 'Na tej pozycji znajduje się już przekąska'
+machine.position_taken: 'Na tej pozycji znajduje się już przekąska.'
+warehouse:
+  too_low_product: 'Brak wystarczającej ilości produktu na magazynie.'

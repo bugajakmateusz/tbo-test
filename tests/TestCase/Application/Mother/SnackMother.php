@@ -53,7 +53,7 @@ final class SnackMother
             Faker::intId(),
         );
 
-        $snack->addWarehouseQuantity(Faker::int(min: 100));
+        $snack->addWarehouseQuantity(Faker::int(100, 1000));
 
         return $snack;
     }

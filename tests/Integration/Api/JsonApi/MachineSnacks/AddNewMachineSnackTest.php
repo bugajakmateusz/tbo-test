@@ -152,7 +152,10 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
                 ],
                 'errors' => [
                     MachineSnackSchema::ATTRIBUTE_POSITION => ['Ta wartość nie powinna być pusta.'],
-                    MachineSnackSchema::ATTRIBUTE_QUANTITY => ['Ta wartość powinna być większa niż 0.'],
+                    MachineSnackSchema::ATTRIBUTE_QUANTITY => [
+                        'Brak wystarczającej ilości produktu na magazynie.',
+                        'Ta wartość powinna być większa niż 0.',
+                    ],
                 ],
                 'entities' => [],
                 'machineId' => Faker::intId(),
@@ -161,18 +164,29 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
         ];
 
         yield 'position too long' => [
-            static fn (): array => [
-                'attributes' => [
-                    MachineSnackSchema::ATTRIBUTE_POSITION => Faker::hexBytes(4),
-                    MachineSnackSchema::ATTRIBUTE_QUANTITY => Faker::intId(),
-                ],
-                'errors' => [
-                    MachineSnackSchema::ATTRIBUTE_POSITION => ['Ta wartość jest zbyt długa. Powinna mieć 3 lub mniej znaków.'],
-                ],
-                'entities' => [],
-                'machineId' => Faker::intId(),
-                'snackId' => Faker::intId(),
-            ],
+            static function (): array {
+                $position = Faker::hexBytes(5);
+                $machine = MachineMother::random();
+                $snack = SnackMother::random();
+                $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
+
+                return [
+                    'attributes' => [
+                        MachineSnackSchema::ATTRIBUTE_POSITION => $position,
+                        MachineSnackSchema::ATTRIBUTE_QUANTITY => $warehouseSnack->quantity - 1,
+                    ],
+                    'errors' => [
+                        MachineSnackSchema::ATTRIBUTE_POSITION => ['Ta wartość jest zbyt długa. Powinna mieć 3 lub mniej znaków.'],
+                    ],
+                    'entities' => [
+                        $machine,
+                        $snack,
+                        $warehouseSnack,
+                    ],
+                    'machineId' => $machine->id,
+                    'snackId' => $snack->id,
+                ];
+            },
         ];
 
         yield 'with taken position' => [
@@ -180,23 +194,50 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
                 $position = Faker::hexBytes(3);
                 $machine = MachineMother::random();
                 $snack = SnackMother::random();
+                $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
 
                 return [
                     'attributes' => [
                         MachineSnackSchema::ATTRIBUTE_POSITION => $position,
-                        MachineSnackSchema::ATTRIBUTE_QUANTITY => Faker::intId(),
+                        MachineSnackSchema::ATTRIBUTE_QUANTITY => $warehouseSnack->quantity - 1,
                     ],
                     'errors' => [
-                        MachineSnackSchema::ATTRIBUTE_POSITION => ['Na tej pozycji znajduje się już przekąska'],
+                        MachineSnackSchema::ATTRIBUTE_POSITION => ['Na tej pozycji znajduje się już przekąska.'],
                     ],
                     'entities' => [
                         $machine,
                         $snack,
+                        $warehouseSnack,
                         MachineSnackMother::fromEntities(
                             $machine,
                             $snack,
                             $position,
                         ),
+                    ],
+                    'machineId' => $machine->id,
+                    'snackId' => $snack->id,
+                ];
+            },
+        ];
+
+        yield 'with too low product in warehourse' => [
+            static function (): array {
+                $machine = MachineMother::random();
+                $snack = SnackMother::random();
+                $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
+
+                return [
+                    'attributes' => [
+                        MachineSnackSchema::ATTRIBUTE_POSITION => Faker::hexBytes(3),
+                        MachineSnackSchema::ATTRIBUTE_QUANTITY => $warehouseSnack->quantity + 1,
+                    ],
+                    'errors' => [
+                        MachineSnackSchema::ATTRIBUTE_QUANTITY => ['Brak wystarczającej ilości produktu na magazynie.'],
+                    ],
+                    'entities' => [
+                        $machine,
+                        $snack,
+                        $warehouseSnack,
                     ],
                     'machineId' => $machine->id,
                     'snackId' => $snack->id,

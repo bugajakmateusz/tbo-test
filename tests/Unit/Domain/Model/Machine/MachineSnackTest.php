@@ -33,7 +33,7 @@ final class MachineSnackTest extends UnitTestCase
         MachineSnack::create(
             $machine,
             $snack,
-            Faker::intId(),
+            Faker::int(1, 10),
             $position,
         );
     }
