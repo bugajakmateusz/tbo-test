@@ -13,4 +13,5 @@ final class Tables extends Constants
     public const SNACKS = 'snacks';
     public const MACHINE_SNACKS = 'machine_snacks';
     public const PRICES_HISTORY = 'prices_history';
+    public const WAREHOUSE_SNACKS = 'warehouse_snacks';
 }
