@@ -48,6 +48,7 @@ services:
         tags: ['container.service_locator']
         arguments:
             -
+                - '@Tab\Application\Schema\SnackSchema'
                 - '@Tab\Application\Schema\MachineSchema'
                 - '@Tab\Application\Schema\UserSchema'
 
