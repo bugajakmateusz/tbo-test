@@ -61,6 +61,13 @@ api.json.users.create:
   controller: 'Tab\UserInterface\Http\JsonApi\Users\CreateNewUserAction'
   methods: POST
 
+json-api.users.update:
+  path: 'users/{userId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\Users\UpdateUserAction'
+  methods: PATCH
+  requirements:
+    userId: \d+
+
 json-api.prices.create:
   path: 'snacks-prices'
   controller: 'Tab\UserInterface\Http\JsonApi\Prices\SetSnackPriceAction'
