@@ -1,0 +1,20 @@
+<table>
+    <thead>
+    <tr>
+        <th>Machine ID</th>
+        <th>Snack ID</th>
+        <th>Quantity</th>
+        <th>Snack Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for stockView in machineReportView.stockViews %}
+    <tr>
+        <td>{{ stockView.machineId }}</td>
+        <td>{{ stockView.snackId }}</td>
+        <td>{{ stockView.quantity }}</td>
+        <td>{{ stockView.snackName }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

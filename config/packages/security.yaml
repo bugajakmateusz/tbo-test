@@ -51,4 +51,5 @@ security:
         - { path: ^/api/json-api/machine-snacks, methods: [POST, PATCH], role: [ROLE_COURIER] }
         - { path: ^/api/json-api/buys, methods: [POST], role: ROLE_LOGISTIC_MANAGER }
         - { path: ^/api/doc, role: PUBLIC_ACCESS }
+        - { path: ^/api/reports, role: PUBLIC_ACCESS }
         - { path: ^/api/, role: ROLE_USER }

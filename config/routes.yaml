@@ -10,6 +10,12 @@ json-api:
     defaults:
         _format: 'json'
 
+report:
+    resource: './routing/reports.yml'
+    prefix: '/api/reports'
+    defaults:
+        _format: 'json'
+
 api.test.login:
     path: 'test-login'
     controller: 'Tab\UserInterface\Http\Json\TestLoginAction'
