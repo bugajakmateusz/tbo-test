@@ -13,4 +13,5 @@ final class MachineSnack extends Constants
     public const FIELD_SNACK_ID = 'snack_id';
     public const FIELD_QUANTITY = 'quantity';
     public const FIELD_POSITION = 'position';
+    public const FIELD_LAST_UPDATED_AT = 'last_updated_at';
 }
