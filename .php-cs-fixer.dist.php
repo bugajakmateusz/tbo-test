@@ -38,6 +38,7 @@ return (new PhpCsFixer\Config())
             '@PHP74Migration:risky' => true,
             '@PHPUnit75Migration:risky' => true,
             '@PHPUnit84Migration:risky' => true,
+            '@PHP82Migration' => true,
             'linebreak_after_opening_tag' => true,
             'php_unit_method_casing' => ['case' => 'snake_case'],
             'php_unit_test_class_requires_covers' => false,
