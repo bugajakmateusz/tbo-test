@@ -20,4 +20,10 @@ class Snack
             $name->toString(),
         );
     }
+
+    public function changeName(
+        Name $newName,
+    ): void {
+        $this->name = $newName->toString();
+    }
 }
