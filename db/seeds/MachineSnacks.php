@@ -57,6 +57,7 @@ final class MachineSnacks extends AbstractSeed
      *     machine_id: int,
      *     quantity: int,
      *     position: string,
+     *     last_updated_at: string,
      * }
      */
     private function createData(int $machineId, int $snackId): array
@@ -66,6 +67,7 @@ final class MachineSnacks extends AbstractSeed
             'machine_id' => $machineId,
             'quantity' => Faker::int(0, 1000),
             'position' => Faker::hexBytes(3),
+            'last_updated_at' => Faker::dateTimeBetween('-1 year')->format('Y-m-d H:i:s'),
         ];
     }
 }
