@@ -10,6 +10,7 @@ final class SnackBuySchema extends AbstractSchema
 {
     public const TYPE = 'buys';
     public const ATTRIBUTE_PRICE = 'price';
+    public const ATTRIBUTE_QUANTITY = 'quantity';
     public const RELATIONSHIP_SNACK = 'snack';
 
     public function resourceType(): string
@@ -22,6 +23,7 @@ final class SnackBuySchema extends AbstractSchema
     {
         return [
             self::ATTRIBUTE_PRICE => $resource->price,
+            self::ATTRIBUTE_QUANTITY => $resource->quantity,
         ];
     }
 

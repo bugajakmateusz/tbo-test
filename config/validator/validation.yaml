@@ -142,3 +142,6 @@ Tab\Application\Command\BuySnack\BuySnack:
     price:
       - NotBlank: ~
       - GreaterThan: 0.0
+    quantity:
+      - NotBlank: ~
+      - GreaterThan: 0

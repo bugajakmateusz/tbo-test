@@ -27,6 +27,7 @@ final class BuySnackHandler
             $snack,
             $this->clock,
             $command->price,
+            $command->quantity,
         );
 
         $this->buyRepository

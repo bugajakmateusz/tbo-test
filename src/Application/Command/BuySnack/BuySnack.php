@@ -9,5 +9,6 @@ final readonly class BuySnack
     public function __construct(
         public int $snackId,
         public float $price,
+        public int $quantity,
     ) {}
 }

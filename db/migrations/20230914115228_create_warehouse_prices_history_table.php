@@ -32,6 +32,13 @@ final class CreateWarehousePricesHistoryTable extends AbstractMigration
                 ],
             )
             ->addColumn(
+                Tables\WarehousePricesHistory::FIELD_QUANTITY,
+                'integer',
+                [
+                    'null' => false,
+                ],
+            )
+            ->addColumn(
                 Tables\WarehousePricesHistory::FIELD_BUY_DATE,
                 'datetime',
                 [

@@ -64,6 +64,11 @@ final readonly class BuySnackAction
      *                          type="float",
      *                          example=12.22,
      *                      ),
+     *                  @OA\Property(
+     *                           property="quantity",
+     *                           type="int",
+     *                           example=5,
+     *                       ),
      *                  ),
      *                  @OA\Property(
      *                       property="relationships",
@@ -132,6 +137,7 @@ final readonly class BuySnackAction
         return new BuySnack(
             (int) $snackId,
             (float) ($attributes[SnackBuySchema::ATTRIBUTE_PRICE] ?? 0.0),
+            (int) ($attributes[SnackBuySchema::ATTRIBUTE_QUANTITY] ?? 0),
         );
     }
 
