@@ -7,6 +7,7 @@ namespace Tab\Tests\TestCase\Application\Mother;
 use Tab\Domain\Model\Machine\MachineSnack;
 use Tab\Domain\Model\Machine\SnackPosition;
 use Tab\Packages\Faker\Faker;
+use Tab\Tests\TestCase\Application\Mock\FakeClock;
 use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class MachineSnackMother
@@ -41,6 +42,7 @@ final class MachineSnackMother
     ): MachineSnack {
         $machine = MachineMother::random();
         $snack = SnackMother::random();
+        $clock = FakeClock::getInstance();
         $positionVO = SnackPosition::fromString(
             $position ?? Faker::hexBytes(3),
         );
@@ -50,6 +52,7 @@ final class MachineSnackMother
             $snack,
             Faker::int(1, 10),
             $positionVO,
+            $clock,
         );
     }
 }

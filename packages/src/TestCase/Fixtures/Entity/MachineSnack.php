@@ -12,5 +12,6 @@ final readonly class MachineSnack
         public Snack $snack,
         public string $position,
         public int $quantity,
+        public string $last_updated_at,
     ) {}
 }

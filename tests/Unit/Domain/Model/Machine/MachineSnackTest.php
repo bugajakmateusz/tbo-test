@@ -9,6 +9,7 @@ use Tab\Domain\Model\Machine\MachineSnack;
 use Tab\Domain\Model\Machine\SnackPosition;
 use Tab\Packages\Faker\Faker;
 use Tab\Packages\TestCase\UnitTestCase;
+use Tab\Tests\TestCase\Application\Mock\FakeClock;
 use Tab\Tests\TestCase\Application\Mother\MachineMother;
 use Tab\Tests\TestCase\Application\Mother\MachineSnackMother;
 use Tab\Tests\TestCase\Application\Mother\SnackMother;
@@ -23,6 +24,7 @@ final class MachineSnackTest extends UnitTestCase
         // Arrange
         $machine = MachineMother::random();
         $snack = SnackMother::random();
+        $clock = FakeClock::getInstance();
         $position = SnackPosition::fromString(
             Faker::hexBytes(3),
         );
@@ -36,6 +38,7 @@ final class MachineSnackTest extends UnitTestCase
             $snack,
             Faker::int(1, 10),
             $position,
+            $clock,
         );
     }
 
@@ -44,6 +47,7 @@ final class MachineSnackTest extends UnitTestCase
         // Arrange
         $machine = MachineMother::random();
         $snack = SnackMother::random();
+        $clock = FakeClock::getInstance();
         $position = SnackPosition::fromString(
             Faker::hexBytes(3),
         );
@@ -58,6 +62,7 @@ final class MachineSnackTest extends UnitTestCase
             $snack,
             Faker::int(max: 0),
             $position,
+            $clock,
         );
     }
 
@@ -66,12 +71,13 @@ final class MachineSnackTest extends UnitTestCase
         // Arrange
         $quantity = Faker::int(2, 10);
         $machineSnack = MachineSnackMother::withQuantity($quantity);
+        $clock = FakeClock::getInstance();
 
         // Expect
         self::expectNotToPerformAssertions();
 
         // Act
-        $machineSnack->updateQuantity($quantity + 1);
+        $machineSnack->updateQuantity($quantity + 1, $clock);
     }
 
     /**
@@ -90,13 +96,14 @@ final class MachineSnackTest extends UnitTestCase
             'machineSnack' => $machineSnack,
             'quantity' => $quantity,
         ] = $createParams();
+        $clock = FakeClock::getInstance();
 
         // Expect
         self::expectException(DomainException::class);
         self::expectExceptionMessage('Quantity must be higher than current one.');
 
         // Act
-        $machineSnack->updateQuantity($quantity);
+        $machineSnack->updateQuantity($quantity, $clock);
     }
 
     /** @return iterable<string, array{\Closure}> */
