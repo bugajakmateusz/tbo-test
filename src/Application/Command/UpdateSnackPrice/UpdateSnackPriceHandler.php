@@ -10,7 +10,7 @@ use Tab\Domain\Model\Snack\PriceRepositoryInterface;
 use Tab\Domain\Model\Snack\SnackRepositoryInterface;
 use Tab\Domain\Service\ClockInterface;
 
-final class UpdateSnackPriceHandler
+final readonly class UpdateSnackPriceHandler
 {
     public function __construct(
         private MachineRepositoryInterface $machineRepository,
