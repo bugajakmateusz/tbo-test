@@ -38,7 +38,7 @@ final readonly class LoginAction
      *             @OA\Property(
      *                 property="password",
      *                 type="string",
-     *                 example="test",
+     *                 example="tab-admin",
      *             ),
      *         ),
      *     ),
