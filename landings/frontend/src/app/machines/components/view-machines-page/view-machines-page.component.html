@@ -1,1 +1,34 @@
-<p>view-machines-page works!</p>
+<app-table
+  title="Lista maszyn"
+  [columns]="columns"
+  [rows]="displayedMachines"
+  [buttons]="buttons"
+  (actionChosen)="onActionChosen($event)"
+>
+  <app-modal
+    modalId="modal1"
+    title="Edytuj maszynę"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <app-form-input
+      name="Nowa nazwa maszyny"
+      [control]="form.controls.name"
+    ></app-form-input>
+    <app-form-textarea
+      name="Nowa notatka"
+      [control]="form.controls.note"
+    ></app-form-textarea>
+  </app-modal>
+
+  <app-modal
+    modalId="modal2"
+    title="Zmień status maszyny"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <p>Czy na pewno chcesz zmienić status tej maszyny?</p>
+  </app-modal>
+</app-table>

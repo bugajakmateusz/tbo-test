@@ -1,1 +1,47 @@
-<p>view-users-page works!</p>
+<app-table
+  title="Lista uzytkowników"
+  [columns]="columns"
+  [rows]="displayedUsers"
+  [buttons]="buttons"
+  (actionChosen)="onActionChosen($event)"
+>
+  <app-modal
+    modalId="modal1"
+    title="Edytuj uzytkownika"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <app-form-input
+      name="Nowa nazwa uzytkownika"
+      [control]="form.controls.username"
+    ></app-form-input>
+    <app-form-input
+      name="Nowe imię"
+      [control]="form.controls.firstName"
+    ></app-form-input>
+    <app-form-input
+      name="Nowe nazwisko"
+      [control]="form.controls.lastName"
+    ></app-form-input>
+    <app-form-input
+      name="Nowe hasło"
+      [control]="form.controls.password"
+    ></app-form-input>
+    <app-form-select
+      name="Nowa rola"
+      [control]="form.controls.role"
+      [options]="roles"
+    ></app-form-select>
+  </app-modal>
+
+  <app-modal
+    modalId="modal2"
+    title="Zmień status uzytkownika"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <p>Czy na pewno chcesz zmienić status tego uzytkownika?</p>
+  </app-modal>
+</app-table>

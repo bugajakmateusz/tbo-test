@@ -1,1 +1,30 @@
-<p>view-snacks-page works!</p>
+<app-table
+  title="Lista przekąsek"
+  [columns]="columns"
+  [rows]="snacks"
+  [buttons]="buttons"
+  (actionChosen)="onActionChosen($event)"
+>
+  <app-modal
+    modalId="modal1"
+    title="Edytuj przekąskę"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <app-form-input
+      name="Nowa nazwa przekąski"
+      [control]="form.controls.name"
+    ></app-form-input>
+  </app-modal>
+
+  <app-modal
+    modalId="modal2"
+    title="Usuń przekąskę"
+    noButtonText="Zamknij"
+    yesButtonText="Zapisz"
+    (callbackCalled)="onCallbackCalled()"
+  >
+    <p>Czy na pewno chcesz usunąć tę przekąskę?</p>
+  </app-modal>
+</app-table>
