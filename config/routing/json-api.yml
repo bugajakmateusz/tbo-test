@@ -43,3 +43,8 @@ json-api.users.list:
   path: 'users'
   controller: 'Tab\UserInterface\Http\JsonApi\Users\UsersListAction'
   methods: GET
+
+api.json.users.create:
+  path: 'users'
+  controller: 'Tab\UserInterface\Http\JsonApi\Users\CreateNewUserAction'
+  methods: POST

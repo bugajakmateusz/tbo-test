@@ -10,6 +10,7 @@ final class UserSchema extends AbstractSchema
 {
     public const TYPE = 'users';
     public const ATTRIBUTE_EMAIL = 'email';
+    public const ATTRIBUTE_PASSWORD = 'password';
     public const ATTRIBUTE_NAME = 'name';
     public const ATTRIBUTE_SURNAME = 'surname';
     public const ATTRIBUTE_ROLES = 'roles';

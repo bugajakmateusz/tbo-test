@@ -17,16 +17,42 @@ final class UserMother
 
     public static function random(): User
     {
+        return self::create(['ROLE_USER']);
+    }
+
+    public static function withEmail(string $email): User
+    {
+        return self::create(
+            ['ROLE_USER'],
+            $email,
+        );
+    }
+
+    public static function admin(): User
+    {
+        return self::create(
+            [
+                'ROLE_USER',
+                'ROLE_ADMIN',
+            ],
+        );
+    }
+
+    /** @param string[] $roles */
+    public static function create(
+        array $roles,
+        ?string $email = null,
+    ): User {
         $password = Faker::password();
 
         return new User(
             Faker::intId(),
             Faker::name(),
             Faker::lastName(),
-            Faker::email(),
+            $email ?? Faker::email(),
             $password,
             self::hashUserPassword($password),
-            ['ROLE_USER'],
+            $roles,
         );
     }
 
