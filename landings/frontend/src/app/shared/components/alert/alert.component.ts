@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class AlertComponent {
   @Input({ required: true }) alertId!: string;
   @Input({ required: true }) message!: string;
+  @Input() color = "success";
 }
