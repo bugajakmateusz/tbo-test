@@ -6,6 +6,7 @@ Tab\Application\Command\AddNewSnack\AddNewSnack:
       - Length:
           max: 255
           normalizer: trim
+      - Tab\Infrastructure\Symfony\Validator\Constraints\SnackExists: ~
 
 Tab\Application\Command\UpdateSnack\UpdateSnack:
   properties:
