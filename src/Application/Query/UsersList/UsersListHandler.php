@@ -7,6 +7,7 @@ namespace Tab\Application\Query\UsersList;
 use Tab\Application\Exception\ApplicationException;
 use Tab\Application\Schema\UserSchema;
 use Tab\Application\Service\LoggedUserServiceInterface;
+use Tab\Domain\Model\User\Role;
 use Tab\Packages\ResourcesList\Fields;
 use Tab\Packages\ResourcesList\Filter;
 use Tab\Packages\ResourcesList\Filters;
@@ -27,20 +28,19 @@ final readonly class UsersListHandler
         $filters = $usersList->filters;
         $filters->checkSupportedFilters(...self::SUPPORTED_FILTERS);
         $nonEmptyFilters = $this->checkMeFilter($filters);
-        $fields = $this->resolveFields($filters, $usersList->fields);
+        $this->checkAccess($nonEmptyFilters);
+        $fields = $this->resolveFields($usersList->fields);
 
-        $users = $this->usersListQuery
+        return $this->usersListQuery
             ->query(
                 $usersList->page,
                 $nonEmptyFilters,
                 $fields,
             )
         ;
-
-        return $users;
     }
 
-    private function checkMeFilter(Filters &$filters): Filters
+    private function checkMeFilter(Filters $filters): Filters
     {
         $nonEmptyFilters = Filters::fromFilters(...$filters->nonEmptyFilters());
         if (false === $nonEmptyFilters->has(self::FILTER_ME)) {
@@ -60,27 +60,43 @@ final readonly class UsersListHandler
     }
 
     private function resolveFields(
-        Filters $filters,
         ?Fields $overwriteFields = null,
     ): Fields {
         if (null !== $overwriteFields && false === $overwriteFields->isEmpty()) {
             return $overwriteFields;
         }
 
-        $teacherFields = [
+        $userFields = [
             UserSchema::ATTRIBUTE_NAME,
             UserSchema::ATTRIBUTE_SURNAME,
+            UserSchema::ATTRIBUTE_ROLES,
+            UserSchema::ATTRIBUTE_EMAIL,
         ];
-
-        if ($filters->has(self::FILTER_ME)) {
-            $teacherFields[] = UserSchema::ATTRIBUTE_EMAIL;
-            $teacherFields[] = UserSchema::ATTRIBUTE_ROLES;
-        }
 
         return Fields::createFromArray(
             [
-                UserSchema::TYPE => $teacherFields,
+                UserSchema::TYPE => $userFields,
             ],
         );
+    }
+
+    private function checkAccess(Filters $filters): void
+    {
+        if (true === $filters->has(self::FILTER_ME)) {
+            return;
+        }
+
+        $loggedUser = $this->loggedUser
+            ->loggedUser()
+        ;
+
+        $roles = $loggedUser->rolesCollection();
+        $adminRole = Role::ADMIN->value;
+        $officeManagerRole = Role::OFFICE_MANAGER->value;
+        if ($roles->hasRole($adminRole) || $roles->hasRole($officeManagerRole)) {
+            return;
+        }
+
+        throw new ApplicationException("Roles {$adminRole} or {$officeManagerRole} are required to fetch users list.");
     }
 }
