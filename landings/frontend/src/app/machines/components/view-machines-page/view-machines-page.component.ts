@@ -65,7 +65,7 @@ export class ViewMachinesPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.machines = this.machinesService.getMachines();
+    this.machinesService.getMachines().subscribe((data) => console.log(data));
     this.displayedMachines = this.machines.map((el) =>
       this.machinesMapperService.mapMachineToMachineDisplayed(el)
     );

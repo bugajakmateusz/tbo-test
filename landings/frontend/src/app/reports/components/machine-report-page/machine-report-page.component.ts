@@ -42,7 +42,7 @@ export class MachineReportPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.machines = this.machinesService.getMachines();
+    // this.machines = this.machinesService.getMachines();
     this.displayedMachines = this.machines.map((el) =>
       this.machinesMapperService.mapMachineToMachineSimpleDisplayed(el)
     );

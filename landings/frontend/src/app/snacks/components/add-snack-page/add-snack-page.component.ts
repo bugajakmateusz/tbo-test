@@ -33,7 +33,7 @@ export class AddSnackPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.machines = this.machinesService.getMachines();
+    // this.machines = this.machinesService.getMachines();
     this.machines.forEach((machine, index) => {
       const controlName = `machine_${index}`;
       this.pricesForm.addControl(
