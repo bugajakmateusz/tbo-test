@@ -44,4 +44,12 @@ final readonly class OrmSnackRepository implements SnackRepositoryInterface
             )
         ;
     }
+
+    public function findByName(string $name): ?Snack
+    {
+        return $this->entityManager
+            ->getRepository(Snack::class)
+            ->findOneBy(['name' => $name])
+        ;
+    }
 }

@@ -13,4 +13,8 @@ interface SnackRepositoryInterface
     public function add(
         Snack $snack,
     ): void;
+
+    public function findByName(
+        string $name,
+    ): ?Snack;
 }

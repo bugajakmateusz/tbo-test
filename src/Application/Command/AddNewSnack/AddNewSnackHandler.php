@@ -20,7 +20,10 @@ final readonly class AddNewSnackHandler
         $name = Name::fromString(
             $command->name,
         );
-        $snack = Snack::create($name);
+        $snack = Snack::create(
+            $name,
+            $this->snackRepository,
+        );
 
         $this->snackRepository
             ->add($snack)

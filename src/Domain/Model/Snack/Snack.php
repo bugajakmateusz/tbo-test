@@ -20,7 +20,14 @@ class Snack
 
     public static function create(
         Name $name,
+        SnackRepositoryInterface $snackRepository,
     ): self {
+        $stringName = $name->toString();
+        $existingUser = $snackRepository->findByName($stringName);
+        if (null !== $existingUser) {
+            throw new DomainException("Snack with name {$stringName} already exists");
+        }
+
         return new self(
             $name->toString(),
         );
