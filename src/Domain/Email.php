@@ -22,7 +22,7 @@ final class Email
         $regExMatch = \preg_match(self::MAIL_REG_EX, $sanitizedEmail->toString());
 
         if (1 !== $regExMatch) {
-            throw new \DomainException("E-mail '{$email}' is not valid.");
+            throw new DomainException("E-mail '{$email}' is not valid.");
         }
 
         return new self($sanitizedEmail->toString());
