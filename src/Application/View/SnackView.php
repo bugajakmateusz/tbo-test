@@ -9,7 +9,7 @@ final readonly class SnackView
     public const FIELD_RAW_ID = 'id';
     public const FIELD_RAW_NAME = 'name';
 
-    public function __construct(
+    private function __construct(
         public int $id,
         public string $name,
     ) {

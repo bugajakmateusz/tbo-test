@@ -11,7 +11,7 @@ final readonly class MachineView
     public const FIELD_RAW_POSITIONS_NUMBER = 'positions_no';
     public const FIELD_RAW_POSITIONS_CAPACITY = 'positions_capacity';
 
-    public function __construct(
+    private function __construct(
         public int $id,
         public string $location,
         public int $positionsNo,
