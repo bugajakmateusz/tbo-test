@@ -9,5 +9,16 @@
         </id>
 
         <field name="name" type="string" />
+
+        <one-to-one
+                field="warehouseSnack"
+                target-entity="Tab\Domain\Model\Snack\WarehouseSnack"
+                mapped-by="snack"
+        >
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-one>
     </entity>
 </doctrine-mapping>
