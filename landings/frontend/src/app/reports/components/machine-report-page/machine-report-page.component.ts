@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MachineDisplayed } from 'src/app/machines/models/machine-displayed.model';
 import { MachineSimpleDisplayed } from 'src/app/machines/models/machine-simple-displayed.model';
 import { Machine } from 'src/app/machines/models/machine.model';
 import { MachinesMapperService } from 'src/app/machines/services/machines-mapper.service';

@@ -1,7 +1,7 @@
 <app-table
   title="Lista maszyn"
   [columns]="machinesListcolumns"
-  [rows]="displayedMachines"
+  [rows]="machines"
   [buttons]="machinesListButtons"
   (actionChosen)="onActionChosen($event)"
   *ngIf="showMachines; else snacks"
@@ -15,29 +15,36 @@
     [disabled]="!form.valid"
   >
     <app-form-input
-      name="Nowa nazwa maszyny"
-      [control]="form.controls.name"
+      name="Nowa lokalizacja maszyny"
+      [control]="form.controls.location"
     ></app-form-input>
-    <app-form-textarea
-      name="Nowa notatka"
-      [control]="form.controls.note"
-    ></app-form-textarea>
+    <app-form-input
+      name="Nowa liczba pozycji"
+      type="number"
+      [min]="1"
+      [control]="form.controls.positionsNumber"
+    ></app-form-input>    <app-form-input
+      name="Nowa pojemność"
+      type="number"
+      [min]="1"
+      [control]="form.controls.positionsCapacity"
+    ></app-form-input>
   </app-modal>
 
-  <app-modal
-    modalId="modal2"
-    title="Zmień status maszyny"
-    noButtonText="Zamknij"
-    yesButtonText="Zapisz"
-    (callbackCalled)="onCallbackCalled()"
-  >
-    <p>Czy na pewno chcesz zmienić status tej maszyny?</p>
-  </app-modal>
+<!--  <app-modal-->
+<!--    modalId="modal2"-->
+<!--    title="Zmień status maszyny"-->
+<!--    noButtonText="Zamknij"-->
+<!--    yesButtonText="Zapisz"-->
+<!--    (callbackCalled)="onCallbackCalled()"-->
+<!--  >-->
+<!--    <p>Czy na pewno chcesz zmienić status tej maszyny?</p>-->
+<!--  </app-modal>-->
 </app-table>
 
 <ng-template #snacks>
   <app-table
-    title="Lista przekąsek w {{ chosenMachineName }}"
+    title="Lista przekąsek w {{ chosenMachineLocation }}"
     [columns]="snacksListcolumns"
     [rows]="snacksInMachineDisplayed"
     [formGroup]="snacksForm"
