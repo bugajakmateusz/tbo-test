@@ -9,8 +9,6 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 use Tab\Application\ValidatorQuery\SnackExistsQueryInterface;
-use Tab\Domain\Model\Snack\Name;
-use Tab\Domain\Model\Snack\Snack;
 
 final class SnackExistsValidator extends ConstraintValidator
 {
