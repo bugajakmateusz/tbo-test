@@ -9,7 +9,5 @@ import { FormControl } from '@angular/forms';
 export class FormInputComponent {
   @Input({ required: true }) name!: string;
   @Input() type = 'text';
-  @Input() min: number = -1000000;
-  @Input() max: number = 1000000;
   @Input({ required: true }) control!: FormControl<string | null>;
 }
