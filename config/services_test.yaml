@@ -1,0 +1,41 @@
+parameters:
+    database_host: postgres_test
+    database_name: zwzt_test
+    sodium_time_cost: !php/const '\Tab\Packages\Constants\Hasher::TEST_SODIUM_TIME_COST'
+    sodium_memory_cost_kilobytes: !php/const '\Tab\Packages\Constants\Hasher::TEST_SODIUM_MEMORY_LIMIT_IN_KB'
+    sodium_memory_cost_bytes: !php/const '\Tab\Packages\Constants\Hasher::TEST_SODIUM_MEMORY_LIMIT_IN_BYTES'
+
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+
+    Tab\Packages\TestCase\:
+        resource: '../packages/src/TestCase'
+        exclude:
+            - '../packages/src/TestCase/Client/SymfonyCrawler.php'
+            - '../packages/src/TestCase/Fixtures/Entity/*'
+            - '../packages/src/TestCase/Mother/Entity/*'
+        bind:
+            $kernelBrowser: '@test.client'
+
+    Tab\Tests\TestCase\Application\:
+        resource: '../tests/TestCase/Application/*'
+        exclude: '../tests/TestCase/Application/{Page/*,Client/*}'
+
+    Tab\Tests\TestCase\:
+        resource: '../tests/TestCase/**/*'
+        exclude: '../tests/TestCase/Application/{Service,Mock,Page,Mother}/*'
+
+    Doctrine\Common\DataFixtures\Executor\ORMExecutor:
+        public: false
+    Doctrine\Common\DataFixtures\Executor\AbstractExecutor:
+        alias: 'Doctrine\Common\DataFixtures\Executor\ORMExecutor'
+        public: false
+    Doctrine\Common\DataFixtures\Purger\ORMPurger:
+        public: false
+    Doctrine\Common\DataFixtures\Purger\PurgerInterface:
+        alias: 'Doctrine\Common\DataFixtures\Purger\ORMPurger'
+        public: false
+    Tab\Domain\Service\ClockInterface: '@Tab\Infrastructure\Php\PhpTimezoneAwareClock'
