@@ -1,0 +1,15 @@
+tactician:
+    default_bus: command_bus
+    logger_formatter: tactician.logger.class_properties_formatter
+    commandbus:
+        command_bus:
+            middleware:
+                - tactician.middleware.logger
+                - tactician.middleware.doctrine
+                - tactician.commandbus.command_bus.middleware.command_handler
+            method_inflector: tactician.handler.method_name_inflector.invoke
+        query_bus:
+            middleware:
+                - tactician.middleware.logger
+                - tactician.commandbus.query_bus.middleware.command_handler
+            method_inflector: tactician.handler.method_name_inflector.invoke

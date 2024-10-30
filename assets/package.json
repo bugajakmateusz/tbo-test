@@ -1,0 +1,38 @@
+{
+    "license": "proprietary",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.22.9",
+        "@babel/preset-env": "^7.22.9",
+        "@popperjs/core": "^2.11.8",
+        "@symfony/webpack-encore": "^4.4.0",
+        "bootstrap": "^5.3.0",
+        "bootstrap.native": "^5.0.9",
+        "compression-webpack-plugin": "^10.0.0",
+        "file-loader": "^6.2.0",
+        "sass": "^1.64.0",
+        "sass-loader": "^13.3.2",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^5.1.4"
+    },
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "browserslist": [
+        "Firefox ESR",
+        "last 2 firefox versions",
+        "last 2 chrome versions",
+        "last 2 edge versions",
+        "last 2 opera versions",
+        "last 2 safari versions",
+        "last 2 op_mob versions",
+        "last 2 and_chr versions",
+        "last 2 and_ff versions",
+        "last 2 android versions",
+        "last 2 ios_saf versions"
+    ],
+    "dependencies": {}
+}

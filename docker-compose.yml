@@ -1,0 +1,134 @@
+version: '3.7'
+
+services:
+    haproxy:
+        image: haproxy:2.8.1-alpine
+        ports:
+            - "127.0.0.1:3100:80"
+        volumes:
+            - ./docker/haproxy/dev.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+            - .:/var/www/html:rw
+        depends_on:
+            - 'nginx'
+        stop_grace_period: 1s
+
+    nginx:
+        build:
+            context: ./docker/nginx
+            target: dev
+            args: 
+                DEPLOY_NAME: dev
+                CUSTOM_CONFIG: '
+                    open_file_cache off;
+                    proxy_max_temp_file_size 48m;
+                    fastcgi_buffers 16 16k;
+                    fastcgi_buffer_size 32k;
+                '
+        working_dir: /var/www/html
+        volumes:
+            - ./public:/var/www/html/public:ro
+            - ./landings:/var/www/html/landings:ro
+        depends_on:
+            - 'fpm'
+        stop_grace_period: 1s
+
+    fpm:
+        build:
+            context: .
+            dockerfile: ./docker/fpm/Dockerfile
+            target: prod_base
+        container_name: dev-tab-app
+        environment:
+            ALLOW_INIT_MIGRATION: 1
+            ALLOW_SEEDING: 1
+        volumes:
+            - .:/var/www/html:rw
+            - ./docker/fpm/default_php.ini:/usr/local/etc/php/conf.d/z-99-prod-php.ini:ro
+            - ./docker/fpm/www-pool-default.conf:/usr/local/etc/php-fpm.d/zz-www-02.conf:ro
+            - /tmp:/tmp/crunz-locks:rw
+            - ~/.composer:/var/www/.composer:rw
+        depends_on:
+            - 'postgres'
+        stop_grace_period: 1s
+
+
+    postgres:
+        image: postgres:15.0-alpine
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_DB: tab_dev
+            POSTGRES_PASSWORD: tab-admin
+            POSTGRES_HOST_AUTH_METHOD: md5
+            POSTGRES_INITDB_ARGS: --auth-host=md5
+        stop_grace_period: 10s
+        ports:
+            - "127.0.0.1:3011:5432"
+        volumes:
+            - .:/app:rw
+#            - ./docker/db/postgresql.conf:/var/lib/postgresql/data/postgresql.conf:ro
+#            - ./docker/db/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf:ro
+
+    postgres_test:
+        image: postgres:15.0-alpine
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_DB: tab_test
+            POSTGRES_PASSWORD: tab-admin
+            POSTGRES_HOST_AUTH_METHOD: md5
+            POSTGRES_INITDB_ARGS: --auth-host=md5
+        stop_grace_period: 10s
+        ports:
+            - "127.0.0.1:3012:5432"
+        volumes:
+            - .:/app:rw
+#            - ./docker/db/postgresql.conf:/var/lib/postgresql/data/postgresql.conf:ro
+#            - ./docker/db/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf:ro
+
+    memcached:
+        image: memcached:1.4.21
+        stop_grace_period: 1s
+
+
+    node_builder_v20:
+        image: node:20.4.0-alpine
+        working_dir: /app
+        user: node
+        command: sh -c "
+            if [ ! -f '/app/public/build-olympiad/manifest.json' ]; then cd /app/assets/olympiad && yarn install && yarn build; fi
+            "
+        volumes:
+            - .:/app
+
+    php_builder:
+        build:
+            context: .
+            dockerfile: ./docker/fpm/Dockerfile
+        volumes:
+            - .:/var/www/html:rw
+            - ./docker/fpm/default_php.ini:/usr/local/etc/php/conf.d/z-99-prod-php.ini:ro
+            - ~/.composer:/var/www/.composer:rw
+        user: www-data
+        working_dir: /var/www/html
+        environment:
+            ALLOW_INIT_MIGRATION: 1
+        command: >
+            sh -c "
+                composer install --prefer-dist --no-interaction &&
+                php docker/db/wait-for-db.php postgres tab_dev &&
+                APP_ENV=dev php vendor/bin/phinx migrate &&
+                php docker/db/wait-for-db.php postgres_test tab_test &&
+                APP_ENV=test php vendor/bin/phinx migrate &&
+                echo 'App is ready, head to http://localhost:3100'
+            "
+
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - "127.0.0.1:3013:8025"
+        stop_grace_period: 1s
+
+volumes:
+    temp_db_storage:
+        driver_opts:
+            type: tmpfs
+            device: tmpfs
