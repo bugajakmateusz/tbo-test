@@ -38,7 +38,6 @@ final class SymfonyAuthService implements AuthServiceInterface
         $currentRequest = $this->requestStack
             ->getCurrentRequest()
         ;
-        \dump('InteractiveLoginEvent');
         $event = new InteractiveLoginEvent($currentRequest, $userToken);
         $this->eventDispatcher
             ->dispatch($event)
