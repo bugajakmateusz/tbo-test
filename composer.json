@@ -60,7 +60,7 @@
         "symfony/web-link": "~6.3.0",
         "symfony/webpack-encore-bundle": "^2.0.0",
         "toflar/psr6-symfony-http-cache-store": "^4.0",
-        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/extra-bundle": "^2.12 || ^3.0",
         "twig/twig": "^3.4.2"
     },
     "require-dev": {
@@ -89,7 +89,7 @@
         "symfony/web-profiler-bundle": "~6.3.0"
     },
     "replace": {
-        "paragonie/random_compat": "2.*",
+        "paragonie/random_compat": "^2.0",
         "ralouphie/getallheaders": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
@@ -159,8 +159,8 @@
             "@composer dump-autoload -o --strict-psr",
             "@composer normalize --dry-run",
             "@cs:check",
-            "@php bin/console lint:twig resources/templates/",
-            "@php bin/console lint:yaml --parse-tags ./config/ ./resources/translations",
+            "@php bin/console lint:twig templates/",
+            "@php bin/console lint:yaml --parse-tags ./config/ ./translations",
             "@php bin/console doctrine:mapping:info",
             "@php bin/console -e prod --no-debug cache:clear",
             "@php bin/console -e prod lint:container",
