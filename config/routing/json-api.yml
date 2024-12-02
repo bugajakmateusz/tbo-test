@@ -1,0 +1,4 @@
+json-api.machines.list:
+  path: 'machines'
+  controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachinesListAction'
+  methods: GET

@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Tab\Packages\TestCase\Fixtures;
 
+use Tab\Packages\TestCase\Fixtures\Entity\Machine;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 interface EntitiesLoaderInterface
 {
     public const CUSTOM_ENTITIES = [
         User::class,
+        Machine::class,
     ];
 
     public function load(object ...$objects): void;
