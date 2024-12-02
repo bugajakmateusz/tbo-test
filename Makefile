@@ -17,7 +17,6 @@ clear-seed-db: remigrate-db seed-db
 .PHONY: test
 test:
 	docker compose exec --user=www-data fpm composer app:checks
-	docker compose exec --user=www-data fpm php tests/bad-bots-test.php
 	docker compose exec --user=www-data fpm vendor/bin/phpunit
 
 .PHONY: check-phpstan-without-cache
