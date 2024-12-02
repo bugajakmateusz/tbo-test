@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Login;
+namespace Tab\Domain\Model\Login;
 
 final readonly class LoggedUser
 {

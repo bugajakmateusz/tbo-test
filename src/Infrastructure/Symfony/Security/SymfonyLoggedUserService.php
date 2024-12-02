@@ -15,7 +15,7 @@ final class SymfonyLoggedUserService implements LoggedUserServiceInterface
     {
     }
 
-    public function loggedUser(): \Tab\Domain\Login\LoggedUser
+    public function loggedUser(): \Tab\Domain\Model\Login\LoggedUser
     {
         $token = $this->tokenStorage
             ->getToken()

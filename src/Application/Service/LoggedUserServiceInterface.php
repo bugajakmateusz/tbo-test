@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\Application\Service;
 
-use Tab\Domain\Login\LoggedUser;
+use Tab\Domain\Model\Login\LoggedUser;
 
 interface LoggedUserServiceInterface
 {

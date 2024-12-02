@@ -20,7 +20,7 @@ final readonly class LoginAction
 
     public function __invoke(Request $request): ResponseInterface
     {
-        /** @var \Tab\Domain\Login\LoggedUser $loggedUser */
+        /** @var \Tab\Domain\Model\Login\LoggedUser $loggedUser */
         $loggedUser = $this->queryBus
             ->handle(new LoggedUser())
         ;
