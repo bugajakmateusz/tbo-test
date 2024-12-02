@@ -16,7 +16,7 @@ security:
             security: false
         main:
             lazy: true
-#            user_checker: Tab\Infrastructure\Symfony\Security\SymfonyUserChecker
+            user_checker: Tab\Infrastructure\Symfony\Security\SymfonyUserChecker
             entry_point: Tab\Infrastructure\Symfony\Security\SymfonyJsonAuthenticator
             provider: db_provider
             custom_authenticators:
