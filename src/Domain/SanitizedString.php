@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tab\Domain;
 
-final class SanitizedString
+final readonly class SanitizedString
 {
-    private function __construct(private readonly string $characters)
+    private function __construct(private string $characters)
     {
     }
 
@@ -40,7 +40,7 @@ final class SanitizedString
     public function checkIsEmpty(string $entityName): void
     {
         if ($this->isEmpty()) {
-            throw new \DomainException("{$entityName} cannot be empty.");
+            throw new DomainException("{$entityName} cannot be empty.");
         }
     }
 
@@ -48,19 +48,19 @@ final class SanitizedString
     {
         $regExMatch = \preg_match($regex, $this->toString());
         if (1 !== $regExMatch) {
-            throw new \DomainException("{$entityName} has not meet regex pattern.");
+            throw new DomainException("{$entityName} has not meet regex pattern.");
         }
     }
 
     public function checkMaxLength(int $maxLength, string $entityName): void
     {
         if ($maxLength < 1) {
-            throw new \DomainException('Maximum length cannot be lower than 1.');
+            throw new DomainException('Maximum length cannot be lower than 1.');
         }
 
         $length = $this->length();
         if ($length > $maxLength) {
-            throw new \DomainException(
+            throw new DomainException(
                 "{$entityName} length cannot be higher than '{$maxLength}', '{$length}' passed.",
             );
         }
@@ -69,12 +69,12 @@ final class SanitizedString
     public function checkExactLength(int $length, string $entityName): void
     {
         if ($length < 1) {
-            throw new \DomainException('Exact length cannot be lower than 1.');
+            throw new DomainException('Exact length cannot be lower than 1.');
         }
 
         $passedLength = $this->length();
         if ($length !== $passedLength) {
-            throw new \DomainException(
+            throw new DomainException(
                 "{$entityName} length should be equal to '{$length}', '{$passedLength}' passed.",
             );
         }
@@ -89,7 +89,7 @@ final class SanitizedString
     {
         $length = \grapheme_strlen($this->characters);
         if (false === \is_int($length)) {
-            throw new \DomainException('Unable to get length of string.');
+            throw new DomainException('Unable to get length of string.');
         }
 
         return $length;
