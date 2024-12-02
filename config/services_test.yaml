@@ -20,13 +20,9 @@ services:
         bind:
             $kernelBrowser: '@test.client'
 
-    Tab\Tests\TestCase\Application\:
-        resource: '../tests/TestCase/Application/*'
-        exclude: '../tests/TestCase/Application/{Page/*,Client/*}'
-
     Tab\Tests\TestCase\:
         resource: '../tests/TestCase/**/*'
-        exclude: '../tests/TestCase/Application/{Service,Mock,Page,Mother}/*'
+        exclude: '../tests/TestCase/Application/{Service,Mock,Page,Mother,Client/JsonApi}/*'
 
     Doctrine\Common\DataFixtures\Executor\ORMExecutor:
         public: false
