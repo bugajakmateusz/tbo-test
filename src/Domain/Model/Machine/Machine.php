@@ -6,7 +6,7 @@ namespace Tab\Domain\Model\Machine;
 
 class Machine
 {
-    private readonly int $id;
+    private int $id;
 
     private function __construct(
         private string $location,
