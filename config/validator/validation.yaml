@@ -1,0 +1,14 @@
+Tab\Application\Command\AddNewMachine\AddNewMachine:
+  properties:
+    location:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: !php/const Tab\Domain\Model\Machine\Location::MAX_LENGTH
+          normalizer: trim
+    positionsNumber:
+      - NotBlank: ~
+      - GreaterThanOrEqual: 0
+    positionsCapacity:
+      - NotBlank: ~
+      - GreaterThanOrEqual: 0
