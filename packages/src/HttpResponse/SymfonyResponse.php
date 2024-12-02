@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
-final class SymfonyResponse implements ResponseInterface
+final readonly class SymfonyResponse implements ResponseInterface
 {
     public function __construct(
-        private readonly Response $response,
-        private readonly string $uri,
+        private Response $response,
+        private string $uri,
     ) {
     }
 

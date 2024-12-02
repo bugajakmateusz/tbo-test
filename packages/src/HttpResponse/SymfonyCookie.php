@@ -6,9 +6,9 @@ namespace Tab\Packages\HttpResponse;
 
 use Symfony\Component\HttpFoundation\Cookie;
 
-final class SymfonyCookie implements CookieInterface
+final readonly class SymfonyCookie implements CookieInterface
 {
-    public function __construct(private readonly Cookie $cookie)
+    public function __construct(private Cookie $cookie)
     {
     }
 
