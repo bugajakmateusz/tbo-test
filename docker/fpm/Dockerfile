@@ -50,6 +50,7 @@ COPY ./assets/package.json ./assets/yarn.lock ./assets/
 RUN yarn install --cwd="./assets" && mkdir ./public
 
 COPY ./assets/js ./assets/js
+COPY ./assets/scss ./assets/scss
 COPY ./assets/styles ./assets/styles
 COPY ./assets/images ./assets/images
 COPY ./assets/webpack.config.js ./assets/webpack.config.js
