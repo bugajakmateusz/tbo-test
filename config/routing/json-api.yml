@@ -7,3 +7,10 @@ json-api.machines.create:
   path: 'machines'
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\CreateNewMachineAction'
   methods: POST
+
+json-api.machines.update:
+  path: 'machines/{machineId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\Machines\UpdateMachineAction'
+  methods: PATCH
+  requirements:
+    machineId: \d+
