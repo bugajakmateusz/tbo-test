@@ -199,7 +199,7 @@ abstract class IntegrationTestCase extends WebTestCase
             new SymfonyUser(
                 $user->id,
                 $user->email,
-                $user->password,
+                $user->passwordHash,
                 $roles,
             ),
             $firewall,

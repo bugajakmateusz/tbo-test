@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tab\Packages\DbConnection;
 
 use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 interface DbConnectionInterface
 {
@@ -149,4 +150,7 @@ interface DbConnectionInterface
         array $params = [],
         array $types = [],
     ): int|string;
+
+    /** Creates a new instance of a SQL query builder. */
+    public function createQueryBuilder(): QueryBuilder;
 }
