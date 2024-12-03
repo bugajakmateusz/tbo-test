@@ -52,7 +52,7 @@ final class ResourceIdentifierTest extends UnitTestCase
 
         // Act
         $this->createResourceIdentifier(
-            'projects',
+            'tests',
             '',
             $constructor,
         );
@@ -67,7 +67,7 @@ final class ResourceIdentifierTest extends UnitTestCase
     {
         // Arrange
         $constructor = $constructorGenerator();
-        $type = 'teachers';
+        $type = 'tests';
         $id = '64223';
 
         // Act

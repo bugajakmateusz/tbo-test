@@ -18,11 +18,11 @@ abstract class AbstractJsonApiSerializerTestCase extends UnitTestCase
         $identifiers = [
             'data' => [
                 [
-                    'type' => 'projects',
+                    'type' => 'tests',
                     'id' => Faker::intId(),
                 ],
                 [
-                    'type' => 'projects',
+                    'type' => 'tests',
                     'id' => Faker::intId(),
                 ],
             ],

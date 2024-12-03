@@ -16,8 +16,8 @@ final readonly class MachinesListView
     public function __construct(
         public TotalItems $totalItems,
         public Fields $fields,
-        MachineView ...$teachers,
+        MachineView ...$machineView,
     ) {
-        $this->machines = $teachers;
+        $this->machines = $machineView;
     }
 }

@@ -27,19 +27,19 @@ final class MachineFieldsFactory
         ],
     ];
 
-    public function create(string $teachersTableAlias, Fields $typeFields): JsonObject
+    public function create(string $machinesTableAlias, Fields $typeFields): JsonObject
     {
         $machineFields = new JsonObject();
-        $machineFields->addField(MachineView::FIELD_RAW_ID, "{$teachersTableAlias}.machine_id");
+        $machineFields->addField(MachineView::FIELD_RAW_ID, "{$machinesTableAlias}.machine_id");
         if (false === $typeFields->hasType(MachineSchema::TYPE)) {
             return $machineFields;
         }
 
-        $teacherTypeFields = $typeFields->typeFields(MachineSchema::TYPE);
+        $machineTypeFields = $typeFields->typeFields(MachineSchema::TYPE);
         $this->addDirectAttributes(
             $machineFields,
-            $teacherTypeFields,
-            $teachersTableAlias,
+            $machineTypeFields,
+            $machinesTableAlias,
         );
 
         return $machineFields;
