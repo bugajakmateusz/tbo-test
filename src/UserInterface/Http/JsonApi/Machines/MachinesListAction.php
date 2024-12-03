@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\Machines;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Query\MachinesList\MachinesList;
 use Tab\Application\Query\MachinesList\MachinesListView;
@@ -25,6 +26,83 @@ final readonly class MachinesListAction
     ) {
     }
 
+    /**
+     * List of all machines.
+     * This call will return all machines.
+     *
+     * @OA\Parameter(
+     *     name="fields[machines]",
+     *     in="query",
+     *     required=false,
+     *     description="Specify fields to retrieve for machines",
+     *
+     *     @OA\Schema(
+     *        type="string",
+     *        example="location,positionsNumber,positionsCapacity"
+     *     )
+     * ),
+     *
+     * @OA\Response(
+     *     response=204,
+     *     description="Returns list with all machines",
+     *     content={
+     *
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *
+     *             @OA\Schema(
+     *
+     *                 @OA\Property(
+     *                     property="meta",
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="totalItems",
+     *                         type="number",
+     *                     ),
+     *                 ),
+     *                 @OA\Property(
+     *                     property="data",
+     *                     type="array",
+     *
+     *                     @OA\Items(
+     *                         type="object",
+     *
+     *                         @OA\Property(
+     *                             property="type",
+     *                             type="string",
+     *                             example="machines",
+     *                         ),
+     *                         @OA\Property(
+     *                             property="id",
+     *                             type="string",
+     *                             example="1",
+     *                         ),
+     *                         @OA\Property(
+     *                             property="attributes",
+     *                             type="object",
+     *                             @OA\Property(
+     *                                 property="location",
+     *                                 type="string",
+     *                                 example="New York, 7th Street",
+     *                             ),
+     *                             @OA\Property(
+     *                                 property="positionsNumber",
+     *                                 type="number",
+     *                             ),
+     *                             @OA\Property(
+     *                                 property="positionsCapacity",
+     *                                 type="number",
+     *                             ),
+     *                         ),
+     *                     ),
+     *                 ),
+     *             )
+     *         )
+     *     }
+     * )
+     *
+     * @OA\Tag(name="machines")
+     */
     public function __invoke(Request $request): ResponseInterface
     {
         $queryParamsExtractor = $this->queryParamsExtractorFactory
