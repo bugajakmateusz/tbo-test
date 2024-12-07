@@ -83,6 +83,7 @@ COPY ./public ./public
 COPY --from=backend_files /app ./
 COPY --from=prod_assets /app/public ./public
 
-RUN composer dump-autoload -a --no-dev \
+RUN chown www-data:www-data /var/www/html/public/ \
+    && composer dump-autoload -a --no-dev \
     && COMPOSER_MEMORY_LIMIT=128M APP_ENV=prod APP_DEBUG=0 su-exec www-data:www-data composer run app:prod-warmup \
     && chown -R www-data:www-data /var/www/html/var/
