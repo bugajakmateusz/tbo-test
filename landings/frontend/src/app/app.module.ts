@@ -19,43 +19,55 @@ import { WarehouseReportPageComponent } from './reports/components/warehouse-rep
 import { BuySellReportPageComponent } from './reports/components/buy-sell-report-page/buy-sell-report-page.component';
 import { ViewUsersPageComponent } from './users/components/view-users-page/view-users-page.component';
 import { AddUserPageComponent } from './users/components/add-user-page/add-user-page.component';
+import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
+import { LoginPageComponent } from './login/components/login-page/login-page.component';
+import { FormComponent } from './shared/form/form.component';
+import { FormTextInputComponent } from './shared/components/form-text-input/form-text-input.component';
+import { FormButtonComponent } from './shared/components/form-button/form-button.component';
+import { FormTextareaComponent } from './shared/components/form-textarea/form-textarea.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
+  { path: 'login', component: LoginPageComponent },
   {
-    path: 'warehouse', children: [
+    path: 'warehouse',
+    children: [
       { path: 'view', component: ViewWarehousePageComponent },
       { path: 'delivery', component: DeliveryPageComponent },
       { path: 'hand-to-courier', component: HandToCourierPageComponent },
     ],
   },
   {
-    path: 'snacks', children: [
+    path: 'snacks',
+    children: [
       { path: 'view', component: ViewSnacksPageComponent },
       { path: 'add', component: AddSnackPageComponent },
-    ]
+    ],
   },
   {
-    path: 'machines', children: [
+    path: 'machines',
+    children: [
       { path: 'view', component: ViewMachinesPageComponent },
       { path: 'add', component: AddMachinePageComponent },
       { path: 'change-prices', component: ChangePricesPageComponent },
-    ]
+    ],
   },
   {
-    path: 'reports', children: [
+    path: 'reports',
+    children: [
       { path: 'machines', component: MachineReportPageComponent },
       { path: 'warehouse', component: WarehouseReportPageComponent },
       { path: 'buy-sell', component: BuySellReportPageComponent },
-    ]
+    ],
   },
   {
-    path: 'users', children: [
+    path: 'users',
+    children: [
       { path: 'view', component: ViewUsersPageComponent },
       { path: 'add', component: AddUserPageComponent },
-    ]
+    ],
   },
-]
+];
 
 @NgModule({
   declarations: [
@@ -75,13 +87,15 @@ const appRoutes: Routes = [
     BuySellReportPageComponent,
     ViewUsersPageComponent,
     AddUserPageComponent,
+    PageLayoutComponent,
+    LoginPageComponent,
+    FormComponent,
+    FormTextInputComponent,
+    FormButtonComponent,
+    FormTextareaComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
-  ],
+  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

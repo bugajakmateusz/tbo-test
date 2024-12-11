@@ -1,0 +1,16 @@
+:host {
+  height: 100%;
+  display: block;
+}
+
+:host div {
+  height: 100%;
+}
+
+:host::ng-deep router-outlet + * {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+}

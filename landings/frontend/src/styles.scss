@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+// Include any default variable overrides here (though functions won't be available)
+
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+// Then add additional custom code here
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
