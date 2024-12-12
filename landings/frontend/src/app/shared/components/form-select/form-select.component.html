@@ -1,0 +1,9 @@
+<div class="form-floating mb-3">
+  <select class="form-select" id="{{ name }}">
+    <option selected>Wybierz</option>
+    <option value="option.value" *ngFor="let option of options">
+      {{ option.name }}
+    </option>
+  </select>
+  <label for="{{ name }}">{{ name }}</label>
+</div>

@@ -1,1 +1,6 @@
-<p>add-user-page works!</p>
+<app-form title="Dodaj uzytkownika">
+  <app-form-input name="Nazwa uzytkownika"></app-form-input>
+  <app-form-input name="Hasło"></app-form-input>
+  <app-form-select name="Rola" [options]="userRoleOptions"></app-form-select>
+  <app-form-button text="Dodaj"></app-form-button>
+</app-form>
