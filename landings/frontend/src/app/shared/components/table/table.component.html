@@ -4,13 +4,15 @@
     <thead>
       <tr>
         <th scope="col" *ngFor="let column of columns">{{ column }}</th>
-        <th scope="col" [ngStyle]="{ width: 0 }">Akcje</th>
+        <th scope="col" [ngStyle]="{ width: 0 }" *ngIf="buttons.length > 0">
+          Akcje
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of rows">
         <td *ngFor="let cell of row | objectToArray">{{ cell }}</td>
-        <td>
+        <td *ngIf="buttons.length > 0">
           <div class="d-flex gap-2">
             <div *ngFor="let button of buttons; let i = index">
               <button

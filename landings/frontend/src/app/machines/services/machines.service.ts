@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Machine } from '../models/machine.model';
+import { Snack } from 'src/app/snacks/models/snack/snack.model';
+import { SnackInMachine } from '../models/snack-in-machine.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +19,19 @@ export class MachinesService {
       name: 'other machine',
       note: 'some note about a machine',
       active: false,
+    },
+  ];
+
+  snacks: SnackInMachine[] = [
+    {
+      id: '1',
+      name: 'some snack',
+      price: 2,
+    },
+    {
+      id: '2',
+      name: 'other snack',
+      price: 3,
     },
   ];
   action = '';
@@ -47,5 +62,9 @@ export class MachinesService {
 
   getCurrentMachine() {
     return this.getMachine(this.id);
+  }
+
+  getSnacks(machineId: string) {
+    return this.snacks;
   }
 }
