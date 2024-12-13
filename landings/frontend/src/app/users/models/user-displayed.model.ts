@@ -1,6 +1,7 @@
 export interface UserDisplayed {
   id: string;
   username: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   role: string;
 }
