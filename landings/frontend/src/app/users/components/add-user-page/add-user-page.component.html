@@ -1,6 +1,25 @@
 <app-form title="Dodaj uzytkownika">
-  <app-form-input name="Nazwa uzytkownika"></app-form-input>
-  <app-form-input name="Hasło"></app-form-input>
-  <app-form-select name="Rola" [options]="userRoleOptions"></app-form-select>
-  <app-form-button text="Dodaj"></app-form-button>
+  <app-form-input
+    name="Nazwa uzytkownika"
+    [control]="form.controls.username"
+  ></app-form-input>
+  <app-form-input
+    name="Imię"
+    [control]="form.controls.firstName"
+  ></app-form-input>
+  <app-form-input
+    name="Nazwisko"
+    [control]="form.controls.lastName"
+  ></app-form-input>
+  <app-form-input
+    name="Hasło"
+    [control]="form.controls.password"
+  ></app-form-input>
+
+  <app-form-select
+    name="Rola"
+    [options]="roles"
+    [control]="form.controls.role"
+  ></app-form-select>
+  <app-form-button text="Dodaj" (click)="onSubmit()"></app-form-button>
 </app-form>

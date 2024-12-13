@@ -2,17 +2,24 @@
   title="Dodaj przekąskę"
   *ngIf="currentFormIndex === 0; else secondForm"
 >
-  <app-form-input name="Nazwa przekąski"></app-form-input>
+  <app-form-input
+    name="Nazwa przekąski"
+    [control]="form.controls.name"
+  ></app-form-input>
   <app-form-button text="Dalej" (click)="setFormIndex(1)"></app-form-button>
 </app-form>
 <ng-template #secondForm>
   <app-form title="Dodaj przekąskę">
-    <app-form-input name="Ustaw cenę we wszystkich maszynach"></app-form-input>
+    <app-form-input
+      name="Ustaw cenę we wszystkich maszynach"
+      [control]="setAllPricesForm.controls.price"
+    ></app-form-input>
     <app-form-button text="Ustaw"></app-form-button>
     <div class="mt-4">
       <app-form-input
         *ngFor="let machine of machines"
         name="Ustaw cenę w: {{ machine }}"
+        [control]="pricesForm.controls.price1"
       ></app-form-input>
       <div class="d-flex gap-3">
         <app-form-button
@@ -20,7 +27,7 @@
           btn-style="outline"
           (click)="setFormIndex(0)"
         ></app-form-button>
-        <app-form-button text="Dodaj"></app-form-button>
+        <app-form-button text="Dodaj" (click)="onSubmit()"></app-form-button>
       </div>
     </div>
   </app-form>

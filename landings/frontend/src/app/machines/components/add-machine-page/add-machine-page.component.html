@@ -1,5 +1,11 @@
 <app-form title="Dodaj maszynę">
-  <app-form-input name="Nazwa maszyny"></app-form-input>
-  <app-form-textarea name="Notatka"></app-form-textarea>
-  <app-form-button text="Dodaj"></app-form-button>
+  <app-form-input
+    name="Nazwa maszyny"
+    [control]="form.controls.name"
+  ></app-form-input>
+  <app-form-textarea
+    name="Notatka"
+    [control]="form.controls.note"
+  ></app-form-textarea>
+  <app-form-button text="Dodaj" (click)="onSubmit()"></app-form-button>
 </app-form>

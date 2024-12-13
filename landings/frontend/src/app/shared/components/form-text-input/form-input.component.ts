@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-input',
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class FormInputComponent {
   @Input({ required: true }) name!: string;
   @Input() type = 'text';
+  @Input({ required: true }) control!: FormControl<string | null>;
 }

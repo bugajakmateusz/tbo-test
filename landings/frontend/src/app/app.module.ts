@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,10 +23,13 @@ import { AddUserPageComponent } from './users/components/add-user-page/add-user-
 import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { FormComponent } from './shared/form/form.component';
-import { FormInputComponent } from './shared/components/form-input/form-input.component';
+import { FormInputComponent } from './shared/components/form-text-input/form-input.component';
 import { FormButtonComponent } from './shared/components/form-button/form-button.component';
 import { FormTextareaComponent } from './shared/components/form-textarea/form-textarea.component';
 import { FormSelectComponent } from './shared/components/form-select/form-select.component';
+import { TableComponent } from './shared/components/table/table.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { ObjectToArrayPipe } from './shared/pipes/object-to-array.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
@@ -95,8 +99,17 @@ const appRoutes: Routes = [
     FormButtonComponent,
     FormTextareaComponent,
     FormSelectComponent,
+    TableComponent,
+    ModalComponent,
+    ObjectToArrayPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

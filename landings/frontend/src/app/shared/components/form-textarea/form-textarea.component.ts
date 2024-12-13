@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-textarea',
@@ -7,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FormTextareaComponent {
   @Input({ required: true }) name!: string;
+  @Input({ required: true }) control!: FormControl<string | null>;
 }
