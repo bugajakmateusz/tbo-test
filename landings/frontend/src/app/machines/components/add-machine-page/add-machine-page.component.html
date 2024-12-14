@@ -7,5 +7,9 @@
     name="Notatka"
     [control]="form.controls.note"
   ></app-form-textarea>
-  <app-form-button text="Dodaj" (click)="onSubmit()"></app-form-button>
+  <app-form-button
+    text="Dodaj"
+    (click)="onSubmit()"
+    [disabled]="!form.valid"
+  ></app-form-button>
 </app-form>

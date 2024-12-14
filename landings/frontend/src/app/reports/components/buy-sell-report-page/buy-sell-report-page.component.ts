@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ReportsService } from '../../services/reports.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ReportsService } from '../../services/reports.service';
 })
 export class BuySellReportPageComponent {
   form = this.fb.group({
-    dateFrom: [''],
-    dateTo: [''],
+    dateFrom: ['', Validators.required],
+    dateTo: ['', Validators.required],
   });
   constructor(
     private fb: FormBuilder,
@@ -21,6 +21,12 @@ export class BuySellReportPageComponent {
     this.reportsService.createBuySellReport(
       this.form.value.dateFrom!,
       this.form.value.dateTo!
+    );
+  }
+
+  submitButtonDisabled(): boolean {
+    return (
+      !this.form.valid || this.form.value.dateFrom! > this.form.value.dateTo!
     );
   }
 }

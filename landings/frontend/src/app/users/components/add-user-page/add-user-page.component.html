@@ -13,6 +13,7 @@
   ></app-form-input>
   <app-form-input
     name="Hasło"
+    type="password"
     [control]="form.controls.password"
   ></app-form-input>
 
@@ -21,5 +22,9 @@
     [options]="roles"
     [control]="form.controls.role"
   ></app-form-select>
-  <app-form-button text="Dodaj" (click)="onSubmit()"></app-form-button>
+  <app-form-button
+    text="Dodaj"
+    (click)="onSubmit()"
+    [disabled]="!form.valid"
+  ></app-form-button>
 </app-form>

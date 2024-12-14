@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { userRoleOptions } from '../../userRoleOptions';
 import { UsersService } from '../../services/users.service';
 
@@ -12,11 +12,11 @@ export class AddUserPageComponent {
   roles = userRoleOptions;
 
   form = this.fb.group({
-    username: [''],
-    password: [''],
-    firstName: [''],
-    lastName: [''],
-    role: [''],
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    role: ['', Validators.required],
   });
 
   constructor(private fb: FormBuilder, private usersService: UsersService) {}

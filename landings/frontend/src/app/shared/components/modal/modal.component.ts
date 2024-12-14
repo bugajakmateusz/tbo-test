@@ -11,6 +11,7 @@ export class ModalComponent {
   @Input({ required: true }) title!: string;
   @Input({ required: true }) noButtonText!: string;
   @Input({ required: true }) yesButtonText!: string;
+  @Input() disabled: boolean = false;
   @Output() callbackCalled = new EventEmitter<any>();
 
   callCallback() {

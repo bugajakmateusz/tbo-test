@@ -1,38 +1,79 @@
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnacksService } from '../../services/snacks.service';
+import { MachinesService } from 'src/app/machines/services/machines.service';
+import { Machine } from 'src/app/machines/models/machine.model';
 
 @Component({
   selector: 'app-add-snack-page',
   templateUrl: './add-snack-page.component.html',
   styleUrls: ['./add-snack-page.component.scss'],
 })
-export class AddSnackPageComponent {
-  currentFormIndex = 0;
+export class AddSnackPageComponent implements OnInit {
+  showNameForm = true;
 
-  machines = ['machine 1', 'machine 2', 'machine 3'];
-
-  setFormIndex(newIndex: number) {
-    this.currentFormIndex = newIndex;
-  }
+  machines: Machine[] = [];
 
   form = this.fb.group({
-    name: [''],
+    name: ['', Validators.required],
   });
 
-  pricesForm = this.fb.group({
-    price1: [''],
-    price2: [''],
-    price3: [''],
-  });
+  pricesForm = this.fb.group({});
 
   setAllPricesForm = this.fb.group({
     price: [''],
   });
 
-  constructor(private fb: FormBuilder, private snacksService: SnacksService) {}
+  constructor(
+    private fb: FormBuilder,
+    private snacksService: SnacksService,
+    private machinesService: MachinesService
+  ) {}
+
+  ngOnInit(): void {
+    this.machines = this.machinesService.getMachines();
+    this.machines.forEach((machine, index) => {
+      const controlName = `machine_${index}`;
+      this.pricesForm.addControl(
+        controlName,
+        this.fb.control('', Validators.required)
+      );
+    });
+  }
+
+  goNext() {
+    this.setAllPricesForm.setValue({ price: '' });
+    this.setPriceInAllMachines();
+    if (this.form.valid) {
+      this.showNameForm = false;
+    }
+  }
+
+  goBack() {
+    this.form.setValue({ name: '' });
+    this.showNameForm = true;
+  }
 
   onSubmit() {
-    this.snacksService.addSnack(this.form.value.name!);
+    const prices = [];
+    for (const controlName in this.pricesForm.controls) {
+      prices.push({
+        machineName: controlName,
+        priceInMachine: this.pricesForm.get(controlName)!.value,
+      });
+    }
+    this.snacksService.addSnack(this.form.value.name!, prices);
+  }
+
+  setPriceInAllMachines() {
+    const price = this.setAllPricesForm.value.price;
+    this.pricesForm = new FormGroup({});
+    this.machines.forEach((machine, index) => {
+      const controlName = `machine_${index}`;
+      this.pricesForm.addControl(
+        controlName,
+        this.fb.control(price, Validators.required)
+      );
+    });
   }
 }

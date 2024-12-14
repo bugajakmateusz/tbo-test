@@ -4,6 +4,7 @@
   [rows]="snacks"
   [formGroup]="form"
   [inputs]="inputs"
+  [min]="0"
 >
 </app-table>
 
@@ -12,6 +13,7 @@
     text="Przyjmij"
     data-bs-target="#acceptDeliveryModal"
     data-bs-toggle="modal"
+    [disabled]="buttonDisabled()"
   ></app-form-button>
 </div>
 
