@@ -26,4 +26,14 @@ export class WarehouseService {
   getSnacks(): WarehouseSnack[] {
     return this.snacks;
   }
+
+  acceptDelivery(delivery: any) {
+    console.log('accept delivery. Snacks accepted: ');
+    console.log(delivery);
+  }
+
+  handToCourier(snacks: any) {
+    console.log('hand to courier. Snacks handed: ');
+    console.log(snacks);
+  }
 }

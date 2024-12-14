@@ -1,1 +1,26 @@
-<p>delivery-page works!</p>
+<app-table
+  title="Przyjmij dostawę"
+  [columns]="columns"
+  [rows]="snacks"
+  [formGroup]="form"
+  [inputs]="inputs"
+>
+</app-table>
+
+<div class="d-flex gap-3 w-75 justify-content-end">
+  <app-form-button
+    text="Przyjmij"
+    data-bs-target="#acceptDeliveryModal"
+    data-bs-toggle="modal"
+  ></app-form-button>
+</div>
+
+<app-modal
+  modalId="acceptDeliveryModal"
+  title="Przyjmij dostawę"
+  noButtonText="Zamknij"
+  yesButtonText="Przyjmij"
+  (callbackCalled)="onSubmit()"
+>
+  <p>Czy na pewno chcesz przyjąć dostawę?</p>
+</app-modal>

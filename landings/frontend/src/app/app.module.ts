@@ -14,7 +14,6 @@ import { DeliveryPageComponent } from './warehouse/components/delivery-page/deli
 import { HandToCourierPageComponent } from './warehouse/components/hand-to-courier-page/hand-to-courier-page.component';
 import { ViewMachinesPageComponent } from './machines/components/view-machines-page/view-machines-page.component';
 import { AddMachinePageComponent } from './machines/components/add-machine-page/add-machine-page.component';
-import { ChangePricesPageComponent } from './machines/components/change-prices-page/change-prices-page.component';
 import { MachineReportPageComponent } from './reports/components/machine-report-page/machine-report-page.component';
 import { WarehouseReportPageComponent } from './reports/components/warehouse-report-page/warehouse-report-page.component';
 import { BuySellReportPageComponent } from './reports/components/buy-sell-report-page/buy-sell-report-page.component';
@@ -54,7 +53,6 @@ const appRoutes: Routes = [
     children: [
       { path: 'view', component: ViewMachinesPageComponent },
       { path: 'add', component: AddMachinePageComponent },
-      { path: 'change-prices', component: ChangePricesPageComponent },
     ],
   },
   {
@@ -86,7 +84,6 @@ const appRoutes: Routes = [
     HandToCourierPageComponent,
     ViewMachinesPageComponent,
     AddMachinePageComponent,
-    ChangePricesPageComponent,
     MachineReportPageComponent,
     WarehouseReportPageComponent,
     BuySellReportPageComponent,

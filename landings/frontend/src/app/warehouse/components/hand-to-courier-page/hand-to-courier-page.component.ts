@@ -1,10 +1,49 @@
 import { Component } from '@angular/core';
+import { WarehouseSnack } from '../../models/warehouseSnack.model';
+import { WarehouseService } from '../../services/warehouse.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-hand-to-courier-page',
   templateUrl: './hand-to-courier-page.component.html',
-  styleUrls: ['./hand-to-courier-page.component.scss']
+  styleUrls: ['./hand-to-courier-page.component.scss'],
 })
 export class HandToCourierPageComponent {
+  columns = ['ID', 'Nazwa', 'Ilość w magazynie'];
 
+  snacks: WarehouseSnack[] = [];
+
+  inputs = [
+    {
+      title: 'Ilość do wydania',
+      name: 'snack',
+      type: 'number',
+    },
+  ];
+
+  form = this.fb.group({});
+
+  constructor(
+    private fb: FormBuilder,
+    private warehouseService: WarehouseService
+  ) {}
+
+  ngOnInit() {
+    this.snacks = this.warehouseService.getSnacks();
+    this.snacks.forEach((snack, index) => {
+      const controlName = `snack_${index}`;
+      this.form.addControl(controlName, this.fb.control(''));
+    });
+  }
+
+  onSubmit() {
+    const snacksHanded = [];
+    for (const controlName in this.form.controls) {
+      snacksHanded.push({
+        snackName: controlName,
+        amount: this.form.get(controlName)!.value,
+      });
+    }
+    this.warehouseService.handToCourier(snacksHanded);
+  }
 }
