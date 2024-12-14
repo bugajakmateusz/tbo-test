@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MachineDisplayed } from 'src/app/machines/models/machine-displayed.model';
 import { MachineSimpleDisplayed } from 'src/app/machines/models/machine-simple-displayed.model';
 import { Machine } from 'src/app/machines/models/machine.model';
@@ -53,10 +53,19 @@ export class MachineReportPageComponent implements OnInit {
   }
 
   goNext() {
+    this.datesForm.setValue({
+      dateFrom: '',
+      dateTo: '',
+    });
     this.showMachines = false;
   }
 
   goBack() {
+    this.machinesSelectedForm = new FormGroup({});
+    this.machines.forEach((machine, index) => {
+      const controlName = `machine_${index}`;
+      this.machinesSelectedForm.addControl(controlName, this.fb.control(false));
+    });
     this.showMachines = true;
   }
 
@@ -65,6 +74,8 @@ export class MachineReportPageComponent implements OnInit {
       this.datesForm.value.dateFrom!,
       this.datesForm.value.dateTo!
     );
+
+    this.goBack();
   }
 
   goNextButtonDisabled(): boolean {

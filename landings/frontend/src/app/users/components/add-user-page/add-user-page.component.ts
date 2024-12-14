@@ -29,5 +29,7 @@ export class AddUserPageComponent {
       this.form.value.lastName!,
       this.form.value.role!
     );
+
+    this.form.reset();
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WarehouseSnack } from '../../models/warehouseSnack.model';
 import { WarehouseService } from '../../services/warehouse.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hand-to-courier-page',
@@ -48,6 +48,15 @@ export class HandToCourierPageComponent {
       });
     }
     this.warehouseService.handToCourier(snacksHanded);
+
+    this.form = new FormGroup({});
+    this.snacks.forEach((snack, index) => {
+      const controlName = `snack_${index}`;
+      this.form.addControl(
+        controlName,
+        this.fb.control('0', [Validators.min(0), Validators.required])
+      );
+    });
   }
 
   buttonDisabled(): boolean {
