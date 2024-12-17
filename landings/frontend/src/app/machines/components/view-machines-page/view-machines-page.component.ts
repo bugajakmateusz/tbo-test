@@ -137,7 +137,6 @@ export class ViewMachinesPageComponent implements OnInit {
 
   changePrices() {
     if (this.snacksForm.valid) {
-      // Gather the updated prices from the form and send them to the backend
       const updatedPrices = [];
       for (const controlName in this.snacksForm.controls) {
         updatedPrices.push({

@@ -30,6 +30,7 @@ import { TableComponent } from './shared/components/table/table.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { ObjectToArrayPipe } from './shared/pipes/object-to-array.pipe';
 import { AbstractControlToFormControlPipe } from './shared/pipes/abstract-control-to-form-control.pipe';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
@@ -101,6 +102,7 @@ const appRoutes: Routes = [
     ModalComponent,
     ObjectToArrayPipe,
     AbstractControlToFormControlPipe,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

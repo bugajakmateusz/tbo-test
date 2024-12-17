@@ -22,6 +22,7 @@
   noButtonText="Zamknij"
   yesButtonText="Wydaj"
   (callbackCalled)="onSubmit()"
+  *ngIf="!buttonDisabled()"
 >
   <p>Czy na pewno chcesz wydać towar kurierowi?</p>
 </app-modal>
