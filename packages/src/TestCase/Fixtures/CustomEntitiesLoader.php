@@ -8,6 +8,7 @@ use Doctrine\DBAL\Connection;
 use Tab\Packages\Constants\Database\Tables;
 use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 use Tab\Packages\TestCase\Fixtures\Entity\Machine;
+use Tab\Packages\TestCase\Fixtures\Entity\Snack;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 final class CustomEntitiesLoader
@@ -15,6 +16,7 @@ final class CustomEntitiesLoader
     private const PURGE_TABLES = [
         Tables::USERS,
         Tables::MACHINES,
+        Tables::SNACKS,
     ];
 
     public function __construct(
@@ -38,6 +40,9 @@ final class CustomEntitiesLoader
 
         $machines = $this->filterObjects(Machine::class, ...$entities);
         $this->addMachines(...$machines);
+
+        $snacks = $this->filterObjects(Snack::class, ...$entities);
+        $this->addSnacks(...$snacks);
     }
 
     public function purgeTables(): void
@@ -110,6 +115,25 @@ final class CustomEntitiesLoader
 
             if (1 !== $addedMachines) {
                 throw new \RuntimeException('Unable to add new machine.');
+            }
+        }
+    }
+
+    private function addSnacks(Snack ...$snacks): void
+    {
+        foreach ($snacks as $snack) {
+            $addedSnacks = $this->connection
+                ->insert(
+                    Tables::SNACKS,
+                    [
+                        Tables\Snacks::FIELD_SNACK_ID => $snack->id,
+                        Tables\Snacks::FIELD_NAME => $snack->name,
+                    ],
+                )
+            ;
+
+            if (1 !== $addedSnacks) {
+                throw new \RuntimeException('Unable to add new snack.');
             }
         }
     }
