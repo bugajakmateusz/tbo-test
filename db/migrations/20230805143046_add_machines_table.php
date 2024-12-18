@@ -22,7 +22,6 @@ final class AddMachinesTable extends AbstractMigration
                 [
                     'null' => false,
                     'limit' => 255,
-                    'signed' => false,
                 ],
             )
             ->addColumn(
@@ -30,7 +29,6 @@ final class AddMachinesTable extends AbstractMigration
                 'integer',
                 [
                     'null' => false,
-                    'limit' => 255,
                     'signed' => false,
                 ],
             )
@@ -39,7 +37,7 @@ final class AddMachinesTable extends AbstractMigration
                 'integer',
                 [
                     'null' => false,
-                    'limit' => 50,
+                    'signed' => false,
                 ],
             )
         ;
