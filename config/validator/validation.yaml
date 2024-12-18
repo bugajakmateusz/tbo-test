@@ -1,3 +1,12 @@
+Tab\Application\Command\AddNewSnack\AddNewSnack:
+  properties:
+    name:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: 255
+          normalizer: trim
+
 Tab\Application\Command\AddNewMachine\AddNewMachine:
   properties:
     location:

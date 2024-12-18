@@ -3,6 +3,11 @@ json-api.snacks.list:
   controller: 'Tab\UserInterface\Http\JsonApi\Snacks\SnacksListAction'
   methods: GET
 
+json-api.snacks.create:
+  path: 'snacks'
+  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\CreateNewSnackAction'
+  methods: POST
+
 json-api.machines.list:
   path: 'machines'
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachinesListAction'
