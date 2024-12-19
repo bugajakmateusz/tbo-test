@@ -54,9 +54,10 @@ final class LocationTest extends UnitTestCase
             'expectedLocation' => $expectedLocation,
         ] = $createParams();
 
-        // Expect
+        // Act
         $Location = Location::fromString($locationString);
 
+        // Assert
         self::assertSame($expectedLocation, $Location->toString());
     }
 
