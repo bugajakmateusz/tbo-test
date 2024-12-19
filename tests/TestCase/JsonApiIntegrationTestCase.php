@@ -99,7 +99,7 @@ abstract class JsonApiIntegrationTestCase extends IntegrationTestCase
         $this->assertJsonApiAttributes($include, $expectedAttributes);
     }
 
-    /** @param array<int,null|mixed[]> $expectedRelationships */
+    /** @param array<string,null|mixed[]> $expectedRelationships */
     protected function assertJsonApiRelationships(JsonApiDocument $jsonApiDocument, array $expectedRelationships): void
     {
         self::assertSame(

@@ -8,12 +8,14 @@ use Doctrine\DBAL\Connection;
 use Tab\Packages\Constants\Database\Tables;
 use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 use Tab\Packages\TestCase\Fixtures\Entity\Machine;
+use Tab\Packages\TestCase\Fixtures\Entity\MachineSnack;
 use Tab\Packages\TestCase\Fixtures\Entity\Snack;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 final class CustomEntitiesLoader
 {
     private const PURGE_TABLES = [
+        Tables::MACHINE_SNACKS,
         Tables::USERS,
         Tables::MACHINES,
         Tables::SNACKS,
@@ -43,6 +45,9 @@ final class CustomEntitiesLoader
 
         $snacks = $this->filterObjects(Snack::class, ...$entities);
         $this->addSnacks(...$snacks);
+
+        $machineSnacks = $this->filterObjects(MachineSnack::class, ...$entities);
+        $this->addMachineSnacks(...$machineSnacks);
     }
 
     public function purgeTables(): void
@@ -134,6 +139,30 @@ final class CustomEntitiesLoader
 
             if (1 !== $addedSnacks) {
                 throw new \RuntimeException('Unable to add new snack.');
+            }
+        }
+    }
+
+    private function addMachineSnacks(MachineSnack ...$machineSnacks): void
+    {
+        foreach ($machineSnacks as $machineSnack) {
+            $machine = $machineSnack->machine;
+            $snack = $machineSnack->snack;
+            $addedMachineSnacks = $this->connection
+                ->insert(
+                    Tables::MACHINE_SNACKS,
+                    [
+                        Tables\MachineSnack::FIELD_ID => $machineSnack->id,
+                        Tables\MachineSnack::FIELD_MACHINE_ID => $machine->id,
+                        Tables\MachineSnack::FIELD_SNACK_ID => $snack->id,
+                        Tables\MachineSnack::FIELD_QUANTITY => $machineSnack->quantity,
+                        Tables\MachineSnack::FIELD_POSITION => $machineSnack->position,
+                    ],
+                )
+            ;
+
+            if (1 !== $addedMachineSnacks) {
+                throw new \RuntimeException('Unable to add new machine snack.');
             }
         }
     }

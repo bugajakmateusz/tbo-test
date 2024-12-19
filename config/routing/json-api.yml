@@ -25,6 +25,13 @@ json-api.machines.create:
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\CreateNewMachineAction'
   methods: POST
 
+json-api.machines.details:
+  path: 'machines/{machineId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachineDetailsAction'
+  methods: GET
+  requirements:
+    machineId: \d+
+
 json-api.machines.update:
   path: 'machines/{machineId}'
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\UpdateMachineAction'
