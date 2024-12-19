@@ -8,6 +8,13 @@ json-api.snacks.create:
   controller: 'Tab\UserInterface\Http\JsonApi\Snacks\CreateNewSnackAction'
   methods: POST
 
+json-api.snacks.update:
+  path: 'snacks/{snackId}'
+  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\UpdateSnackAction'
+  methods: PATCH
+  requirements:
+    snackId: \d+
+
 json-api.machines.list:
   path: 'machines'
   controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachinesListAction'
