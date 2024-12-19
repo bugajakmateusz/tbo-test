@@ -6,9 +6,9 @@
     <div class="row justify-content-md-center">
         <div class="col-lg-5 col-md-10">
 {#            {{ file_source(public_path ~ asset('build-bo/images/zwzt-logo.svg', 'back-office'))|raw }}#}
-            <hžž2>
+            <h2>
                 Back Office
-            </hžž2>
+            </h2>
 
             {% if error %}
                 <div class="alert alert-danger mt-4" role="alert">
@@ -51,6 +51,123 @@
                     </button>
                 </p>
             </form>
+
+            <form id="register_form" class="mt-4">
+                <div class="form-group mt-2">
+                    <label for="remail" class="mb-1">E-mail:</label>
+                    <input
+                            type="email"
+                            id="remail"
+                            name="email"
+                            value="{{ last_username }}"
+                            class="form-control"
+                            placeholder="Adres e-mail"
+                            required
+                    />
+                </div>
+                <div class="form-group mt-2">
+                    <label for="rname" class="mb-1">Imię:</label>
+                    <input
+                            type="text"
+                            id="rname"
+                            name="name"
+                            class="form-control"
+                            placeholder="Imię"
+                            required
+                    />
+                </div>
+                <div class="form-group mt-2">
+                    <label for="rsurname" class="mb-1">Nazwisko:</label>
+                    <input
+                            type="text"
+                            id="rsurname"
+                            name="surname"
+                            class="form-control"
+                            placeholder="Nazwisko"
+                            required
+                    />
+                </div>
+                <div class="form-group mt-2">
+                    <label for="rpassword" class="mb-1">Hasło:</label>
+                    <input
+                            type="password"
+                            id="rpassword"
+                            name="password"
+                            class="form-control"
+                            placeholder="Hasło"
+                            required
+                    />
+                </div>
+
+                <p class="text-right mt-4">
+                    <button
+                            type="submit"
+                            class="btn btn-primary"
+                            id="submit"
+                    >
+                        Zarejestruj się
+                    </button>
+                </p>
+            </form>
+
+            {% block javascripts %}
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.getElementById('login_form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+
+                            const data = {
+                                username: document.getElementById('username').value,
+                                password: document.getElementById('password').value
+                            };
+
+                            console.log(data)
+
+                            fetch('/api/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                })
+                                .catch(error => {
+                                    console.error('There was an error!', error);
+                                });
+                        });
+
+                        document.getElementById('register_form').addEventListener('submit', function(event) {
+                            event.preventDefault();
+
+                            const data = {
+                                email: document.getElementById('remail').value,
+                                name: document.getElementById('rname').value,
+                                surname: document.getElementById('rsurname').value,
+                                password: document.getElementById('rpassword').value
+                            };
+
+                            fetch('/api/register', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                })
+                                .catch(error => {
+                                    console.error('There was an error!', error);
+                                });
+                        });
+                    });
+                </script>
+            {% endblock %}
+
         </div>
     </div>
 {% endblock %}
