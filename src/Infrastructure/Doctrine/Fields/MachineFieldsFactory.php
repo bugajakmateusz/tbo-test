@@ -8,9 +8,10 @@ use Tab\Application\Schema\MachineSchema;
 use Tab\Application\View\MachineView;
 use Tab\Packages\Constants\Database\Tables;
 use Tab\Packages\ResourcesList\Fields;
+use Tab\Packages\SqlExpressions\JsonArrayAggregate;
 use Tab\Packages\SqlExpressions\JsonObject;
 
-final class MachineFieldsFactory
+final readonly class MachineFieldsFactory
 {
     private const DIRECT_ATTRIBUTES = [
         MachineSchema::ATTRIBUTE_LOCATION => [
@@ -27,6 +28,11 @@ final class MachineFieldsFactory
         ],
     ];
 
+    public function __construct(
+        private MachineSnackFieldsFactory $machineSnackFieldsFactory,
+    ) {
+    }
+
     public function create(string $machinesTableAlias, Fields $typeFields): JsonObject
     {
         $machineFields = new JsonObject();
@@ -39,6 +45,12 @@ final class MachineFieldsFactory
         $this->addDirectAttributes(
             $machineFields,
             $machineTypeFields,
+            $machinesTableAlias,
+        );
+        $this->addMachineSnack(
+            $machineFields,
+            $machineTypeFields,
+            $typeFields,
             $machinesTableAlias,
         );
 
@@ -62,5 +74,31 @@ final class MachineFieldsFactory
 
             $machineFields->addField($jsonColumn, "{$tableAlias}.{$databaseColumn}");
         }
+    }
+
+    private function addMachineSnack(
+        JsonObject $dataFields,
+        Fields\TypeFields $typeFields,
+        Fields $fields,
+        string $tableAlias,
+    ): void {
+        if (false === $typeFields->hasField(MachineSchema::RELATIONSHIP_MACHINE_SNACKS)) {
+            return;
+        }
+
+        $machineSnacksTableAlias = 'machine_snacks';
+        $baseMachineSnacksFields = $this->machineSnackFieldsFactory
+            ->create($machineSnacksTableAlias, $fields)
+        ;
+
+        $jsonAggregate = new JsonArrayAggregate($baseMachineSnacksFields->toString());
+
+        $machineSnacksSql = <<<"SQL"
+            SELECT {$jsonAggregate->toString()}
+            FROM machine_snacks {$machineSnacksTableAlias}
+            WHERE {$machineSnacksTableAlias}.machine_id = {$tableAlias}.machine_id
+            SQL;
+
+        $dataFields->addField(MachineView::FIELD_RAW_MACHINE_SNACKS, "({$machineSnacksSql})");
     }
 }
