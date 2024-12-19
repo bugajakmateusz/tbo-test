@@ -13,7 +13,7 @@ final readonly class UserView
     public const FIELD_RAW_ROLES = 'roles';
 
     /** @param string[] $roles */
-    public function __construct(
+    private function __construct(
         public int $id,
         public string $email,
         public string $name,
