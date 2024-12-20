@@ -60,7 +60,7 @@ final class SnackFieldsFactory
                 $databaseColumn,
             ] = $columns;
 
-            if (false === $snackTypeFields->hasField($fieldName)) {
+            if (false === $snackTypeFields->hasField((string) $fieldName)) {
                 continue;
             }
 

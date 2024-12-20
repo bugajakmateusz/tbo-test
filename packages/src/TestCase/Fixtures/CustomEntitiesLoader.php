@@ -13,10 +13,12 @@ use Tab\Packages\TestCase\Fixtures\Entity\MachineSnack;
 use Tab\Packages\TestCase\Fixtures\Entity\Snack;
 use Tab\Packages\TestCase\Fixtures\Entity\SnackPrice;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
+use Tab\Packages\TestCase\Fixtures\Entity\WarehouseSnacks;
 
 final class CustomEntitiesLoader
 {
     private const PURGE_TABLES = [
+        Tables::WAREHOUSE_SNACKS,
         Tables::PRICES_HISTORY,
         Tables::MACHINE_SNACKS,
         Tables::USERS,
@@ -53,6 +55,9 @@ final class CustomEntitiesLoader
 
         $prices = $this->filterObjects(SnackPrice::class, ...$entities);
         $this->addSnacksPrices(...$prices);
+
+        $warehouseSnacks = $this->filterObjects(WarehouseSnacks::class, ...$entities);
+        $this->addWarehouseSnacks(...$warehouseSnacks);
     }
 
     public function purgeTables(): void
@@ -193,6 +198,25 @@ final class CustomEntitiesLoader
 
             if (1 !== $addedMachineSnacks) {
                 throw new \RuntimeException('Unable to add new snack price.');
+            }
+        }
+    }
+
+    private function addWarehouseSnacks(WarehouseSnacks ...$snacks): void
+    {
+        foreach ($snacks as $snack) {
+            $addedSnacks = $this->connection
+                ->insert(
+                    Tables::WAREHOUSE_SNACKS,
+                    [
+                        Tables\WarehouseSnacks::FIELD_SNACK_ID => $snack->id,
+                        Tables\WarehouseSnacks::FIELD_QUANTITY => $snack->quantity,
+                    ],
+                )
+            ;
+
+            if (1 !== $addedSnacks) {
+                throw new \RuntimeException('Unable to add new warehouse snack.');
             }
         }
     }
