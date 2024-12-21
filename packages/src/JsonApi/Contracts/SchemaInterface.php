@@ -10,7 +10,7 @@ interface SchemaInterface
 
     public function id(object $resource): string;
 
-    /** @return array<string, null|bool|int|mixed[]|string> */
+    /** @return array<string, null|bool|float|int|mixed[]|string> */
     public function attributes(object $resource): array;
 
     /** @return array<string,mixed> */
