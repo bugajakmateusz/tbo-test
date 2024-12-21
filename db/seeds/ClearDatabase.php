@@ -12,6 +12,8 @@ final class ClearDatabase extends AbstractSeed
         $this->deleteTableData(Tables::USERS);
         $this->deleteTableData(Tables::SNACKS);
         $this->deleteTableData(Tables::MACHINES);
+        $this->deleteTableData(Tables::MACHINE_SNACKS);
+        $this->deleteTableData(Tables::PRICES_HISTORY);
     }
 
     private function deleteTableData(string $table): void
