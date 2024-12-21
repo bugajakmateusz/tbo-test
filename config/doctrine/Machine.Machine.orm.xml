@@ -8,6 +8,16 @@
             <generator strategy="AUTO" />
         </id>
 
+        <one-to-many
+                field="snacks"
+                target-entity="Tab\Domain\Model\Machine\MachineSnack"
+                mapped-by="machine"
+        >
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+
         <field name="location" type="string" />
         <field name="positionNumber" type="integer" column="positions_no" />
         <field name="positionCapacity" type="integer" column="positions_capacity" />

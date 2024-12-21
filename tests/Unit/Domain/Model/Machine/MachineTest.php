@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Tab\Tests\Unit\Domain\Model\Machine;
 
+use Tab\Domain\DomainException;
 use Tab\Domain\Model\Machine\Location;
 use Tab\Domain\Model\Machine\Machine;
 use Tab\Packages\Faker\Faker;
 use Tab\Packages\TestCase\UnitTestCase;
 use Tab\Tests\TestCase\Application\Mother\MachineMother;
+use Tab\Tests\TestCase\Application\Mother\MachineSnackMother;
 
 /**
  * @internal
@@ -55,6 +57,50 @@ final class MachineTest extends UnitTestCase
 
         // Act
         $machine->{$method}($value);
+    }
+
+    public function test_machine_snack_can_be_added(): void
+    {
+        $machineSnack = MachineSnackMother::random();
+        $machine = MachineMother::random();
+
+        // Expect
+        self::expectNotToPerformAssertions();
+
+        // Act
+        $machine->addSnack($machineSnack);
+    }
+
+    public function test_machine_snack_can_be_added_on_empty_position(): void
+    {
+        $position = Faker::hexBytes(3);
+        $emptyMachineSnack = MachineSnackMother::withZeroQuantity($position);
+        $machineSnack = MachineSnackMother::withPosition($position);
+        $machine = MachineMother::random();
+        $machine->addSnack($emptyMachineSnack);
+
+        // Expect
+        self::expectNotToPerformAssertions();
+
+        // Act
+        $machine->addSnack($machineSnack);
+    }
+
+    public function test_machine_snack_cannot_be_added_when_position_is_taken(): void
+    {
+        // Arrange
+        $position = Faker::hexBytes(3);
+        $machineSnack1 = MachineSnackMother::withPosition($position);
+        $machineSnack2 = MachineSnackMother::withPosition($position);
+        $machine = MachineMother::random();
+        $machine->addSnack($machineSnack1);
+
+        // Expect
+        self::expectException(DomainException::class);
+        self::expectExceptionMessage('Snack on provided position already placed');
+
+        // Act
+        $machine->addSnack($machineSnack2);
     }
 
     /** @return iterable<string, array{\Closure}> */

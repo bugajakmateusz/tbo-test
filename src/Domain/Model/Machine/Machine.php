@@ -4,15 +4,21 @@ declare(strict_types=1);
 
 namespace Tab\Domain\Model\Machine;
 
+use Tab\Domain\DomainException;
+
 class Machine
 {
     private int $id;
+
+    /** @var array<MachineSnack>|\Traversable<MachineSnack> */
+    private iterable $snacks;
 
     private function __construct(
         private string $location,
         private int $positionNumber,
         private int $positionCapacity,
     ) {
+        $this->snacks = [];
     }
 
     public static function create(
@@ -40,5 +46,25 @@ class Machine
     public function changePositionCapacity(int $positionCapacity): void
     {
         $this->positionCapacity = $positionCapacity;
+    }
+
+    public function addSnack(
+        MachineSnack $snack,
+    ): void {
+        $newSnackPosition = $snack->position();
+        $samePosition = \array_filter(
+            \iterator_to_array($this->snacks),
+            static function (MachineSnack $machineSnack) use ($newSnackPosition): bool {
+                return 0 !== $machineSnack->quantity() && $machineSnack->position() === $newSnackPosition;
+            },
+        );
+
+        if ([] !== $samePosition) {
+            throw new DomainException('Snack on provided position already placed');
+        }
+
+        $snacks[] = $snack;
+
+        $this->snacks = $snacks;
     }
 }
