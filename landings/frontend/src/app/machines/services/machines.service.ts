@@ -2,25 +2,14 @@ import { Injectable } from '@angular/core';
 import { Machine } from '../models/machine.model';
 import { Snack } from 'src/app/snacks/models/snack/snack.model';
 import { SnackInMachine } from '../models/snack-in-machine.model';
+import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MachinesService {
-  machines: Machine[] = [
-    {
-      id: '1',
-      name: 'some machine',
-      note: 'some note about a machine',
-      active: true,
-    },
-    {
-      id: '2',
-      name: 'other machine',
-      note: 'some note about a machine',
-      active: false,
-    },
-  ];
+  machines: Machine[] = [];
 
   snacks: SnackInMachine[] = [
     {
@@ -36,7 +25,7 @@ export class MachinesService {
   ];
   action = '';
   id = '';
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   editMachine(name: string, note: string) {
     console.log(
@@ -59,8 +48,17 @@ export class MachinesService {
     console.log(`add machine. Name: ${name}. Note: ${note}`);
   }
 
-  getMachines() {
-    return this.machines;
+  getMachines(): Observable<Machine[]> {
+    return this.http
+      .get<Machine[]>(`http://localhost:3100/api/json-api/machines`)
+      .pipe(
+        map((response) => {
+          if (response) {
+            console.log(response);
+          }
+          return []; // If response is null return empty array for safety.
+        })
+      );
   }
 
   getMachine(id: string) {
