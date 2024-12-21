@@ -1,0 +1,27 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          ../../vendor/doctrine/orm/doctrine-mapping.xsd"
+>
+    <entity name="Tab\Domain\Model\Machine\MachineSnack" table="machine_snacks">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <many-to-one
+                field="machine"
+                target-entity="Tab\Domain\Model\Machine\Machine"
+                inversed-by="snacks"
+        >
+            <join-column
+                    name="machine_id"
+                    referenced-column-name="machine_id"
+                    nullable="false"
+            />
+        </many-to-one>
+
+        <field name="position" type="string" />
+        <field name="snackId" type="integer" />
+        <field name="quantity" type="integer" />
+    </entity>
+</doctrine-mapping>

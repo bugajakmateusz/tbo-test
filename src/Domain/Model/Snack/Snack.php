@@ -26,4 +26,9 @@ class Snack
     ): void {
         $this->name = $newName->toString();
     }
+
+    public function id(): int
+    {
+        return $this->id;
+    }
 }
