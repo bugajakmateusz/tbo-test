@@ -14,6 +14,7 @@ use Tab\Packages\TestCase\Fixtures\Entity\Machine;
 use Tab\Packages\TestCase\Mother\Entity\MachineMother;
 use Tab\Packages\TestCase\Mother\Entity\MachineSnackMother;
 use Tab\Packages\TestCase\Mother\Entity\SnackMother;
+use Tab\Packages\TestCase\Mother\Entity\SnackPriceMother;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
@@ -78,12 +79,19 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $machineSnack = MachineSnackMother::fromEntities($machine, $snack);
+        $oldSnackPrice = SnackPriceMother::fromEntities($machine, $snack);
+        $newSnackPriceDate = $oldSnackPrice->priceCreatedAt
+            ->modify('+1 second')
+        ;
+        $newSnackPrice = SnackPriceMother::fromEntities($machine, $snack, createdAt: $newSnackPriceDate);
         $loggedUser = UserMother::random();
         $this->loadEntities(
             $loggedUser,
             $machine,
             $snack,
             $machineSnack,
+            $oldSnackPrice,
+            $newSnackPrice,
         );
         $jsonApiClient = $this->loggedJsonApiClient(
             MachineSchema::class,
@@ -96,7 +104,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             [
                 JsonApiKeywords::FIELDS => [
                     'machines' => 'location,positionsNumber,positionsCapacity,machineSnacks',
-                    'machine-snacks' => 'quantity,position,snack',
+                    'machine-snacks' => 'quantity,position,snack,price',
                     'snacks' => 'name',
                 ],
                 JsonApiKeywords::INCLUDE => 'machineSnacks,machineSnacks.snack',
@@ -135,6 +143,7 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             [
                 'quantity' => $machineSnack->quantity,
                 'position' => $machineSnack->position,
+                'price' => $newSnackPrice->price,
             ],
         );
         self::assertJsonApiRelationships(

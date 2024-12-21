@@ -56,6 +56,11 @@ final readonly class MachineSnackFieldsFactory
             $typeFields,
             $machineSnacksTableAlias,
         );
+        $this->addPrice(
+            $machineSnackFields,
+            $machineSnackTypeFields,
+            $machineSnacksTableAlias,
+        );
 
         return $machineSnackFields;
     }
@@ -105,5 +110,25 @@ final readonly class MachineSnackFieldsFactory
             SQL;
 
         $dataFields->addField(MachineSnackView::FIELD_RAW_SNACK, "({$snackSql})");
+    }
+
+    private function addPrice(
+        JsonObject $machineSnackFields,
+        Fields\TypeFields $snackTypeFields,
+        string $tableAlias,
+    ): void {
+        if (false === $snackTypeFields->hasField(MachineSnackSchema::ATTRIBUTE_PRICE)) {
+            return;
+        }
+
+        $priceSql = <<<"SQL"
+            SELECT price
+            FROM prices_history ph
+            WHERE {$tableAlias}.snack_id = ph.snack_id AND {$tableAlias}.machine_id = ph.machine_id
+            ORDER BY ph.price_created_at DESC
+            LIMIT 1
+            SQL;
+
+        $machineSnackFields->addField(MachineSnackView::FIELD_RAW_PRICE, "({$priceSql})");
     }
 }

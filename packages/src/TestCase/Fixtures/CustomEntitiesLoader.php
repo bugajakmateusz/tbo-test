@@ -6,15 +6,18 @@ namespace Tab\Packages\TestCase\Fixtures;
 
 use Doctrine\DBAL\Connection;
 use Tab\Packages\Constants\Database\Tables;
+use Tab\Packages\Constants\Date;
 use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 use Tab\Packages\TestCase\Fixtures\Entity\Machine;
 use Tab\Packages\TestCase\Fixtures\Entity\MachineSnack;
 use Tab\Packages\TestCase\Fixtures\Entity\Snack;
+use Tab\Packages\TestCase\Fixtures\Entity\SnackPrice;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 final class CustomEntitiesLoader
 {
     private const PURGE_TABLES = [
+        Tables::PRICES_HISTORY,
         Tables::MACHINE_SNACKS,
         Tables::USERS,
         Tables::MACHINES,
@@ -48,6 +51,9 @@ final class CustomEntitiesLoader
 
         $machineSnacks = $this->filterObjects(MachineSnack::class, ...$entities);
         $this->addMachineSnacks(...$machineSnacks);
+
+        $prices = $this->filterObjects(SnackPrice::class, ...$entities);
+        $this->addSnacksPrices(...$prices);
     }
 
     public function purgeTables(): void
@@ -163,6 +169,31 @@ final class CustomEntitiesLoader
 
             if (1 !== $addedMachineSnacks) {
                 throw new \RuntimeException('Unable to add new machine snack.');
+            }
+        }
+    }
+
+    private function addSnacksPrices(SnackPrice ...$snackPrices): void
+    {
+        foreach ($snackPrices as $snackPrice) {
+            $machine = $snackPrice->machine;
+            $snack = $snackPrice->snack;
+            $createdAt = $snackPrice->priceCreatedAt;
+            $addedMachineSnacks = $this->connection
+                ->insert(
+                    Tables::PRICES_HISTORY,
+                    [
+                        Tables\PricesHistory::FIELD_PRICE_ID => $snackPrice->id,
+                        Tables\PricesHistory::FIELD_MACHINE_ID => $machine->id,
+                        Tables\PricesHistory::FIELD_SNACK_ID => $snack->id,
+                        Tables\PricesHistory::FIELD_PRICE => $snackPrice->price,
+                        Tables\PricesHistory::FIELD_CREATED_AT => $createdAt->format(Date::SQL_DATE_TIME_FORMAT),
+                    ],
+                )
+            ;
+
+            if (1 !== $addedMachineSnacks) {
+                throw new \RuntimeException('Unable to add new snack price.');
             }
         }
     }
