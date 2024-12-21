@@ -12,6 +12,7 @@ final class MachineSnackSchema extends AbstractSchema
     public const ATTRIBUTE_QUANTITY = 'quantity';
     public const ATTRIBUTE_POSITION = 'position';
     public const RELATIONSHIP_SNACK = 'snack';
+    public const RELATIONSHIP_MACHINE = 'machine';
 
     public function resourceType(): string
     {

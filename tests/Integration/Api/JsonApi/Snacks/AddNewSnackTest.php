@@ -7,7 +7,6 @@ namespace Tab\Tests\Integration\Api\JsonApi\Snacks;
 use Tab\Application\Schema\SnackSchema;
 use Tab\Packages\Constants\HttpStatusCodes;
 use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\Mother\Entity\SnackMother;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
@@ -72,10 +71,8 @@ final class AddNewSnackTest extends JsonApiIntegrationTestCase
             'errors' => $expectedErrors,
         ] = $createParams();
         $loggedUser = UserMother::random();
-        $snack = SnackMother::random();
         $this->loadEntities(
             $loggedUser,
-            $snack,
         );
         $client = $this->loggedJsonApiClient(
             SnackSchema::class,

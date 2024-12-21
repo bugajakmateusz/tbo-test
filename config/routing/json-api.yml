@@ -46,6 +46,11 @@ json-api.machines.remove:
   requirements:
     machineId: \d+
 
+json-api.machine_snacks.create:
+  path: 'machine-snacks'
+  controller: 'Tab\UserInterface\Http\JsonApi\MachineSnacks\CreateNewMachineSnackAction'
+  methods: POST
+
 json-api.users.list:
   path: 'users'
   controller: 'Tab\UserInterface\Http\JsonApi\Users\UsersListAction'

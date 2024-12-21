@@ -77,3 +77,17 @@ Tab\Application\Command\AddNewUser\AddNewUser:
       - All:
         - Choice:
             callback: [Tab\Domain\Model\User\Role, list]
+
+Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack:
+  constraints:
+    - Tab\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken: ~
+  properties:
+    position:
+      - NotBlank:
+          normalizer: trim
+      - Length:
+          max: !php/const Tab\Domain\Model\Machine\SnackPosition::MAX_LENGTH
+          normalizer: trim
+    quantity:
+      - NotBlank: ~
+      - GreaterThan: 0
