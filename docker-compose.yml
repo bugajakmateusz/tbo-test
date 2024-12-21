@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     haproxy:
-        image: haproxy:2.8.1-alpine
+        image: haproxy:2.8.3-alpine
         ports:
             - "127.0.0.1:3100:80"
         volumes:
@@ -53,7 +53,7 @@ services:
 
 
     postgres:
-        image: postgres:15.0-alpine
+        image: postgres:15.4-alpine
         environment:
             POSTGRES_USER: root
             POSTGRES_DB: tab_dev
@@ -69,7 +69,7 @@ services:
 #            - ./docker/db/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf:ro
 
     postgres_test:
-        image: postgres:15.0-alpine
+        image: postgres:15.4-alpine
         environment:
             POSTGRES_USER: root
             POSTGRES_DB: tab_test
@@ -90,7 +90,7 @@ services:
 
 
     node_builder_v20:
-        image: node:20.5.1-alpine
+        image: node:20.6.0-alpine
         working_dir: /app
         user: node
         command: sh -c "
