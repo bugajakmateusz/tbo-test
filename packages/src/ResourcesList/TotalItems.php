@@ -6,9 +6,7 @@ namespace Tab\Packages\ResourcesList;
 
 final class TotalItems
 {
-    private function __construct(private readonly int $totalItems)
-    {
-    }
+    private function __construct(private readonly int $totalItems) {}
 
     public static function fromInt(int $totalItems): self
     {

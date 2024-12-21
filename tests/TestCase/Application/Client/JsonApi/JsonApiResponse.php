@@ -12,8 +12,7 @@ final class JsonApiResponse
     public function __construct(
         public readonly ResponseInterface $response,
         private readonly JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     public function statusCode(): int
     {

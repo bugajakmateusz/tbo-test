@@ -9,9 +9,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 
 final readonly class DbalDbConnection implements DbConnectionInterface
 {
-    public function __construct(private Connection $connection)
-    {
-    }
+    public function __construct(private Connection $connection) {}
 
     public function fetchAllAssociative(
         string $query,

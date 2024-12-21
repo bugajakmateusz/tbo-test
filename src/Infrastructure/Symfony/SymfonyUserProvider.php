@@ -19,8 +19,7 @@ final readonly class SymfonyUserProvider implements UserProviderInterface
         private DbConnectionInterface $dbConnection,
         private JsonSerializerInterface $jsonSerializer,
         private RoleHierarchyInterface $roleHierarchy,
-    ) {
-    }
+    ) {}
 
     public function loadUserByIdentifier(string $identifier): UserInterface
     {

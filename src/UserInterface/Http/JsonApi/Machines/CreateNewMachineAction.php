@@ -25,8 +25,7 @@ final readonly class CreateNewMachineAction
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private ValidatorInterface $validator,
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * Create a machine.

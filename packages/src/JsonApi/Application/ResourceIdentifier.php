@@ -12,8 +12,7 @@ final readonly class ResourceIdentifier
     private function __construct(
         private string $id,
         private string $type,
-    ) {
-    }
+    ) {}
 
     public static function fromScalars(string $id, string $type): self
     {

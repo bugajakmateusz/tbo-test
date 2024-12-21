@@ -13,8 +13,7 @@ final class Sort
     private function __construct(
         private readonly string $name,
         private readonly string $direction,
-    ) {
-    }
+    ) {}
 
     public static function fromJsonApiString(string $sort): self
     {

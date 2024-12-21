@@ -13,8 +13,7 @@ final readonly class OrmSnackRepository implements SnackRepositoryInterface
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-    ) {
-    }
+    ) {}
 
     public function get(
         int $snackId,

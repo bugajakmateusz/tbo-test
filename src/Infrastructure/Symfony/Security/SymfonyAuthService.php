@@ -25,8 +25,7 @@ final class SymfonyAuthService implements AuthServiceInterface
         private readonly UserProviderInterface $userProvider,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function login(Email $email): void
     {

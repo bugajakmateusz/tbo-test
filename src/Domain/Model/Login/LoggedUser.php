@@ -10,8 +10,7 @@ final readonly class LoggedUser
         private int $id,
         private string $username,
         private Roles $roles,
-    ) {
-    }
+    ) {}
 
     /** @param array<string> $roles */
     public static function create(

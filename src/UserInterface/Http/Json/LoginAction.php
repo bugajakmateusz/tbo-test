@@ -16,8 +16,7 @@ final readonly class LoginAction
     public function __construct(
         private ResponseFactoryInterface $responseFactory,
         private QueryBusInterface $queryBus,
-    ) {
-    }
+    ) {}
 
     /**
      * Login a user.

@@ -24,8 +24,7 @@ final readonly class UpdateSnackAction
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private ValidatorInterface $validator,
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(
         Request $request,

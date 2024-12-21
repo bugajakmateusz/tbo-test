@@ -13,6 +13,5 @@ final readonly class AddNewUser
         public string $name,
         public string $surname,
         public array $roles = [],
-    ) {
-    }
+    ) {}
 }

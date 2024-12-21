@@ -15,9 +15,7 @@ use Tab\Packages\HttpResponse\SymfonyResponse;
 /** @internal */
 final readonly class SymfonyKernelBrowser implements KernelBrowserInterface
 {
-    public function __construct(private KernelBrowser $kernelBrowser)
-    {
-    }
+    public function __construct(private KernelBrowser $kernelBrowser) {}
 
     public function followRedirect(): ResponseInterface
     {

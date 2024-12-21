@@ -9,9 +9,7 @@ final class Email
     public const MAIL_REG_EX = '/^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()[\\]\\.,;:\\s@"]+)*)|(".+"))@(([^<>()[\\]\\.,;:\\s@"]+\\.)+[^<>()[\\]\\.,;:\\s@"]{2,})$/i';
     public const MAX_LENGTH = 250;
 
-    private function __construct(private readonly string $email)
-    {
-    }
+    private function __construct(private readonly string $email) {}
 
     public static function fromString(string $email): self
     {

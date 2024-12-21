@@ -16,8 +16,7 @@ final readonly class JsonApiResponseFactory implements JsonApiResponseFactoryInt
     public function __construct(
         private JsonApiSerializerInterface $jsonApiSerializer,
         private ResponseFactoryInterface $responseFactory,
-    ) {
-    }
+    ) {}
 
     public function listResponse(
         array $objects,

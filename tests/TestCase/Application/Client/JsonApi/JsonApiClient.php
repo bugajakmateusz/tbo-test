@@ -18,8 +18,7 @@ final readonly class JsonApiClient
         private SchemaInterface $schema,
         private KernelBrowserInterface $httpClient,
         private JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     /** @param array<string,array<string>|string> $additionalQueryParams */
     public function requestList(

@@ -27,8 +27,7 @@ final class CustomEntitiesLoader
     public function __construct(
         private readonly Connection $connection,
         private readonly JsonSerializerInterface $jsonSerializer,
-    ) {
-    }
+    ) {}
 
     public function load(bool $append = false, object ...$entities): void
     {

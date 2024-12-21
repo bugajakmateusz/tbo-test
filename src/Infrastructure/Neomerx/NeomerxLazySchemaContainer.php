@@ -34,8 +34,7 @@ final class NeomerxLazySchemaContainer implements SchemaContainerInterface
     public function __construct(
         private readonly ContainerInterface $schemaLocator,
         private readonly Factory $factory,
-    ) {
-    }
+    ) {}
 
     public function getSchema($resourceObject): SchemaInterface
     {

@@ -10,8 +10,7 @@ class Snack
 
     private function __construct(
         private string $name,
-    ) {
-    }
+    ) {}
 
     public static function create(
         Name $name,

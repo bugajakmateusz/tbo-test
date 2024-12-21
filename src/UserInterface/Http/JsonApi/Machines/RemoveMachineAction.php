@@ -16,8 +16,7 @@ final readonly class RemoveMachineAction
     public function __construct(
         private CommandBusInterface $commandBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
-    ) {
-    }
+    ) {}
 
     /**
      * Remove machine.

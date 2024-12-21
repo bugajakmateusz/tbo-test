@@ -6,9 +6,7 @@ namespace Tab\Tests\TestCase\Application\Client\JsonApi;
 
 final class JsonApiDocument
 {
-    public function __construct(private readonly \stdClass $document)
-    {
-    }
+    public function __construct(private readonly \stdClass $document) {}
 
     public function isList(): bool
     {

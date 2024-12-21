@@ -17,8 +17,7 @@ final readonly class MachinesListHandler
 
     public function __construct(
         private MachinesListQueryInterface $machinesListQuery,
-    ) {
-    }
+    ) {}
 
     public function __invoke(MachinesList $machinesList): MachinesListView
     {

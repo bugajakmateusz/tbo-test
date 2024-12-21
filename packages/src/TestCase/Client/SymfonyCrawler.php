@@ -8,9 +8,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 final class SymfonyCrawler implements CrawlerInterface
 {
-    public function __construct(private readonly Crawler $innerCrawler)
-    {
-    }
+    public function __construct(private readonly Crawler $innerCrawler) {}
 
     public static function fromData(
         string $uri,

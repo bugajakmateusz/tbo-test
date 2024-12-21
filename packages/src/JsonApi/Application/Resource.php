@@ -14,8 +14,7 @@ final readonly class Resource
         private string $type,
         private array $attributes,
         private Relationships $relationships,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array{

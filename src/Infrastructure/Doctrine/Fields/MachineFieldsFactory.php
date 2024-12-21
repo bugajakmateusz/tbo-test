@@ -30,8 +30,7 @@ final readonly class MachineFieldsFactory
 
     public function __construct(
         private MachineSnackFieldsFactory $machineSnackFieldsFactory,
-    ) {
-    }
+    ) {}
 
     public function create(string $machinesTableAlias, Fields $typeFields): JsonObject
     {

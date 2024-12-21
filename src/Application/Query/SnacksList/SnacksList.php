@@ -12,6 +12,5 @@ final readonly class SnacksList
     public function __construct(
         public Filters $filters,
         public Page $page,
-    ) {
-    }
+    ) {}
 }

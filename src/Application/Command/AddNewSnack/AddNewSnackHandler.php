@@ -12,8 +12,7 @@ final readonly class AddNewSnackHandler
 {
     public function __construct(
         private SnackRepositoryInterface $snackRepository,
-    ) {
-    }
+    ) {}
 
     public function __invoke(
         AddNewSnack $command,

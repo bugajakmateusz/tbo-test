@@ -15,6 +15,5 @@ final readonly class User
         public string $password,
         public string $passwordHash,
         public array $roles = [],
-    ) {
-    }
+    ) {}
 }

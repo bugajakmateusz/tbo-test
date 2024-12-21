@@ -15,8 +15,7 @@ final readonly class ResponseFactory implements ResponseFactoryInterface
         private Environment $twig,
         private JsonSerializerInterface $jsonSerializer,
         private UrlGeneratorInterface $urlGenerator,
-    ) {
-    }
+    ) {}
 
     public function templateResponse(
         string $templateName,

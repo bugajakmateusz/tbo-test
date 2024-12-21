@@ -10,8 +10,7 @@ final readonly class JsonArrayAggregate
         private string $attribute,
         private bool $distinct = false,
         private ?OrderBy $orderBy = null,
-    ) {
-    }
+    ) {}
 
     public function toString(): string
     {

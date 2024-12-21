@@ -11,9 +11,7 @@ use Tab\Domain\Model\Machine\MachineRepositoryInterface;
 
 final readonly class OrmMachineRepository implements MachineRepositoryInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
-    {
-    }
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     public function get(int $machineId): Machine
     {

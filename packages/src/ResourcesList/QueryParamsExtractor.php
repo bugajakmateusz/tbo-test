@@ -30,9 +30,7 @@ final class QueryParamsExtractor
      *     >,
      * } $queryParams
      */
-    public function __construct(private readonly array $queryParams)
-    {
-    }
+    public function __construct(private readonly array $queryParams) {}
 
     public function filters(): Filters
     {

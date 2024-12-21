@@ -18,8 +18,7 @@ final readonly class SnackView
     private function __construct(
         public int $id,
         public string $name,
-    ) {
-    }
+    ) {}
 
     /** @param SnackData $data */
     public static function fromArray(

@@ -20,8 +20,7 @@ final readonly class SnacksListAction
         private QueryBusInterface $queryBus,
         private JsonApiResponseFactoryInterface $jsonApiResponseFactory,
         private QueryParamsExtractorFactory $queryParamsExtractorFactory,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request): ResponseInterface
     {

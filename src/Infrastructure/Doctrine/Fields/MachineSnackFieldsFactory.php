@@ -26,8 +26,7 @@ final readonly class MachineSnackFieldsFactory
 
     public function __construct(
         private SnackFieldsFactory $snackFieldsFactory,
-    ) {
-    }
+    ) {}
 
     public function create(
         string $machineSnacksTableAlias,

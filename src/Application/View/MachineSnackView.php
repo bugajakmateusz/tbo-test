@@ -29,8 +29,7 @@ final readonly class MachineSnackView
         public string $position,
         public float $price,
         public SnackView $snack,
-    ) {
-    }
+    ) {}
 
     /** @param MachineSnackData $data */
     public static function fromArray(array $data): self
