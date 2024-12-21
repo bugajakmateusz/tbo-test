@@ -25,7 +25,10 @@ export class MachinesService {
   ];
   action = '';
   id = '';
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) {
+    this.login();
+  }
 
   editMachine(name: string, note: string) {
     console.log(
@@ -48,6 +51,16 @@ export class MachinesService {
     console.log(`add machine. Name: ${name}. Note: ${note}`);
   }
 
+  login() {
+    this.http
+      .post('http://localhost:3100/api/login', {
+        username: 'julita.borkowska@kaczmarczyk.pl',
+        password: 'tab-admin',
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
   getMachines(): Observable<Machine[]> {
     return this.http
       .get<Machine[]>(`http://localhost:3100/api/json-api/machines`)
