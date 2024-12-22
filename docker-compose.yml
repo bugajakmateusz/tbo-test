@@ -90,7 +90,7 @@ services:
 
 
     node_builder_v20:
-        image: node:20.6.0-alpine
+        image: node:20.5-alpine3.17
         working_dir: /app
         user: node
         command: sh -c "
