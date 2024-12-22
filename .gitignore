@@ -3,7 +3,6 @@
 /public/build/
 node_modules/
 .DS_Store
-package-lock.json
 /docker/fpm/.env.local
 /public/status.json
 .php-cs-fixer.cache
