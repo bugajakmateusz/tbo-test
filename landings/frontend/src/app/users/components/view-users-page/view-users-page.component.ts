@@ -12,7 +12,7 @@ import { userRoleOptions } from '../../userRoleOptions';
   styleUrls: ['./view-users-page.component.scss'],
 })
 export class ViewUsersPageComponent {
-  columns = ['ID', 'Email', 'Nazwisko', 'Rola'];
+  columns = ['ID', 'Email', 'Nazwisko', 'Role'];
 
   users: User[] = [];
   roles = userRoleOptions;
