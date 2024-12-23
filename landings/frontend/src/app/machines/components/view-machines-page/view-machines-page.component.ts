@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MachinesService } from '../../services/machines.service';
 import { Machine } from '../../models/machine.model';
-import { MachineDisplayed } from '../../models/machine-displayed.model';
 import { MachinesMapperService } from '../../services/machines-mapper.service';
 import { SnackInMachine } from '../../models/snack-in-machine.model';
 import { SnackInMachineDisplayed } from '../../models/snack-in-machine-displayed.model';
@@ -13,12 +12,11 @@ import { SnackInMachineDisplayed } from '../../models/snack-in-machine-displayed
   styleUrls: ['./view-machines-page.component.scss'],
 })
 export class ViewMachinesPageComponent implements OnInit {
-  machinesListcolumns = ['ID', 'Nazwa', 'Aktywna'];
+  machinesListcolumns = ['ID', 'Lokalizacja', 'Liczba pozycji', 'Pojemność'];
   snacksListcolumns = ['ID', 'Nazwa'];
 
   machines: Machine[] = [];
 
-  displayedMachines: MachineDisplayed[] = [];
 
   snacksInMachine: SnackInMachine[] = [
     {
@@ -32,11 +30,10 @@ export class ViewMachinesPageComponent implements OnInit {
 
   showMachines: boolean = true;
 
-  chosenMachineName = '';
+  chosenMachineLocation = '';
 
   machinesListButtons = [
     { text: 'Edytuj', action: 'editMachine' },
-    { text: 'Aktywuj', action: 'activate/deactivateMachine' },
     {
       text: 'Ceny',
       action: 'changePrices',
@@ -52,8 +49,9 @@ export class ViewMachinesPageComponent implements OnInit {
   ];
 
   form = this.fb.group({
-    name: ['', Validators.required],
-    note: [''],
+    location: ['', Validators.required],
+    positionsNumber: ['', Validators.min(1)],
+    positionsCapacity: ['', Validators.min(1)],
   });
 
   snacksForm = this.fb.group({});
@@ -65,17 +63,20 @@ export class ViewMachinesPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.machinesService.getMachines().subscribe((data) => console.log(data));
-    this.displayedMachines = this.machines.map((el) =>
-      this.machinesMapperService.mapMachineToMachineDisplayed(el)
-    );
+this.getMachines()
+  }
+
+  getMachines() {
+    this.machinesService.getMachines().subscribe((machinesFromApi) => this.machines = machinesFromApi.map(machineFromApi => this.machinesMapperService.mapMachineFromApiToMachine(machineFromApi)));
   }
 
   editMachine() {
     this.machinesService.editMachine(
-      this.form.value.name!,
-      this.form.value.note!
+      this.form.value.location!,
+      this.form.value.positionsNumber!,
+      this.form.value.positionsCapacity!
     );
+  this.getMachines()
   }
   activateDeactivateMachine() {
     this.machinesService.activateDeactivateMachine();
@@ -100,7 +101,7 @@ export class ViewMachinesPageComponent implements OnInit {
         );
       });
       this.showMachines = false;
-      this.chosenMachineName = this.machinesService.getMachine(event.id).name;
+      this.chosenMachineLocation = this.machinesService.getMachine(event.id).location;
     } else {
       this.setFormValuesToSelectedItem();
     }
@@ -109,8 +110,9 @@ export class ViewMachinesPageComponent implements OnInit {
   setFormValuesToSelectedItem() {
     const machine = this.machinesService.getCurrentMachine();
     this.form.setValue({
-      name: machine.name,
-      note: machine.note,
+      location: machine.location,
+      positionsNumber: machine.positionsNumber,
+      positionsCapacity: machine.positionsCapacity,
     });
   }
 

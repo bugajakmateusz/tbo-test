@@ -4,6 +4,8 @@ import { Snack } from 'src/app/snacks/models/snack/snack.model';
 import { SnackInMachine } from '../models/snack-in-machine.model';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import {MachinesMapperService} from "./machines-mapper.service";
+import {MachineFromApi} from "../models/machine-from-api.model";
 
 @Injectable({
   providedIn: 'root',
@@ -26,14 +28,42 @@ export class MachinesService {
   action = '';
   id = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private machinesMapperService: MachinesMapperService) {
     this.login();
+    this.updateServiceData()
   }
 
-  editMachine(name: string, note: string) {
+  private login() {
+    this.http
+        .post('http://localhost:3100/api/login', {
+          username: 'ebaranowski@onet.pl',
+          password: 'tab-admin',
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+  }
+
+  private updateServiceData() {
+    this.getMachines().subscribe(machinesFromApi => this.machines = machinesFromApi.map(machineFromApi => this.machinesMapperService.mapMachineFromApiToMachine(machineFromApi)))
+  }
+
+  editMachine(location: string, positionsNumber: string, positionsCapacity: string) {
     console.log(
-      `edit machine with ID: ${this.id}. New name: ${name}. New note: ${note}`
+      `edit machine with ID: ${this.id}.`, location, positionsNumber, positionsCapacity
     );
+    this.http.patch(`http://localhost:3100/api/json-api/machines/${this.id}`, {
+      data: {
+        type: "machines",
+        attributes: {
+          location: location,
+          positionsNumber: positionsNumber,
+          positionsCapacity: positionsCapacity
+        }
+      }
+    })
+        .subscribe(data => console.log(data))
+    this.updateServiceData()
   }
 
   activateDeactivateMachine() {
@@ -50,24 +80,13 @@ export class MachinesService {
   addMachine(name: string, note: string) {
     console.log(`add machine. Name: ${name}. Note: ${note}`);
   }
-
-  login() {
-    this.http
-      .post('http://localhost:3100/api/login', {
-        username: 'julita.borkowska@kaczmarczyk.pl',
-        password: 'tab-admin',
-      })
-      .subscribe((data) => {
-        console.log(data);
-      });
-  }
-  getMachines(): Observable<Machine[]> {
+  getMachines(): Observable<MachineFromApi[]> {
     return this.http
-      .get<Machine[]>(`http://localhost:3100/api/json-api/machines`)
+      .get<any>(`http://localhost:3100/api/json-api/machines?fields%5Bmachines%5D=location%2CpositionsNumber%2CpositionsCapacity`)
       .pipe(
         map((response) => {
           if (response) {
-            console.log(response);
+            return response.data
           }
           return []; // If response is null return empty array for safety.
         })

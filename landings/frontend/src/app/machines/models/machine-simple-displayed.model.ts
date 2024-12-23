@@ -1,4 +1,4 @@
 export interface MachineSimpleDisplayed {
-  id: string;
-  name: string;
+    id: string
+    location: string
 }

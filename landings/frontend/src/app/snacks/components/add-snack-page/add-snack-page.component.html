@@ -23,7 +23,7 @@
     <div class="mt-4">
       <app-form-input
         *ngFor="let machine of machines; let i = index"
-        name="Ustaw cenę w: {{ machine.name }}"
+        name="Ustaw cenę w: {{ machine.location }}"
         type="number"
         [control]="
           pricesForm.get('machine_' + i) | abstractControlToFormControl
