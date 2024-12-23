@@ -11,5 +11,6 @@ final readonly class AddNewMachineSnack
         public int $snackId,
         public int $quantity,
         public string $position,
+        public float $price,
     ) {}
 }

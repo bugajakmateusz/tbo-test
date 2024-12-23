@@ -40,6 +40,7 @@ final class MachinePositionTakenValidatorTest extends IntegrationTestCase
             Faker::intId(),
             Faker::intId(),
             $position,
+            Faker::float(min: 1.0),
         );
 
         // Act
