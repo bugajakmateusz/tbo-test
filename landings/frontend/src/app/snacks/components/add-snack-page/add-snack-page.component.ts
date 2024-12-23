@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnacksService } from '../../services/snacks.service';
-import { MachinesService } from 'src/app/machines/services/machines.service';
-import { Machine } from 'src/app/machines/models/machine.model';
-import { AlertService } from 'src/app/shared/services/alert.service';
+import { MachinesService } from '../../../machines/services/machines.service';
+import { Machine } from '../../../machines/models/machine.model';
+import { AlertService } from '../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-add-snack-page',
@@ -32,6 +32,7 @@ export class AddSnackPageComponent implements OnInit {
     if (this.form.valid) {
       this.snacksService.addSnack(this.form.value.name!);
       this.showAlert();
+      this.form.reset()
     }
   }
 
