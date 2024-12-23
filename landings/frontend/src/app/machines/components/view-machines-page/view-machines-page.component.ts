@@ -138,7 +138,7 @@ this.getMachines()
 
   addSnack() {
     if(this.addSnackForm.valid) {
-      console.log("add new snack", this.addSnackForm.value.snackId, this.addSnackForm.value.price)
+      this.machinesService.addSnackToMachine(this.addSnackForm.value.snackId!, this.addSnackForm.value.price!)
       this.addSnackForm.reset()
     }
   }

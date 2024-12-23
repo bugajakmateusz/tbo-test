@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Snack } from '../models/snack/snack.model';
+import {ConfigService} from "../../config.service";
+import { HttpClient } from '@angular/common/http';
+import {map, Observable} from "rxjs";
+import {SnackFromApi} from "../models/snack-from-api.model";
+import {SnacksMapperService} from "./snacks-mapper.service";
+
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +24,27 @@ export class SnacksService {
 
   action = '';
   id = '';
-  constructor() {}
+  constructor(private http: HttpClient, private configService: ConfigService, private snacksMapperService: SnacksMapperService) {
+    this.login()
+    this.updateServiceData()
+  }
+
+
+  private login() {
+    this.http
+        .post('http://localhost:3100/api/login', {
+          username: 'ebaranowski@onet.pl',
+          password: 'tab-admin',
+        })
+        .subscribe((data) => {
+          console.log(data);
+        });
+  }
+
+  private updateServiceData() {
+    this.getSnacks().subscribe(snacksFromApi => this.snacks = snacksFromApi.map(snackFromApi => this.snacksMapperService.mapSnackFromApiToSnack(snackFromApi)))
+  }
+
 
   editSnack(name: string) {
     console.log(`edit snack with ID: ${this.id}. New name: ${name}`);
@@ -29,11 +55,30 @@ export class SnacksService {
   }
 
   addSnack(name: string) {
-    console.log(`add snack. Name: ${name}.`)
+    console.log(name)
+this.http.post(`${this.configService.apiUrl}json-api/snacks`, {
+  data: {
+    type: "snacks",
+    attributes: {
+      name: name
+    }
+  }
+})
+    .subscribe(data => console.log(data))
   }
 
-  getSnacks() {
-    return this.snacks;
+  getSnacks(): Observable<SnackFromApi[]> {
+    return this.http
+        .get<any>(`${this.configService.apiUrl}json-api/snacks`)
+        .pipe(
+            map((response) => {
+              if (response) {
+                console.log(response.data)
+                return response.data
+              }
+              return []; // If response is null return empty array for safety.
+            })
+        );
   }
 
   getSnack(id: string) {
