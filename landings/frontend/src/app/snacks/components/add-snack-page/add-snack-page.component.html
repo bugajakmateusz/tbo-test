@@ -1,50 +1,14 @@
-<app-form title="Dodaj przekąskę" *ngIf="showNameForm; else secondForm">
+<app-form title="Dodaj przekąskę">
   <app-form-input
     name="Nazwa przekąski"
     [control]="form.controls.name"
   ></app-form-input>
   <app-form-button
-    text="Dalej"
-    (click)="goNext()"
+    text="Dodaj"
+    (click)="onSubmit()"
     [disabled]="!form.valid"
   ></app-form-button>
 </app-form>
-<ng-template #secondForm>
-  <app-form title="Dodaj przekąskę">
-    <app-form-input
-      name="Ustaw cenę we wszystkich maszynach"
-      type="number"
-      [control]="setAllPricesForm.controls.price"
-    ></app-form-input>
-    <app-form-button
-      text="Ustaw"
-      (click)="setPriceInAllMachines()"
-    ></app-form-button>
-    <div class="mt-4">
-      <app-form-input
-        *ngFor="let machine of machines; let i = index"
-        name="Ustaw cenę w: {{ machine.location }}"
-        type="number"
-        [control]="
-          pricesForm.get('machine_' + i) | abstractControlToFormControl
-        "
-        [min]="0"
-      ></app-form-input>
-      <div class="d-flex gap-3">
-        <app-form-button
-          text="Wróć"
-          btn-style="outline"
-          (click)="goBack()"
-        ></app-form-button>
-        <app-form-button
-          text="Dodaj"
-          (click)="onSubmit()"
-          [disabled]="submitButtonDisabled()"
-        ></app-form-button>
-      </div>
-    </div>
-  </app-form>
-</ng-template>
 
 <app-alert
   alertId="successAlert"

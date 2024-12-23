@@ -5,6 +5,7 @@ import { Machine } from '../../models/machine.model';
 import { MachinesMapperService } from '../../services/machines-mapper.service';
 import { SnackInMachine } from '../../models/snack-in-machine.model';
 import { SnackInMachineDisplayed } from '../../models/snack-in-machine-displayed.model';
+import {SnacksService} from "../../../snacks/services/snacks.service";
 
 @Component({
   selector: 'app-view-machines-page',
@@ -13,7 +14,7 @@ import { SnackInMachineDisplayed } from '../../models/snack-in-machine-displayed
 })
 export class ViewMachinesPageComponent implements OnInit {
   machinesListcolumns = ['ID', 'Lokalizacja', 'Liczba pozycji', 'Pojemność'];
-  snacksListcolumns = ['ID', 'Nazwa'];
+  snacksListcolumns = ['ID', 'Nazwa', 'Cena'];
 
   machines: Machine[] = [];
 
@@ -40,25 +41,29 @@ export class ViewMachinesPageComponent implements OnInit {
     },
   ];
 
-  snacksListInputs = [
-    {
-      title: 'Cena w maszynie',
-      name: 'snack',
-      type: 'number',
-    },
+  snacksListButtons = [
+    { text: 'Zmień', action: 'changePrice' }
   ];
 
   form = this.fb.group({
     location: ['', Validators.required],
-    positionsNumber: ['', Validators.min(1)],
-    positionsCapacity: ['', Validators.min(1)],
+    positionsNumber: ['', [Validators.required, Validators.min(1)]],
+    positionsCapacity: ['', [Validators.required, Validators.min(1)]],
   });
 
-  snacksForm = this.fb.group({});
+  addSnackForm = this.fb.group({
+    snackId: ['', Validators.required],
+    price: ['', [Validators.required, Validators.min(1)]],
+  });
+
+  changePriceForm = this.fb.group({
+    price: ['', [Validators.required, Validators.min(1)]],
+  });
 
   constructor(
     private fb: FormBuilder,
     private machinesService: MachinesService,
+    private snacksService: SnacksService,
     private machinesMapperService: MachinesMapperService
   ) {}
 
@@ -93,18 +98,20 @@ this.getMachines()
           el
         )
       );
-      this.snacksInMachine.forEach((snack, index) => {
-        const controlName = `snack_${index}`;
-        this.snacksForm.addControl(
-          controlName,
-          this.fb.control(snack.price, [Validators.required, Validators.min(1)])
-        );
-      });
       this.showMachines = false;
       this.chosenMachineLocation = this.machinesService.getMachine(event.id).location;
     } else {
       this.setFormValuesToSelectedItem();
     }
+  }
+
+  onSnackToChangePriceChosen(event: { id: string; action: string }) {
+    this.machinesService.action = event.action;
+    this.machinesService.snackInMachineId = event.id;
+    this.snacksService.id = event.id
+    this.changePriceForm.setValue({
+      price: ""
+    })
   }
 
   setFormValuesToSelectedItem() {
@@ -126,10 +133,20 @@ this.getMachines()
         this.activateDeactivateMachine();
         break;
       }
-      case 'changePrices': {
-        this.changePrices();
-        break;
-      }
+    }
+  }
+
+  addSnack() {
+    if(this.addSnackForm.valid) {
+      console.log("add new snack", this.addSnackForm.value.snackId, this.addSnackForm.value.price)
+      this.addSnackForm.reset()
+    }
+  }
+
+  changePrice() {
+    if(this.changePriceForm.valid) {
+      console.log("change price", this.changePriceForm.value.price, "machine id:", this.machinesService.id, "snack id:", this.machinesService.snackInMachineId)
+      this.changePriceForm.reset()
     }
   }
 
@@ -137,16 +154,4 @@ this.getMachines()
     this.showMachines = true;
   }
 
-  changePrices() {
-    if (this.snacksForm.valid) {
-      const updatedPrices = [];
-      for (const controlName in this.snacksForm.controls) {
-        updatedPrices.push({
-          snackName: controlName,
-          price: this.snacksForm.get(controlName)!.value,
-        });
-      }
-      this.machinesService.changePricesInMachine(updatedPrices);
-    }
-  }
 }
