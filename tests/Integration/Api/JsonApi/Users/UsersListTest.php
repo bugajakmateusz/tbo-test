@@ -9,6 +9,7 @@ use Tab\Packages\Constants\HttpStatusCodes;
 use Tab\Packages\JsonApi\Application\JsonApiKeywords;
 use Tab\Packages\TestCase\Fixtures\Entity\User;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
+use Tab\Tests\TestCase\Application\Client\JsonApi\JsonApiDocument;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
@@ -31,11 +32,11 @@ final class UsersListTest extends JsonApiIntegrationTestCase
         self::assertSame(HttpStatusCodes::HTTP_UNAUTHORIZED, $jsonApiResponse->statusCode());
     }
 
-    public function test_logged_user_can_access_users_list(): void
+    public function test_logged_admin_can_access_users_list(): void
     {
         // Arrange
         $user1 = UserMother::random();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::admin();
         $users = [$user1, $loggedUser];
         $this->loadEntities(
             ...$users,
@@ -60,21 +61,9 @@ final class UsersListTest extends JsonApiIntegrationTestCase
             static fn (User $left, User $right): int => $left->id <=> $right->id,
         );
         $firstResource = $jsonApiDocument->resourceAt(0);
-        self::assertJsonApiAttributes(
-            $firstResource,
-            [
-                'name' => $users[0]->name,
-                'surname' => $users[0]->surname,
-            ],
-        );
+        $this->assertUserAttributes($firstResource, $users[0]);
         $secondResource = $jsonApiDocument->resourceAt(1);
-        self::assertJsonApiAttributes(
-            $secondResource,
-            [
-                'name' => $users[1]->name,
-                'surname' => $users[1]->surname,
-            ],
-        );
+        $this->assertUserAttributes($secondResource, $users[1]);
     }
 
     public function test_filter_me(): void
@@ -107,8 +96,15 @@ final class UsersListTest extends JsonApiIntegrationTestCase
         $document = $jsonApiResponse->document();
         $this->assertJsonApiIds([$user->id], $document);
         $resource = $document->resourceAt(0);
+        $this->assertUserAttributes($resource, $user);
+    }
+
+    private function assertUserAttributes(
+        JsonApiDocument $userResource,
+        User $user,
+    ): void {
         $this->assertJsonApiAttributes(
-            $resource,
+            $userResource,
             [
                 'name' => $user->name,
                 'surname' => $user->surname,

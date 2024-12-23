@@ -8,6 +8,7 @@ enum Role: string
 {
     case USER = 'ROLE_USER';
     case ADMIN = 'ROLE_ADMIN';
+    case OFFICE_MANAGER = 'ROLE_OFFICE_MANAGER';
 
     /** @return array <string> */
     public static function list(): array
