@@ -10,8 +10,9 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 })
 export class AddMachinePageComponent {
   form = this.fb.group({
-    name: ['', Validators.required],
-    note: [''],
+    location: ['', Validators.required],
+    positionsNumber: ['', Validators.min(1)],
+    positionsCapacity: ['', Validators.min(1)],
   });
   constructor(
     private fb: FormBuilder,
@@ -22,8 +23,9 @@ export class AddMachinePageComponent {
   onSubmit() {
     if (this.form.valid) {
       this.machinesService.addMachine(
-        this.form.value.name!,
-        this.form.value.note!
+        this.form.value.location!,
+        this.form.value.positionsNumber!,
+        this.form.value.positionsCapacity!
       );
       this.form.reset();
       this.showAlert();

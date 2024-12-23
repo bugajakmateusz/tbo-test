@@ -49,9 +49,6 @@ export class MachinesService {
   }
 
   editMachine(location: string, positionsNumber: string, positionsCapacity: string) {
-    console.log(
-      `edit machine with ID: ${this.id}.`, location, positionsNumber, positionsCapacity
-    );
     this.http.patch(`http://localhost:3100/api/json-api/machines/${this.id}`, {
       data: {
         type: "machines",
@@ -77,8 +74,18 @@ export class MachinesService {
     // Example: this.snackService.updatePrices(updatedPrices).subscribe(...)
   }
 
-  addMachine(name: string, note: string) {
-    console.log(`add machine. Name: ${name}. Note: ${note}`);
+  addMachine(location: string, positionsNumber: string, positionsCapacity: string) {
+    this.http.post(`http://localhost:3100/api/json-api/machines`, {
+      data: {
+        type: "machines",
+        attributes: {
+          location: location,
+          positionsNumber: positionsNumber,
+          positionsCapacity: positionsCapacity
+        }
+      }
+    })
+        .subscribe(data => console.log(data))
   }
   getMachines(): Observable<MachineFromApi[]> {
     return this.http
