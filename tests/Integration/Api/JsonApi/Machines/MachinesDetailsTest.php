@@ -6,6 +6,7 @@ namespace Integration\Api\JsonApi\Machines;
 
 use Tab\Application\Schema\MachineSchema;
 use Tab\Application\Schema\MachineSnackSchema;
+use Tab\Application\Schema\SnackPriceSchema;
 use Tab\Application\Schema\SnackSchema;
 use Tab\Packages\Constants\HttpStatusCodes;
 use Tab\Packages\Faker\Faker;
@@ -103,11 +104,12 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             (string) $machine->id,
             [
                 JsonApiKeywords::FIELDS => [
-                    'machines' => 'location,positionsNumber,positionsCapacity,machineSnacks',
+                    'machines' => 'location,positionsNumber,positionsCapacity,machineSnacks,snacksPrices',
+                    'snacks-prices' => 'price,snack',
                     'machine-snacks' => 'quantity,position,snack,price',
                     'snacks' => 'name',
                 ],
-                JsonApiKeywords::INCLUDE => 'machineSnacks,machineSnacks.snack',
+                JsonApiKeywords::INCLUDE => 'machineSnacks,machineSnacks.snack,snacksPrices.snack',
             ],
         );
 
@@ -132,14 +134,20 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
                         'id' => (string) $machineSnack->id,
                     ],
                 ],
+                'snacksPrices' => [
+                    [
+                        'type' => SnackPriceSchema::TYPE,
+                        'id' => (string) $newSnackPrice->id,
+                    ],
+                ],
             ],
         );
-        $machineSnacksDocument = $jsonApiDocument->getInclude(
+        $snackPriceDocument = $jsonApiDocument->getInclude(
             (string) $machineSnack->id,
             MachineSnackSchema::TYPE,
         );
         self::assertJsonApiAttributes(
-            $machineSnacksDocument,
+            $snackPriceDocument,
             [
                 'quantity' => $machineSnack->quantity,
                 'position' => $machineSnack->position,
@@ -147,12 +155,22 @@ final class MachinesDetailsTest extends JsonApiIntegrationTestCase
             ],
         );
         self::assertJsonApiRelationships(
-            $machineSnacksDocument,
+            $snackPriceDocument,
             [
                 'snack' => [
                     'type' => SnackSchema::TYPE,
                     'id' => (string) $snack->id,
                 ],
+            ],
+        );
+        $snackPriceDocument = $jsonApiDocument->getInclude(
+            (string) $newSnackPrice->id,
+            SnackPriceSchema::TYPE,
+        );
+        self::assertJsonApiAttributes(
+            $snackPriceDocument,
+            [
+                'price' => $newSnackPrice->price,
             ],
         );
         $snackDocument = $jsonApiDocument->getInclude(

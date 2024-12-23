@@ -13,6 +13,7 @@ final class MachineSchema extends AbstractSchema
     public const ATTRIBUTE_POSITIONS_NUMBER = 'positionsNumber';
     public const ATTRIBUTE_POSITIONS_CAPACITY = 'positionsCapacity';
     public const RELATIONSHIP_MACHINE_SNACKS = 'machineSnacks';
+    public const RELATIONSHIP_SNACK_PRICES = 'snacksPrices';
 
     public function resourceType(): string
     {
@@ -34,6 +35,7 @@ final class MachineSchema extends AbstractSchema
     {
         return [
             self::RELATIONSHIP_MACHINE_SNACKS => $resource->machineSnacks,
+            self::RELATIONSHIP_SNACK_PRICES => $resource->snacksPrices,
         ];
     }
 }

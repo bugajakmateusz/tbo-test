@@ -6,6 +6,7 @@ namespace Tab\Application\View;
 
 /**
  * @phpstan-import-type MachineSnackData from MachineSnackView
+ * @phpstan-import-type PriceData from PriceView
  */
 final readonly class MachineView
 {
@@ -14,14 +15,19 @@ final readonly class MachineView
     public const FIELD_RAW_POSITIONS_NUMBER = 'positions_no';
     public const FIELD_RAW_POSITIONS_CAPACITY = 'positions_capacity';
     public const FIELD_RAW_MACHINE_SNACKS = 'machine_snacks';
+    public const FIELD_RAW_SNACKS_PRICES = 'snacks_prices';
 
-    /** @param MachineSnackView[] $machineSnacks */
+    /**
+     * @param MachineSnackView[] $machineSnacks
+     * @param PriceView[]        $snacksPrices
+     */
     private function __construct(
         public int $id,
         public string $location,
         public int $positionsNo,
         public int $positionsCapacity,
         public array $machineSnacks,
+        public array $snacksPrices,
     ) {}
 
     /**
@@ -31,6 +37,7 @@ final readonly class MachineView
      *     positions_no?: int,
      *     positions_capacity?: int,
      *     machine_snacks?: list<MachineSnackData>,
+     *     snacks_prices?: list<PriceData>,
      * } $data
      */
     public static function fromArray(array $data): self
@@ -43,6 +50,10 @@ final readonly class MachineView
             \array_map(
                 static fn (array $machineSnackData): MachineSnackView => MachineSnackView::fromArray($machineSnackData),
                 $data[self::FIELD_RAW_MACHINE_SNACKS] ?? [],
+            ),
+            \array_map(
+                static fn (array $priceData): PriceView => PriceView::fromArray($priceData),
+                $data[self::FIELD_RAW_SNACKS_PRICES] ?? [],
             ),
         );
     }
