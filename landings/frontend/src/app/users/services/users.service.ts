@@ -13,25 +13,7 @@ import {UserFromApi} from "../models/user-from-api.model";
   providedIn: 'root',
 })
 export class UsersService {
-  users: User[] = [
-    {
-      id: '1',
-      email: 'kryspin798@gmail.com',
-      password: '123',
-
-      firstName: 'Klaudiusz',
-      lastName: 'Mękarski',
-      role: 'admin',
-    },
-    {
-      id: '2',
-      email: 'karomiz063@gmail.com',
-      password: '456',
-      firstName: 'Karolina',
-      lastName: 'Mizgała',
-      role: 'courier',
-    },
-  ];
+  users: User[] = [];
 
   action = '';
   id = '';
@@ -59,10 +41,10 @@ export class UsersService {
     password: string,
     firstName: string,
     lastName: string,
-    role: string
+    roles: string[]
   ) {
     console.log(
-      `edit user with ID: ${this.id}. New username: ${username}. New password: ${password}. New first name: ${firstName}. New last name: ${lastName}. New role: ${role}`
+      `edit user with ID: ${this.id}. New username: ${username}. New password: ${password}. New first name: ${firstName}. New last name: ${lastName}. New role: ${roles}`
     );
   }
 

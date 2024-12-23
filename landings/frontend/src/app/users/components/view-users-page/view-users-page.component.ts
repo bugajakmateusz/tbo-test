@@ -29,7 +29,7 @@ export class ViewUsersPageComponent {
     password: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    role: ['', Validators.required],
+    roles: [[''], Validators.required],
   });
 
   constructor(
@@ -56,7 +56,7 @@ export class ViewUsersPageComponent {
       this.form.value.password!,
       this.form.value.firstName!,
       this.form.value.lastName!,
-      this.form.value.role!
+      this.form.value.roles!
     );
   }
   activateDeactivateMachine() {
@@ -76,7 +76,7 @@ export class ViewUsersPageComponent {
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
-      role: user.role,
+      roles: user.roles,
     });
   }
 
