@@ -45,6 +45,14 @@ class Snack
         ;
     }
 
+    public function decreaseWarehouseQuantity(int $quantity): void
+    {
+        $this->assertWarehouseSnackIsPresent();
+        $this->warehouseSnack
+            ->decreaseQuantity($quantity)
+        ;
+    }
+
     /** @phpstan-assert !null $this->warehouseSnack */
     private function assertWarehouseSnackIsPresent(): void
     {

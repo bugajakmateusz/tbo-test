@@ -43,7 +43,7 @@ final class SnackTest extends UnitTestCase
         $snack->changeName($name);
     }
 
-    public function test_cannot_change_quantity_without_warehouse_snack(): void
+    public function test_cannot_add_quantity_without_warehouse_snack(): void
     {
         // Arrange
         $snack = SnackMother::createWithoutWarehouseSnack();
@@ -56,7 +56,7 @@ final class SnackTest extends UnitTestCase
         $snack->addWarehouseQuantity(Faker::int(min: 0));
     }
 
-    public function test_can_change_warehouse_quantity(): void
+    public function test_can_add_warehouse_quantity(): void
     {
         // Arrange
         $snack = SnackMother::random();
@@ -65,6 +65,31 @@ final class SnackTest extends UnitTestCase
         self::expectNotToPerformAssertions();
 
         // Act
-        $snack->addWarehouseQuantity(Faker::int(min: 0));
+        $snack->addWarehouseQuantity(Faker::int(min: 1));
+    }
+
+    public function test_cannot_decrease_quantity_without_warehouse_snack(): void
+    {
+        // Arrange
+        $snack = SnackMother::createWithoutWarehouseSnack();
+
+        // Expect
+        self::expectException(DomainException::class);
+        self::expectExceptionMessage('Cannot find warehouse snack');
+
+        // Act
+        $snack->decreaseWarehouseQuantity(Faker::int(min: 0));
+    }
+
+    public function test_can_decrease_warehouse_quantity(): void
+    {
+        // Arrange
+        $snack = SnackMother::random();
+
+        // Expect
+        self::expectNotToPerformAssertions();
+
+        // Act
+        $snack->decreaseWarehouseQuantity(Faker::int(min: 1, max: 100));
     }
 }
