@@ -29,6 +29,7 @@ final class BuyTest extends UnitTestCase
             $snack,
             FakeClock::getInstance(),
             Faker::float(min: 0.1),
+            Faker::int(1, 100),
         );
     }
 
@@ -46,6 +47,7 @@ final class BuyTest extends UnitTestCase
             $snack,
             FakeClock::getInstance(),
             Faker::float(min: -100, max: 0.0),
+            Faker::int(1),
         );
     }
 }

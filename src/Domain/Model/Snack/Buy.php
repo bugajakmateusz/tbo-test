@@ -32,6 +32,8 @@ class Buy
             throw new DomainException('Quantity cannot be lower than or equal 0.');
         }
 
+        $snack->addWarehouseQuantity($quantity);
+
         return new self(
             $snack->id(),
             $clock->now(),

@@ -123,6 +123,7 @@ final readonly class BuySnackAction
         /**
          * @var array{
          *     price?: float,
+         *     quantity?: int,
          * } $attributes
          */
         $attributes = $resource->attributes();
