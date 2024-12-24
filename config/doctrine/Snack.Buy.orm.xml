@@ -11,5 +11,6 @@
         <field name="snackId" type="integer" />
         <field name="date" column="buy_date" type="datetime_immutable" />
         <field name="price" column="buy_price" type="float" />
+        <field name="quantity" type="integer" />
     </entity>
 </doctrine-mapping>

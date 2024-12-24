@@ -11,6 +11,7 @@ namespace Tab\Application\View;
  *      id?: int,
  *      price?: float,
  *      snack?: SnackData,
+ *      quantity?: int,
  *  }
  */
 final readonly class BuyView
@@ -18,22 +19,23 @@ final readonly class BuyView
     public const FIELD_RAW_ID = 'id';
     public const FIELD_RAW_PRICE = 'price';
     public const FIELD_RAW_SNACK = 'snack';
+    public const FIELD_RAW_QUANTITY = 'quantity';
 
     private function __construct(
         public int $id,
         public float $price,
         public SnackView $snack,
+        public int $quantity,
     ) {}
 
-    /**
-     * @param BuyData $data
-     */
+    /** @param BuyData $data */
     public static function fromArray(array $data): self
     {
         return new self(
             $data[self::FIELD_RAW_ID] ?? 0,
             $data[self::FIELD_RAW_PRICE] ?? 0.0,
             SnackView::fromArray($data[self::FIELD_RAW_SNACK] ?? []),
+            $data[self::FIELD_RAW_QUANTITY] ?? 0,
         );
     }
 }
