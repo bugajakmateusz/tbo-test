@@ -17,7 +17,6 @@ import { ViewMachinesPageComponent } from './machines/components/view-machines-p
 import { AddMachinePageComponent } from './machines/components/add-machine-page/add-machine-page.component';
 import { MachineReportPageComponent } from './reports/components/machine-report-page/machine-report-page.component';
 import { WarehouseReportPageComponent } from './reports/components/warehouse-report-page/warehouse-report-page.component';
-import { BuySellReportPageComponent } from './reports/components/buy-sell-report-page/buy-sell-report-page.component';
 import { ViewUsersPageComponent } from './users/components/view-users-page/view-users-page.component';
 import { AddUserPageComponent } from './users/components/add-user-page/add-user-page.component';
 import { PageLayoutComponent } from './shared/components/page-layout/page-layout.component';
@@ -33,6 +32,9 @@ import { AbstractControlToFormControlPipe } from './shared/pipes/abstract-contro
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AuthPageComponent } from './auth/components/auth-page/auth-page.component';
 import {authGuard} from "./auth/auth.guard";
+import { FormMultiselectComponent } from './shared/components/form-multiselect/form-multiselect.component';
+import { BuyReportPageComponent } from './reports/components/buy-report-page/buy-report-page.component';
+import { SellReportPageComponent } from './reports/components/sell-report-page/sell-report-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent, canActivate: [authGuard] },
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
     children: [
       { path: 'machines', component: MachineReportPageComponent, canActivate: [authGuard] },
       { path: 'warehouse', component: WarehouseReportPageComponent, canActivate: [authGuard] },
-      { path: 'buy-sell', component: BuySellReportPageComponent, canActivate: [authGuard] },
+      { path: 'buy', component: BuyReportPageComponent, canActivate: [authGuard] },
+      { path: 'sell', component: SellReportPageComponent, canActivate: [authGuard] },
     ],
   },
   {
@@ -93,7 +96,6 @@ const appRoutes: Routes = [
     AddMachinePageComponent,
     MachineReportPageComponent,
     WarehouseReportPageComponent,
-    BuySellReportPageComponent,
     ViewUsersPageComponent,
     AddUserPageComponent,
     PageLayoutComponent,
@@ -108,6 +110,9 @@ const appRoutes: Routes = [
     AbstractControlToFormControlPipe,
     AlertComponent,
     AuthPageComponent,
+    FormMultiselectComponent,
+    BuyReportPageComponent,
+    SellReportPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,9 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ReportsService {
-  createBuySellReport(dateFrom: string, dateTo: string) {
+  createBuyReport(dateFrom: string, dateTo: string) {
     console.log(
-      `create buy/sell report. Date from: ${dateFrom}. Date to: ${dateTo}`
+      `create buy report. Date from: ${dateFrom}. Date to: ${dateTo}`
+    );
+  }
+
+  createSellReport(dateFrom: string, dateTo: string, machines: string[]) {
+    console.log(
+        `create sell report. Date from: ${dateFrom}. Date to: ${dateTo}. Machines: ${machines}`
     );
   }
 
@@ -16,9 +22,9 @@ export class ReportsService {
     );
   }
 
-  createMachinesReport(dateFrom: string, dateTo: string) {
+  createMachinesReport(dateFrom: string, dateTo: string, machines: string[]) {
     console.log(
-      `create machines report. Date from: ${dateFrom}. Date to: ${dateTo}`
+      `create machines report. Date from: ${dateFrom}. Date to: ${dateTo}. Machines: ${machines}`
     );
   }
 }

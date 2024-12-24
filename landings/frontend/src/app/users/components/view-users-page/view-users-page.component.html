@@ -31,11 +31,11 @@
       type="password"
       [control]="form.controls.password"
     ></app-form-input>
-    <app-form-select
+    <app-form-multiselect
       name="Nowe role"
-      [multiselectControl]="form.controls.roles"
+      [control]="form.controls.roles"
       [options]="roles"
-    ></app-form-select>
+    ></app-form-multiselect>
   </app-modal>
 
   <app-modal

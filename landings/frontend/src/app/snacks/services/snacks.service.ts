@@ -11,16 +11,7 @@ import {SnacksMapperService} from "./snacks-mapper.service";
   providedIn: 'root',
 })
 export class SnacksService {
-  snacks: Snack[] = [
-    {
-      id: '1',
-      name: 'some snack',
-    },
-    {
-      id: '2',
-      name: 'other snack',
-    },
-  ];
+  snacks: Snack[] = []
 
   action = '';
   id = '';
@@ -34,7 +25,17 @@ export class SnacksService {
 
 
   editSnack(name: string) {
-    console.log(`edit snack with ID: ${this.id}. New name: ${name}`);
+this.http.patch(`${this.configService.apiUrl}json-api/snacks/${this.id}`, {
+  data: {
+    type: "snacks",
+    attributes: {
+      name: name
+    }
+  }
+})
+    .subscribe(data => console.log(data))
+
+    this.updateServiceData()
   }
 
   deleteSnack() {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MachineSimpleDisplayed } from 'src/app/machines/models/machine-simple-displayed.model';
-import { Machine } from 'src/app/machines/models/machine.model';
-import { MachinesMapperService } from 'src/app/machines/services/machines-mapper.service';
-import { MachinesService } from 'src/app/machines/services/machines.service';
+import { MachineSimpleDisplayed } from '../../../machines/models/machine-simple-displayed.model';
+import { Machine } from '../../../machines/models/machine.model';
+import { MachinesMapperService } from '../../../machines/services/machines-mapper.service';
+import { MachinesService } from '../../../machines/services/machines.service';
 import { ReportsService } from '../../services/reports.service';
 
 @Component({
@@ -21,6 +21,8 @@ export class MachineReportPageComponent implements OnInit {
   ];
 
   machines: Machine[] = [];
+
+  machineIdMachineCheckboxDictionary: any[] = []
 
   displayedMachines: MachineSimpleDisplayed[] = [];
 
@@ -41,13 +43,18 @@ export class MachineReportPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.machines = this.machinesService.getMachines();
-    this.displayedMachines = this.machines.map((el) =>
-      this.machinesMapperService.mapMachineToMachineSimpleDisplayed(el)
-    );
-    this.machines.forEach((machine, index) => {
-      const controlName = `machine_${index}`;
-      this.machinesSelectedForm.addControl(controlName, this.fb.control(false));
+    this.getMachines()
+  }
+
+  getMachines() {
+    this.machinesService.getMachines().subscribe((machinesFromApi) => {
+      this.machines = machinesFromApi.map(machineFromApi => this.machinesMapperService.mapMachineFromApiToMachine(machineFromApi))
+      this.displayedMachines = this.machines.map(machine => this.machinesMapperService.mapMachineToMachineSimpleDisplayed(machine))
+      this.machines.forEach((machine, index) => {
+        const controlName = `machine_${index}`;
+        this.machineIdMachineCheckboxDictionary.push({ [controlName]: machine.id })
+        this.machinesSelectedForm.addControl(controlName, this.fb.control(false));
+      });
     });
   }
 
@@ -80,9 +87,19 @@ export class MachineReportPageComponent implements OnInit {
 
   onSubmit() {
     if (!this.submitButtonDisabled()) {
+      // console.log(this.machineIdMachineCheckboxDictionary)
+      // console.log(this.machinesSelectedForm.value)
+      const machines: any[] = []
+      Object.values(this.machinesSelectedForm.value).forEach((value, index) => {
+        if(value) {
+          machines.push(Object.values(this.machineIdMachineCheckboxDictionary[index])[0])
+        }
+      })
+
+
       this.reportsService.createMachinesReport(
         this.datesForm.value.dateFrom!,
-        this.datesForm.value.dateTo!
+        this.datesForm.value.dateTo!, machines
       );
       this.goBack();
     }

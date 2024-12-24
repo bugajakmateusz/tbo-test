@@ -17,7 +17,6 @@ export class ViewSnacksPageComponent implements OnInit {
 
   buttons = [
     { text: 'Edytuj', action: 'editSnack' },
-    { text: 'Usuń', action: 'deleteSnack' },
   ];
 
   form = this.fb.group({
@@ -27,14 +26,17 @@ export class ViewSnacksPageComponent implements OnInit {
   constructor(private fb: FormBuilder, private snacksService: SnacksService, private snacksMapperService: SnacksMapperService) {}
 
   ngOnInit() {
+    this.getSnacks()
+  }
+
+  getSnacks(){
     this.snacksService.getSnacks().subscribe(snacksFromApi => this.snacks = snacksFromApi.map(snackFromApi => this.snacksMapperService.mapSnackFromApiToSnack(snackFromApi)))
+
   }
 
   editSnack() {
     this.snacksService.editSnack(this.form.value.name!);
-  }
-  deleteSnack() {
-    this.snacksService.deleteSnack();
+    this.getSnacks()
   }
 
   onActionChosen(event: { id: string; action: string }) {
@@ -55,9 +57,6 @@ export class ViewSnacksPageComponent implements OnInit {
       case 'editSnack': {
         this.editSnack();
         break;
-      }
-      case 'deleteSnack': {
-        this.deleteSnack();
       }
     }
   }
