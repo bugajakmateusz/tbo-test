@@ -8,14 +8,18 @@ import {Subject, Subscription} from "rxjs";
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
+    isLoggedIn= false
   userFullName = 'nouser'
     userSub = new Subscription()
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
+      this.authService.getUserData()
       this.userSub = this.authService.user.subscribe(userData => {
           this.userFullName = `${userData.name} ${userData.surname}`
+          this.isLoggedIn = this.authService.isLoggedIn
       })
   }
+
 }

@@ -41,7 +41,7 @@
         </ul>
       </li>
 
-      <li class="nav-item" *ngIf="isLoggedIn">
+      <li class="nav-item" *ngIf="isLoggedIn" (click)="logout()">
         <a class="nav-link" href="auth"
           ><i class="bi bi-box-arrow-left me-2"></i>Wyloguj</a
         >

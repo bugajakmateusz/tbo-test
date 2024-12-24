@@ -9,8 +9,13 @@ import {User} from "../users/models/user.model";
   providedIn: 'root'
 })
 export class AuthService {
+    isLoggedIn = false
+    userFullName = ''
+    userRoles: string[] = []
     user = new Subject<UserAuth>()
-    constructor(private http: HttpClient, private configService: ConfigService) { }
+    constructor(private http: HttpClient, private configService: ConfigService) {
+        this.getUserData()
+    }
 
   signIn(email: string, password: string){
   return this.http.post(`${this.configService.apiUrl}login`, {
@@ -28,9 +33,17 @@ export class AuthService {
                         email: userData.attributes.email,
                         name: userData.attributes.name,
                         surname: userData.attributes.surname,
-                        roles: userData.attributes.roles
+                        roles: userData.attributes.roles,
                     }
                     this.user.next(user)
+                this.isLoggedIn = true
+                this.userFullName = `${userData.name} ${userData.surname}`
+                this.userRoles = user.roles
             })
+  }
+
+  logout() {
+    this.http.get(`${this.configService.apiUrl}logout`).subscribe(data => this.getUserData())
+
   }
 }
