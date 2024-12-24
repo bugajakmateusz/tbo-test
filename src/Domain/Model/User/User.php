@@ -34,12 +34,31 @@ class User
             throw new DomainException("User with email {$stringEmail} already exists");
         }
 
+        if ([] === $roles) {
+            throw new DomainException('Roles list should not be empty.');
+        }
+        $rolesWithUserRole = self::addUserRole($roles);
+
         return new self(
             $email->toString(),
             $password->toString(),
             $name->toString(),
             $surname->toString(),
-            $roles,
+            $rolesWithUserRole,
         );
+    }
+
+    /**
+     * @param Role[] $roles
+     *
+     * @return Role[]
+     */
+    private static function addUserRole(array $roles): array
+    {
+        if (false === \in_array(Role::USER, $roles, true)) {
+            $roles[] = Role::USER;
+        }
+
+        return $roles;
     }
 }

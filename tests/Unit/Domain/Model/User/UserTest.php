@@ -56,6 +56,39 @@ final class UserTest extends UnitTestCase
         );
     }
 
+    public function test_user_without_roles_cannot_be_created(): void
+    {
+        // Arrange
+        $userRepository = new FakeUserRepository();
+        $passwordHasher = FakePasswordHasher::getInstance();
+
+        $stringEmail = Faker::email();
+        $email = Email::fromString($stringEmail);
+        $password = Password::hash(
+            Faker::password(),
+            $passwordHasher,
+        );
+        $name = Name::fromString(
+            Faker::firstName(),
+        );
+        $surname = Name::fromString(
+            Faker::lastName(),
+        );
+
+        // Expect
+        self::expectException(DomainException::class);
+        self::expectExceptionMessage('Roles list should not be empty.');
+
+        // Act
+        User::register(
+            $email,
+            $password,
+            $name,
+            $surname,
+            $userRepository,
+        );
+    }
+
     public function test_user_with_existing_email_cannot_be_created(): void
     {
         // Arrange
