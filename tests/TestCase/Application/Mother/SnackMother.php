@@ -11,9 +11,31 @@ use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class SnackMother
 {
+    /** @var null|\ReflectionClass<Snack> */
+    private static ?\ReflectionClass $snackReflection = null;
+
     public static function random(): Snack
     {
         return self::create();
+    }
+
+    public static function createWithoutWarehouseSnack(): Snack
+    {
+        self::$snackReflection ??= new \ReflectionClass(Snack::class);
+        /** @var Snack $snack */
+        $snack = self::$snackReflection->newInstanceWithoutConstructor();
+        $properties = [
+            'id' => Faker::intId(),
+            'name' => Faker::words(3),
+            'warehouseSnack' => null,
+        ];
+
+        PropertyManipulator::getInstance()->propertiesSet(
+            $snack,
+            $properties,
+        );
+
+        return $snack;
     }
 
     private static function create(
