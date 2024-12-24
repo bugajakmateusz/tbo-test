@@ -15,6 +15,7 @@ use Tab\Packages\TestCase\Mother\Entity\MachineMother;
 use Tab\Packages\TestCase\Mother\Entity\MachineSnackMother;
 use Tab\Packages\TestCase\Mother\Entity\SnackMother;
 use Tab\Packages\TestCase\Mother\Entity\UserMother;
+use Tab\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
 use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
@@ -26,10 +27,12 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
         $loggedUser = UserMother::random();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
+        $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
         $this->loadEntities(
             $loggedUser,
             $machine,
             $snack,
+            $warehouseSnack,
         );
         $machineSnackClient = $this->loggedJsonApiClient(
             MachineSnackSchema::class,
@@ -50,7 +53,7 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
             ),
         );
         $position = Faker::hexBytes(3);
-        $quantity = Faker::intId();
+        $quantity = Faker::int(1, 50);
 
         // Act
         $response = $machineSnackClient->createResource(
