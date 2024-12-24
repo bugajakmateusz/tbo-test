@@ -8,8 +8,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#hierarchical-roles
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
-        ROLE_WAREHOUSE_OPERATOR: ROLE_USER
+        ROLE_ADMIN: [ROLE_USER, ROLE_LOGISTIC_MANAGER, ROLE_OFFICE_MANAGER, ROLE_COURIER]
+        ROLE_LOGISTIC_MANAGER: ROLE_USER
+        ROLE_OFFICE_MANAGER: ROLE_USER
+        ROLE_COURIER: ROLE_USER
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
@@ -40,7 +42,12 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login$, role: PUBLIC_ACCESS }
+        - { path: ^/api/json-api/users, methods: [GET], role: ROLE_USER }
         - { path: ^/api/json-api/users, methods: [POST, PATCH], role: ROLE_ADMIN }
-        - { path: ^/api/json-api/buys, methods: [POST], role: ROLE_WAREHOUSE_OPERATOR }
+        - { path: ^/api/json-api/snacks, methods: [GET], role: [ROLE_OFFICE_MANAGER, ROLE_LOGISTIC_MANAGER, ROLE_COURIER] }
+        - { path: ^/api/json-api/snacks, methods: [POST, PATCH], role: ROLE_OFFICE_MANAGER }
+        - { path: ^/api/json-api/machines, methods: [GET], role: [ROLE_OFFICE_MANAGER, ROLE_LOGISTIC_MANAGER, ROLE_COURIER] }
+        - { path: ^/api/json-api/machines, methods: [POST, PATCH], role: [ROLE_OFFICE_MANAGER] }
+        - { path: ^/api/json-api/buys, methods: [POST], role: ROLE_LOGISTIC_MANAGER }
         - { path: ^/api/doc, role: PUBLIC_ACCESS }
         - { path: ^/api/, role: ROLE_USER }
