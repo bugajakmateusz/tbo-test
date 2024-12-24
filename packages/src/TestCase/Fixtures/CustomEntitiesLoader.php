@@ -18,6 +18,7 @@ use Tab\Packages\TestCase\Fixtures\Entity\WarehouseSnacks;
 final class CustomEntitiesLoader
 {
     private const PURGE_TABLES = [
+        Tables::WAREHOUSE_PRICES_HISTORY,
         Tables::WAREHOUSE_SNACKS,
         Tables::PRICES_HISTORY,
         Tables::MACHINE_SNACKS,
