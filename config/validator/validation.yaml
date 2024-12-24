@@ -97,3 +97,42 @@ Tab\Application\Command\UpdateSnackPrice\UpdateSnackPrice:
     price:
       - NotBlank: ~
       - GreaterThan: 0.0
+
+Tab\Application\Command\UpdateUser\UpdateUser:
+  properties:
+    email:
+      - NotBlank:
+          normalizer: trim
+          allowNull: true
+      - Length:
+          max: !php/const Tab\Domain\Email::MAX_LENGTH
+      - Email:
+          mode: html5
+      - Tab\Infrastructure\Symfony\Validator\Constraints\EmailExists:
+          groups: ['changedEmail']
+    password:
+      - NotBlank:
+          normalizer: trim
+          allowNull: true
+      - Length:
+          min: !php/const Tab\Domain\Model\User\Password::MIN_LENGTH
+          max: !php/const Tab\Domain\Model\User\Password::MAX_LENGTH
+    name:
+      - NotBlank:
+          normalizer: trim
+          allowNull: true
+      - Length:
+          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+    surname:
+      - NotBlank:
+          normalizer: trim
+          allowNull: true
+      - Length:
+          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+    roles:
+      - NotBlank:
+          normalizer: trim
+          allowNull: true
+      - All:
+          - Choice:
+              callback: [ Tab\Domain\Model\User\Role, list ]
