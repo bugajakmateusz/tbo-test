@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {SnacksService} from "../../../snacks/services/snacks.service";
 import {AlertService} from "../../../shared/services/alert.service";
 import {AuthService} from "../../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth-page',
@@ -17,7 +18,9 @@ export class AuthPageComponent implements OnInit{
 
   constructor(
       private fb: FormBuilder,
-      private authService: AuthService
+      private authService: AuthService,
+      private alertService: AlertService,
+      private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,8 +32,19 @@ export class AuthPageComponent implements OnInit{
       console.log("sign in")
       const email = this.form.value.email!
       const password = this.form.value.password!
-      this.authService.signIn(email, password).subscribe(resData => console.log(resData), error => console.log(error))
+      this.authService.signIn(email, password).subscribe(resData => {
+        this.authService.getUserData()
+        this.router.navigate([''])
+      }, error => {
+        if(error.error.error === "Invalid credentials.") {
+          this.showFailureAlert()
+        }
+      })
+      }
       this.form.reset()
     }
+
+  showFailureAlert() {
+  this.alertService.showAlertForTime("failureAlert", 2000)
   }
 }

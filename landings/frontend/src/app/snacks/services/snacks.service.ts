@@ -25,20 +25,7 @@ export class SnacksService {
   action = '';
   id = '';
   constructor(private http: HttpClient, private configService: ConfigService, private snacksMapperService: SnacksMapperService) {
-    this.login()
     this.updateServiceData()
-  }
-
-
-  private login() {
-    this.http
-        .post('http://localhost:3100/api/login', {
-          username: 'ebaranowski@onet.pl',
-          password: 'tab-admin',
-        })
-        .subscribe((data) => {
-          console.log(data);
-        });
   }
 
   private updateServiceData() {

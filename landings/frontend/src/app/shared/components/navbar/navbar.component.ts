@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Subscription} from "rxjs";
+import {AuthService} from "../../../auth/auth.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
+  userSub = new Subscription()
+
+  isLoggedIn = false
+
   complexLinks = [
     {
       name: 'Magazyn',
@@ -86,4 +92,16 @@ export class NavbarComponent {
       ],
     },
   ];
+
+  constructor(private authService: AuthService) {
+  }
+  ngOnInit() {
+    this.userSub = this.authService.user.subscribe(userData => {
+      if(userData.roles.find(el => el === "ROLE_USER")) {
+        this.isLoggedIn = true
+      } else {
+        this.isLoggedIn = false
+      }
+    })
+  }
 }
