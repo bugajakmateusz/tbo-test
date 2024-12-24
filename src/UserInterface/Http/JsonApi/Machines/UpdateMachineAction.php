@@ -191,17 +191,17 @@ final readonly class UpdateMachineAction
         /**
          * @var array{
          *     location?: null|string,
-         *     positionsNumber?: null|int|string,
-         *     positionsCapacity?: null|int|string,
+         *     positionsNumber?: null|int,
+         *     positionsCapacity?: null|int,
          * } $attributes
          */
         $attributes = $resource->attributes();
 
         return new UpdateMachine(
             $machineId,
-            $attributes[MachineSchema::ATTRIBUTE_LOCATION] ?? '',
-            (int) ($attributes[MachineSchema::ATTRIBUTE_POSITIONS_NUMBER] ?? 0),
-            (int) ($attributes[MachineSchema::ATTRIBUTE_POSITIONS_CAPACITY] ?? 0),
+            $attributes[MachineSchema::ATTRIBUTE_LOCATION] ?? null,
+            $attributes[MachineSchema::ATTRIBUTE_POSITIONS_NUMBER] ?? null,
+            $attributes[MachineSchema::ATTRIBUTE_POSITIONS_CAPACITY] ?? null,
         );
     }
 
