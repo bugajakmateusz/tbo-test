@@ -22,7 +22,7 @@ class WarehouseSnack
             throw new DomainException('Quantity cannot be negative.');
         }
 
-        $this->quantity += $quantity;
+        $this->quantity = $this->quantity + $quantity;
     }
 
     public function decreaseQuantity(int $quantity): void
