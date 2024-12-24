@@ -38,7 +38,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/api/login, role: PUBLIC_ACCESS }
-        - { path: ^/api/json-api/users, methods: [POST], role: ROLE_ADMIN }
+        - { path: ^/api/login$, role: PUBLIC_ACCESS }
+        - { path: ^/api/json-api/users, methods: [POST, PATCH], role: ROLE_ADMIN }
         - { path: ^/api/doc, role: PUBLIC_ACCESS }
         - { path: ^/api/, role: ROLE_USER }
