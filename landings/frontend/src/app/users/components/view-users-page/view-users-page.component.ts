@@ -26,10 +26,13 @@ export class ViewUsersPageComponent {
 
   form = this.fb.group({
     email: ['', Validators.required],
-    password: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     roles: [[''], Validators.required],
+  });
+
+  passwordFrom = this.fb.group({
+    password: ['', Validators.required],
   });
 
   constructor(
@@ -50,16 +53,23 @@ export class ViewUsersPageComponent {
 
   }
 
-  editMachine() {
-    this.usersService.editUser(
-      this.form.value.email!,
-      this.form.value.password!,
-      this.form.value.firstName!,
-      this.form.value.lastName!,
-      this.form.value.roles!
-    );
+  editUser() {
+    if(this.form.valid) {
+      this.usersService.editUser(
+          this.form.value.email!,
+          this.form.value.firstName!,
+          this.form.value.lastName!,
+          this.form.value.roles!
+      );
+    }
   }
-  activateDeactivateMachine() {
+
+  changePassword() {
+    if(this.passwordFrom.valid) {
+      this.usersService.changePassword(this.passwordFrom.value.password!)
+    }
+  }
+  banUnbanUser() {
     this.usersService.deleteUser();
   }
 
@@ -73,21 +83,19 @@ export class ViewUsersPageComponent {
     const user = this.usersService.getCurrentUser();
     this.form.setValue({
       email: user.email,
-      password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
       roles: user.roles,
     });
+    this.passwordFrom.setValue({
+      password: ""
+    })
   }
 
   onCallbackCalled() {
     switch (this.usersService.action) {
-      case 'editUser': {
-        this.editMachine();
-        break;
-      }
       case 'ban/unbanUser': {
-        this.activateDeactivateMachine();
+        this.banUnbanUser();
       }
     }
   }

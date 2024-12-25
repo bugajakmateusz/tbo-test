@@ -37,4 +37,11 @@ export class TableComponent implements OnInit {
   chooseAction(action: string, id: string) {
     this.actionChosen.emit({ action, id });
   }
+
+  paintRed(row: any) {
+    if(Object.keys(row).includes("amount") || row.amount === "0") {
+      return "table-danger"
+    }
+    return ""
+  }
 }

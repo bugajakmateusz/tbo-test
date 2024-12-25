@@ -1,5 +1,6 @@
 <div class="container d-flex flex-column gap-3">
-  <h2>{{ title }}</h2>
+  <h2 *ngIf="titleSize!=='small'">{{ title }}</h2>
+  <h4 *ngIf="titleSize==='small'">{{ title }}</h4>
   <form class="needs-validation" novalidate>
     <ng-content></ng-content>
   </form>

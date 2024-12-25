@@ -1,0 +1,17 @@
+<app-form title="Utwórz raport zakupu">
+    <app-form-input
+            name="Data od"
+            type="date"
+            [control]="form.controls.dateFrom"
+    ></app-form-input>
+    <app-form-input
+            name="Data do"
+            type="date"
+            [control]="form.controls.dateTo"
+    ></app-form-input>
+    <app-form-button
+            text="Utwórz"
+            (click)="onSubmit()"
+            [disabled]="submitButtonDisabled()"
+    ></app-form-button>
+</app-form>

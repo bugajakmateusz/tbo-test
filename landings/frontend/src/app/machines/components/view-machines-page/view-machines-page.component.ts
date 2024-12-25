@@ -92,17 +92,25 @@ this.getMachines()
     this.machinesService.id = event.id;
 
     if (event.action == 'changePrices') {
-      this.snacksInMachine = this.machinesService.getSnacks(event.id);
-      this.snacksInMachineDisplayed = this.snacksInMachine.map((el) =>
-        this.machinesMapperService.mapSnackInMachineToSnackInMachineDisplayed(
-          el
-        )
-      );
+      this.getCurrentMachineData()
       this.showMachines = false;
-      this.chosenMachineLocation = this.machinesService.getMachine(event.id).location;
     } else {
       this.setFormValuesToSelectedItem();
     }
+  }
+
+  getCurrentMachineData() {
+    this.machinesService.getMachineFromApi().subscribe(data => {
+      this.chosenMachineLocation = data.data.attributes.location
+      this.snacksInMachineDisplayed = []
+      data.included.filter((el:any) => el.type === "snacks").forEach((snack:any) => {
+        let newSnack: SnackInMachineDisplayed = {id: snack.id, name: snack.attributes.name, price: "1"}
+        this.snacksInMachineDisplayed.push(newSnack)
+      })
+      data.included.filter((el:any) => el.type === "snacks-prices").forEach((snackPrice:any) => {
+        this.snacksInMachineDisplayed.find(snack => snack.id === snackPrice.relationships.snack.data.id)!.price = snackPrice.attributes.price
+      })
+    })
   }
 
   onSnackToChangePriceChosen(event: { id: string; action: string }) {
@@ -110,7 +118,7 @@ this.getMachines()
     this.machinesService.snackInMachineId = event.id;
     this.snacksService.id = event.id
     this.changePriceForm.setValue({
-      price: ""
+      price: this.machinesService.getCurrentSnackPrice().price
     })
   }
 
@@ -145,7 +153,8 @@ this.getMachines()
 
   changePrice() {
     if(this.changePriceForm.valid) {
-      console.log("change price", this.changePriceForm.value.price, "machine id:", this.machinesService.id, "snack id:", this.machinesService.snackInMachineId)
+      this.machinesService.changePrice(this.changePriceForm.value.price!)
+      this.getCurrentMachineData()
       this.changePriceForm.reset()
     }
   }

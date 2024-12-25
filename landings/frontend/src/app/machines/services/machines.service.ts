@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import {MachinesMapperService} from "./machines-mapper.service";
 import {MachineFromApi} from "../models/machine-from-api.model";
 import {ConfigService} from "../../config.service";
+import {SnackInMachineDisplayed} from "../models/snack-in-machine-displayed.model";
 
 @Injectable({
   providedIn: 'root',
@@ -14,18 +15,7 @@ import {ConfigService} from "../../config.service";
 export class MachinesService {
   machines: Machine[] = [];
 
-  snacks: SnackInMachine[] = [
-    {
-      id: '1',
-      name: 'some snack',
-      price: 2,
-    },
-    {
-      id: '2',
-      name: 'other snack',
-      price: 3,
-    },
-  ];
+  snacks: SnackInMachineDisplayed[] = [];
   action = '';
   id = '';
 
@@ -57,8 +47,8 @@ export class MachinesService {
         type: "machines",
         attributes: {
           location: location,
-          positionsNumber: positionsNumber,
-          positionsCapacity: positionsCapacity
+          positionsNumber: Number(positionsNumber),
+          positionsCapacity: Number(positionsCapacity)
         }
       }
     })
@@ -67,7 +57,8 @@ export class MachinesService {
   }
 
   changePrice(price: string) {
-
+    this.addSnackToMachine(this.snackInMachineId, price)
+    this.getMachineFromApi()
   }
 
   addSnackToMachine(snackId: string, price: string) {
@@ -75,9 +66,21 @@ export class MachinesService {
     data: {
       type: "snacks-prices",
       attributes: {
-        machineId: Number(this.id),
-        snackId: this.snackInMachineId,
           price: price
+      },
+      relationships: {
+        machine: {
+          data: {
+            type: "machines",
+            id: this.id
+          }
+        },
+        snack: {
+          data: {
+            type: "snacks",
+            id: snackId
+          }
+        }
       }
       }})
           .subscribe(data => console.log(data))
@@ -124,10 +127,39 @@ export class MachinesService {
     return this.machines.filter((el: Machine) => el.id === id)[0];
   }
 
+  getMachineFromApi(): Observable<any> {
+    // json-api/machines/15?fields[machines]=location,positionsNumber,positionsCapacity,machineSnacks&include=machineSnacks,machineSnacks.snack&fields[machine-snacks]=quantity,position,snack,price&fields[snacks]=name
+    return this.http
+        .get<any>(`http://localhost:3100/api/json-api/machines/${this.id}?fields[machines]=location,positionsNumber,positionsCapacity,snacksPrices&include=snacksPrices,snacksPrices.snack&fields[snacks-prices]=price,snack&fields[snacks]=name`)
+        .pipe(
+            map((response) => {
+              if (response) {
+                this.snacks = []
+                response.included.filter((el:any) => el.type === "snacks").forEach((snack:any) => {
+                  let newSnack: SnackInMachineDisplayed = {id: snack.id, name: snack.attributes.name, price: "1"}
+                  this.snacks.push(newSnack)
+                })
+                response.included.filter((el:any) => el.type === "snacks-prices").forEach((snackPrice:any) => {
+                  this.snacks.find(snack => snack.id === snackPrice.relationships.snack.data.id)!.price = snackPrice.attributes.price
+                })
+                return response
+              }
+              return []; // If response is null return empty array for safety.
+            })
+        );
+  }
+
   getCurrentMachine() {
     return this.getMachine(this.id);
   }
 
+  getCurrentSnackPrice() {
+    return this.getSnackPrice(this.snackInMachineId)
+  }
+
+  getSnackPrice(id: string) {
+    return this.snacks.filter((el) => el.id === id)[0];
+  }
   getSnacks(machineId: string) {
     return this.snacks;
   }

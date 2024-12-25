@@ -8,10 +8,11 @@ import { FormGroup } from '@angular/forms';
 })
 export class ModalComponent {
   @Input({ required: true }) modalId!: string;
-  @Input({ required: true }) title!: string;
+  @Input() title: string = "";
   @Input({ required: true }) noButtonText!: string;
   @Input({ required: true }) yesButtonText!: string;
   @Input() disabled: boolean = false;
+  @Input() noButtons: boolean = false
   @Output() callbackCalled = new EventEmitter<any>();
 
   callCallback() {

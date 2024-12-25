@@ -37,15 +37,36 @@ export class UsersService {
     this.getUsers().subscribe(usersFromApi => this.users = usersFromApi.map(userFromApi => this.usersMapperService.mapUserFromApiToUser(userFromApi)))
   }
   editUser(
-    username: string,
-    password: string,
+    email: string,
     firstName: string,
     lastName: string,
     roles: string[]
   ) {
-    console.log(
-      `edit user with ID: ${this.id}. New username: ${username}. New password: ${password}. New first name: ${firstName}. New last name: ${lastName}. New role: ${roles}`
-    );
+
+    this.http.patch(`${this.configService.apiUrl}json-api/users`,{
+      data: {
+        type: "users",
+        attributes: {
+          email: email,
+          name: firstName,
+          surname: lastName,
+          roles: roles
+        }
+      }
+    })
+        .subscribe(data => console.log(data))
+  }
+
+  changePassword(password: string) {
+    this.http.patch(`${this.configService.apiUrl}json-api/users`,{
+      data: {
+        type: "users",
+        attributes: {
+          password: password,
+        }
+      }
+    })
+        .subscribe(data => console.log(data))
   }
 
   deleteUser() {

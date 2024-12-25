@@ -1,0 +1,8 @@
+<div class="mb-3">
+    <label class="mb-2" for="{{ name }}">{{ name }}</label>
+    <select class="form-select" id="{{ name }}" [formControl]="control" multiple>
+        <option value="{{ option.value }}" *ngFor="let option of options">
+            {{ option.name }}
+        </option>
+    </select>
+</div>
