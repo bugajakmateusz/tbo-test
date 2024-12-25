@@ -12,6 +12,9 @@ import {WarehouseMapperService} from "./warehouse-mapper.service";
 export class WarehouseService {
   snacks: WarehouseSnack[] = []
 
+  snackId=''
+  action=''
+
   constructor(private httpClient: HttpClient, private configService: ConfigService, private warehouseMapperService: WarehouseMapperService) {
     this.updateServiceData()
   }
@@ -24,17 +27,13 @@ export class WarehouseService {
         .pipe(
             map((response) => {
               if (response) {
-                console.log(response.data)
                 return response.data
               }
               return []; // If response is null return empty array for safety.
             })
         );
   }
-
-  acceptDelivery(delivery: any) {
-    console.log('accept delivery. Snacks accepted: ');
-    console.log(delivery);
+  acceptDelivery(amount: number) {
   }
 
   handToCourier(snacks: any) {

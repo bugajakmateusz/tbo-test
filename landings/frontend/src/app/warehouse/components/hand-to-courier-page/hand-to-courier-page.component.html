@@ -1,28 +1,70 @@
 <app-table
-  title="Wydaj towar kurierowi"
-  [columns]="columns"
-  [rows]="snacks"
-  [formGroup]="form"
-  [inputs]="inputs"
-  [min]="0"
-></app-table>
+  title="Lista maszyn"
+  [columns]="machinesListcolumns"
+  [rows]="displayedMachines"
+  [buttons]="machinesListButtons"
+  (actionChosen)="onActionChosen($event)"
+  *ngIf="showMachines; else snacks"
+>
+</app-table>
 
-<div class="d-flex gap-3 w-75 justify-content-end">
-  <app-form-button
-    text="Wydaj"
-    data-bs-target="#handSnacksModal"
-    data-bs-toggle="modal"
-    [disabled]="buttonDisabled()"
-  ></app-form-button>
-</div>
+<ng-template #snacks>
+  <app-table
+    title="Lista przekąsek w {{ chosenMachineLocation }}"
+    [columns]="snacksListcolumns"
+    [rows]="snacksInMachineDisplayed"
+    [buttons]="snacksListButtons"
+    [min]="0"
+    (actionChosen)="onSnackToChangePriceChosen($event)"
+  >
+    <app-modal
+      modalId="modal1"
+      title="Zmień cenę przekąski"
+      noButtonText="Zamknij"
+      yesButtonText="Zapisz"
+      *ngIf="!showMachines"
+      [disabled]="!changePriceForm.valid"
+      (callbackCalled)="changePrice()"
+    >
+      <app-form-input
+        name="Nowa cena w tej maszynie"
+        type="number"
+        [min]="1"
+        [control]="changePriceForm.controls.price"
+      ></app-form-input>
+    </app-modal>
+  </app-table>
+
+  <div class="d-flex gap-3 w-75">
+
+    <div class="me-auto">
+      <app-form-button
+        text="Wróć"
+        btn-style="outline"
+        (click)="goBack()"
+      ></app-form-button>
+    </div>
+  </div>
+</ng-template>
+
 
 <app-modal
-  modalId="handSnacksModal"
-  title="Wydaj towar kurierowi"
+  modalId="newSnackModal"
+  title="Dodaj przekąskę w maszynie"
   noButtonText="Zamknij"
-  yesButtonText="Wydaj"
-  (callbackCalled)="onSubmit()"
-  *ngIf="!buttonDisabled()"
+  yesButtonText="Dodaj"
+  [disabled]="!addSnackForm.valid"
+  (callbackCalled)="addSnack()"
 >
-  <p>Czy na pewno chcesz wydać towar kurierowi?</p>
-</app-modal>
+  <app-form-select
+    name="Przekąska"
+    [options]="snacksOptions"
+    [control]="addSnackForm.controls.snackId"
+  ></app-form-select>
+  <app-form-input
+    name="Cena w tej maszynie"
+    type="number"
+    [min]="1"
+    [control]="addSnackForm.controls.price"
+  ></app-form-input></app-modal>
+

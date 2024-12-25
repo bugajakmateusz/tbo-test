@@ -1,29 +1,27 @@
 <app-table
   title="Przyjmij dostawę"
   [columns]="columns"
-  [rows]="snacks"
+  [rows]="displayedSnacks"
   [formGroup]="form"
-  [inputs]="inputs"
+  [buttons]="buttons"
   [min]="0"
+  (actionChosen)="onActionChosen($event)"
+
 >
 </app-table>
 
-<div class="d-flex gap-3 w-75 justify-content-end">
-  <app-form-button
-    text="Przyjmij"
-    data-bs-target="#acceptDeliveryModal"
-    data-bs-toggle="modal"
-    [disabled]="buttonDisabled()"
-  ></app-form-button>
-</div>
-
 <app-modal
-  modalId="acceptDeliveryModal"
-  title="Przyjmij dostawę"
+  modalId="modal1"
+  title="Potwierdź dostawę przekąski"
   noButtonText="Zamknij"
-  yesButtonText="Przyjmij"
-  (callbackCalled)="onSubmit()"
-  *ngIf="!buttonDisabled()"
+  yesButtonText="Potwierdź"
+  (callbackCalled)="acceptSnack()"
+  [disabled]="!form.valid"
 >
-  <p>Czy na pewno chcesz przyjąć dostawę?</p>
+  <app-form-input
+    name="Ilość"
+    type="number"
+    [min]="1"
+    [control]="form.controls.amount"
+  ></app-form-input>
 </app-modal>
