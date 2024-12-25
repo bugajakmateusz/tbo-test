@@ -25,10 +25,13 @@ export class ViewUsersPageComponent {
   ];
 
   form = this.fb.group({
-    email: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     roles: [[''], Validators.required],
+  });
+
+  emailForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
   });
 
   passwordFrom = this.fb.group({
@@ -42,33 +45,43 @@ export class ViewUsersPageComponent {
   ) {}
 
   ngOnInit() {
+    this.getUsers()
+  }
+
+  getUsers() {
     this.usersService.getUsers().subscribe(usersFromApi => {
       this.users = usersFromApi.map(userFromApi => this.usersMapperService.mapUserFromApiToUser(userFromApi))
-      console.log("users", this.users)
       this.displayedUsers = this.users.map((el) =>
           this.usersMapperService.mapUserToUserDisplayed(el)
       );    });
-    console.log("displayedUsers", this.displayedUsers)
-
-
   }
 
   editUser() {
     if(this.form.valid) {
       this.usersService.editUser(
-          this.form.value.email!,
           this.form.value.firstName!,
           this.form.value.lastName!,
           this.form.value.roles!
       );
+      this.getUsers()
+    }
+  }
+
+  changeEmail() {
+    if(this.emailForm.valid) {
+      this.usersService.changeEmail(this.emailForm.value.email!)
+      this.getUsers()
     }
   }
 
   changePassword() {
     if(this.passwordFrom.valid) {
       this.usersService.changePassword(this.passwordFrom.value.password!)
+      this.getUsers()
     }
   }
+
+
   banUnbanUser() {
     this.usersService.deleteUser();
   }
@@ -82,13 +95,15 @@ export class ViewUsersPageComponent {
   setFormValuesToSelectedItem() {
     const user = this.usersService.getCurrentUser();
     this.form.setValue({
-      email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
       roles: user.roles,
     });
     this.passwordFrom.setValue({
       password: ""
+    })
+    this.emailForm.setValue({
+      email: user.email
     })
   }
 

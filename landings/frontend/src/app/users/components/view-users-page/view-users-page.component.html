@@ -14,37 +14,49 @@
     [noButtons]="true"
   >
     <div class="d-flex justify-content-between gap-3">
-      <app-form title="Edytuj" titleSize="small"
-      >
-        <app-form-input
-                name="Nowy email"
-                type="email"
-                [control]="form.controls.email"
-        ></app-form-input>
-        <app-form-input
-                name="Nowe imię"
-                [control]="form.controls.firstName"
-        ></app-form-input>
-        <app-form-input
-                name="Nowe nazwisko"
-                [control]="form.controls.lastName"
-        ></app-form-input>
-        <app-form-multiselect
-                name="Nowe role"
-                [control]="form.controls.roles"
-                [options]="roles"
-        ></app-form-multiselect>
-        <app-form-button text="Zapisz" [disabled]="!form.valid" (click)="editUser()"></app-form-button>
-      </app-form>
-      <app-form title="Zmień hasło" titleSize="small"
-      >
-        <app-form-input
-                name="Nowe hasło"
-                type="password"
-                [control]="passwordFrom.controls.password"
-        ></app-form-input>
-        <app-form-button text="Zapisz" [disabled]="!passwordFrom.valid" (click)="changePassword()"></app-form-button>
-      </app-form>
+      <div class="w-50">
+        <app-form title="Edytuj" titleSize="small"
+        >
+          <app-form-input
+                  name="Nowe imię"
+                  [control]="form.controls.firstName"
+          ></app-form-input>
+          <app-form-input
+                  name="Nowe nazwisko"
+                  [control]="form.controls.lastName"
+          ></app-form-input>
+          <app-form-multiselect
+                  name="Nowe role"
+                  [control]="form.controls.roles"
+                  [options]="roles"
+          ></app-form-multiselect>
+          <app-form-button text="Zapisz" [disabled]="!form.valid" (click)="editUser()"></app-form-button>
+        </app-form>
+      </div>
+
+      <div class="d-flex flex-column w-50">
+        <app-form title="Zmień email" titleSize="small"
+        >
+          <app-form-input
+                  name="Nowy email"
+                  type="email"
+                  [control]="emailForm.controls.email"
+          ></app-form-input>
+          <app-form-button text="Zapisz" [disabled]="!emailForm.valid" (click)="changeEmail()"></app-form-button>
+        </app-form>
+        <app-form title="Zmień hasło" titleSize="small"
+        >
+          <app-form-input
+                  name="Nowe hasło"
+                  type="password"
+                  [control]="passwordFrom.controls.password"
+          ></app-form-input>
+          <app-form-button text="Zapisz" [disabled]="!passwordFrom.valid" (click)="changePassword()"></app-form-button>
+        </app-form>
+      </div>
+
+
+
     </div>
 
 
