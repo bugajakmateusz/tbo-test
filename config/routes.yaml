@@ -14,7 +14,7 @@ report:
     resource: './routing/reports.yml'
     prefix: '/api/reports'
     defaults:
-        _format: 'json'
+        _format: 'html'
 
 api.test.login:
     path: 'test-login'
