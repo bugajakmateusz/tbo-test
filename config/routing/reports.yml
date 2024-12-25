@@ -1,0 +1,4 @@
+api.reports.machines:
+  path: 'machines'
+  controller: 'Tab\UserInterface\Http\Report\DownloadMachineReportAction'
+  methods: POST
