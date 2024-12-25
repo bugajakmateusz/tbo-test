@@ -21,7 +21,7 @@ export class ViewUsersPageComponent {
 
   buttons = [
     { text: 'Edytuj', action: 'editUser' },
-    { text: 'Zablokuj/Odblokuj', action: 'ban/unbanUser' },
+    { text: 'Zablokuj', action: 'ban/unbanUser' },
   ];
 
   form = this.fb.group({
@@ -63,27 +63,32 @@ export class ViewUsersPageComponent {
           this.form.value.lastName!,
           this.form.value.roles!
       );
-      this.getUsers()
+      setTimeout(()=>     this.getUsers()
+        ,200)
     }
   }
 
   changeEmail() {
     if(this.emailForm.valid) {
       this.usersService.changeEmail(this.emailForm.value.email!)
-      this.getUsers()
+      setTimeout(()=>     this.getUsers()
+        ,200)
     }
   }
 
   changePassword() {
     if(this.passwordFrom.valid) {
       this.usersService.changePassword(this.passwordFrom.value.password!)
-      this.getUsers()
+      setTimeout(()=>     this.getUsers()
+        ,200)
     }
   }
 
 
   banUnbanUser() {
     this.usersService.deleteUser();
+    setTimeout(()=>     this.getUsers()
+    ,200)
   }
 
   onActionChosen(event: { id: string; action: string }) {

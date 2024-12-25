@@ -24,6 +24,7 @@ export class DeliveryPageComponent implements OnInit {
 
   form = this.fb.group({
     amount: ['', [Validators.required, Validators.min(1)]],
+    price: ['', [Validators.required, Validators.min(0.01)]]
   });
 
   constructor(
@@ -47,11 +48,12 @@ export class DeliveryPageComponent implements OnInit {
     this.warehouseService.action = event.action;
     this.warehouseService.snackId = event.id;
     this.form.setValue({
-      amount: ''
+      amount: '',
+      price: ''
     })
   }
 
   acceptSnack() {
-    this.warehouseService.acceptDelivery(Number(this.form.value.amount))
+    this.warehouseService.acceptDelivery(Number(this.form.value.amount), Number(this.form.value.price))
   }
 }

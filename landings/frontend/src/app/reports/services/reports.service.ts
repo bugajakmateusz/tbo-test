@@ -26,5 +26,12 @@ export class ReportsService {
     console.log(
       `create machines report. Date from: ${dateFrom}. Date to: ${dateTo}. Machines: ${machines}`
     );
+    console.log({
+      dateFrom: dateFrom,
+      dateTo: dateTo,
+      machines: machines
+    })
   }
 }
+
+

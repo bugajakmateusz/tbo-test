@@ -83,7 +83,16 @@ export class UsersService {
   }
 
   deleteUser() {
-    console.log(`delete user with ID: ${this.id}`);
+    this.http.patch(`${this.configService.apiUrl}json-api/users/${this.id}`,{
+      data: {
+        type: "users",
+        attributes: {
+          roles: ["ROLE_USER"]
+        }
+      }
+    })
+      .subscribe(data => this.updateServiceData()
+      )
   }
 
   addUser(
