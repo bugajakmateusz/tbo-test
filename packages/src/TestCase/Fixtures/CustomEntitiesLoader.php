@@ -163,11 +163,12 @@ final class CustomEntitiesLoader
                 ->insert(
                     Tables::MACHINE_SNACKS,
                     [
-                        Tables\MachineSnack::FIELD_ID => $machineSnack->id,
-                        Tables\MachineSnack::FIELD_MACHINE_ID => $machine->id,
-                        Tables\MachineSnack::FIELD_SNACK_ID => $snack->id,
-                        Tables\MachineSnack::FIELD_QUANTITY => $machineSnack->quantity,
-                        Tables\MachineSnack::FIELD_POSITION => $machineSnack->position,
+                        Tables\MachineSnacks::FIELD_ID => $machineSnack->id,
+                        Tables\MachineSnacks::FIELD_MACHINE_ID => $machine->id,
+                        Tables\MachineSnacks::FIELD_SNACK_ID => $snack->id,
+                        Tables\MachineSnacks::FIELD_QUANTITY => $machineSnack->quantity,
+                        Tables\MachineSnacks::FIELD_POSITION => $machineSnack->position,
+                        Tables\MachineSnacks::FIELD_UPDATED_AT => (new \DateTimeImmutable())->format(Date::SQL_DATE_TIME_FORMAT),
                     ],
                 )
             ;

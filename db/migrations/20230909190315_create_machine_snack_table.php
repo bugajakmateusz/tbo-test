@@ -12,33 +12,33 @@ final class CreateMachineSnackTable extends AbstractMigration
         $table = $this->table(
             Tables::MACHINE_SNACKS,
             [
-                'id' => Tables\MachineSnack::FIELD_ID,
+                'id' => Tables\MachineSnacks::FIELD_ID,
             ],
         );
         $table
             ->addColumn(
-                Tables\MachineSnack::FIELD_SNACK_ID,
+                Tables\MachineSnacks::FIELD_SNACK_ID,
                 'integer',
                 [
                     'null' => false,
                 ],
             )
             ->addColumn(
-                Tables\MachineSnack::FIELD_MACHINE_ID,
+                Tables\MachineSnacks::FIELD_MACHINE_ID,
                 'integer',
                 [
                     'null' => false,
                 ],
             )
             ->addColumn(
-                Tables\MachineSnack::FIELD_QUANTITY,
+                Tables\MachineSnacks::FIELD_QUANTITY,
                 'integer',
                 [
                     'null' => false,
                 ],
             )
             ->addColumn(
-                Tables\MachineSnack::FIELD_POSITION,
+                Tables\MachineSnacks::FIELD_POSITION,
                 'string',
                 [
                     'null' => false,
@@ -46,13 +46,13 @@ final class CreateMachineSnackTable extends AbstractMigration
                 ],
             )
             ->addForeignKey(
-                Tables\MachineSnack::FIELD_MACHINE_ID,
+                Tables\MachineSnacks::FIELD_MACHINE_ID,
                 Tables::MACHINES,
                 Tables\Machines::FIELD_MACHINE_ID,
                 ['delete' => 'NO_ACTION', 'update' => 'NO_ACTION'],
             )
             ->addForeignKey(
-                Tables\MachineSnack::FIELD_SNACK_ID,
+                Tables\MachineSnacks::FIELD_SNACK_ID,
                 Tables::SNACKS,
                 Tables\Snacks::FIELD_SNACK_ID,
                 ['delete' => 'NO_ACTION', 'update' => 'NO_ACTION'],

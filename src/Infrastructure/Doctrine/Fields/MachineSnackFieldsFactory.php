@@ -16,11 +16,11 @@ final readonly class MachineSnackFieldsFactory
     private const DIRECT_ATTRIBUTES = [
         MachineSnackSchema::ATTRIBUTE_QUANTITY => [
             MachineSnackView::FIELD_RAW_QUANTITY,
-            Tables\MachineSnack::FIELD_QUANTITY,
+            Tables\MachineSnacks::FIELD_QUANTITY,
         ],
         MachineSnackSchema::ATTRIBUTE_POSITION => [
             MachineSnackView::FIELD_RAW_POSITION,
-            Tables\MachineSnack::FIELD_POSITION,
+            Tables\MachineSnacks::FIELD_POSITION,
         ],
     ];
 
