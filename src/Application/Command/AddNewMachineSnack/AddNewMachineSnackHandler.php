@@ -9,7 +9,7 @@ use Tab\Domain\Model\Machine\MachineSnack;
 use Tab\Domain\Model\Machine\SnackPosition;
 use Tab\Domain\Model\Snack\SnackRepositoryInterface;
 
-final class AddNewMachineSnackHandler
+final readonly class AddNewMachineSnackHandler
 {
     public function __construct(
         private MachineRepositoryInterface $machineRepository,

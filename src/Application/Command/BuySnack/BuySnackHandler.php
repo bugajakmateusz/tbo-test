@@ -9,7 +9,7 @@ use Tab\Domain\Model\Snack\BuyRepositoryInterface;
 use Tab\Domain\Model\Snack\SnackRepositoryInterface;
 use Tab\Domain\Service\ClockInterface;
 
-final class BuySnackHandler
+final readonly class BuySnackHandler
 {
     public function __construct(
         private SnackRepositoryInterface $snackRepository,
