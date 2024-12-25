@@ -4,47 +4,48 @@
   [rows]="displayedMachines"
   [checkboxes]="checkboxes"
   [formGroup]="machinesSelectedForm"
-  *ngIf="showMachines; else showDatesForm"
+  *ngIf="showMachines"
 >
 </app-table>
 
-<ng-template #showDatesForm>
-  <app-form title="Utwórz raport maszyny/maszyn">
-    <app-form-input
-      name="Data od"
-      type="date"
-      [control]="datesForm.controls.dateFrom"
-    ></app-form-input>
-    <app-form-input
-      name="Data do"
-      type="date"
-      [control]="datesForm.controls.dateTo"
-    ></app-form-input>
-  </app-form>
-</ng-template>
+<!--<ng-template #showDatesForm>-->
+<!--  <app-form title="Utwórz raport maszyny/maszyn">-->
+<!--    <app-form-input-->
+<!--      name="Data od"-->
+<!--      type="date"-->
+<!--      [control]="datesForm.controls.dateFrom"-->
+<!--    ></app-form-input>-->
+<!--    <app-form-input-->
+<!--      name="Data do"-->
+<!--      type="date"-->
+<!--      [control]="datesForm.controls.dateTo"-->
+<!--    ></app-form-input>-->
+<!--  </app-form>-->
+<!--</ng-template>-->
 
 <div
   class="d-flex gap-3 w-75 justify-content-end"
-  *ngIf="showMachines; else backButton"
 >
   <app-form-button
     text="Dalej"
-    (click)="goNext()"
+    (click)="onSubmit()"
     [disabled]="goNextButtonDisabled()"
   ></app-form-button>
 </div>
 
-<ng-template #backButton>
-  <div class="d-flex gap-3 w-75 justify-content-between">
-    <app-form-button
-      text="Wróć"
-      btn-style="outline"
-      (click)="goBack()"
-    ></app-form-button>
-    <app-form-button
-      text="Utwórz"
-      (click)="onSubmit()"
-      [disabled]="submitButtonDisabled()"
-    ></app-form-button>
-  </div>
-</ng-template>
+<!--<ng-template #backButton>-->
+<!--  <div class="d-flex gap-3 w-75 justify-content-between">-->
+<!--    <app-form-button-->
+<!--      text="Wróć"-->
+<!--      btn-style="outline"-->
+<!--      (click)="goBack()"-->
+<!--    ></app-form-button>-->
+<!--    <app-form-button-->
+<!--      text="Utwórz"-->
+<!--      (click)="onSubmit()"-->
+<!--      [disabled]="submitButtonDisabled()"-->
+<!--    ></app-form-button>-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+<div id="report"></div>

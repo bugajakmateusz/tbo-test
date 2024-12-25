@@ -14,7 +14,7 @@ final class Users extends AbstractSeed
     public function run(): void
     {
         $users = [];
-        for ($i = 0; $i < 80; ++$i) {
+        for ($i = 0; $i < 10; ++$i) {
             $users[] = $this->createUserData();
         }
 

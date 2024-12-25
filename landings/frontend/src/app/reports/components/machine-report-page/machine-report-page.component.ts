@@ -86,10 +86,11 @@ export class MachineReportPageComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.submitButtonDisabled()) {
-      // console.log(this.machineIdMachineCheckboxDictionary)
+      console.log("report pls")
       // console.log(this.machinesSelectedForm.value)
       const machines: any[] = []
+
+
       Object.values(this.machinesSelectedForm.value).forEach((value, index) => {
         if(value) {
           machines.push(Object.values(this.machineIdMachineCheckboxDictionary[index])[0])
@@ -97,12 +98,12 @@ export class MachineReportPageComponent implements OnInit {
       })
 
 
-      this.reportsService.createMachinesReport(
+      // @ts-ignore
+    document.getElementById("report")!.innerHTML = this.reportsService.createMachinesReport(
         this.datesForm.value.dateFrom!,
         this.datesForm.value.dateTo!, machines
-      );
+      )
       this.goBack();
-    }
   }
 
   goNextButtonDisabled(): boolean {
@@ -113,8 +114,6 @@ export class MachineReportPageComponent implements OnInit {
 
   submitButtonDisabled(): boolean {
     return (
-      !this.datesForm.valid ||
-      this.datesForm.value.dateFrom! > this.datesForm.value.dateTo!
-    );
+      !this.datesForm.valid);
   }
 }
