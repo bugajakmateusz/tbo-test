@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Domain\Model\Snack\Price;
-use Tab\Domain\Model\Snack\PriceRepositoryInterface;
-use Tab\Domain\Model\Snack\Snack;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Domain\Model\Snack\Price;
+use Polsl\Domain\Model\Snack\PriceRepositoryInterface;
+use Polsl\Domain\Model\Snack\Snack;
 
 final class OrmPriceRepository implements PriceRepositoryInterface
 {

@@ -1,5 +1,5 @@
 {
-    "name": "tab/app",
+    "name": "polsl/app",
     "description": "",
     "license": "proprietary",
     "type": "project",
@@ -16,8 +16,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13.1",
         "egulias/email-validator": "^4.0.0",
-        "firebase/php-jwt": "^6.3",
-        "friendsofsymfony/ckeditor-bundle": "^2.4",
         "jsonapiphp/jsonapi": "^1.1",
         "league/tactician-bundle": "^1.4",
         "league/tactician-doctrine": "^1.2",
@@ -26,36 +24,36 @@
         "phpstan/phpdoc-parser": "^1.22",
         "psr/container": "^2.0.2",
         "psr/simple-cache": "^2.0 || ^3.0",
-        "robmorgan/phinx": "^0.13.1",
-        "symfony/cache": "~6.3.0",
-        "symfony/console": "~6.3.0",
-        "symfony/doctrine-messenger": "~6.3.0",
-        "symfony/dotenv": "~6.3.0",
-        "symfony/expression-language": "~6.3.0",
+        "robmorgan/phinx": "^0.16.0",
+        "symfony/cache": "~7.2.0",
+        "symfony/console": "~7.2.0",
+        "symfony/doctrine-messenger": "~7.2.0",
+        "symfony/dotenv": "~7.2.0",
+        "symfony/expression-language": "~7.2.0",
         "symfony/flex": "^2.2.3",
-        "symfony/form": "~6.3.0",
-        "symfony/html-sanitizer": "~6.3.0",
-        "symfony/http-client": "~6.3.0",
-        "symfony/http-kernel": "~6.3.0",
-        "symfony/intl": "~6.3.0",
-        "symfony/lock": "~6.3.0",
-        "symfony/mailer": "~6.3.0",
-        "symfony/mime": "~6.3.0",
+        "symfony/form": "~7.2.0",
+        "symfony/html-sanitizer": "~7.2.0",
+        "symfony/http-client": "~7.2.0",
+        "symfony/http-kernel": "~7.2.0",
+        "symfony/intl": "~7.2.0",
+        "symfony/lock": "~7.2.0",
+        "symfony/mailer": "~7.2.0",
+        "symfony/mime": "~7.2.0",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/notifier": "~6.3.0",
-        "symfony/process": "~6.3.0",
-        "symfony/property-access": "~6.3.0",
-        "symfony/property-info": "~6.3.0",
-        "symfony/rate-limiter": "~6.3.0",
-        "symfony/runtime": "~6.3.0",
-        "symfony/security-bundle": "~6.3.0",
-        "symfony/serializer": "~6.3.0",
-        "symfony/string": "~6.3.0",
-        "symfony/translation": "~6.3.0",
-        "symfony/twig-bundle": "~6.3.0",
-        "symfony/uid": "~6.3.0",
-        "symfony/validator": "~6.3.0",
-        "symfony/web-link": "~6.3.0",
+        "symfony/notifier": "~7.2.0",
+        "symfony/process": "~7.2.0",
+        "symfony/property-access": "~7.2.0",
+        "symfony/property-info": "~7.2.0",
+        "symfony/rate-limiter": "~7.2.0",
+        "symfony/runtime": "~7.2.0",
+        "symfony/security-bundle": "~7.2.0",
+        "symfony/serializer": "~7.2.0",
+        "symfony/string": "~7.2.0",
+        "symfony/translation": "~7.2.0",
+        "symfony/twig-bundle": "~7.2.0",
+        "symfony/uid": "~7.2.0",
+        "symfony/validator": "~7.2.0",
+        "symfony/web-link": "~7.2.0",
         "symfony/webpack-encore-bundle": "^2.0.0",
         "toflar/psr6-symfony-http-cache-store": "^4.0",
         "twig/extra-bundle": "^2.12 || ^3.0",
@@ -66,7 +64,6 @@
         "ergebnis/composer-normalize": "^2.28.3",
         "fakerphp/faker": "^1.20",
         "friendsofphp/php-cs-fixer": "^3.18",
-        "pablok/cache-stats-bundle": "^0.6",
         "phpstan/phpstan": "^1.8.3",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-doctrine": "^1.3.13",
@@ -74,15 +71,15 @@
         "phpstan/phpstan-symfony": "^1.2.13",
         "phpunit/phpunit": "^10.0",
         "pyrech/composer-changelogs": "^2.0.0",
-        "symfony/browser-kit": "~6.3.0",
-        "symfony/css-selector": "~6.3.0",
-        "symfony/debug-bundle": "~6.3.0",
-        "symfony/dom-crawler": "~6.3.0",
+        "symfony/browser-kit": "~7.2.0",
+        "symfony/css-selector": "~7.2.0",
+        "symfony/debug-bundle": "~7.2.0",
+        "symfony/dom-crawler": "~7.2.0",
         "symfony/maker-bundle": "^1.0",
-        "symfony/phpunit-bridge": "~6.3.0",
-        "symfony/stopwatch": "~6.3.0",
-        "symfony/var-dumper": "~6.3.0",
-        "symfony/web-profiler-bundle": "~6.3.0"
+        "symfony/phpunit-bridge": "~7.2.0",
+        "symfony/stopwatch": "~7.2.0",
+        "symfony/var-dumper": "~7.2.0",
+        "symfony/web-profiler-bundle": "~7.2.0"
     },
     "replace": {
         "paragonie/random_compat": "^2.0",
@@ -109,14 +106,14 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Tab\\": "src",
-            "Tab\\Packages\\": "packages/src"
+            "Polsl\\": "src",
+            "Polsl\\Packages\\": "packages/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tab\\Packages\\Tests\\": "packages/tests",
-            "Tab\\Tests\\": "tests"
+            "Polsl\\Packages\\Tests\\": "packages/tests",
+            "Polsl\\Tests\\": "tests"
         },
         "files": [
             "vendor/symfony/var-dumper/Resources/functions/dump.php"
@@ -126,9 +123,9 @@
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "ergebnis/composer-normalize": true,
+            "php-http/discovery": true,
             "pyrech/composer-changelogs": true,
             "symfony/flex": true,
-            "php-http/discovery": true,
             "symfony/runtime": true
         },
         "preferred-install": {
@@ -139,7 +136,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "~6.3.0"
+            "require": "~7.2.0"
         },
         "symfony-assets-install": "relative"
     },

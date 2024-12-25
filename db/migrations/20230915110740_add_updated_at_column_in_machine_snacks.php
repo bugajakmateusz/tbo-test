@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
-use Tab\Packages\Constants\Database\Tables;
+use Polsl\Packages\Constants\Database\Tables;
 
 final class AddUpdatedAtColumnInMachineSnacks extends AbstractMigration
 {

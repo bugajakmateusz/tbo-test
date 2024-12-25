@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\Model\Snack\Buy;
-use Tab\Domain\Model\Snack\BuyRepositoryInterface;
+use Polsl\Domain\Model\Snack\Buy;
+use Polsl\Domain\Model\Snack\BuyRepositoryInterface;
 
 final readonly class OrmBuyRepository implements BuyRepositoryInterface
 {

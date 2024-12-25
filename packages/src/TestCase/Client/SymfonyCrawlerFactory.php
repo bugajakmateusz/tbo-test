@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Client;
+namespace Polsl\Packages\TestCase\Client;
 
-use Tab\Packages\HttpResponse\ResponseInterface;
+use Polsl\Packages\HttpResponse\ResponseInterface;
 
 final class SymfonyCrawlerFactory implements CrawlerFactoryInterface
 {

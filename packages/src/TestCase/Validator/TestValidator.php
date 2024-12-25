@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Validator;
+namespace Polsl\Packages\TestCase\Validator;
 
+use Polsl\Packages\Validator\SymfonyViolation;
+use Polsl\Packages\Validator\ViolationInterface;
+use Polsl\Packages\Validator\Violations;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\GroupSequence;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface as SymfonyValidatorInterface;
-use Tab\Packages\Validator\SymfonyViolation;
-use Tab\Packages\Validator\ViolationInterface;
-use Tab\Packages\Validator\Violations;
 
 final readonly class TestValidator
 {
@@ -22,7 +22,7 @@ final readonly class TestValidator
      */
     public function validate(
         mixed $data,
-        Constraint|array $constraints = null,
+        null|array|Constraint $constraints = null,
         ?array $validationGroups = null,
     ): Violations {
         $violations = $this->validator

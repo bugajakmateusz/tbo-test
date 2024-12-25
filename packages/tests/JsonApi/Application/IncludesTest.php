@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonApi\Application;
+namespace Polsl\Packages\Tests\JsonApi\Application;
 
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class IncludesTest extends UnitTestCase

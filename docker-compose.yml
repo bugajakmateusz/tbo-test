@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
     haproxy:
         image: haproxy:2.8.3-alpine
@@ -37,7 +35,7 @@ services:
             context: .
             dockerfile: ./docker/fpm/Dockerfile
             target: prod_base
-        container_name: dev-tab-app
+        container_name: dev-polsl-app
         environment:
             ALLOW_INIT_MIGRATION: 1
             ALLOW_SEEDING: 1
@@ -56,8 +54,8 @@ services:
         image: postgres:15.4-alpine
         environment:
             POSTGRES_USER: root
-            POSTGRES_DB: tab_dev
-            POSTGRES_PASSWORD: tab-admin
+            POSTGRES_DB: polsl_dev
+            POSTGRES_PASSWORD: polsl-admin
             POSTGRES_HOST_AUTH_METHOD: md5
             POSTGRES_INITDB_ARGS: --auth-host=md5
         stop_grace_period: 10s
@@ -72,8 +70,8 @@ services:
         image: postgres:15.4-alpine
         environment:
             POSTGRES_USER: root
-            POSTGRES_DB: tab_test
-            POSTGRES_PASSWORD: tab-admin
+            POSTGRES_DB: polsl_test
+            POSTGRES_PASSWORD: polsl-admin
             POSTGRES_HOST_AUTH_METHOD: md5
             POSTGRES_INITDB_ARGS: --auth-host=md5
         stop_grace_period: 10s
@@ -84,13 +82,8 @@ services:
 #            - ./docker/db/postgresql.conf:/var/lib/postgresql/data/postgresql.conf:ro
 #            - ./docker/db/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf:ro
 
-    memcached:
-        image: memcached:1.4.21
-        stop_grace_period: 1s
-
-
-    node_builder_v20:
-        image: node:20.5-alpine3.17
+    node_builder_v22:
+        image: node:22.12.0-alpine
         working_dir: /app
         user: node
         command: sh -c "
@@ -114,9 +107,9 @@ services:
         command: >
             sh -c "
                 composer install --prefer-dist --no-interaction &&
-                php docker/db/wait-for-db.php postgres tab_dev &&
+                php docker/db/wait-for-db.php postgres polsl_dev &&
                 APP_ENV=dev php vendor/bin/phinx migrate &&
-                php docker/db/wait-for-db.php postgres_test tab_test &&
+                php docker/db/wait-for-db.php postgres_test polsl_test &&
                 APP_ENV=test php vendor/bin/phinx migrate &&
                 echo 'App is ready, head to http://localhost:3100'
             "

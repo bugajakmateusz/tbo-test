@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mock;
+namespace Polsl\Tests\TestCase\Application\Mock;
 
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 final class FakeClock implements ClockInterface
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\Redirect;
+namespace Polsl\UserInterface\Http\Redirect;
 
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 
 final readonly class HomepageRedirectAction
 {

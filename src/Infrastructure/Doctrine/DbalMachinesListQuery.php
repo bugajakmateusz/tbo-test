@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine;
+namespace Polsl\Infrastructure\Doctrine;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Tab\Application\Query\MachinesList\MachinesListHandler;
-use Tab\Application\Query\MachinesList\MachinesListQueryInterface;
-use Tab\Application\Query\MachinesList\MachinesListView;
-use Tab\Application\Schema\MachineSchema;
-use Tab\Application\View\MachineView;
-use Tab\Infrastructure\Doctrine\Fields\MachineFieldsFactory;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\ResourcesList\TotalItems;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Query\MachinesList\MachinesListHandler;
+use Polsl\Application\Query\MachinesList\MachinesListQueryInterface;
+use Polsl\Application\Query\MachinesList\MachinesListView;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Application\View\MachineView;
+use Polsl\Infrastructure\Doctrine\Fields\MachineFieldsFactory;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\TotalItems;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final class DbalMachinesListQuery extends DbalListQueryTemplate implements MachinesListQueryInterface
 {

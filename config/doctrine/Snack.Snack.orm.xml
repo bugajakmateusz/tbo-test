@@ -3,7 +3,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           ../../vendor/doctrine/orm/doctrine-mapping.xsd"
 >
-    <entity name="Tab\Domain\Model\Snack\Snack" table="snacks">
+    <entity name="Polsl\Domain\Model\Snack\Snack" table="snacks">
         <id name="id" type="integer" column="snack_id">
             <generator strategy="AUTO" />
         </id>
@@ -12,7 +12,7 @@
 
         <one-to-one
                 field="warehouseSnack"
-                target-entity="Tab\Domain\Model\Snack\WarehouseSnack"
+                target-entity="Polsl\Domain\Model\Snack\WarehouseSnack"
                 mapped-by="snack"
         >
             <cascade>

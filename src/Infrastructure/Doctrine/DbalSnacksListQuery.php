@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine;
+namespace Polsl\Infrastructure\Doctrine;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Tab\Application\Query\SnacksList\SnacksListHandler;
-use Tab\Application\Query\SnacksList\SnacksListQueryInterface;
-use Tab\Application\Query\SnacksList\SnacksListView;
-use Tab\Application\Schema\SnackSchema;
-use Tab\Application\View\SnackView;
-use Tab\Infrastructure\Doctrine\Fields\SnackFieldsFactory;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\ResourcesList\TotalItems;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Query\SnacksList\SnacksListHandler;
+use Polsl\Application\Query\SnacksList\SnacksListQueryInterface;
+use Polsl\Application\Query\SnacksList\SnacksListView;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Application\View\SnackView;
+use Polsl\Infrastructure\Doctrine\Fields\SnackFieldsFactory;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\TotalItems;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final class DbalSnacksListQuery extends DbalListQueryTemplate implements SnacksListQueryInterface
 {

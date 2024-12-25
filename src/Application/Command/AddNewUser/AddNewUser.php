@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewUser;
+namespace Polsl\Application\Command\AddNewUser;
 
 final readonly class AddNewUser
 {

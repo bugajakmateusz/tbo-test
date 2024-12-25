@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony\Security;
+namespace Polsl\Infrastructure\Symfony\Security;
 
-use Tab\Domain\Model\Login\LoggedUser;
+use Polsl\Domain\Model\Login\LoggedUser;
 
 interface UserInterface extends \Symfony\Component\Security\Core\User\UserInterface
 {

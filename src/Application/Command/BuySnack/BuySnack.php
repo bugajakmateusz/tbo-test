@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\BuySnack;
+namespace Polsl\Application\Command\BuySnack;
 
 final readonly class BuySnack
 {

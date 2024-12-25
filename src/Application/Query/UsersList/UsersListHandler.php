@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\UsersList;
+namespace Polsl\Application\Query\UsersList;
 
-use Tab\Application\Exception\ApplicationException;
-use Tab\Application\Schema\UserSchema;
-use Tab\Application\Service\LoggedUserServiceInterface;
-use Tab\Domain\Model\User\Role;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
+use Polsl\Application\Exception\ApplicationException;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Application\Service\LoggedUserServiceInterface;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
 
 final readonly class UsersListHandler
 {

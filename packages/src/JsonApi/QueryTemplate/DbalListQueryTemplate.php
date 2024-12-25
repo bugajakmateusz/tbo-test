@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\QueryTemplate;
+namespace Polsl\Packages\JsonApi\QueryTemplate;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\SqlExpressions\JsonArrayAggregate;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\SqlExpressions\JsonArrayAggregate;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 abstract class DbalListQueryTemplate
 {

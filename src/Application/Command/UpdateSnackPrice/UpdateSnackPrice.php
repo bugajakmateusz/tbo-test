@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateSnackPrice;
+namespace Polsl\Application\Command\UpdateSnackPrice;
 
 final readonly class UpdateSnackPrice
 {

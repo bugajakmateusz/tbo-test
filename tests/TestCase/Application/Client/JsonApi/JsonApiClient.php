@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Client\JsonApi;
+namespace Polsl\Tests\TestCase\Application\Client\JsonApi;
 
-use Tab\Packages\Constants\HttpMethods;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\Relationships;
-use Tab\Packages\JsonApi\Contracts\SchemaInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\TestCase\Client\KernelBrowserInterface;
-use Tab\Packages\TestCase\Client\RequestInterface;
+use Polsl\Packages\Constants\HttpMethods;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\Relationships;
+use Polsl\Packages\JsonApi\Contracts\SchemaInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\TestCase\Client\KernelBrowserInterface;
+use Polsl\Packages\TestCase\Client\RequestInterface;
 
 final readonly class JsonApiClient
 {
@@ -68,7 +68,7 @@ final readonly class JsonApiClient
     /** @param array<string,mixed> $attributes */
     public function createResource(
         array $attributes = [],
-        Relationships $relationships = null,
+        ?Relationships $relationships = null,
     ): JsonApiResponse {
         $resourceType = $this->schema
             ->resourceType()

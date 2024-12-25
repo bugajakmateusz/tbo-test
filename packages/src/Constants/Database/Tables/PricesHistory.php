@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Constants\Database\Tables;
+namespace Polsl\Packages\Constants\Database\Tables;
 
-use Tab\Packages\Constants\Constants;
+use Polsl\Packages\Constants\Constants;
 
 final class PricesHistory extends Constants
 {

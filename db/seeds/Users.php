@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Phinx\Seed\AbstractSeed;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\Constants\Hasher;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\PasswordHasher\SymfonySodiumPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\SodiumPasswordHasher;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\Constants\Hasher;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\PasswordHasher\SymfonySodiumPasswordHasher;
 
 final class Users extends AbstractSeed
 {

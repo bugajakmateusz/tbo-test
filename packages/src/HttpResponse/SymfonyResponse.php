@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\HttpResponse;
+namespace Polsl\Packages\HttpResponse;
 
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Cookie;

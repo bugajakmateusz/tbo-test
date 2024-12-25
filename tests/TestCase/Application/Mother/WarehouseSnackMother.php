@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mother;
+namespace Polsl\Tests\TestCase\Application\Mother;
 
-use Tab\Domain\Model\Snack\WarehouseSnack;
-use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
+use Polsl\Domain\Model\Snack\WarehouseSnack;
+use Polsl\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class WarehouseSnackMother
 {

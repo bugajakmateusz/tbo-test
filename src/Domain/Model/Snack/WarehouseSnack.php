@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Snack;
+namespace Polsl\Domain\Model\Snack;
 
-use Tab\Domain\DomainException;
+use Polsl\Domain\DomainException;
 
 class WarehouseSnack
 {
@@ -22,7 +22,7 @@ class WarehouseSnack
             throw new DomainException('Quantity cannot be negative.');
         }
 
-        $this->quantity = $this->quantity + $quantity;
+        $this->quantity += $quantity;
     }
 
     public function decreaseQuantity(int $quantity): void

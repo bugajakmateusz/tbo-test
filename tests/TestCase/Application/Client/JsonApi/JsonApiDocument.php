@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Client\JsonApi;
+namespace Polsl\Tests\TestCase\Application\Client\JsonApi;
 
 final class JsonApiDocument
 {
@@ -44,7 +44,7 @@ final class JsonApiDocument
             ->data
             ->id
             ?? $this->document
-            ->id
+                ->id
             ?? ''
         ;
 
@@ -102,7 +102,7 @@ final class JsonApiDocument
                 ->data
                 ->type
                 ?? $this->document
-                ->type
+                    ->type
                 ?? ''
             ;
         }

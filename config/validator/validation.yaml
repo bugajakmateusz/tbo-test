@@ -1,4 +1,4 @@
-Tab\Application\Command\AddNewSnack\AddNewSnack:
+Polsl\Application\Command\AddNewSnack\AddNewSnack:
   properties:
     name:
       - NotBlank:
@@ -7,7 +7,7 @@ Tab\Application\Command\AddNewSnack\AddNewSnack:
           max: 255
           normalizer: trim
 
-Tab\Application\Command\UpdateSnack\UpdateSnack:
+Polsl\Application\Command\UpdateSnack\UpdateSnack:
   properties:
     name:
       - NotBlank:
@@ -16,13 +16,13 @@ Tab\Application\Command\UpdateSnack\UpdateSnack:
           max: 255
           normalizer: trim
 
-Tab\Application\Command\AddNewMachine\AddNewMachine:
+Polsl\Application\Command\AddNewMachine\AddNewMachine:
   properties:
     location:
       - NotBlank:
           normalizer: trim
       - Length:
-          max: !php/const Tab\Domain\Model\Machine\Location::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\Machine\Location::MAX_LENGTH
           normalizer: trim
     positionsNumber:
       - NotBlank: ~
@@ -31,114 +31,114 @@ Tab\Application\Command\AddNewMachine\AddNewMachine:
       - NotBlank: ~
       - GreaterThanOrEqual: 0
 
-Tab\Application\Command\UpdateMachine\UpdateMachine:
+Polsl\Application\Command\UpdateMachine\UpdateMachine:
   properties:
     location:
       - NotBlank:
           normalizer: trim
           groups: ['changedLocation']
       - Length:
-          max: !php/const Tab\Domain\Model\Machine\Location::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\Machine\Location::MAX_LENGTH
           normalizer: trim
     positionsNumber:
       - GreaterThanOrEqual: 0
     positionsCapacity:
       - GreaterThanOrEqual: 0
 
-Tab\Application\Command\AddNewUser\AddNewUser:
+Polsl\Application\Command\AddNewUser\AddNewUser:
   properties:
     email:
       - NotBlank:
           normalizer: trim
       - Length:
-          max: !php/const Tab\Domain\Email::MAX_LENGTH
+          max: !php/const Polsl\Domain\Email::MAX_LENGTH
       - Email:
           mode: html5
-      - Tab\Infrastructure\Symfony\Validator\Constraints\EmailExists: ~
+      - Polsl\Infrastructure\Symfony\Validator\Constraints\EmailExists: ~
     password:
       - NotBlank:
           normalizer: trim
       - Length:
-          min: !php/const Tab\Domain\Model\User\Password::MIN_LENGTH
-          max: !php/const Tab\Domain\Model\User\Password::MAX_LENGTH
+          min: !php/const Polsl\Domain\Model\User\Password::MIN_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Password::MAX_LENGTH
     name:
       - NotBlank:
           normalizer: trim
       - Length:
-          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Name::MAX_LENGTH
     surname:
       - NotBlank:
           normalizer: trim
       - Length:
-          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Name::MAX_LENGTH
     roles:
       - NotBlank:
           normalizer: trim
       - All:
         - Choice:
-            callback: [Tab\Domain\Model\User\Role, list]
+            callback: [Polsl\Domain\Model\User\Role, list]
 
-Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack:
+Polsl\Application\Command\AddNewMachineSnack\AddNewMachineSnack:
   constraints:
-    - Tab\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken: ~
-    - Tab\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
+    - Polsl\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken: ~
+    - Polsl\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
   properties:
     position:
       - NotBlank:
           normalizer: trim
       - Length:
-          max: !php/const Tab\Domain\Model\Machine\SnackPosition::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\Machine\SnackPosition::MAX_LENGTH
           normalizer: trim
     quantity:
       - NotBlank: ~
       - GreaterThan: 0
 
-Tab\Application\Command\UpdateSnackPrice\UpdateSnackPrice:
+Polsl\Application\Command\UpdateSnackPrice\UpdateSnackPrice:
   properties:
     price:
       - NotBlank: ~
       - GreaterThan: 0.0
 
-Tab\Application\Command\UpdateUser\UpdateUser:
+Polsl\Application\Command\UpdateUser\UpdateUser:
   properties:
     email:
       - NotBlank:
           normalizer: trim
           allowNull: true
       - Length:
-          max: !php/const Tab\Domain\Email::MAX_LENGTH
+          max: !php/const Polsl\Domain\Email::MAX_LENGTH
       - Email:
           mode: html5
-      - Tab\Infrastructure\Symfony\Validator\Constraints\EmailExists:
+      - Polsl\Infrastructure\Symfony\Validator\Constraints\EmailExists:
           groups: ['changedEmail']
     password:
       - NotBlank:
           normalizer: trim
           allowNull: true
       - Length:
-          min: !php/const Tab\Domain\Model\User\Password::MIN_LENGTH
-          max: !php/const Tab\Domain\Model\User\Password::MAX_LENGTH
+          min: !php/const Polsl\Domain\Model\User\Password::MIN_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Password::MAX_LENGTH
     name:
       - NotBlank:
           normalizer: trim
           allowNull: true
       - Length:
-          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Name::MAX_LENGTH
     surname:
       - NotBlank:
           normalizer: trim
           allowNull: true
       - Length:
-          max: !php/const Tab\Domain\Model\User\Name::MAX_LENGTH
+          max: !php/const Polsl\Domain\Model\User\Name::MAX_LENGTH
     roles:
       - NotBlank:
           normalizer: trim
           allowNull: true
       - All:
           - Choice:
-              callback: [ Tab\Domain\Model\User\Role, list ]
+              callback: [ Polsl\Domain\Model\User\Role, list ]
 
-Tab\Application\Command\BuySnack\BuySnack:
+Polsl\Application\Command\BuySnack\BuySnack:
   properties:
     price:
       - NotBlank: ~
@@ -147,9 +147,9 @@ Tab\Application\Command\BuySnack\BuySnack:
       - NotBlank: ~
       - GreaterThan: 0
 
-Tab\Application\Command\UpdateMachineSnack\UpdateMachineSnack:
+Polsl\Application\Command\UpdateMachineSnack\UpdateMachineSnack:
   constraints:
-    - Tab\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
+    - Polsl\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
   properties:
     quantity:
       - NotBlank: ~

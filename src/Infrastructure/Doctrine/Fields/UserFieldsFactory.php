@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Fields;
+namespace Polsl\Infrastructure\Doctrine\Fields;
 
-use Tab\Application\Schema\UserSchema;
-use Tab\Application\View\UserView;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Application\View\UserView;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final class UserFieldsFactory
 {

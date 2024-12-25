@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\ValidatorQuery;
+namespace Polsl\Application\ValidatorQuery;
 
 interface NotEnoughQuantityQueryInterface
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\ResourcesList\PageException;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\PageException;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /**
  * @phpstan-type PageConstructor \Closure(int $number, int $size): Page

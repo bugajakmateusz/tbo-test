@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Responder\Response;
+namespace Polsl\Packages\Responder\Response;
 
-use Tab\Packages\HttpResponse\CookieInterface;
+use Polsl\Packages\HttpResponse\CookieInterface;
 
 interface ResponseInterface
 {

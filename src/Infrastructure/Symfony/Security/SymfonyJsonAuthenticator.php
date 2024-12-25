@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony\Security;
+namespace Polsl\Infrastructure\Symfony\Security;
 
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,6 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 
 final class SymfonyJsonAuthenticator extends AbstractAuthenticator implements AuthenticationEntryPointInterface
 {
@@ -55,7 +55,7 @@ final class SymfonyJsonAuthenticator extends AbstractAuthenticator implements Au
         ;
     }
 
-    public function start(Request $request, AuthenticationException $authException = null): Response
+    public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new JsonResponse(
             ['status' => false, 'message' => 'Auth required'],

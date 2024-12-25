@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Constants;
+namespace Polsl\Packages\Constants;
 
 final class HttpMethods extends Constants
 {

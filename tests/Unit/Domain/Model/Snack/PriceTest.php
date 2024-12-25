@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\Snack;
+namespace Polsl\Tests\Unit\Domain\Model\Snack;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\Snack\Price;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mock\FakeClock;
-use Tab\Tests\TestCase\Application\Mother\MachineMother;
-use Tab\Tests\TestCase\Application\Mother\SnackMother;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\Snack\Price;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mock\FakeClock;
+use Polsl\Tests\TestCase\Application\Mother\MachineMother;
+use Polsl\Tests\TestCase\Application\Mother\SnackMother;
 
 /**
  * @internal

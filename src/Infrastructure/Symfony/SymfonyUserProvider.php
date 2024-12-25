@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony;
+namespace Polsl\Infrastructure\Symfony;
 
+use Polsl\Infrastructure\Symfony\Security\SymfonyUser;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Tab\Infrastructure\Symfony\Security\SymfonyUser;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 
+/** @implements UserProviderInterface<SymfonyUser> */
 final readonly class SymfonyUserProvider implements UserProviderInterface
 {
     public function __construct(

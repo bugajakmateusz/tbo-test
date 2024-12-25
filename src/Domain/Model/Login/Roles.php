@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Login;
+namespace Polsl\Domain\Model\Login;
 
 final readonly class Roles
 {

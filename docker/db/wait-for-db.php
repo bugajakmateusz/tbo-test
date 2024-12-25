@@ -45,5 +45,5 @@ if (!isset($host, $database)) {
 $waitForDb(
     "pgsql:dbname={$database};host={$host}",
     'root',
-    'tab-admin',
+    'polsl-admin',
 );

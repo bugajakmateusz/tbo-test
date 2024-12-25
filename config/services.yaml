@@ -6,9 +6,9 @@
 parameters:
     locale: pl
     fallback_locale: pl
-    sodium_time_cost: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_TIME_COST'
-    sodium_memory_cost_kilobytes: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_KB'
-    sodium_memory_cost_bytes: !php/const '\Tab\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_BYTES'
+    sodium_time_cost: !php/const '\Polsl\Packages\Constants\Hasher::SODIUM_TIME_COST'
+    sodium_memory_cost_kilobytes: !php/const '\Polsl\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_KB'
+    sodium_memory_cost_bytes: !php/const '\Polsl\Packages\Constants\Hasher::SODIUM_MEMORY_LIMIT_IN_BYTES'
     default_timezone: 'Europe/Warsaw'
     jwt_key: '%env(JWT_KEY)%'
 
@@ -21,7 +21,7 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    Tab\:
+    Polsl\:
         bind:
             string $timezone: '%default_timezone%'
         resource: '../src/'
@@ -30,7 +30,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    Tab\Packages\:
+    Polsl\Packages\:
         resource: '../packages/src'
         bind:
             League\Tactician\CommandBus $queryBus: '@tactician.commandbus.query_bus'
@@ -45,49 +45,49 @@ services:
             - '../packages/src/HttpClient'
             - '../packages/src/HttpResponse'
 
-    tab.json_api.schemas_locator:
+    polsl.json_api.schemas_locator:
         class: Symfony\Component\DependencyInjection\ServiceLocator
         tags: ['container.service_locator']
         arguments:
             -
-                - '@Tab\Application\Schema\SnackSchema'
-                - '@Tab\Application\Schema\MachineSchema'
-                - '@Tab\Application\Schema\UserSchema'
-                - '@Tab\Application\Schema\MachineSnackSchema'
-                - '@Tab\Application\Schema\SnackPriceSchema'
-                - '@Tab\Application\Schema\SnackBuySchema'
+                - '@Polsl\Application\Schema\SnackSchema'
+                - '@Polsl\Application\Schema\MachineSchema'
+                - '@Polsl\Application\Schema\UserSchema'
+                - '@Polsl\Application\Schema\MachineSnackSchema'
+                - '@Polsl\Application\Schema\SnackPriceSchema'
+                - '@Polsl\Application\Schema\SnackBuySchema'
 
-    Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer:
+    Polsl\Infrastructure\Neomerx\NeomerxLazySchemaContainer:
         arguments:
-            $schemaLocator: '@tab.json_api.schemas_locator'
+            $schemaLocator: '@polsl.json_api.schemas_locator'
     Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface:
-        alias: 'Tab\Infrastructure\Neomerx\NeomerxLazySchemaContainer'
-    Tab\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer: ~
-    Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface:
-        alias: 'Tab\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer'
+        alias: 'Polsl\Infrastructure\Neomerx\NeomerxLazySchemaContainer'
+    Polsl\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer: ~
+    Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface:
+        alias: 'Polsl\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer'
     Neomerx\JsonApi\Factories\Factory: ~
     Neomerx\JsonApi\Contracts\Factories\FactoryInterface:
         alias: 'Neomerx\JsonApi\Factories\Factory'
     Neomerx\JsonApi\Encoder\Encoder: ~
     Neomerx\JsonApi\Contracts\Encoder\EncoderInterface: '@Neomerx\JsonApi\Encoder\Encoder'
 
-    Tab\UserInterface\Http\:
+    Polsl\UserInterface\Http\:
         resource: '../src/UserInterface/Http/**/*.php'
         public: true
 
-    Tab\Application\Query\:
+    Polsl\Application\Query\:
         resource: '../src/Application/Query/**/*Handler.php'
         tags:
             - { name: tactician.handler, typehints: true, bus: query_bus }
 
-    Tab\Application\Command\:
+    Polsl\Application\Command\:
         resource: '../src/Application/Command/**/*Handler.php'
         tags:
             - { name: tactician.handler, typehints: true, bus: command_bus }
 
-    Tab\Infrastructure\Symfony\Security\SymfonyAuthService:
+    Polsl\Infrastructure\Symfony\Security\SymfonyAuthService:
         arguments:
-            $userProvider: '@Tab\Infrastructure\Symfony\SymfonyUserProvider'
+            $userProvider: '@Polsl\Infrastructure\Symfony\SymfonyUserProvider'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 

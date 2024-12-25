@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\User;
+namespace Polsl\Tests\Unit\Domain\Model\User;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\User\Password;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mock\FakePasswordHasher;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\User\Password;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mock\FakePasswordHasher;
 
 /**
  * @internal

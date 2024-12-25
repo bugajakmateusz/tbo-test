@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewSnack;
+namespace Polsl\Application\Command\AddNewSnack;
 
-use Tab\Domain\Model\Snack\Name;
-use Tab\Domain\Model\Snack\Snack;
-use Tab\Domain\Model\Snack\SnackRepositoryInterface;
+use Polsl\Domain\Model\Snack\Name;
+use Polsl\Domain\Model\Snack\Snack;
+use Polsl\Domain\Model\Snack\SnackRepositoryInterface;
 
 final readonly class AddNewSnackHandler
 {

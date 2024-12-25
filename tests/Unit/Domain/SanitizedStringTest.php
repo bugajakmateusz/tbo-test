@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain;
+namespace Polsl\Tests\Unit\Domain;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\SanitizedString;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\SanitizedString;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class SanitizedStringTest extends UnitTestCase

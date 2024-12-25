@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Application\Exception;
+namespace Polsl\Packages\JsonApi\Application\Exception;
 
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\ResourceIdentifier;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\ResourceIdentifier;
 
 final class ResourceIdentifierException extends JsonApiException
 {

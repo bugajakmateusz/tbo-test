@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Validator;
+namespace Polsl\Packages\TestCase\Validator;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Packages\Validator\ViolationInterface;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Validator\ViolationInterface;
 
 abstract class AbstractViolationTestCase extends UnitTestCase
 {

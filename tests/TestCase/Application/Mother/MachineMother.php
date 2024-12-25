@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mother;
+namespace Polsl\Tests\TestCase\Application\Mother;
 
-use Tab\Domain\Model\Machine\Location;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Packages\Faker\Faker;
-use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
+use Polsl\Domain\Model\Machine\Location;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class MachineMother
 {

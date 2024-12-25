@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\EntityNotFoundException;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Domain\Model\Machine\MachineRepositoryInterface;
+use Polsl\Domain\EntityNotFoundException;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Domain\Model\Machine\MachineRepositoryInterface;
 
 final readonly class OrmMachineRepository implements MachineRepositoryInterface
 {

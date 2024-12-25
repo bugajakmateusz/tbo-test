@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Schema;
+namespace Polsl\Application\Schema;
 
-use Tab\Application\View\MachineSnackView;
+use Polsl\Application\View\MachineSnackView;
 
 final class MachineSnackSchema extends AbstractSchema
 {

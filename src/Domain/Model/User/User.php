@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\User;
+namespace Polsl\Domain\Model\User;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Email;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Email;
 
 class User
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Responder\Response;
+namespace Polsl\Packages\Responder\Response;
 
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
 use Twig\Environment;
 
 final readonly class ResponseFactory implements ResponseFactoryInterface

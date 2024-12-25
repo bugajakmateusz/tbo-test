@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\JsonApi\Users;
+namespace Polsl\UserInterface\Http\JsonApi\Users;
 
 use OpenApi\Annotations as OA;
+use Polsl\Application\Query\UsersList\UsersList;
+use Polsl\Application\Query\UsersList\UsersListView;
+use Polsl\Packages\Constants\JsonApi;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
+use Polsl\Packages\MessageBus\Contracts\QueryBusInterface;
+use Polsl\Packages\ResourcesList\QueryParamsExtractorFactory;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Application\Query\UsersList\UsersList;
-use Tab\Application\Query\UsersList\UsersListView;
-use Tab\Packages\Constants\JsonApi;
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
-use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
-use Tab\Packages\ResourcesList\QueryParamsExtractorFactory;
-use Tab\Packages\Responder\Response\ResponseInterface;
 
 final readonly class UsersListAction
 {

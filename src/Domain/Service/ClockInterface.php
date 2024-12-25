@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Service;
+namespace Polsl\Domain\Service;
 
 interface ClockInterface
 {

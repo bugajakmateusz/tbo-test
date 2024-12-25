@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Schema;
+namespace Polsl\Application\Schema;
 
-use Tab\Application\View\BuyView;
+use Polsl\Application\View\BuyView;
 
 final class SnackBuySchema extends AbstractSchema
 {

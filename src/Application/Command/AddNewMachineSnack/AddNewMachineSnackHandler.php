@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewMachineSnack;
+namespace Polsl\Application\Command\AddNewMachineSnack;
 
-use Tab\Domain\Model\Machine\MachineRepositoryInterface;
-use Tab\Domain\Model\Machine\MachineSnack;
-use Tab\Domain\Model\Machine\SnackPosition;
-use Tab\Domain\Model\Snack\SnackRepositoryInterface;
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\Model\Machine\MachineRepositoryInterface;
+use Polsl\Domain\Model\Machine\MachineSnack;
+use Polsl\Domain\Model\Machine\SnackPosition;
+use Polsl\Domain\Model\Snack\SnackRepositoryInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 final readonly class AddNewMachineSnackHandler
 {

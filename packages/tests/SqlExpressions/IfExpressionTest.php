@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\SqlExpressions;
+namespace Polsl\Packages\Tests\SqlExpressions;
 
-use Tab\Packages\SqlExpressions\IfExpression;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\SqlExpressions\IfExpression;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class IfExpressionTest extends UnitTestCase

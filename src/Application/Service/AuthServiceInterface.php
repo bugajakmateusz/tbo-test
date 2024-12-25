@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Service;
+namespace Polsl\Application\Service;
 
-use Tab\Domain\Email;
+use Polsl\Domain\Email;
 
 interface AuthServiceInterface
 {

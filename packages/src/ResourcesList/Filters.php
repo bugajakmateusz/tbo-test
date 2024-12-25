@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList;
+namespace Polsl\Packages\ResourcesList;
 
-use Tab\Packages\ResourcesList\Filters\FiltersException;
+use Polsl\Packages\ResourcesList\Filters\FiltersException;
 
 final class Filters
 {
@@ -40,7 +40,7 @@ final class Filters
         return \count($filters) >= 1;
     }
 
-    /** @throws \Tab\Packages\ResourcesList\Filters\FiltersException */
+    /** @throws FiltersException */
     public function get(string $filterName): Filter
     {
         $filters = $this->findFiltersByName($filterName);
@@ -75,7 +75,7 @@ final class Filters
         );
     }
 
-    /** @throws \Tab\Packages\ResourcesList\Filters\FiltersException */
+    /** @throws FiltersException */
     public function checkSupportedFilters(string ...$supportedFilters): void
     {
         $filtersNames = \array_map(

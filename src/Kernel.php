@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab;
+namespace Polsl;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;

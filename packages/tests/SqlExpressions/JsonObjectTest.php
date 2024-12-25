@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\SqlExpressions;
+namespace Polsl\Packages\Tests\SqlExpressions;
 
-use Tab\Packages\SqlExpressions\JsonObject;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\SqlExpressions\JsonObject;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class JsonObjectTest extends UnitTestCase

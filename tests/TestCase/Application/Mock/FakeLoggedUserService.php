@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mock;
+namespace Polsl\Tests\TestCase\Application\Mock;
 
-use Tab\Application\Service\LoggedUserServiceInterface;
-use Tab\Domain\Model\Login\LoggedUser;
+use Polsl\Application\Service\LoggedUserServiceInterface;
+use Polsl\Domain\Model\Login\LoggedUser;
 
 final readonly class FakeLoggedUserService implements LoggedUserServiceInterface
 {

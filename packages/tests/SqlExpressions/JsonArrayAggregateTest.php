@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\SqlExpressions;
+namespace Polsl\Packages\Tests\SqlExpressions;
 
-use Tab\Packages\SqlExpressions\JsonArrayAggregate;
-use Tab\Packages\SqlExpressions\OrderBy;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\SqlExpressions\JsonArrayAggregate;
+use Polsl\Packages\SqlExpressions\OrderBy;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class JsonArrayAggregateTest extends UnitTestCase

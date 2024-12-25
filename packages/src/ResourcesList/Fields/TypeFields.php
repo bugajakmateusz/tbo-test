@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList\Fields;
+namespace Polsl\Packages\ResourcesList\Fields;
 
 final class TypeFields
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\Json;
+namespace Polsl\UserInterface\Http\Json;
 
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
 
 final readonly class TestLoginAction
 {

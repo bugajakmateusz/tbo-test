@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class FieldsTest extends UnitTestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Snack;
+namespace Polsl\Domain\Model\Snack;
 
-use Tab\Domain\DomainException;
+use Polsl\Domain\DomainException;
 
 class Snack
 {

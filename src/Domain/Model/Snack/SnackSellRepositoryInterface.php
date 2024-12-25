@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Snack;
+namespace Polsl\Domain\Model\Snack;
 
 interface SnackSellRepositoryInterface
 {

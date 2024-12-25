@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewUser;
+namespace Polsl\Application\Command\AddNewUser;
 
-use Tab\Domain\Email;
-use Tab\Domain\Model\User\Name;
-use Tab\Domain\Model\User\Password;
-use Tab\Domain\Model\User\Role;
-use Tab\Domain\Model\User\User;
-use Tab\Domain\Model\User\UserRepositoryInterface;
-use Tab\Packages\PasswordHasher\PasswordHasherInterface;
+use Polsl\Domain\Email;
+use Polsl\Domain\Model\User\Name;
+use Polsl\Domain\Model\User\Password;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Domain\Model\User\User;
+use Polsl\Domain\Model\User\UserRepositoryInterface;
+use Polsl\Packages\PasswordHasher\PasswordHasherInterface;
 
 final readonly class AddNewUserHandler
 {

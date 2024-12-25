@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\RemoveMachine;
+namespace Polsl\Application\Command\RemoveMachine;
 
 final readonly class RemoveMachine
 {

@@ -2,18 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony\Security;
+namespace Polsl\Infrastructure\Symfony\Security;
 
+use Polsl\Application\Service\LoggedUser\NobodyIsLoggedInException;
+use Polsl\Application\Service\LoggedUser\UnsupportedUserInstanceException;
+use Polsl\Application\Service\LoggedUserServiceInterface;
+use Polsl\Domain\Model\Login\LoggedUser;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Tab\Application\Service\LoggedUser\NobodyIsLoggedInException;
-use Tab\Application\Service\LoggedUser\UnsupportedUserInstanceException;
-use Tab\Application\Service\LoggedUserServiceInterface;
 
 final class SymfonyLoggedUserService implements LoggedUserServiceInterface
 {
     public function __construct(private readonly TokenStorageInterface $tokenStorage) {}
 
-    public function loggedUser(): \Tab\Domain\Model\Login\LoggedUser
+    public function loggedUser(): LoggedUser
     {
         $token = $this->tokenStorage
             ->getToken()

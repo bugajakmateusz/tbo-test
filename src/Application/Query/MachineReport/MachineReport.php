@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\MachineReport;
+namespace Polsl\Application\Query\MachineReport;
 
 final readonly class MachineReport
 {

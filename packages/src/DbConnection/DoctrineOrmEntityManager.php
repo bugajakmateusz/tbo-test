@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\DbConnection;
+namespace Polsl\Packages\DbConnection;
 
 use Doctrine\ORM\EntityManagerInterface;
 

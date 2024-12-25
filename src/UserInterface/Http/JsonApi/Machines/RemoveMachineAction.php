@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\JsonApi\Machines;
+namespace Polsl\UserInterface\Http\JsonApi\Machines;
 
 use OpenApi\Annotations as OA;
-use Tab\Application\Command\RemoveMachine\RemoveMachine;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
-use Tab\Packages\MessageBus\Contracts\CommandBusInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
+use Polsl\Application\Command\RemoveMachine\RemoveMachine;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
+use Polsl\Packages\MessageBus\Contracts\CommandBusInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 
 final readonly class RemoveMachineAction
 {

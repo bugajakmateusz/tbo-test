@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Infrastructure\Symfony;
+namespace Polsl\Tests\Unit\Infrastructure\Symfony;
 
+use Polsl\Infrastructure\Symfony\Security\SymfonyUser;
+use Polsl\Infrastructure\Symfony\SymfonyUserProvider;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\TestCase\UnitTestCase;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Tab\Infrastructure\Symfony\Security\SymfonyUser;
-use Tab\Infrastructure\Symfony\SymfonyUserProvider;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class SymfonyUserProviderTest extends UnitTestCase
@@ -39,7 +39,7 @@ final class SymfonyUserProviderTest extends UnitTestCase
     }
 
     private function createProvider(
-        DbConnectionInterface $dbConnection = null,
+        ?DbConnectionInterface $dbConnection = null,
     ): SymfonyUserProvider {
         return new SymfonyUserProvider(
             $dbConnection ?? $this->createMock(DbConnectionInterface::class),

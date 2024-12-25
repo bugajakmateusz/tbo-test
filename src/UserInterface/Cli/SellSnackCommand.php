@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Cli;
+namespace Polsl\UserInterface\Cli;
 
+use Polsl\Application\Command\SellSnack\SellSnack;
+use Polsl\Domain\Model\Machine\SnackPosition;
+use Polsl\Packages\MessageBus\Contracts\CommandBusInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Tab\Application\Command\SellSnack\SellSnack;
-use Tab\Domain\Model\Machine\SnackPosition;
-use Tab\Packages\MessageBus\Contracts\CommandBusInterface;
 
 final class SellSnackCommand extends Command
 {

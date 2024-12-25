@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\SqlExpressions;
+namespace Polsl\Packages\Tests\SqlExpressions;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\SqlExpressions\OrderBy;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\SqlExpressions\OrderBy;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class OrderByTest extends UnitTestCase

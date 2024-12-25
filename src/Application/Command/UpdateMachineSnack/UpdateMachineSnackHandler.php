@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateMachineSnack;
+namespace Polsl\Application\Command\UpdateMachineSnack;
 
-use Tab\Domain\Model\Machine\MachineSnackRepositoryInterface;
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\Model\Machine\MachineSnackRepositoryInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 final readonly class UpdateMachineSnackHandler
 {

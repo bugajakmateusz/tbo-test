@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonApi\Application;
+namespace Polsl\Packages\Tests\JsonApi\Application;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\JsonApi\Application\Exception\ResourceException;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\Resource as JsonApiResource;
-use Tab\Packages\JsonApi\Application\ResourceIdentifier;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\JsonApi\Application\Exception\ResourceException;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\Resource as JsonApiResource;
+use Polsl\Packages\JsonApi\Application\ResourceIdentifier;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class ResourceTest extends UnitTestCase

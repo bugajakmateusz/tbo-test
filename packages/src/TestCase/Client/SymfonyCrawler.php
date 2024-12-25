@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Client;
+namespace Polsl\Packages\TestCase\Client;
 
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -61,7 +61,7 @@ final class SymfonyCrawler implements CrawlerInterface
         return new self($crawler);
     }
 
-    public function children(string $selector = null): CrawlerInterface
+    public function children(?string $selector = null): CrawlerInterface
     {
         $children = $this->innerCrawler
             ->children($selector)

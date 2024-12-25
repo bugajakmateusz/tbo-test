@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\EntityNotFoundException;
-use Tab\Domain\Model\User\User;
-use Tab\Domain\Model\User\UserRepositoryInterface;
+use Polsl\Domain\EntityNotFoundException;
+use Polsl\Domain\Model\User\User;
+use Polsl\Domain\Model\User\UserRepositoryInterface;
 
 final class OrmUserRepository implements UserRepositoryInterface
 {

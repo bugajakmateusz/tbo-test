@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\User;
+namespace Polsl\Domain\Model\User;
 
 enum Role: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\SqlExpressions;
+namespace Polsl\Packages\SqlExpressions;
 
 final readonly class IfExpression
 {

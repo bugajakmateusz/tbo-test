@@ -1,4 +1,4 @@
-ARG node_20_version=20.5-alpine3.17
+ARG node_22_version=22.12.0-alpine
 
 FROM scratch AS config_files
 
@@ -7,7 +7,7 @@ COPY ./docker/fpm/prod_php.ini /config/php/conf.d/z-99-prod-php.ini
 COPY ./docker/fpm/www-pool-default.conf /config/php-fpm.d/zz-www-01.conf
 COPY ./docker/fpm/www-pool-prod.conf /config/php-fpm.d/zz-www-02.conf
 
-FROM php:8.2.10-fpm-alpine AS prod_base
+FROM php:8.3.14-fpm-alpine AS prod_base
 
 RUN apk update && \
     apk add --upgrade --no-cache \
@@ -41,7 +41,7 @@ COPY --from=composer/composer:2.5.8-bin /composer /usr/bin/composer
 RUN mkdir -p  /var/www/.composer \
     && chown www-data:www-data /var/www/.composer
 
-FROM node:${node_20_version} AS prod_assets
+FROM node:${node_22_version} AS prod_assets
 
 WORKDIR /app
 
@@ -61,7 +61,6 @@ FROM scratch AS backend_files
 WORKDIR /app
 
 COPY ./phinx.php ./.env ./
-#COPY ./tasks ./tasks
 COPY ./bin ./bin
 COPY ./db ./db
 COPY ./packages ./packages

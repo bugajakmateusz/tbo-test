@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\QueryParamsExtractor;
-use Tab\Packages\ResourcesList\Sort;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\QueryParamsExtractor;
+use Polsl\Packages\ResourcesList\Sort;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class QueryParamsExtractorTest extends UnitTestCase

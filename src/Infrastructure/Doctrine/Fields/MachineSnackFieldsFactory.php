@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Fields;
+namespace Polsl\Infrastructure\Doctrine\Fields;
 
-use Tab\Application\Schema\MachineSnackSchema;
-use Tab\Application\View\MachineSnackView;
-use Tab\Application\View\SnackView;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Schema\MachineSnackSchema;
+use Polsl\Application\View\MachineSnackView;
+use Polsl\Application\View\SnackView;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final readonly class MachineSnackFieldsFactory
 {

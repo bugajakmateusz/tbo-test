@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Responder\Subscriber;
+namespace Polsl\Packages\Responder\Subscriber;
 
+use Polsl\Packages\Responder\Response\ResponseInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -12,7 +13,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Tab\Packages\Responder\Response\ResponseInterface;
 
 final class ResponseSubscriber implements EventSubscriberInterface
 {

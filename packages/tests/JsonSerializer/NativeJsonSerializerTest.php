@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonSerializer;
+namespace Polsl\Packages\Tests\JsonSerializer;
 
 use PHPUnit\Framework\TestCase;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\JsonSerializer\NativeJsonSerializer;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\JsonSerializer\NativeJsonSerializer;
 
 /** @internal */
 final class NativeJsonSerializerTest extends TestCase

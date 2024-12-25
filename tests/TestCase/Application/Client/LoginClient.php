@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Client;
+namespace Polsl\Tests\TestCase\Application\Client;
 
 use http\Exception\RuntimeException;
-use Tab\Packages\HttpResponse\ResponseInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\TestCase\Client\KernelBrowserInterface;
-use Tab\Packages\TestCase\Client\RequestInterface;
+use Polsl\Packages\HttpResponse\ResponseInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\TestCase\Client\KernelBrowserInterface;
+use Polsl\Packages\TestCase\Client\RequestInterface;
 
 final class LoginClient implements ClientInterface
 {

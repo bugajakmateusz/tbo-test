@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\PasswordHasher;
+namespace Polsl\Packages\PasswordHasher;
 
 use Symfony\Component\PasswordHasher\Hasher\SodiumPasswordHasher;
 

@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain;
+namespace Polsl\Domain;
 
 class DomainException extends \DomainException {}

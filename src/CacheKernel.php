@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tab;
+namespace Polsl;
 
+use Polsl\Packages\Constants\HttpHeaders;
+use Polsl\Packages\Constants\HttpMethods;
+use Polsl\Packages\Constants\Ip;
 use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
 use Symfony\Component\Cache\Adapter\FilesystemTagAwareAdapter;
 use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Tab\Packages\Constants\HttpHeaders;
-use Tab\Packages\Constants\HttpMethods;
-use Tab\Packages\Constants\Ip;
 use Toflar\Psr6HttpCacheStore\Psr6Store;
 use Toflar\Psr6HttpCacheStore\Psr6StoreInterface;
 

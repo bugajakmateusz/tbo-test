@@ -1,6 +1,6 @@
 api.json.login:
   path: 'login'
-  controller: 'Tab\UserInterface\Http\Json\LoginAction'
+  controller: 'Polsl\UserInterface\Http\Json\LoginAction'
   methods: POST
 
 api.logout:

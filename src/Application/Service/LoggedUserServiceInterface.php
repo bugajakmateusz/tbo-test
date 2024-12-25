@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Service;
+namespace Polsl\Application\Service;
 
-use Tab\Domain\Model\Login\LoggedUser;
+use Polsl\Domain\Model\Login\LoggedUser;
 
 interface LoggedUserServiceInterface
 {

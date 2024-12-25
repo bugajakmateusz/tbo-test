@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\MessageBus\Infrastructure;
+namespace Polsl\Packages\MessageBus\Infrastructure;
 
 use League\Tactician\CommandBus;
-use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
+use Polsl\Packages\MessageBus\Contracts\QueryBusInterface;
 
 final readonly class TacticianQueryBus implements QueryBusInterface
 {

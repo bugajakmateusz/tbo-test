@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Exception\ResourcesListException;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\ResourcesList\Pagination;
-use Tab\Packages\ResourcesList\TotalItems;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Exception\ResourcesListException;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\Pagination;
+use Polsl\Packages\ResourcesList\TotalItems;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class PaginationTest extends UnitTestCase

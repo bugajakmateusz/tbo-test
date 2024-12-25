@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\User;
+namespace Polsl\Tests\Unit\Domain\Model\User;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Email;
-use Tab\Domain\Model\User\Name;
-use Tab\Domain\Model\User\Password;
-use Tab\Domain\Model\User\Role;
-use Tab\Domain\Model\User\User;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mock\FakePasswordHasher;
-use Tab\Tests\TestCase\Application\Mock\FakeUserRepository;
-use Tab\Tests\TestCase\Application\Mother\UserMother;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Email;
+use Polsl\Domain\Model\User\Name;
+use Polsl\Domain\Model\User\Password;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Domain\Model\User\User;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mock\FakePasswordHasher;
+use Polsl\Tests\TestCase\Application\Mock\FakeUserRepository;
+use Polsl\Tests\TestCase\Application\Mother\UserMother;
 
 /**
  * @internal

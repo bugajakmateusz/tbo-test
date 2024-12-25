@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\Machine;
+namespace Polsl\Tests\Unit\Domain\Model\Machine;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\Machine\Location;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mother\MachineMother;
-use Tab\Tests\TestCase\Application\Mother\MachineSnackMother;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\Machine\Location;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mother\MachineMother;
+use Polsl\Tests\TestCase\Application\Mother\MachineSnackMother;
 
 /**
  * @internal

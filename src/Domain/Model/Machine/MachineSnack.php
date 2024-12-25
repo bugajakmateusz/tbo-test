@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Machine;
+namespace Polsl\Domain\Model\Machine;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\Snack\PriceRepositoryInterface;
-use Tab\Domain\Model\Snack\Snack;
-use Tab\Domain\Model\Snack\SnackSell;
-use Tab\Domain\Model\Snack\SnackSellRepositoryInterface;
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\Snack\PriceRepositoryInterface;
+use Polsl\Domain\Model\Snack\Snack;
+use Polsl\Domain\Model\Snack\SnackSell;
+use Polsl\Domain\Model\Snack\SnackSellRepositoryInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 class MachineSnack
 {

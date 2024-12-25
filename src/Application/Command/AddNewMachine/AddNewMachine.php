@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewMachine;
+namespace Polsl\Application\Command\AddNewMachine;
 
 final readonly class AddNewMachine
 {

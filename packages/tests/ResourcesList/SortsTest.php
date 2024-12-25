@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\ResourcesList\Sort;
-use Tab\Packages\ResourcesList\Sorts;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\ResourcesList\Sort;
+use Polsl\Packages\ResourcesList\Sorts;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class SortsTest extends UnitTestCase

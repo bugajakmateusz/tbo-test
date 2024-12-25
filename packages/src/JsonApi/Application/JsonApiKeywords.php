@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Application;
+namespace Polsl\Packages\JsonApi\Application;
 
 final class JsonApiKeywords
 {

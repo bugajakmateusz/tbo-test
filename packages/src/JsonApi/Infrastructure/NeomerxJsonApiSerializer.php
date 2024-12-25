@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Infrastructure;
+namespace Polsl\Packages\JsonApi\Infrastructure;
 
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
-use Tab\Packages\JsonApi\Application\Exception\JsonApiException;
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\Resource as JsonApiResource;
-use Tab\Packages\JsonApi\Application\ResourceIdentifierCollection;
-use Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\JsonApi\Application\Exception\JsonApiException;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\Resource as JsonApiResource;
+use Polsl\Packages\JsonApi\Application\ResourceIdentifierCollection;
+use Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
 
 final readonly class NeomerxJsonApiSerializer implements JsonApiSerializerInterface
 {
@@ -21,9 +21,9 @@ final readonly class NeomerxJsonApiSerializer implements JsonApiSerializerInterf
     ) {}
 
     public function encodeData(
-        object|array $data,
-        array $meta = null,
-        Includes $includes = null,
+        array|object $data,
+        ?array $meta = null,
+        ?Includes $includes = null,
         array $fieldSets = [],
     ): string {
         $this->encoder
@@ -58,7 +58,7 @@ final readonly class NeomerxJsonApiSerializer implements JsonApiSerializerInterf
         return ResourceIdentifierCollection::fromArray($identifiersRawData[JsonApiKeywords::DATA] ?? []);
     }
 
-    public function encodeIdentifiers(object|array $data): string
+    public function encodeIdentifiers(array|object $data): string
     {
         return $this->encoder
             ->encodeIdentifiers($data)

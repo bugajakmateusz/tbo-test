@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine;
+namespace Polsl\Infrastructure\Doctrine;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Tab\Application\Query\UsersList\UsersListHandler;
-use Tab\Application\Query\UsersList\UsersListQueryInterface;
-use Tab\Application\Query\UsersList\UsersListView;
-use Tab\Application\Schema\UserSchema;
-use Tab\Application\View\UserView;
-use Tab\Infrastructure\Doctrine\Fields\UserFieldsFactory;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\ResourcesList\TotalItems;
-use Tab\Packages\SqlExpressions\JsonObject;
-use Tab\Packages\SqlExpressions\OrderBy;
+use Polsl\Application\Query\UsersList\UsersListHandler;
+use Polsl\Application\Query\UsersList\UsersListQueryInterface;
+use Polsl\Application\Query\UsersList\UsersListView;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Application\View\UserView;
+use Polsl\Infrastructure\Doctrine\Fields\UserFieldsFactory;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\JsonApi\QueryTemplate\DbalListQueryTemplate;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\TotalItems;
+use Polsl\Packages\SqlExpressions\JsonObject;
+use Polsl\Packages\SqlExpressions\OrderBy;
 
 final class DbalUsersListQuery extends DbalListQueryTemplate implements UsersListQueryInterface
 {

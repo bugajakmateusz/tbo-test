@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Infrastructure;
+namespace Polsl\Packages\JsonApi\Infrastructure;
 
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
-use Tab\Packages\JsonApi\Contracts\SchemaInterface;
+use Polsl\Packages\JsonApi\Contracts\SchemaInterface;
 
 final class NeomerxSchemaAdapter extends BaseSchema
 {

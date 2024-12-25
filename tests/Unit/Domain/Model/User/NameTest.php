@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\User;
+namespace Polsl\Tests\Unit\Domain\Model\User;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\User\Name;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\User\Name;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class NameTest extends UnitTestCase

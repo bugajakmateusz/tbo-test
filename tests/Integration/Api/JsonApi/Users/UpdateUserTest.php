@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\JsonApi\Users;
+namespace Polsl\Tests\Integration\Api\JsonApi\Users;
 
-use Tab\Application\Schema\UserSchema;
-use Tab\Domain\Model\User\Role;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class UpdateUserTest extends JsonApiIntegrationTestCase

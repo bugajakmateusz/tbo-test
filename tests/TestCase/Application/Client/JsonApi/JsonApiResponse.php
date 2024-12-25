@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Client\JsonApi;
+namespace Polsl\Tests\TestCase\Application\Client\JsonApi;
 
-use Tab\Packages\HttpResponse\ResponseInterface;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\HttpResponse\ResponseInterface;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
 
 final class JsonApiResponse
 {

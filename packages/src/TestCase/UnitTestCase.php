@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase;
+namespace Polsl\Packages\TestCase;
 
 use PHPUnit\Framework\TestCase;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\JsonSerializer\NativeJsonSerializer;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\JsonSerializer\NativeJsonSerializer;
 
 abstract class UnitTestCase extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Collection;
+namespace Polsl\Packages\Collection;
 
 final class CollectionException extends \Exception
 {

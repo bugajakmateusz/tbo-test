@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Client;
+namespace Polsl\Packages\TestCase\Client;
 
+use Polsl\Infrastructure\Symfony\Security\SymfonyUser;
+use Polsl\Packages\Constants\Server;
+use Polsl\Packages\HttpResponse\CookieInterface;
+use Polsl\Packages\HttpResponse\ResponseInterface;
+use Polsl\Packages\HttpResponse\SymfonyResponse;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\BrowserKit\Cookie;
-use Tab\Infrastructure\Symfony\Security\SymfonyUser;
-use Tab\Packages\Constants\Server;
-use Tab\Packages\HttpResponse\CookieInterface;
-use Tab\Packages\HttpResponse\ResponseInterface;
-use Tab\Packages\HttpResponse\SymfonyResponse;
 
 /** @internal */
 final readonly class SymfonyKernelBrowser implements KernelBrowserInterface

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mock;
+namespace Polsl\Tests\TestCase\Application\Mock;
 
-use Tab\Domain\EntityNotFoundException;
-use Tab\Domain\Model\User\User;
-use Tab\Domain\Model\User\UserRepositoryInterface;
+use Polsl\Domain\EntityNotFoundException;
+use Polsl\Domain\Model\User\User;
+use Polsl\Domain\Model\User\UserRepositoryInterface;
 
 final readonly class FakeUserRepository implements UserRepositoryInterface
 {

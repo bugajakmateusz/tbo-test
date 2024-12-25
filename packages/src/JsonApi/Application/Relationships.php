@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Application;
+namespace Polsl\Packages\JsonApi\Application;
 
-use Tab\Packages\JsonApi\Application\Exception\ResourceException;
+use Polsl\Packages\JsonApi\Application\Exception\ResourceException;
 
 final readonly class Relationships
 {

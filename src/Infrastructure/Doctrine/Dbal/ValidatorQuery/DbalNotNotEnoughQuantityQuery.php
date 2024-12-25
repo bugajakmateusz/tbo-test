@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Dbal\ValidatorQuery;
+namespace Polsl\Infrastructure\Doctrine\Dbal\ValidatorQuery;
 
-use Tab\Application\ValidatorQuery\NotEnoughQuantityQueryInterface;
-use Tab\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Application\ValidatorQuery\NotEnoughQuantityQueryInterface;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
 
 final readonly class DbalNotNotEnoughQuantityQuery implements NotEnoughQuantityQueryInterface
 {

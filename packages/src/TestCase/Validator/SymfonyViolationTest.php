@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Validator;
+namespace Polsl\Packages\TestCase\Validator;
 
+use Polsl\Packages\Validator\SymfonyViolation;
+use Polsl\Packages\Validator\ViolationInterface;
 use Symfony\Component\Validator\ConstraintViolation;
-use Tab\Packages\Validator\SymfonyViolation;
-use Tab\Packages\Validator\ViolationInterface;
 
 /** @internal */
 final class SymfonyViolationTest extends AbstractViolationTestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Machine;
+namespace Polsl\Domain\Model\Machine;
 
 interface MachineRepositoryInterface
 {

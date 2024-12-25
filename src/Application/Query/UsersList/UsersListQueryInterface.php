@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\UsersList;
+namespace Polsl\Application\Query\UsersList;
 
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
 
 interface UsersListQueryInterface
 {

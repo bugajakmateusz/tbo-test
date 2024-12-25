@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Snack;
+namespace Polsl\Domain\Model\Snack;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Service\ClockInterface;
 
 class Buy
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Service;
+namespace Polsl\Application\Service;
 
-use Tab\Application\Exception\ApplicationException;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
-use Tab\Packages\Responder\Response\ResponseSpecification;
-use Tab\Packages\Validator\Violations;
+use Polsl\Application\Exception\ApplicationException;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
+use Polsl\Packages\Responder\Response\ResponseSpecification;
+use Polsl\Packages\Validator\Violations;
 
 final readonly class ApiProblemJsonResponseFactory
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\ResponseFactory;
+namespace Polsl\Packages\JsonApi\ResponseFactory;
 
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
-use Tab\Packages\Responder\Response\ResponseSpecification;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
+use Polsl\Packages\Responder\Response\ResponseSpecification;
 
 final readonly class JsonApiResponseFactory implements JsonApiResponseFactoryInterface
 {
@@ -71,7 +71,7 @@ final readonly class JsonApiResponseFactory implements JsonApiResponseFactoryInt
     }
 
     public function resourceIdentifiersResponse(
-        object|array $data,
+        array|object $data,
         int $statusCode = HttpStatusCodes::HTTP_OK,
     ): ResponseInterface {
         $jsonApiContent = $this->jsonApiSerializer

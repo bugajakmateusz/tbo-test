@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateMachine;
+namespace Polsl\Application\Command\UpdateMachine;
 
 final readonly class UpdateMachine
 {

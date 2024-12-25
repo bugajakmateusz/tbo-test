@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Phinx\Seed\AbstractSeed;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\Faker\Faker;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\Faker\Faker;
 
 final class WarehouseSnacks extends AbstractSeed
 {

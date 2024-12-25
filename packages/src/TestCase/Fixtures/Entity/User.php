@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Fixtures\Entity;
+namespace Polsl\Packages\TestCase\Fixtures\Entity;
 
 final readonly class User
 {

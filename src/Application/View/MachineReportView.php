@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\View;
+namespace Polsl\Application\View;
 
 final readonly class MachineReportView
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Client;
+namespace Polsl\Packages\TestCase\Client;
 
 interface CrawlerInterface
 {
@@ -20,7 +20,7 @@ interface CrawlerInterface
 
     public function eq(int $position): self;
 
-    public function children(string $selector = null): self;
+    public function children(?string $selector = null): self;
 
     public function attribute(string $name): ?string;
 

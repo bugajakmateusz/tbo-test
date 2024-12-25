@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Php;
+namespace Polsl\Infrastructure\Php;
 
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 final class PhpTimezoneAwareClock implements ClockInterface
 {

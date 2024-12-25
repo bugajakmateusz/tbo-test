@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList;
+namespace Polsl\Packages\ResourcesList;
 
-use Tab\Packages\ResourcesList\Exception\ResourcesListException;
+use Polsl\Packages\ResourcesList\Exception\ResourcesListException;
 
 final class Pagination
 {

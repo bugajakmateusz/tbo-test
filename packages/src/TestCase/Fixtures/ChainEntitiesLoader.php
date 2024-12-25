@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Fixtures;
+namespace Polsl\Packages\TestCase\Fixtures;
 
 final readonly class ChainEntitiesLoader implements EntitiesLoaderInterface
 {

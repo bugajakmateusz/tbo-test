@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\JsonApi\Snacks;
+namespace Polsl\Tests\Integration\Api\JsonApi\Snacks;
 
-use Tab\Application\Schema\SnackSchema;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\TestCase\Mother\Entity\SnackMother;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\TestCase\Mother\Entity\SnackMother;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class SnacksListTest extends JsonApiIntegrationTestCase

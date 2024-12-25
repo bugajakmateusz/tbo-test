@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Mother\Entity;
+namespace Polsl\Packages\TestCase\Mother\Entity;
 
+use Polsl\Packages\Constants\Hasher;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\PasswordHasher\PasswordHasherInterface;
+use Polsl\Packages\PasswordHasher\SymfonySodiumPasswordHasher;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
 use Symfony\Component\PasswordHasher\Hasher\SodiumPasswordHasher;
-use Tab\Packages\Constants\Hasher;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\PasswordHasher\PasswordHasherInterface;
-use Tab\Packages\PasswordHasher\SymfonySodiumPasswordHasher;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 final class UserMother
 {

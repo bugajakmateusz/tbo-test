@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\JsonApi\Machines;
+namespace Polsl\Tests\Integration\Api\JsonApi\Machines;
 
-use Tab\Application\Schema\MachineSchema;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\TestCase\Mother\Entity\MachineMother;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\TestCase\Mother\Entity\MachineMother;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class RemoveMachineTest extends JsonApiIntegrationTestCase

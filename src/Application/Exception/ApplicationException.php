@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Exception;
+namespace Polsl\Application\Exception;
 
 final class ApplicationException extends \Exception {}

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonApi\Application;
+namespace Polsl\Packages\Tests\JsonApi\Application;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\JsonApi\Application\Exception\ResourceIdentifierException;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\ResourceIdentifierCollection;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\JsonApi\Application\Exception\ResourceIdentifierException;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\ResourceIdentifierCollection;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class ResourceIdentifierCollectionTest extends UnitTestCase

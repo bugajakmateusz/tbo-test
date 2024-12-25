@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonApi\Infrastructure;
+namespace Polsl\Packages\Tests\JsonApi\Infrastructure;
 
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
@@ -10,10 +10,10 @@ use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Factories\Factory;
 use Neomerx\JsonApi\Schema\BaseSchema;
 use Neomerx\JsonApi\Schema\SchemaContainer;
-use Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
-use Tab\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer;
-use Tab\Packages\JsonSerializer\NativeJsonSerializer;
-use Tab\Packages\Tests\JsonApi\Contracts\AbstractJsonApiSerializerTestCase;
+use Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
+use Polsl\Packages\JsonApi\Infrastructure\NeomerxJsonApiSerializer;
+use Polsl\Packages\JsonSerializer\NativeJsonSerializer;
+use Polsl\Packages\Tests\JsonApi\Contracts\AbstractJsonApiSerializerTestCase;
 
 /** @internal */
 final class NeomerxJsonApiSerializerTest extends AbstractJsonApiSerializerTestCase

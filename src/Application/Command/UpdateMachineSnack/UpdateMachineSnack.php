@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateMachineSnack;
+namespace Polsl\Application\Command\UpdateMachineSnack;
 
 final readonly class UpdateMachineSnack
 {

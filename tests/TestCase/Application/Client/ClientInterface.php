@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Client;
+namespace Polsl\Tests\TestCase\Application\Client;
 
-use Tab\Packages\TestCase\Client\KernelBrowserInterface;
+use Polsl\Packages\TestCase\Client\KernelBrowserInterface;
 
 interface ClientInterface
 {

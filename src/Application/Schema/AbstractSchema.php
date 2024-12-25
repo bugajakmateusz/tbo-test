@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Schema;
+namespace Polsl\Application\Schema;
 
-use Tab\Packages\JsonApi\Contracts\SchemaInterface;
+use Polsl\Packages\JsonApi\Contracts\SchemaInterface;
 
 abstract class AbstractSchema implements SchemaInterface
 {

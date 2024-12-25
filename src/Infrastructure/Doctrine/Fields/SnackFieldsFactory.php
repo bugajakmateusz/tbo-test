@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Fields;
+namespace Polsl\Infrastructure\Doctrine\Fields;
 
-use Tab\Application\Schema\SnackSchema;
-use Tab\Application\View\SnackView;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Application\View\SnackView;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final class SnackFieldsFactory
 {

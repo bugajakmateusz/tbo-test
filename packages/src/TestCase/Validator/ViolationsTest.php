@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Validator;
+namespace Polsl\Packages\TestCase\Validator;
 
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Packages\Validator\ViolationInterface;
-use Tab\Packages\Validator\Violations;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Validator\ViolationInterface;
+use Polsl\Packages\Validator\Violations;
 
 /** @internal */
 final class ViolationsTest extends UnitTestCase
@@ -71,7 +71,7 @@ final class ViolationsTest extends UnitTestCase
 
     private static function createMockViolation(): ViolationInterface
     {
-        return new class() implements ViolationInterface {
+        return new class implements ViolationInterface {
             public function propertyPath(): string
             {
                 throw new \RuntimeException('Not implemented.');

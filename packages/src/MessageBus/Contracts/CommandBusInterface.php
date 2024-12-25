@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\MessageBus\Contracts;
+namespace Polsl\Packages\MessageBus\Contracts;
 
 interface CommandBusInterface
 {

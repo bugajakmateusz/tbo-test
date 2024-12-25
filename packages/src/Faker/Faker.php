@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Faker;
+namespace Polsl\Packages\Faker;
 
 use Faker\Factory;
 use Faker\Generator;
+use Polsl\Packages\Constants\Date;
 use Symfony\Component\Uid\Ulid;
-use Tab\Packages\Constants\Date;
 
 final class Faker
 {
@@ -82,7 +82,7 @@ final class Faker
     }
 
     /** @param array<int,mixed>|array<string,mixed> $array */
-    public static function randomKey(array $array): int|string|null
+    public static function randomKey(array $array): null|int|string
     {
         return self::randomElement(\array_keys($array));
     }

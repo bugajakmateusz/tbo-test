@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList\Filters;
+namespace Polsl\Packages\ResourcesList\Filters;
 
-use Tab\Packages\ResourcesList\Exception\ResourcesListException;
+use Polsl\Packages\ResourcesList\Exception\ResourcesListException;
 
 final class FiltersException extends ResourcesListException
 {

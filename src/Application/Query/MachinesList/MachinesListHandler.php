@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\MachinesList;
+namespace Polsl\Application\Query\MachinesList;
 
-use Tab\Application\Schema\MachineSchema;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filters;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filters;
 
 final readonly class MachinesListHandler
 {

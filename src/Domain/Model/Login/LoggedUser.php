@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Login;
+namespace Polsl\Domain\Model\Login;
+
+use Polsl\Domain\DomainException;
 
 final readonly class LoggedUser
 {
+    /** @param non-empty-string $username */
     private function __construct(
         private int $id,
         private string $username,
@@ -19,6 +22,10 @@ final readonly class LoggedUser
         array $roles,
     ): self {
         $rolesCollection = Roles::fromStrings(...$roles);
+
+        if (true === empty($username)) {
+            throw new DomainException('Username cannot be empty.');
+        }
 
         return new self(
             $id,
@@ -37,6 +44,7 @@ final readonly class LoggedUser
         return $this->id === $id;
     }
 
+    /** @return non-empty-string */
     public function username(): string
     {
         return $this->username;

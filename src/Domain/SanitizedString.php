@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain;
+namespace Polsl\Domain;
 
 final readonly class SanitizedString
 {

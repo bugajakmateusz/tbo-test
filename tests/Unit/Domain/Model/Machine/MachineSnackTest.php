@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\Machine;
+namespace Polsl\Tests\Unit\Domain\Model\Machine;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\Machine\MachineSnack;
-use Tab\Domain\Model\Machine\SnackPosition;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mock\FakeClock;
-use Tab\Tests\TestCase\Application\Mother\MachineMother;
-use Tab\Tests\TestCase\Application\Mother\MachineSnackMother;
-use Tab\Tests\TestCase\Application\Mother\SnackMother;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\Machine\MachineSnack;
+use Polsl\Domain\Model\Machine\SnackPosition;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mock\FakeClock;
+use Polsl\Tests\TestCase\Application\Mother\MachineMother;
+use Polsl\Tests\TestCase\Application\Mother\MachineSnackMother;
+use Polsl\Tests\TestCase\Application\Mother\SnackMother;
 
 /**
  * @internal

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Constants\Database;
+namespace Polsl\Packages\Constants\Database;
 
-use Tab\Packages\Constants\Constants;
+use Polsl\Packages\Constants\Constants;
 
 final class Tables extends Constants
 {

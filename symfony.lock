@@ -47,15 +47,6 @@
             ".php-cs-fixer.dist.php"
         ]
     },
-    "friendsofsymfony/ckeditor-bundle": {
-        "version": "2.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "2.0",
-            "ref": "f5ad42002183a6881962683e6d84bbb25cdfce5d"
-        }
-    },
     "league/tactician-bundle": {
         "version": "1.4",
         "recipe": {
@@ -77,9 +68,6 @@
             "config/packages/nelmio_api_doc.yaml",
             "config/routes/nelmio_api_doc.yaml"
         ]
-    },
-    "pablok/cache-stats-bundle": {
-        "version": "v0.6.0"
     },
     "phpstan/phpstan": {
         "version": "1.10",
@@ -138,6 +126,18 @@
         },
         "files": [
             ".env"
+        ]
+    },
+    "symfony/form": {
+        "version": "7.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "7.2",
+            "ref": "7d86a6723f4a623f59e2bf966b6aad2fc461d36b"
+        },
+        "files": [
+            "config/packages/csrf.yaml"
         ]
     },
     "symfony/framework-bundle": {

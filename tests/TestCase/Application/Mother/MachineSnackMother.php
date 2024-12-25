@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mother;
+namespace Polsl\Tests\TestCase\Application\Mother;
 
-use Tab\Domain\Model\Machine\MachineSnack;
-use Tab\Domain\Model\Machine\SnackPosition;
-use Tab\Packages\Faker\Faker;
-use Tab\Tests\TestCase\Application\Mock\FakeClock;
-use Tab\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
+use Polsl\Domain\Model\Machine\MachineSnack;
+use Polsl\Domain\Model\Machine\SnackPosition;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Tests\TestCase\Application\Mock\FakeClock;
+use Polsl\Tests\TestCase\Application\PropertyAccess\PropertyManipulator;
 
 final class MachineSnackMother
 {

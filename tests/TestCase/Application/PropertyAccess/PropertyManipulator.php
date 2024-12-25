@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\PropertyAccess;
+namespace Polsl\Tests\TestCase\Application\PropertyAccess;
 
 final class PropertyManipulator
 {

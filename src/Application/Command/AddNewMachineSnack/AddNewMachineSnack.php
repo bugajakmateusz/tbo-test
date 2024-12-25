@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewMachineSnack;
+namespace Polsl\Application\Command\AddNewMachineSnack;
 
 final readonly class AddNewMachineSnack
 {

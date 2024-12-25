@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Neomerx;
+namespace Polsl\Infrastructure\Neomerx;
 
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Factories\Factory;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Application\Schema\MachineSnackSchema;
+use Polsl\Application\Schema\SnackPriceSchema;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Application\View\MachineSnackView;
+use Polsl\Application\View\MachineView;
+use Polsl\Application\View\PriceView;
+use Polsl\Application\View\SnackView;
+use Polsl\Application\View\UserView;
+use Polsl\Packages\JsonApi\Infrastructure\NeomerxSchemaAdapter;
 use Psr\Container\ContainerInterface;
-use Tab\Application\Schema\MachineSchema;
-use Tab\Application\Schema\MachineSnackSchema;
-use Tab\Application\Schema\SnackPriceSchema;
-use Tab\Application\Schema\SnackSchema;
-use Tab\Application\Schema\UserSchema;
-use Tab\Application\View\MachineSnackView;
-use Tab\Application\View\MachineView;
-use Tab\Application\View\PriceView;
-use Tab\Application\View\SnackView;
-use Tab\Application\View\UserView;
-use Tab\Packages\JsonApi\Infrastructure\NeomerxSchemaAdapter;
 
 final class NeomerxLazySchemaContainer implements SchemaContainerInterface
 {
@@ -71,7 +71,7 @@ final class NeomerxLazySchemaContainer implements SchemaContainerInterface
                 throw new \RuntimeException("Schema '{$schemaClass}' is not registered in schemas locator.");
             }
 
-            /** @var \Tab\Packages\JsonApi\Contracts\SchemaInterface $schema */
+            /** @var \Polsl\Packages\JsonApi\Contracts\SchemaInterface $schema */
             $schema = $this->schemaLocator
                 ->get($schemaClass)
             ;

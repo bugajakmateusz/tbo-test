@@ -2,9 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase;
+namespace Polsl\Packages\TestCase;
 
 use http\Exception\RuntimeException;
+use Polsl\Infrastructure\Symfony\Security\SymfonyUser;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Packages\HttpResponse\CookieInterface;
+use Polsl\Packages\HttpResponse\SymfonyCookie;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\TestCase\Client\CrawlerFactoryInterface;
+use Polsl\Packages\TestCase\Client\KernelBrowserInterface;
+use Polsl\Packages\TestCase\Fixtures\EntitiesLoaderInterface;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\TestContainer;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -13,15 +22,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
-use Tab\Infrastructure\Symfony\Security\SymfonyUser;
-use Tab\Packages\DbConnection\DbConnectionInterface;
-use Tab\Packages\HttpResponse\CookieInterface;
-use Tab\Packages\HttpResponse\SymfonyCookie;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\TestCase\Client\CrawlerFactoryInterface;
-use Tab\Packages\TestCase\Client\KernelBrowserInterface;
-use Tab\Packages\TestCase\Fixtures\EntitiesLoaderInterface;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
 
 abstract class IntegrationTestCase extends WebTestCase
 {

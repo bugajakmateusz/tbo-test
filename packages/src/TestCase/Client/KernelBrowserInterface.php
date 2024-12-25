@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Client;
+namespace Polsl\Packages\TestCase\Client;
 
-use Tab\Infrastructure\Symfony\Security\SymfonyUser;
-use Tab\Packages\HttpResponse\CookieInterface;
-use Tab\Packages\HttpResponse\ResponseInterface;
+use Polsl\Infrastructure\Symfony\Security\SymfonyUser;
+use Polsl\Packages\HttpResponse\CookieInterface;
+use Polsl\Packages\HttpResponse\ResponseInterface;
 
 interface KernelBrowserInterface
 {

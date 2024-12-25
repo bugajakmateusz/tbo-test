@@ -1,7 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        Tab\Infrastructure\Symfony\Security\SymfonyUser:
+        Polsl\Infrastructure\Symfony\Security\SymfonyUser:
             algorithm: sodium
             time_cost: '%sodium_time_cost%'
             memory_cost: '%sodium_memory_cost_kilobytes%'
@@ -16,18 +16,18 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         db_provider:
-            id: Tab\Infrastructure\Symfony\SymfonyUserProvider
+            id: Polsl\Infrastructure\Symfony\SymfonyUserProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            user_checker: Tab\Infrastructure\Symfony\Security\SymfonyUserChecker
-            entry_point: Tab\Infrastructure\Symfony\Security\SymfonyJsonAuthenticator
+            user_checker: Polsl\Infrastructure\Symfony\Security\SymfonyUserChecker
+            entry_point: Polsl\Infrastructure\Symfony\Security\SymfonyJsonAuthenticator
             provider: db_provider
             custom_authenticators:
-                - Tab\Infrastructure\Symfony\Security\SymfonyJsonAuthenticator
+                - Polsl\Infrastructure\Symfony\Security\SymfonyJsonAuthenticator
             logout:
                 invalidate_session: false
                 path: api.logout

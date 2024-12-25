@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\User;
+namespace Polsl\Domain\Model\User;
 
-use Tab\Domain\SanitizedString;
+use Polsl\Domain\SanitizedString;
 
 class Name
 {

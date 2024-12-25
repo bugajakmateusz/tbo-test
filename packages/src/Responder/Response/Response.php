@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Responder\Response;
+namespace Polsl\Packages\Responder\Response;
 
-use Tab\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\Constants\HttpStatusCodes;
 
 final class Response implements ResponseInterface
 {

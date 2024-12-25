@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Integration\Api\JsonApi\MachineSnacks;
 
-use Tab\Application\Schema\MachineSchema;
-use Tab\Application\Schema\MachineSnackSchema;
-use Tab\Application\Schema\SnackSchema;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Application\Relationships;
-use Tab\Packages\TestCase\Mother\Entity\MachineMother;
-use Tab\Packages\TestCase\Mother\Entity\MachineSnackMother;
-use Tab\Packages\TestCase\Mother\Entity\SnackMother;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Application\Schema\MachineSnackSchema;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Application\Relationships;
+use Polsl\Packages\TestCase\Mother\Entity\MachineMother;
+use Polsl\Packages\TestCase\Mother\Entity\MachineSnackMother;
+use Polsl\Packages\TestCase\Mother\Entity\SnackMother;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Packages\TestCase\Mother\Entity\WarehouseSnackMother;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase

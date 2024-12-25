@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateUser;
+namespace Polsl\Application\Command\UpdateUser;
 
 final readonly class UpdateUser
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\JsonApi\Snacks;
+namespace Polsl\Tests\Integration\Api\JsonApi\Snacks;
 
-use Tab\Application\Schema\SnackSchema;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class AddNewSnackTest extends JsonApiIntegrationTestCase

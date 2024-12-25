@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase;
+namespace Polsl\Tests\TestCase;
 
+use Polsl\Packages\JsonApi\Contracts\SchemaInterface;
+use Polsl\Packages\TestCase\Client\KernelBrowserInterface;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
+use Polsl\Packages\TestCase\IntegrationTestCase;
+use Polsl\Tests\TestCase\Application\Client\JsonApi\JsonApiClient;
+use Polsl\Tests\TestCase\Application\Client\JsonApi\JsonApiDocument;
 use Psr\Container\ContainerInterface;
-use Tab\Packages\JsonApi\Contracts\SchemaInterface;
-use Tab\Packages\TestCase\Client\KernelBrowserInterface;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
-use Tab\Packages\TestCase\IntegrationTestCase;
-use Tab\Tests\TestCase\Application\Client\JsonApi\JsonApiClient;
-use Tab\Tests\TestCase\Application\Client\JsonApi\JsonApiDocument;
 
 abstract class JsonApiIntegrationTestCase extends IntegrationTestCase
 {
-    private const SERVICE_SCHEMAS_LOCATOR_ID = 'tab.json_api.schemas_locator';
+    private const SERVICE_SCHEMAS_LOCATOR_ID = 'polsl.json_api.schemas_locator';
 
     /** @param class-string $type */
     public function jsonApiClient(
         string $type,
-        KernelBrowserInterface $client = null,
+        ?KernelBrowserInterface $client = null,
     ): JsonApiClient {
         $schemasLocator = $this->schemasServiceLocator();
         /** @var SchemaInterface $schema */
@@ -135,9 +135,9 @@ abstract class JsonApiIntegrationTestCase extends IntegrationTestCase
     }
 
     /**
-     * @param array<mixed> $relationships
+     * @param array<int|string,mixed> $relationships
      *
-     * @return array<int,null|mixed[]>
+     * @return array<int|string,mixed>
      */
     private function sortRelationships(array $relationships): array
     {

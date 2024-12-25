@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\JsonApi\Machines;
+namespace Polsl\UserInterface\Http\JsonApi\Machines;
 
 use OpenApi\Annotations as OA;
+use Polsl\Application\Query\MachinesList\MachinesList;
+use Polsl\Application\Query\MachinesList\MachinesListHandler;
+use Polsl\Application\Query\MachinesList\MachinesListView;
+use Polsl\Application\Schema\MachineSchema;
+use Polsl\Application\View\MachineView;
+use Polsl\Packages\Collection\ObjectCollection;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
+use Polsl\Packages\MessageBus\Contracts\QueryBusInterface;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\QueryParamsExtractorFactory;
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Application\Query\MachinesList\MachinesList;
-use Tab\Application\Query\MachinesList\MachinesListHandler;
-use Tab\Application\Query\MachinesList\MachinesListView;
-use Tab\Application\Schema\MachineSchema;
-use Tab\Application\View\MachineView;
-use Tab\Packages\Collection\ObjectCollection;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
-use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\QueryParamsExtractorFactory;
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
 
 final readonly class MachineDetailsAction
 {

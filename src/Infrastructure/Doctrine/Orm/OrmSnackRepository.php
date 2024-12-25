@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\EntityNotFoundException;
-use Tab\Domain\Model\Snack\Snack;
-use Tab\Domain\Model\Snack\SnackRepositoryInterface;
+use Polsl\Domain\EntityNotFoundException;
+use Polsl\Domain\Model\Snack\Snack;
+use Polsl\Domain\Model\Snack\SnackRepositoryInterface;
 
 final readonly class OrmSnackRepository implements SnackRepositoryInterface
 {

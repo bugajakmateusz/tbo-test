@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\PasswordHasher;
+namespace Polsl\Packages\PasswordHasher;
 
 interface PasswordHasherInterface
 {

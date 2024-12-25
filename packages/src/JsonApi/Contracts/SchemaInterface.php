@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\Contracts;
+namespace Polsl\Packages\JsonApi\Contracts;
 
 interface SchemaInterface
 {

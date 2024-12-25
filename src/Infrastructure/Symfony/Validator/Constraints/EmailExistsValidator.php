@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony\Validator\Constraints;
+namespace Polsl\Infrastructure\Symfony\Validator\Constraints;
 
+use Polsl\Application\ValidatorQuery\EmailExistsQueryInterface;
+use Polsl\Domain\Email;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
-use Tab\Application\ValidatorQuery\EmailExistsQueryInterface;
-use Tab\Domain\Email;
 
 final class EmailExistsValidator extends ConstraintValidator
 {

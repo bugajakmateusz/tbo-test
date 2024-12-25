@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\JsonApi\Users;
+namespace Polsl\Tests\Integration\Api\JsonApi\Users;
 
-use Tab\Application\Schema\UserSchema;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Tests\TestCase\Application\Client\JsonApi\JsonApiDocument;
-use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
+use Polsl\Application\Schema\UserSchema;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Tests\TestCase\Application\Client\JsonApi\JsonApiDocument;
+use Polsl\Tests\TestCase\JsonApiIntegrationTestCase;
 
 /** @internal */
 final class UsersListTest extends JsonApiIntegrationTestCase

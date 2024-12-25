@@ -1,86 +1,86 @@
 json-api.snacks.list:
   path: 'snacks'
-  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\SnacksListAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Snacks\SnacksListAction'
   methods: GET
 
 json-api.snacks.create:
   path: 'snacks'
-  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\CreateNewSnackAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Snacks\CreateNewSnackAction'
   methods: POST
 
 json-api.snacks.update:
   path: 'snacks/{snackId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\Snacks\UpdateSnackAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Snacks\UpdateSnackAction'
   methods: PATCH
   requirements:
     snackId: \d+
 
 json-api.machines.list:
   path: 'machines'
-  controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachinesListAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Machines\MachinesListAction'
   methods: GET
 
 json-api.machines.create:
   path: 'machines'
-  controller: 'Tab\UserInterface\Http\JsonApi\Machines\CreateNewMachineAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Machines\CreateNewMachineAction'
   methods: POST
 
 json-api.machines.details:
   path: 'machines/{machineId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\Machines\MachineDetailsAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Machines\MachineDetailsAction'
   methods: GET
   requirements:
     machineId: \d+
 
 json-api.machines.update:
   path: 'machines/{machineId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\Machines\UpdateMachineAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Machines\UpdateMachineAction'
   methods: PATCH
   requirements:
     machineId: \d+
 
 json-api.machines.remove:
   path: 'machines/{machineId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\Machines\RemoveMachineAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Machines\RemoveMachineAction'
   methods: DELETE
   requirements:
     machineId: \d+
 
 json-api.machine_snacks.create:
   path: 'machine-snacks'
-  controller: 'Tab\UserInterface\Http\JsonApi\MachineSnacks\CreateNewMachineSnackAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\MachineSnacks\CreateNewMachineSnackAction'
   methods: POST
 
 json-api.machine_snacks.update:
   path: 'machine-snacks/{machineSnackId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\MachineSnacks\UpdateMachineSnackAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\MachineSnacks\UpdateMachineSnackAction'
   methods: PATCH
   requirements:
     machineSnackId: \d+
 
 json-api.users.list:
   path: 'users'
-  controller: 'Tab\UserInterface\Http\JsonApi\Users\UsersListAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Users\UsersListAction'
   methods: GET
 
 api.json.users.create:
   path: 'users'
-  controller: 'Tab\UserInterface\Http\JsonApi\Users\CreateNewUserAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Users\CreateNewUserAction'
   methods: POST
 
 json-api.users.update:
   path: 'users/{userId}'
-  controller: 'Tab\UserInterface\Http\JsonApi\Users\UpdateUserAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Users\UpdateUserAction'
   methods: PATCH
   requirements:
     userId: \d+
 
 json-api.prices.create:
   path: 'snacks-prices'
-  controller: 'Tab\UserInterface\Http\JsonApi\Prices\SetSnackPriceAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Prices\SetSnackPriceAction'
   methods: POST
 
 json-api.buys.create:
   path: 'buys'
-  controller: 'Tab\UserInterface\Http\JsonApi\Buys\BuySnackAction'
+  controller: 'Polsl\UserInterface\Http\JsonApi\Buys\BuySnackAction'
   methods: POST

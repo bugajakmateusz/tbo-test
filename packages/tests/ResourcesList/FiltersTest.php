@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Filters\FiltersException;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Filters\FiltersException;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class FiltersTest extends UnitTestCase

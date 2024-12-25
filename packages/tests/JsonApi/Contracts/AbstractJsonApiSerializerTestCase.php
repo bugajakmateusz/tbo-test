@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\JsonApi\Contracts;
+namespace Polsl\Packages\Tests\JsonApi\Contracts;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\JsonApi\Application\JsonApiKeywords;
-use Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\JsonApi\Application\JsonApiKeywords;
+use Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 abstract class AbstractJsonApiSerializerTestCase extends UnitTestCase
 {

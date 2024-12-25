@@ -18,12 +18,12 @@ report:
 
 api.test.login:
     path: 'test-login'
-    controller: 'Tab\UserInterface\Http\Json\TestLoginAction'
+    controller: 'Polsl\UserInterface\Http\Json\TestLoginAction'
     format: 'html'
     methods: GET
 
 html.homepage.redirect:
     path: '/'
-    controller: 'Tab\UserInterface\Http\Redirect\HomepageRedirectAction'
+    controller: 'Polsl\UserInterface\Http\Redirect\HomepageRedirectAction'
     format: 'html'
     methods: GET

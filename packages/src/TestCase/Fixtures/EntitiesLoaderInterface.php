@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Fixtures;
+namespace Polsl\Packages\TestCase\Fixtures;
 
-use Tab\Packages\TestCase\Fixtures\Entity\Machine;
-use Tab\Packages\TestCase\Fixtures\Entity\MachineSnack;
-use Tab\Packages\TestCase\Fixtures\Entity\Snack;
-use Tab\Packages\TestCase\Fixtures\Entity\SnackPrice;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
-use Tab\Packages\TestCase\Fixtures\Entity\WarehouseSnacks;
+use Polsl\Packages\TestCase\Fixtures\Entity\Machine;
+use Polsl\Packages\TestCase\Fixtures\Entity\MachineSnack;
+use Polsl\Packages\TestCase\Fixtures\Entity\Snack;
+use Polsl\Packages\TestCase\Fixtures\Entity\SnackPrice;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
+use Polsl\Packages\TestCase\Fixtures\Entity\WarehouseSnacks;
 
 interface EntitiesLoaderInterface
 {

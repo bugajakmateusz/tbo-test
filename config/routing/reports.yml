@@ -1,4 +1,4 @@
 api.reports.machines:
   path: 'machines'
-  controller: 'Tab\UserInterface\Http\Report\DownloadMachineReportAction'
+  controller: 'Polsl\UserInterface\Http\Report\DownloadMachineReportAction'
   methods: POST

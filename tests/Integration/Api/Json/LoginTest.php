@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Integration\Api\Json;
+namespace Polsl\Tests\Integration\Api\Json;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\HttpResponse\ResponseInterface;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
-use Tab\Packages\TestCase\IntegrationTestCase;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Tests\TestCase\Application\Client\LoginClient;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\HttpResponse\ResponseInterface;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
+use Polsl\Packages\TestCase\IntegrationTestCase;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Tests\TestCase\Application\Client\LoginClient;
 
 /** @internal */
 final class LoginTest extends IntegrationTestCase

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Phinx\Seed\AbstractSeed;
-use Tab\Packages\Constants\Database\Tables;
+use Polsl\Packages\Constants\Database\Tables;
 
 final class ClearDatabase extends AbstractSeed
 {

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Integration\Validator;
 
-use Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack;
-use Tab\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\IntegrationTestCase;
-use Tab\Packages\TestCase\Mother\Entity\MachineMother;
-use Tab\Packages\TestCase\Mother\Entity\MachineSnackMother;
-use Tab\Packages\TestCase\Mother\Entity\SnackMother;
-use Tab\Packages\TestCase\Validator\TestValidator;
+use Polsl\Application\Command\AddNewMachineSnack\AddNewMachineSnack;
+use Polsl\Infrastructure\Symfony\Validator\Constraints\MachinePositionTaken;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\IntegrationTestCase;
+use Polsl\Packages\TestCase\Mother\Entity\MachineMother;
+use Polsl\Packages\TestCase\Mother\Entity\MachineSnackMother;
+use Polsl\Packages\TestCase\Mother\Entity\SnackMother;
+use Polsl\Packages\TestCase\Validator\TestValidator;
 
 /** @internal */
 final class MachinePositionTakenValidatorTest extends IntegrationTestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonSerializer;
+namespace Polsl\Packages\JsonSerializer;
 
 interface JsonSerializerInterface
 {

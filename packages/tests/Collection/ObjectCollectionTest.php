@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\Collection;
+namespace Polsl\Packages\Tests\Collection;
 
-use Tab\Packages\Collection\CollectionException;
-use Tab\Packages\Collection\ObjectCollection;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Packages\Collection\CollectionException;
+use Polsl\Packages\Collection\ObjectCollection;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class ObjectCollectionTest extends UnitTestCase

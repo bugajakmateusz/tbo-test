@@ -3,7 +3,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           ../../vendor/doctrine/orm/doctrine-mapping.xsd"
 >
-    <entity name="Tab\Domain\Model\Snack\Price" table="prices_history">
+    <entity name="Polsl\Domain\Model\Snack\Price" table="prices_history">
         <id name="id" type="integer" column="price_id">
             <generator strategy="AUTO" />
         </id>

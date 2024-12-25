@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\JsonApi\Buys;
+namespace Polsl\UserInterface\Http\JsonApi\Buys;
 
 use OpenApi\Annotations as OA;
+use Polsl\Application\Command\BuySnack\BuySnack;
+use Polsl\Application\Exception\ApplicationException;
+use Polsl\Application\Schema\SnackBuySchema;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Application\Service\ApiProblemJsonResponseFactory;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\Relationships;
+use Polsl\Packages\JsonApi\Application\Resource;
+use Polsl\Packages\JsonApi\Application\ResourceIdentifier;
+use Polsl\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
+use Polsl\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
+use Polsl\Packages\MessageBus\Contracts\CommandBusInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
+use Polsl\Packages\Validator\ValidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Application\Command\BuySnack\BuySnack;
-use Tab\Application\Exception\ApplicationException;
-use Tab\Application\Schema\SnackBuySchema;
-use Tab\Application\Schema\SnackSchema;
-use Tab\Application\Service\ApiProblemJsonResponseFactory;
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\Relationships;
-use Tab\Packages\JsonApi\Application\Resource;
-use Tab\Packages\JsonApi\Application\ResourceIdentifier;
-use Tab\Packages\JsonApi\Contracts\JsonApiSerializerInterface;
-use Tab\Packages\JsonApi\ResponseFactory\JsonApiResponseFactoryInterface;
-use Tab\Packages\MessageBus\Contracts\CommandBusInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
-use Tab\Packages\Validator\ValidatorInterface;
 
 final readonly class BuySnackAction
 {

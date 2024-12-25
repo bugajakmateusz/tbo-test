@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Doctrine\DBAL\DriverManager;
 use Symfony\Component\Dotenv\Dotenv;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -10,7 +11,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $_ENV['PASS_SALT'] = $_SERVER['PASSWORD_SALT'] ?? '';
 
-$doctrineConnection = \Doctrine\DBAL\DriverManager::getConnection(
+$doctrineConnection = DriverManager::getConnection(
     [
         'url' => $_SERVER['DATABASE_URL'] ?? '',
         'charset' => 'UTF8',

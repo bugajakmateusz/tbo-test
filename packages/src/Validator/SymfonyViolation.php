@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Validator;
+namespace Polsl\Packages\Validator;
 
 use Symfony\Component\Validator\ConstraintViolationInterface;
 

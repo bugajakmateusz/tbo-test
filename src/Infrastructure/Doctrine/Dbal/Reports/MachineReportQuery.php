@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Dbal\Reports;
+namespace Polsl\Infrastructure\Doctrine\Dbal\Reports;
 
-use Tab\Application\Query\MachineReport\MachineReportQueryInterface;
-use Tab\Application\View\MachineReportView;
-use Tab\Packages\DbConnection\DbConnectionInterface;
+use Polsl\Application\Query\MachineReport\MachineReportQueryInterface;
+use Polsl\Application\View\MachineReportView;
+use Polsl\Packages\DbConnection\DbConnectionInterface;
 
 final class MachineReportQuery implements MachineReportQueryInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList;
+namespace Polsl\Packages\ResourcesList;
 
-use Tab\Domain\SanitizedString;
+use Polsl\Domain\SanitizedString;
 
 final class Filter
 {
@@ -15,7 +15,7 @@ final class Filter
     /** @param null|array<mixed, mixed>|bool|int|string $value */
     public function __construct(
         private readonly string $name,
-        private readonly bool|array|int|string|null $value,
+        private readonly null|array|bool|int|string $value,
     ) {}
 
     public function name(): string
@@ -24,7 +24,7 @@ final class Filter
     }
 
     /** @return null|bool|int|mixed[]|string */
-    public function value(): array|int|string|null|bool
+    public function value(): null|array|bool|int|string
     {
         return $this->value;
     }

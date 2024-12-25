@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\AddNewMachine;
+namespace Polsl\Application\Command\AddNewMachine;
 
-use Tab\Domain\Model\Machine\Location;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Domain\Model\Machine\MachineRepositoryInterface;
+use Polsl\Domain\Model\Machine\Location;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Domain\Model\Machine\MachineRepositoryInterface;
 
 final readonly class AddNewMachineHandler
 {

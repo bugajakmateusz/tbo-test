@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\RemoveMachine;
+namespace Polsl\Application\Command\RemoveMachine;
 
-use Tab\Domain\Model\Machine\MachineRepositoryInterface;
+use Polsl\Domain\Model\Machine\MachineRepositoryInterface;
 
 final readonly class RemoveMachineHandler
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\UpdateSnack;
+namespace Polsl\Application\Command\UpdateSnack;
 
-use Tab\Domain\Model\Snack\Name;
-use Tab\Domain\Model\Snack\SnackRepositoryInterface;
+use Polsl\Domain\Model\Snack\Name;
+use Polsl\Domain\Model\Snack\SnackRepositoryInterface;
 
 final readonly class UpdateSnackHandler
 {

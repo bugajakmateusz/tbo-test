@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\MachinesList;
+namespace Polsl\Application\Query\MachinesList;
 
-use Tab\Application\View\MachineView;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\TotalItems;
+use Polsl\Application\View\MachineView;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\TotalItems;
 
 final readonly class MachinesListView
 {

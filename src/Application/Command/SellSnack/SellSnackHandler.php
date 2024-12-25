@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Command\SellSnack;
+namespace Polsl\Application\Command\SellSnack;
 
-use Tab\Domain\Model\Machine\MachineSnackRepositoryInterface;
-use Tab\Domain\Model\Snack\PriceRepositoryInterface;
-use Tab\Domain\Model\Snack\SnackSellRepositoryInterface;
-use Tab\Domain\Service\ClockInterface;
+use Polsl\Domain\Model\Machine\MachineSnackRepositoryInterface;
+use Polsl\Domain\Model\Snack\PriceRepositoryInterface;
+use Polsl\Domain\Model\Snack\SnackSellRepositoryInterface;
+use Polsl\Domain\Service\ClockInterface;
 
 final readonly class SellSnackHandler
 {

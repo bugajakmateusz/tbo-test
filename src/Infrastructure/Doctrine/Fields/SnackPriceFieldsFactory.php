@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Fields;
+namespace Polsl\Infrastructure\Doctrine\Fields;
 
-use Tab\Application\Schema\SnackPriceSchema;
-use Tab\Application\View\PriceView;
-use Tab\Packages\Constants\Database\Tables;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\SqlExpressions\JsonObject;
+use Polsl\Application\Schema\SnackPriceSchema;
+use Polsl\Application\View\PriceView;
+use Polsl\Packages\Constants\Database\Tables;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\SqlExpressions\JsonObject;
 
 final readonly class SnackPriceFieldsFactory
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\SnacksList;
+namespace Polsl\Application\Query\SnacksList;
 
-use Tab\Application\Schema\SnackSchema;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filters;
+use Polsl\Application\Schema\SnackSchema;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filters;
 
 final readonly class SnacksListHandler
 {

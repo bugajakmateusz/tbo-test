@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\TestCase\Mother\Entity;
+namespace Polsl\Packages\TestCase\Mother\Entity;
 
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\Fixtures\Entity\Machine;
-use Tab\Packages\TestCase\Fixtures\Entity\Snack;
-use Tab\Packages\TestCase\Fixtures\Entity\SnackPrice;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\Fixtures\Entity\Machine;
+use Polsl\Packages\TestCase\Fixtures\Entity\Snack;
+use Polsl\Packages\TestCase\Fixtures\Entity\SnackPrice;
 
 final class SnackPriceMother
 {

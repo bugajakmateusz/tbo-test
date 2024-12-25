@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\JsonApi\ResponseFactory;
+namespace Polsl\Packages\JsonApi\ResponseFactory;
 
-use Tab\Packages\Constants\HttpStatusCodes;
-use Tab\Packages\JsonApi\Application\Includes;
-use Tab\Packages\Responder\Response\ResponseInterface;
-use Tab\Packages\Responder\Response\ResponseSpecification;
+use Polsl\Packages\Constants\HttpStatusCodes;
+use Polsl\Packages\JsonApi\Application\Includes;
+use Polsl\Packages\Responder\Response\ResponseInterface;
+use Polsl\Packages\Responder\Response\ResponseSpecification;
 
 interface JsonApiResponseFactoryInterface
 {
@@ -40,7 +40,7 @@ interface JsonApiResponseFactoryInterface
 
     /** @param object|object[] $data */
     public function resourceIdentifiersResponse(
-        object|array $data,
+        array|object $data,
         int $statusCode = HttpStatusCodes::HTTP_OK,
     ): ResponseInterface;
 }

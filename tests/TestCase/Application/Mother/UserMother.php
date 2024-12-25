@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\TestCase\Application\Mother;
+namespace Polsl\Tests\TestCase\Application\Mother;
 
-use Tab\Domain\Email;
-use Tab\Domain\Model\User\Name;
-use Tab\Domain\Model\User\Password;
-use Tab\Domain\Model\User\Role;
-use Tab\Domain\Model\User\User;
-use Tab\Packages\Faker\Faker;
-use Tab\Tests\TestCase\Application\Mock\FakePasswordHasher;
-use Tab\Tests\TestCase\Application\Mock\FakeUserRepository;
+use Polsl\Domain\Email;
+use Polsl\Domain\Model\User\Name;
+use Polsl\Domain\Model\User\Password;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Domain\Model\User\User;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Tests\TestCase\Application\Mock\FakePasswordHasher;
+use Polsl\Tests\TestCase\Application\Mock\FakeUserRepository;
 
 final class UserMother
 {

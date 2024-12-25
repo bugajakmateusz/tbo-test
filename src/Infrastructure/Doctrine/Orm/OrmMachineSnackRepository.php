@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Doctrine\Orm;
+namespace Polsl\Infrastructure\Doctrine\Orm;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Tab\Domain\EntityNotFoundException;
-use Tab\Domain\Model\Machine\Machine;
-use Tab\Domain\Model\Machine\MachineSnack;
-use Tab\Domain\Model\Machine\MachineSnackRepositoryInterface;
+use Polsl\Domain\EntityNotFoundException;
+use Polsl\Domain\Model\Machine\Machine;
+use Polsl\Domain\Model\Machine\MachineSnack;
+use Polsl\Domain\Model\Machine\MachineSnackRepositoryInterface;
 
 final readonly class OrmMachineSnackRepository implements MachineSnackRepositoryInterface
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain;
+namespace Polsl\Domain;
 
 final class Email
 {
-    public const MAIL_REG_EX = '/^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()[\\]\\.,;:\\s@"]+)*)|(".+"))@(([^<>()[\\]\\.,;:\\s@"]+\\.)+[^<>()[\\]\\.,;:\\s@"]{2,})$/i';
+    public const MAIL_REG_EX = '/^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i';
     public const MAX_LENGTH = 250;
 
     private function __construct(private readonly string $email) {}

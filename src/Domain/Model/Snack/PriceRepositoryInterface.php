@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Domain\Model\Snack;
+namespace Polsl\Domain\Model\Snack;
 
-use Tab\Domain\Model\Machine\Machine;
+use Polsl\Domain\Model\Machine\Machine;
 
 interface PriceRepositoryInterface
 {

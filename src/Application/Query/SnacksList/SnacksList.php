@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\SnacksList;
+namespace Polsl\Application\Query\SnacksList;
 
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
 
 final readonly class SnacksList
 {

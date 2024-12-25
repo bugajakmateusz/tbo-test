@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\Tests\ResourcesList;
+namespace Polsl\Packages\Tests\ResourcesList;
 
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Filter;
+use Polsl\Packages\ResourcesList\QueryParamsExtractorFactory;
+use Polsl\Packages\ResourcesList\Sort;
+use Polsl\Packages\TestCase\UnitTestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Filter;
-use Tab\Packages\ResourcesList\QueryParamsExtractorFactory;
-use Tab\Packages\ResourcesList\Sort;
-use Tab\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class QueryParamsExtractorFactoryTest extends UnitTestCase

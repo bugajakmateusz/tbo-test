@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use Polsl\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
-use Tab\Kernel;
 
 require \dirname(__DIR__, 2) . '/vendor/autoload.php';
 (new Dotenv())->bootEnv(\dirname(__DIR__, 2) . '/.env');

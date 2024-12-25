@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList;
+namespace Polsl\Packages\ResourcesList;
 
 use Symfony\Component\HttpFoundation\Request;
 

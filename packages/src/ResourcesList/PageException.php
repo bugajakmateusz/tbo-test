@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Tab\Packages\ResourcesList;
+namespace Polsl\Packages\ResourcesList;
 
 final class PageException extends \RuntimeException {}

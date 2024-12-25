@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Application\UsersList;
+namespace Polsl\Tests\Unit\Application\UsersList;
 
-use Tab\Application\Exception\ApplicationException;
-use Tab\Application\Query\UsersList\UsersList;
-use Tab\Application\Query\UsersList\UsersListHandler;
-use Tab\Application\Query\UsersList\UsersListQueryInterface;
-use Tab\Application\Query\UsersList\UsersListView;
-use Tab\Domain\Model\Login\LoggedUser;
-use Tab\Domain\Model\User\Role;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\ResourcesList\Fields;
-use Tab\Packages\ResourcesList\Filters;
-use Tab\Packages\ResourcesList\Page;
-use Tab\Packages\TestCase\UnitTestCase;
-use Tab\Tests\TestCase\Application\Mock\FakeLoggedUserService;
+use Polsl\Application\Exception\ApplicationException;
+use Polsl\Application\Query\UsersList\UsersList;
+use Polsl\Application\Query\UsersList\UsersListHandler;
+use Polsl\Application\Query\UsersList\UsersListQueryInterface;
+use Polsl\Application\Query\UsersList\UsersListView;
+use Polsl\Domain\Model\Login\LoggedUser;
+use Polsl\Domain\Model\User\Role;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\ResourcesList\Fields;
+use Polsl\Packages\ResourcesList\Filters;
+use Polsl\Packages\ResourcesList\Page;
+use Polsl\Packages\TestCase\UnitTestCase;
+use Polsl\Tests\TestCase\Application\Mock\FakeLoggedUserService;
 
 /**
  * @internal
@@ -46,7 +46,7 @@ final class UsersListHandlerTest extends UnitTestCase
 
     private static function createHandler(LoggedUser $loggedUser): UsersListHandler
     {
-        $usersRepository = new class() implements UsersListQueryInterface {
+        $usersRepository = new class implements UsersListQueryInterface {
             public function query(Page $page, Filters $filters, Fields $fields): UsersListView
             {
                 throw new \RuntimeException('Not implemented.');

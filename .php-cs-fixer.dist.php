@@ -1,8 +1,10 @@
 <?php
 
 declare(strict_types=1);
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
-$finder = PhpCsFixer\Finder::create()
+$finder = Finder::create()
     ->in('src')
     ->in('tests')
     ->in('db')
@@ -20,7 +22,7 @@ $finder = PhpCsFixer\Finder::create()
     )
 ;
 
-return (new PhpCsFixer\Config())
+return (new Config())
     ->setRiskyAllowed(true)
     ->setRules(
         [

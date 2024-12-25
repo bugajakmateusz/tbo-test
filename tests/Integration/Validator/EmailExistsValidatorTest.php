@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Integration\Validator;
 
-use Tab\Infrastructure\Symfony\Validator\Constraints\EmailExists;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\Fixtures\Entity\User;
-use Tab\Packages\TestCase\IntegrationTestCase;
-use Tab\Packages\TestCase\Mother\Entity\UserMother;
-use Tab\Packages\TestCase\Validator\TestValidator;
+use Polsl\Infrastructure\Symfony\Validator\Constraints\EmailExists;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\Fixtures\Entity\User;
+use Polsl\Packages\TestCase\IntegrationTestCase;
+use Polsl\Packages\TestCase\Mother\Entity\UserMother;
+use Polsl\Packages\TestCase\Validator\TestValidator;
 
 /** @internal */
 final class EmailExistsValidatorTest extends IntegrationTestCase

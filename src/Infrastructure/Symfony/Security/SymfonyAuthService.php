@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tab\Infrastructure\Symfony\Security;
+namespace Polsl\Infrastructure\Symfony\Security;
 
+use Polsl\Application\Exception\ApplicationException;
+use Polsl\Application\Service\AuthServiceInterface;
+use Polsl\Domain\Email;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
@@ -12,14 +15,12 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Tab\Application\Exception\ApplicationException;
-use Tab\Application\Service\AuthServiceInterface;
-use Tab\Domain\Email;
 
 final class SymfonyAuthService implements AuthServiceInterface
 {
     private const FIREWALL_NAME = 'main';
 
+    /** @param UserProviderInterface<SymfonyUser> $userProvider */
     public function __construct(
         private readonly TokenStorageInterface $tokenStorage,
         private readonly UserProviderInterface $userProvider,

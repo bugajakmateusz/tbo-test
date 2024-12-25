@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tab\Application\Query\MachineReport;
+namespace Polsl\Application\Query\MachineReport;
 
-use Tab\Application\View\MachineReportView;
+use Polsl\Application\View\MachineReportView;
 
 final readonly class MachineReportHandler
 {

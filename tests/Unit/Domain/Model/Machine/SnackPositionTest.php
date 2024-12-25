@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tab\Tests\Unit\Domain\Model\Machine;
+namespace Polsl\Tests\Unit\Domain\Model\Machine;
 
-use Tab\Domain\DomainException;
-use Tab\Domain\Model\Machine\SnackPosition;
-use Tab\Packages\Faker\Faker;
-use Tab\Packages\TestCase\UnitTestCase;
+use Polsl\Domain\DomainException;
+use Polsl\Domain\Model\Machine\SnackPosition;
+use Polsl\Packages\Faker\Faker;
+use Polsl\Packages\TestCase\UnitTestCase;
 
 /** @internal */
 final class SnackPositionTest extends UnitTestCase

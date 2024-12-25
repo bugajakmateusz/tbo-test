@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tab\UserInterface\Http\Report;
+namespace Polsl\UserInterface\Http\Report;
 
+use Polsl\Application\Query\MachineReport\MachineReport;
+use Polsl\Application\View\MachineReportView;
+use Polsl\Packages\JsonSerializer\JsonSerializerInterface;
+use Polsl\Packages\MessageBus\Contracts\QueryBusInterface;
+use Polsl\Packages\Responder\Response\ResponseFactoryInterface;
+use Polsl\Packages\Responder\Response\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Tab\Application\Query\MachineReport\MachineReport;
-use Tab\Application\View\MachineReportView;
-use Tab\Packages\JsonSerializer\JsonSerializerInterface;
-use Tab\Packages\MessageBus\Contracts\QueryBusInterface;
-use Tab\Packages\Responder\Response\ResponseFactoryInterface;
-use Tab\Packages\Responder\Response\ResponseInterface;
 
 final class DownloadMachineReportAction
 {
