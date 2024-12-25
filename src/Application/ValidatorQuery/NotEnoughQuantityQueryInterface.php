@@ -6,5 +6,7 @@ namespace Tab\Application\ValidatorQuery;
 
 interface NotEnoughQuantityQueryInterface
 {
-    public function query(int $quantity, int $snackId): bool;
+    public function queryToAdd(int $quantity, int $snackId): bool;
+
+    public function queryToUpdate(int $quantity, int $machineSnackId): bool;
 }
