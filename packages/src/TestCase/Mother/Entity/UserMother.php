@@ -38,12 +38,32 @@ final class UserMother
         );
     }
 
-    public static function warehouseOperator(): User
+    public static function officeManager(): User
     {
         return self::create(
             [
                 'ROLE_USER',
-                'ROLE_WAREHOUSE_OPERATOR',
+                'ROLE_ADMIN',
+            ],
+        );
+    }
+
+    public static function courier(): User
+    {
+        return self::create(
+            [
+                'ROLE_USER',
+                'ROLE_ADMIN',
+            ],
+        );
+    }
+
+    public static function logisticManager(): User
+    {
+        return self::create(
+            [
+                'ROLE_USER',
+                'ROLE_LOGISTIC_MANAGER',
             ],
         );
     }
