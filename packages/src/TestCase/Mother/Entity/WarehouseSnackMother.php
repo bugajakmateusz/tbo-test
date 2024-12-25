@@ -10,11 +10,13 @@ use Tab\Packages\TestCase\Fixtures\Entity\WarehouseSnacks;
 
 final class WarehouseSnackMother
 {
-    public static function fromSnack(Snack $snack): WarehouseSnacks
-    {
+    public static function fromSnack(
+        Snack $snack,
+        ?int $quantity = null,
+    ): WarehouseSnacks {
         return new WarehouseSnacks(
             $snack->id,
-            Faker::int(min: 100, max: 10000),
+            $quantity ?? Faker::int(min: 100, max: 10000),
         );
     }
 }

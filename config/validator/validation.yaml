@@ -146,3 +146,11 @@ Tab\Application\Command\BuySnack\BuySnack:
     quantity:
       - NotBlank: ~
       - GreaterThan: 0
+
+Tab\Application\Command\UpdateMachineSnack\UpdateMachineSnack:
+  constraints:
+    - Tab\Infrastructure\Symfony\Validator\Constraints\NotEnoughQuantity: ~
+  properties:
+    quantity:
+      - NotBlank: ~
+      - GreaterThan: 0
