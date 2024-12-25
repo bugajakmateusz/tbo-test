@@ -17,7 +17,7 @@ final class UpdateSnackTest extends JsonApiIntegrationTestCase
     public function test_logged_user_can_update_snack(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $snack = SnackMother::random();
         $this->loadEntities(
             $loggedUser,
@@ -74,7 +74,7 @@ final class UpdateSnackTest extends JsonApiIntegrationTestCase
             'attributes' => $attributes,
             'errors' => $expectedErrors,
         ] = $createParams();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $snack = SnackMother::random();
         $this->loadEntities(
             $loggedUser,

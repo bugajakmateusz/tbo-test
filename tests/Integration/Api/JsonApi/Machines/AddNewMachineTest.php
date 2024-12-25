@@ -14,10 +14,10 @@ use Tab\Tests\TestCase\JsonApiIntegrationTestCase;
 /** @internal */
 final class AddNewMachineTest extends JsonApiIntegrationTestCase
 {
-    public function test_logged_user_can_create_machine(): void
+    public function test_office_manager_can_create_machine(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $this->loadEntities(
             $loggedUser,
         );
@@ -66,7 +66,7 @@ final class AddNewMachineTest extends JsonApiIntegrationTestCase
     public function test_add_machine_validation(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::officeManager();
         $this->loadEntities(
             $loggedUser,
         );
