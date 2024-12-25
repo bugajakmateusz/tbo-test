@@ -1,0 +1,14 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          ../../vendor/doctrine/orm/doctrine-mapping.xsd"
+>
+    <entity name="Tab\Domain\Model\Snack\SnackSell" table="snack_sells">
+        <id name="id" type="integer" column="sell_id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="priceId" type="integer" />
+        <field name="soldAt" type="datetime_immutable" />
+    </entity>
+</doctrine-mapping>
