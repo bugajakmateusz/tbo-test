@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\Snacks;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Command\UpdateSnack\UpdateSnack;
 use Tab\Application\Schema\SnackSchema;
@@ -26,6 +27,43 @@ final readonly class UpdateSnackAction
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
     ) {}
 
+    /**
+     * Update a snack.
+     * This call will update a snack.
+     *
+     * @OA\RequestBody(
+     *      required=true,
+     *      description="Attributes needed for creating a new machine snack.",
+     *
+     * @OA\MediaType(
+     *      mediaType="application/json",
+     *
+     *      @OA\Schema(
+     *
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  @OA\Property(
+     *                      property="type",
+     *                      type="string",
+     *                      example="snacks",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="attributes",
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="Snickers",
+     *                      ),
+     *                  ),
+     *              ),
+     *          ),
+     *      )
+     *  )
+     *
+     * @OA\Tag(name="snacks")
+     */
     public function __invoke(
         Request $request,
         int $snackId,

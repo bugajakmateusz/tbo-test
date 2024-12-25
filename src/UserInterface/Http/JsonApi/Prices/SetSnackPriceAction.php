@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\Prices;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Command\UpdateSnackPrice\UpdateSnackPrice;
 use Tab\Application\Exception\ApplicationException;
@@ -32,6 +33,82 @@ final readonly class SetSnackPriceAction
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
     ) {}
 
+    /**
+     * Set snack price.
+     * This call will set a snack price and save it to price history.
+     *
+     * @OA\RequestBody(
+     *      required=true,
+     *
+     * @OA\MediaType(
+     *      mediaType="application/json",
+     *
+     *      @OA\Schema(
+     *
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  @OA\Property(
+     *                      property="type",
+     *                      type="string",
+     *                      example="snacks-prices",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="attributes",
+     *                      type="object",
+     *                      @OA\Property(
+     *                            property="price",
+     *                            type="float",
+     *                            example="3.49",
+     *                      ),
+     *                  ),
+     *                  @OA\Property(
+     *                       property="relationships",
+     *                       type="object",
+     *                       @OA\Property(
+     *                          property="snack",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="data",
+     *                              type="object",
+     *                              @OA\Property(
+     *                                  property="type",
+     *                                  type="string",
+     *                                  example="snacks",
+     *                              ),
+     *                              @OA\Property(
+     *                                   property="id",
+     *                                   type="integer",
+     *                                   example="200",
+     *                              ),
+     *                          ),
+     *                      ),
+     *                      @OA\Property(
+     *                           property="machine",
+     *                           type="object",
+     *                           @OA\Property(
+     *                               property="data",
+     *                               type="object",
+     *                               @OA\Property(
+     *                                   property="type",
+     *                                   type="string",
+     *                                   example="machines",
+     *                               ),
+     *                               @OA\Property(
+     *                                    property="id",
+     *                                    type="integer",
+     *                                    example="200",
+     *                               ),
+     *                           ),
+     *                       ),
+     *                  ),
+     *              ),
+     *          ),
+     *      )
+     *  )
+     *
+     * @OA\Tag(name="prices")
+     */
     public function __invoke(Request $request): ResponseInterface
     {
         $resource = $this->jsonApiSerializer

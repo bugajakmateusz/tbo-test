@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tab\UserInterface\Http\JsonApi\MachineSnacks;
 
+use OpenApi\Annotations as OA;
 use Symfony\Component\HttpFoundation\Request;
 use Tab\Application\Command\AddNewMachineSnack\AddNewMachineSnack;
 use Tab\Application\Exception\ApplicationException;
@@ -31,6 +32,93 @@ final readonly class CreateNewMachineSnackAction
         private ApiProblemJsonResponseFactory $apiProblemJsonResponseFactory,
     ) {}
 
+    /**
+     * Create new machine snack.
+     * This call will create a new machine snack.
+     *
+     * @OA\RequestBody(
+     *      required=true,
+     *      description="Attributes needed for creating a new machine snack.",
+     *
+     * @OA\MediaType(
+     *      mediaType="application/json",
+     *
+     *      @OA\Schema(
+     *
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="object",
+     *                  @OA\Property(
+     *                      property="type",
+     *                      type="string",
+     *                      example="machine-snacks",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="attributes",
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="quantity",
+     *                          type="int",
+     *                          example=5,
+     *                      ),
+     *                      @OA\Property(
+     *                           property="position",
+     *                           type="string",
+     *                           example="A10",
+     *                       ),
+     *                      @OA\Property(
+     *                            property="price",
+     *                            type="float",
+     *                            example="3.49",
+     *                      ),
+     *                  ),
+     *                  @OA\Property(
+     *                       property="relationships",
+     *                       type="object",
+     *                       @OA\Property(
+     *                          property="snack",
+     *                          type="object",
+     *                          @OA\Property(
+     *                              property="data",
+     *                              type="object",
+     *                              @OA\Property(
+     *                                  property="type",
+     *                                  type="string",
+     *                                  example="snacks",
+     *                              ),
+     *                              @OA\Property(
+     *                                   property="id",
+     *                                   type="integer",
+     *                                   example="200",
+     *                              ),
+     *                          ),
+     *                      ),
+     *                      @OA\Property(
+     *                           property="machine",
+     *                           type="object",
+     *                           @OA\Property(
+     *                               property="data",
+     *                               type="object",
+     *                               @OA\Property(
+     *                                   property="type",
+     *                                   type="string",
+     *                                   example="machines",
+     *                               ),
+     *                               @OA\Property(
+     *                                    property="id",
+     *                                    type="integer",
+     *                                    example="200",
+     *                               ),
+     *                           ),
+     *                       ),
+     *                  ),
+     *              ),
+     *          ),
+     *      )
+     *  )
+     *
+     * @OA\Tag(name="machine-snacks")
+     */
     public function __invoke(Request $request): ResponseInterface
     {
         $resource = $this->jsonApiSerializer
