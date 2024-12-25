@@ -24,7 +24,7 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
     public function test_logged_user_can_create_machine_snack(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::courier();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $warehouseSnack = WarehouseSnackMother::fromSnack($snack);
@@ -90,7 +90,7 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
             'snackId' => $snackId,
             'machineId' => $machineId,
         ] = $createParams();
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::courier();
         $this->loadEntities(
             $loggedUser,
             ...$entities,

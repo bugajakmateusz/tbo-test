@@ -20,7 +20,7 @@ final class UpdateMachineSnackTest extends JsonApiIntegrationTestCase
     public function test_logged_user_can_update_machine_snack(): void
     {
         // Arrange
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::courier();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $machineSnack = MachineSnackMother::fromEntities($machine, $snack);
@@ -53,7 +53,7 @@ final class UpdateMachineSnackTest extends JsonApiIntegrationTestCase
 
     public function test_update_machine_snack_validation(): void
     {
-        $loggedUser = UserMother::random();
+        $loggedUser = UserMother::courier();
         $machine = MachineMother::random();
         $snack = SnackMother::random();
         $machineSnack = MachineSnackMother::fromEntities($machine, $snack);
