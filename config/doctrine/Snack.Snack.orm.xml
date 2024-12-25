@@ -5,7 +5,7 @@
 >
     <entity name="Polsl\Domain\Model\Snack\Snack" table="snacks">
         <id name="id" type="integer" column="snack_id">
-            <generator strategy="AUTO" />
+            <generator strategy="IDENTITY" />
         </id>
 
         <field name="name" type="string" />

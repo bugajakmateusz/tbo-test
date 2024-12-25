@@ -17,7 +17,6 @@ framework:
         gc_maxlifetime: !php/const '\Polsl\Packages\Constants\Session::GC_MAX_LIFE_TIME'
         gc_divisor: 40000
         gc_probability: 1
-        sid_bits_per_character: 5
         cookie_secure: auto
         cookie_samesite: strict
         metadata_update_threshold: !php/const '\Polsl\Packages\Constants\Session::METADATA_UPDATE_THRESHOLD'

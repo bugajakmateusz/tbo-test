@@ -5,7 +5,7 @@
 >
     <entity name="Polsl\Domain\Model\Machine\Machine" table="machines">
         <id name="id" type="integer" column="machine_id">
-            <generator strategy="AUTO" />
+            <generator strategy="IDENTITY" />
         </id>
 
         <one-to-many

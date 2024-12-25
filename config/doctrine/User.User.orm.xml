@@ -4,7 +4,7 @@
                           ../../vendor/doctrine/orm/doctrine-mapping.xsd">
     <entity name="Polsl\Domain\Model\User\User" table="users">
         <id name="id" type="integer" column="user_id">
-            <generator strategy="AUTO" />
+            <generator strategy="IDENTITY" />
         </id>
 
         <field name="email" type="string" unique="true" />

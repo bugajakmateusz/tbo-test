@@ -12,9 +12,9 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
-        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-bundle": "^2.13",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.13.1",
+        "doctrine/orm": "^3.3.1",
         "egulias/email-validator": "^4.0.0",
         "jsonapiphp/jsonapi": "^1.1",
         "league/tactician-bundle": "^1.4",
@@ -60,7 +60,7 @@
         "twig/twig": "^3.4.2"
     },
     "require-dev": {
-        "doctrine/data-fixtures": "^1.5.3",
+        "doctrine/data-fixtures": "^2.0.0",
         "ergebnis/composer-normalize": "^2.28.3",
         "fakerphp/faker": "^1.20",
         "friendsofphp/php-cs-fixer": "^3.18",
