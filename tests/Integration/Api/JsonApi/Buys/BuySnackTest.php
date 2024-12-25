@@ -113,10 +113,10 @@ final class BuySnackTest extends JsonApiIntegrationTestCase
         self::assertEquals(
             [
                 'price' => [
-                    'Ta wartość powinna być większa niż 0.',
+                    'Ta wartość powinna być dodatnia.',
                 ],
                 'quantity' => [
-                    'Ta wartość powinna być większa niż 0.',
+                    'Ta wartość powinna być dodatnia.',
                 ],
             ],
             $errors,

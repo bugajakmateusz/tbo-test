@@ -154,7 +154,7 @@ final class AddNewMachineSnackTest extends JsonApiIntegrationTestCase
                     MachineSnackSchema::ATTRIBUTE_POSITION => ['Ta wartość nie powinna być pusta.'],
                     MachineSnackSchema::ATTRIBUTE_QUANTITY => [
                         'Brak wystarczającej ilości produktu na magazynie.',
-                        'Ta wartość powinna być większa niż 0.',
+                        'Ta wartość powinna być dodatnia.',
                     ],
                 ],
                 'entities' => [],

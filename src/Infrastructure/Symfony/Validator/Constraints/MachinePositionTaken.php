@@ -6,6 +6,7 @@ namespace Polsl\Infrastructure\Symfony\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
+#[\Attribute]
 final class MachinePositionTaken extends Constraint
 {
     public string $message = 'machine.position_taken';

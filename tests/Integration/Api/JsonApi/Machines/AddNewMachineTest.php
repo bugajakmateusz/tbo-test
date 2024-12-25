@@ -103,8 +103,8 @@ final class AddNewMachineTest extends JsonApiIntegrationTestCase
         self::assertEquals(
             [
                 'location' => ['Ta wartość nie powinna być pusta.'],
-                'positionsNumber' => ['Ta wartość powinna być większa bądź równa 0.'],
-                'positionsCapacity' => ['Ta wartość powinna być większa bądź równa 0.'],
+                'positionsNumber' => ['Ta wartość powinna być dodatnia lub równa zero.'],
+                'positionsCapacity' => ['Ta wartość powinna być dodatnia lub równa zero.'],
             ],
             $errors,
         );

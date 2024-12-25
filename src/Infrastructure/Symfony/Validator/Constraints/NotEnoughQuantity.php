@@ -6,6 +6,7 @@ namespace Polsl\Infrastructure\Symfony\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
+#[\Attribute]
 final class NotEnoughQuantity extends Constraint
 {
     public string $message = 'warehouse.too_low_product';

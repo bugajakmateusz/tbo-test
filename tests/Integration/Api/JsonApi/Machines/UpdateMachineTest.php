@@ -187,8 +187,8 @@ final class UpdateMachineTest extends JsonApiIntegrationTestCase
                     MachineSchema::ATTRIBUTE_POSITIONS_CAPACITY => Faker::int(-100, -1),
                 ],
                 'errors' => [
-                    'positionsNumber' => ['Ta wartość powinna być większa bądź równa 0.'],
-                    'positionsCapacity' => ['Ta wartość powinna być większa bądź równa 0.'],
+                    'positionsNumber' => ['Ta wartość powinna być dodatnia lub równa zero.'],
+                    'positionsCapacity' => ['Ta wartość powinna być dodatnia lub równa zero.'],
                 ],
             ],
         ];
