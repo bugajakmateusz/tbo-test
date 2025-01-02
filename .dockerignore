@@ -6,6 +6,7 @@
 !/db/migrations
 !/docker/fpm
 !/docker/nginx
+!/docker/python
 !/packages
 /packages/src/Faker
 /packages/tests
@@ -18,3 +19,4 @@
 !/phinx.php
 !/symfony.lock
 !/resources/scripts/phpstan-doctrine-object-manager.php
+!/python
