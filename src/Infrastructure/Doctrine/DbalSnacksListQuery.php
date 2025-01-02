@@ -124,6 +124,13 @@ final class DbalSnacksListQuery extends DbalListQueryTemplate implements SnacksL
         }
     }
 
+    protected function applyOrdering(QueryBuilder $queryBuilder, string $tableAlias): void
+    {
+        $queryBuilder
+            ->orderBy("LOWER({$tableAlias}.name)")
+        ;
+    }
+
     private function applyNameFilter(QueryBuilder $queryBuilder, string $tableAlias, Filter $filter): void
     {
         $queryBuilder

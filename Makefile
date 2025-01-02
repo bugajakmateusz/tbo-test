@@ -38,8 +38,3 @@ restart-proxies:
 .PHONY: regenerate-baseline
 regenerate-baseline:
 	docker compose exec --user=www-data fpm composer phpstan:check -- --generate-baseline
-
-test-unit-integration:
-	docker compose exec --user=www-data fpm composer cs:check
-	docker compose exec --user=www-data fpm composer phpstan:check
-	docker compose exec --user=www-data fpm vendor/bin/phpunit --group 'default'
