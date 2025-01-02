@@ -22,7 +22,7 @@ final class SellSnackCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Users specified in command will be anonymize.')
+            ->setDescription('Simulate snack selling.')
             ->addArgument('machineId', InputArgument::REQUIRED)
             ->addArgument('snackId', InputArgument::REQUIRED)
             ->addArgument('position', InputArgument::REQUIRED)
@@ -37,9 +37,6 @@ final class SellSnackCommand extends Command
 
         if (!\is_numeric($machineId) || !\is_numeric($snackId)) {
             $output->writeln('<error>MachineId or SnackId is not numeric</error>');
-            $output->writeln("<error>{$machineId}</error>");
-            $output->writeln("<error>{$snackId}</error>");
-            $output->writeln("<error>{$position}</error>");
 
             return 1;
         }

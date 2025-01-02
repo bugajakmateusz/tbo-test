@@ -1,7 +1,7 @@
 nelmio_api_doc:
     documentation:
         info:
-            title: TAB Vending Machine Management app
+            title: Vending Machine Management app
             description: This is an awesome app!
             version: 1.0.0
     areas: # to filter documented areas

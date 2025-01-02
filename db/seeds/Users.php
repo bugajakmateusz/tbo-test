@@ -42,7 +42,7 @@ final class Users extends AbstractSeed
      */
     private function createUserData(
         array $roles = [],
-        string $password = 'tab-admin',
+        string $password = 'polsl-admin',
     ): array {
         $passwordHasher = new SymfonySodiumPasswordHasher(
             new SodiumPasswordHasher(
