@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build and start application
+        run: docker compose up haproxy nginx fpm postgres postgres_test node_builder_v22 mailhog -d
+
+      - name: Display dir
+        run: docker compose exec --user=www-data fpm sh -c 'ls -alh /var/www'
+
+      - name: Display dir 2
+        run: docker compose exec --user=www-data fpm sh -c 'ls -alh /var/www/html'
+
+      - name: Run PHP builder and wait for services to be ready
+        run: docker compose run --rm --user=www-data php_builder
+
+      - name: Run static analysis
+        run: docker compose exec --user=www-data fpm composer app:checks
+
+      - name: Run tests
+        run: docker compose exec --user=www-data fpm vendor/bin/phpunit
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down
