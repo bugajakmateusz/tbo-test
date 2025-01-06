@@ -1,7 +1,9 @@
 name: CI/CD Pipeline
 permissions:
   contents: write
+  actions: write
   checks: write
+  security-events: write   # To upload sarif files
 
 on:
   push:
