@@ -36,8 +36,6 @@ RUN apk update && \
         opcache && \
     apk del .build-only-deps shadow
 
-RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www/html
-
 ENV COMPOSER_HOME /var/www/.composer
 COPY --from=composer/composer:2.5.8-bin /composer /usr/bin/composer
 RUN mkdir -p  /var/www/.composer \
@@ -57,6 +55,16 @@ COPY ./assets/styles ./assets/styles
 COPY ./assets/webpack.config.js ./assets/webpack.config.js
 
 RUN yarn run --cwd="./assets" encore production
+
+FROM node:${node_22_version} AS landing_assets
+
+WORKDIR /app
+
+COPY ./landings/frontend/ ./landings/frontend/
+
+WORKDIR /app/landings/frontend
+
+RUN yarn install && yarn build
 
 FROM scratch AS backend_files
 
@@ -83,6 +91,7 @@ RUN APP_ENV=prod composer install --no-autoloader --no-interaction --prefer-dist
 COPY ./public ./public
 COPY --from=backend_files /app ./
 COPY --from=prod_assets /app/public ./public
+COPY --from=landing_assets /app/landings/frontend/dist/frontend ./public/app
 
 RUN chown www-data:www-data /var/www/html/public/ \
     && composer dump-autoload -a --no-dev \
