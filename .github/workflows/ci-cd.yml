@@ -21,17 +21,45 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Build and start application
-        run: docker compose up haproxy nginx fpm postgres postgres_test node_builder_v22 mailhog -d
+      - name: Build app
+        run: DOCKER_BUILDKIT=1 docker build --platform=linux/amd64 --target prod_last -t debug -f ./docker/fpm/Dockerfile --compress .
 
-      - name: Run PHP builder and wait for services to be ready
-        run: docker compose run --rm --user=www-data php_builder
+      - name: Start application
+        run: docker compose -f ./docker/compose/docker-compose-ci.yml up haproxy nginx fpm postgres postgres_test -d
+
+      - name: Copy additional files
+        run: |
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp .php-cs-fixer.dist.php fpm:/var/www/html/.php-cs-fixer.dist.php &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./phpstan.neon fpm:/var/www/html/phpstan.neon &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./phpstan-baseline.neon fpm:/var/www/html/phpstan-baseline.neon &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./phpunit.xml.dist fpm:/var/www/html/phpunit.xml.dist &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./tests fpm:/var/www/html/tests && 
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp .env.test fpm:/var/www/html/.env.test && 
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./packages/tests fpm:/var/www/html/packages/tests && 
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./packages/src/Faker fpm:/var/www/html/packages/src/Faker
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./resources/scripts/phpstan-cli-app.php fpm:/var/www/html/resources/scripts/phpstan-cli-app.php
+          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "mkdir -p /var/www/html/docker/db" &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./docker/db/wait-for-db.php fpm:/var/www/html/docker/db/wait-for-db.php
+
+      - name: Apply additional packages
+        run: |
+          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "composer install --prefer-dist --no-interaction &&
+                php docker/db/wait-for-db.php postgres polsl_dev &&
+                APP_ENV=dev php vendor/bin/phinx migrate &&
+                php docker/db/wait-for-db.php postgres_test polsl_test &&
+                APP_ENV=test php vendor/bin/phinx migrate &&
+                echo 'App is ready, head to http://localhost:3100'
+          "
 
       - name: Run static analysis
-        run: docker compose exec --user=www-data fpm composer app:checks
+        run: docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm composer app:checks
 
       - name: Run tests
-        run: docker compose exec --user=www-data fpm vendor/bin/phpunit --log-junit phpunit-report.xml
+        run: docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm vendor/bin/phpunit --log-junit phpunit-report.xml
+
+      - name: Copy tests assets
+        if: success() || failure() # always run even if the previous step fails
+        run: docker compose -f ./docker/compose/docker-compose-ci.yml cp fpm:/var/www/html/phpunit-report.xml ./phpunit-report.xml
 
       - name: Publish test results
         uses: mikepenz/action-junit-report@v5
@@ -67,6 +95,11 @@ jobs:
             -Dsonar.php.tests.reportPath=phpunit-report.xml
             -Dsonar.qualitygate.wait=true
             -Dsonar.qualitygate.timeout=1000
+
+      - name: Copy public assets
+        run: |
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp fpm:/var/www/html/public/ ./public_temp &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./public_temp/. nginx:/var/www/html/public/
 
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.14.0
