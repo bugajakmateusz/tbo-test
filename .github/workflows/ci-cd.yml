@@ -64,6 +64,8 @@ jobs:
             -Dsonar.sources=src,packages/src
             -Dsonar.tests=tests,packages/tests
             -Dsonar.php.tests.reportPath=phpunit-report.xml
+            -Dsonar.qualitygate.wait=true
+            -Dsonar.qualitygate.timeout=1000
 
       - name: Stop containers
         if: always()
