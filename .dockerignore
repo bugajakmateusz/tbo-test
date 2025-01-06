@@ -12,6 +12,7 @@
 /packages/tests
 !/public
 /public/build
+/public/app
 !/src/
 !/.env
 !/composer.json
@@ -19,4 +20,9 @@
 !/phinx.php
 !/symfony.lock
 !/resources/scripts/phpstan-doctrine-object-manager.php
+!/resources/templates
+!/resources/translations
 !/python
+!/landings/frontend/
+/landings/frontend/node_modules
+/landings/frontend/dist
