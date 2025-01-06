@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 permissions:
-  contents: read
+  contents: write
   checks: write
 
 on:
