@@ -1,7 +1,7 @@
 FROM nginx:1.23.3-alpine AS prod
 
 RUN mkdir /var/www/html/public -p
-RUN adduser -u 1000 -D -S -G www-data www-data
+RUN adduser -u 1001 -D -S -G www-data www-data
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./conf.d/templates/polsl.template.conf /etc/nginx/conf.d/templates/polsl.template.conf

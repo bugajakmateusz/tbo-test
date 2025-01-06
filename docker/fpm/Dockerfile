@@ -24,8 +24,8 @@ RUN apk update && \
         shadow \
         libzip-dev \
         icu-dev && \
-    usermod -u 1000 www-data && \
-    groupmod -g 1000 www-data && \
+    usermod -u 1001 www-data && \
+    groupmod -g 1001 www-data && \
     docker-php-ext-install \
         pdo \
         intl \
@@ -35,6 +35,8 @@ RUN apk update && \
     docker-php-ext-enable \
         opcache && \
     apk del .build-only-deps shadow
+
+RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www/html
 
 ENV COMPOSER_HOME /var/www/.composer
 COPY --from=composer/composer:2.5.8-bin /composer /usr/bin/composer
@@ -85,4 +87,5 @@ COPY --from=prod_assets /app/public ./public
 RUN chown www-data:www-data /var/www/html/public/ \
     && composer dump-autoload -a --no-dev \
     && COMPOSER_MEMORY_LIMIT=128M APP_ENV=prod APP_DEBUG=0 su-exec www-data:www-data composer run app:prod-warmup \
-    && chown -R www-data:www-data /var/www/html/var/
+    && chown -R www-data:www-data /var/www/html/var/ \
+    && chown -R www-data:www-data /var/www/html/vendor/
