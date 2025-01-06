@@ -4,6 +4,7 @@ permissions:
   actions: write
   checks: write
   security-events: write   # To upload sarif files
+  issues: write
 
 on:
   push:
