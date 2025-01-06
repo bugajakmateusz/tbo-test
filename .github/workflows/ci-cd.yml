@@ -1,4 +1,7 @@
 name: CI/CD Pipeline
+permissions:
+  contents: read
+  checks: write
 
 on:
   push:
@@ -16,12 +19,6 @@ jobs:
       - name: Build and start application
         run: docker compose up haproxy nginx fpm postgres postgres_test node_builder_v22 mailhog -d
 
-      - name: Display dir
-        run: docker compose exec --user=www-data fpm sh -c 'ls -alh /var/www'
-
-      - name: Display dir 2
-        run: docker compose exec --user=www-data fpm sh -c 'ls -alh /var/www/html'
-
       - name: Run PHP builder and wait for services to be ready
         run: docker compose run --rm --user=www-data php_builder
 
@@ -29,7 +26,27 @@ jobs:
         run: docker compose exec --user=www-data fpm composer app:checks
 
       - name: Run tests
-        run: docker compose exec --user=www-data fpm vendor/bin/phpunit
+        run: docker compose exec --user=www-data fpm vendor/bin/phpunit --log-junit phpunit-report.xml
+
+      - name: Publish test results
+        uses: mikepenz/action-junit-report@v5
+        if: success() || failure() # always run even if the previous step fails
+        with:
+          report_paths: '**/phpunit-report.xml'
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/php@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
+          args: --all-projects --fail-on=upgradable --sarif-file-output=snyk.sarif --org=${{ secrets.SNYK_ORG }}
+
+      - name: Upload Snyk results
+        if: success() || failure() # always run even if the previous step fails
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
 
       - name: Stop containers
         if: always()
