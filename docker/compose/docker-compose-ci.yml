@@ -1,0 +1,65 @@
+services:
+  haproxy:
+    image: haproxy:2.8.3-alpine
+    ports:
+      - "127.0.0.1:3100:80"
+    volumes:
+      - ./../haproxy/dev.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - ./../../:/var/www/html:rw
+    depends_on:
+      - 'nginx'
+    stop_grace_period: 1s
+
+  nginx:
+    build:
+      context: ../nginx
+      target: dev
+      args:
+        DEPLOY_NAME: ci
+        CUSTOM_CONFIG: '
+                    open_file_cache off;
+                    proxy_max_temp_file_size 48m;
+                    fastcgi_buffers 16 16k;
+                    fastcgi_buffer_size 32k;
+                '
+    working_dir: /var/www/html
+    depends_on:
+      - 'fpm'
+    stop_grace_period: 1s
+
+  fpm:
+    image: debug
+    container_name: ci-polsl-app
+    environment:
+      ALLOW_INIT_MIGRATION: 1
+      ALLOW_SEEDING: 1
+    depends_on:
+      - 'postgres'
+    stop_grace_period: 1s
+
+
+  postgres:
+    image: postgres:15.4-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: polsl_dev
+      POSTGRES_PASSWORD: polsl-admin
+      POSTGRES_HOST_AUTH_METHOD: md5
+      POSTGRES_INITDB_ARGS: --auth-host=md5
+    stop_grace_period: 10s
+
+  postgres_test:
+    image: postgres:15.4-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: polsl_test
+      POSTGRES_PASSWORD: polsl-admin
+      POSTGRES_HOST_AUTH_METHOD: md5
+      POSTGRES_INITDB_ARGS: --auth-host=md5
+    stop_grace_period: 10s
+
+volumes:
+  temp_db_storage:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
