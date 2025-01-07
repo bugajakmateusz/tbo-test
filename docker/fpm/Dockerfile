@@ -80,6 +80,8 @@ COPY ./src ./src
 
 FROM prod_base AS prod_last
 
+COPY --from=config_files /config/ /usr/local/etc/
+
 WORKDIR /var/www/html
 
 COPY ./composer.json ./

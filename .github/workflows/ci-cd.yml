@@ -5,6 +5,7 @@ permissions:
   checks: write
   security-events: write   # To upload sarif files
   issues: write
+  packages: write
 
 on:
   push:
@@ -43,7 +44,7 @@ jobs:
 
       - name: Apply additional packages
         run: |
-          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "composer install --prefer-dist --no-interaction &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "php -dmemory_limit=128M /usr/bin/composer install --prefer-dist --no-interaction &&
                 php docker/db/wait-for-db.php postgres polsl_dev &&
                 APP_ENV=dev php vendor/bin/phinx migrate &&
                 php docker/db/wait-for-db.php postgres_test polsl_test &&
@@ -106,6 +107,25 @@ jobs:
         with:
           target: 'http://localhost:3100'
           cmd_options: '-a -T 1'
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Determine tag
+        id: tag
+        run: |
+          if [[ $GITHUB_REF == refs/heads/main ]]; then
+            echo "TAG=latest" >> $GITHUB_ENV
+          else
+            BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')
+            echo "TAG=debug-${BRANCH_NAME}" >> $GITHUB_ENV
+          fi
+
+      - name: Tag and push Docker image to GHCR
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository }}/app
+          docker tag debug $IMAGE_NAME:${{ env.TAG }}
+          docker push $IMAGE_NAME:${{ env.TAG }}
 
       - name: Stop containers
         if: always()
