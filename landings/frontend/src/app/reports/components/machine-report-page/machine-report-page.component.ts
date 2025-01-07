@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MachineSimpleDisplayed } from '../../../machines/models/machine-simple-displayed.model';
-import { Machine } from '../../../machines/models/machine.model';
-import { MachinesMapperService } from '../../../machines/services/machines-mapper.service';
-import { MachinesService } from '../../../machines/services/machines.service';
-import { ReportsService } from '../../services/reports.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MachineSimpleDisplayed} from '../../../machines/models/machine-simple-displayed.model';
+import {Machine} from '../../../machines/models/machine.model';
+import {MachinesMapperService} from '../../../machines/services/machines-mapper.service';
+import {MachinesService} from '../../../machines/services/machines.service';
+import {ReportsService} from '../../services/reports.service';
 
 @Component({
   selector: 'app-machine-report-page',
@@ -40,7 +40,8 @@ export class MachineReportPageComponent implements OnInit {
     private machinesService: MachinesService,
     private machinesMapperService: MachinesMapperService,
     private reportsService: ReportsService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getMachines()
@@ -52,7 +53,7 @@ export class MachineReportPageComponent implements OnInit {
       this.displayedMachines = this.machines.map(machine => this.machinesMapperService.mapMachineToMachineSimpleDisplayed(machine))
       this.machines.forEach((machine, index) => {
         const controlName = `machine_${index}`;
-        this.machineIdMachineCheckboxDictionary.push({ [controlName]: machine.id })
+        this.machineIdMachineCheckboxDictionary.push({[controlName]: machine.id})
         this.machinesSelectedForm.addControl(controlName, this.fb.control(false));
       });
     });
@@ -86,24 +87,17 @@ export class MachineReportPageComponent implements OnInit {
   }
 
   onSubmit() {
-      console.log("report pls")
-      // console.log(this.machinesSelectedForm.value)
-      const machines: any[] = []
+    console.log("report pls")
+    // console.log(this.machinesSelectedForm.value)
+    const machines: any[] = []
 
 
-      Object.values(this.machinesSelectedForm.value).forEach((value, index) => {
-        if(value) {
-          machines.push(Object.values(this.machineIdMachineCheckboxDictionary[index])[0])
-        }
-      })
-
-
-      // @ts-ignore
-    document.getElementById("report")!.innerHTML = this.reportsService.createMachinesReport(
-        this.datesForm.value.dateFrom!,
-        this.datesForm.value.dateTo!, machines
-      )
-      this.goBack();
+    Object.values(this.machinesSelectedForm.value).forEach((value, index) => {
+      if (value) {
+        machines.push(Object.values(this.machineIdMachineCheckboxDictionary[index])[0])
+      }
+    })
+    this.goBack();
   }
 
   goNextButtonDisabled(): boolean {

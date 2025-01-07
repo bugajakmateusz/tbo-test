@@ -26,25 +26,6 @@ export class ReportsService {
       `create warehouse report. Date from: ${dateFrom}. Date to: ${dateTo}`
     );
   }
-
-  createMachinesReport(dateFrom: string, dateTo: string, machines: string[]) {
-    console.log(
-      `create machines report. Datte from: ${dateFrom}. Date to: ${dateTo}. Machines: ${machines}`
-    );
-    console.log({
-      dateFrom: dateFrom,
-      dateTo: dateTo,
-      machines: machines
-    })
-
-    this.http.post(`${this.configService.apiUrl}reports/machines`,{
-      machineIds: machines
-    })
-      .subscribe((data: any) => {
-        console.log(data)
-        })
-
-  }
 }
 
 
