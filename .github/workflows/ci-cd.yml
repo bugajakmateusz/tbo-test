@@ -40,11 +40,12 @@ jobs:
           docker compose -f ./docker/compose/docker-compose-ci.yml cp ./packages/src/Faker fpm:/var/www/html/packages/src/Faker
           docker compose -f ./docker/compose/docker-compose-ci.yml cp ./resources/scripts/phpstan-cli-app.php fpm:/var/www/html/resources/scripts/phpstan-cli-app.php
           docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "mkdir -p /var/www/html/docker/db" &&
-          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./docker/db/wait-for-db.php fpm:/var/www/html/docker/db/wait-for-db.php
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./docker/db/wait-for-db.php fpm:/var/www/html/docker/db/wait-for-db.php &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml cp ./docker/fpm/default_php.ini fpm:/usr/local/etc/php/conf.d/z-99-prod-php.ini
 
       - name: Apply additional packages
         run: |
-          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "php -dmemory_limit=128M /usr/bin/composer install --prefer-dist --no-interaction &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "composer install --prefer-dist --no-interaction &&
                 php docker/db/wait-for-db.php postgres polsl_dev &&
                 APP_ENV=dev php vendor/bin/phinx migrate &&
                 php docker/db/wait-for-db.php postgres_test polsl_test &&
