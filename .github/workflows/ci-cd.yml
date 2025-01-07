@@ -44,7 +44,7 @@ jobs:
 
       - name: Apply additional packages
         run: |
-          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "composer install --prefer-dist --no-interaction &&
+          docker compose -f ./docker/compose/docker-compose-ci.yml exec --user=www-data fpm sh -c "php -dmemory_limit=128M /usr/bin/composer install --prefer-dist --no-interaction &&
                 php docker/db/wait-for-db.php postgres polsl_dev &&
                 APP_ENV=dev php vendor/bin/phinx migrate &&
                 php docker/db/wait-for-db.php postgres_test polsl_test &&
